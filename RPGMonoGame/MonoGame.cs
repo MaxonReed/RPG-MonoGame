@@ -106,14 +106,19 @@ namespace RPGMonoGame
         void UpdateMainMenu(GameTime gameTime)
         {
             var mouseState = Mouse.GetState();
-            var mousePosition = new Point(mouseState.X, mouseState.Y);
-
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            Rectangle mouseRec = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
+            Rectangle mainMenuRect = mainMenuButton.Bounds;
+            mainMenuRect.X = 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                if (mainMenuButton.Bounds.Contains(mousePosition))
+                Debug.WriteLine("hello");
+                if (mainMenuButton.Bounds.Contains(mouseState.X, mouseState.Y))
                 {
+                    Debug.WriteLine("bye");
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.StartPage;
+                    Debug.WriteLine(State);
                 }
             }
         }
@@ -141,7 +146,8 @@ namespace RPGMonoGame
             Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Height / 2);
             spriteBatch.Begin();
             spriteBatch.Draw(mainMenuButton, coor, Color.White);
-            
+            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, 2 * graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Height / 2);
+            spriteBatch.Draw(quitButton, coor, Color.White);
             spriteBatch.End();
         }
         void DrawInitWorldPage(GameTime gameTime)

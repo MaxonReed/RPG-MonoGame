@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Untitled.png</SourceFile>
-  <SourceTime>2019-04-06T18:59:31.4235021-06:00</SourceTime>
-  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/StartButton.xnb</DestFile>
-  <DestTime>2019-04-06T19:36:10.8223239-06:00</DestTime>
+  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/QuitButton.png</SourceFile>
+  <SourceTime>2019-04-06T19:01:58.1436163-06:00</SourceTime>
+  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/QuitButton.xnb</DestFile>
+  <DestTime>2019-04-06T19:36:10.8063242-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

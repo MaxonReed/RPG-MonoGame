@@ -5,10 +5,12 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont</File>
-    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/StartButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/QuitButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Untitled.png</File>
   </SourceFiles>
   <DestFiles>
     <File>StartButtonFont.spritefont</File>
     <File xsi:nil="true" />
+    <File>StartButton.png</File>
   </DestFiles>
 </SourceFileCollection>
