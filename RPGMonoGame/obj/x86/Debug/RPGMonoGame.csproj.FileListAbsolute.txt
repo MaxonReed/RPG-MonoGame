@@ -50,3 +50,9 @@ C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.c
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.csproj.CopyComplete
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.exe
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.pdb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\RPGMonoGame.exe.config
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\MonoGame.Extended.dll
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\MonoGame.Extended.pdb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\MonoGame.Extended.xml
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\StartButtonFont.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\StartButton.xnb

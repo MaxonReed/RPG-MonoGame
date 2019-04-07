@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
+using System.Diagnostics;
 
 namespace RPGMonoGame
 {
@@ -11,7 +13,11 @@ namespace RPGMonoGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        bool pushStartGame = false;
+        private SpriteFont arialFont;
+        #region MainMenuAssets
+        Texture2D mainMenuButton;
+        Texture2D quitButton;
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -32,7 +38,7 @@ namespace RPGMonoGame
             Content.RootDirectory = "Content";
         }
 
-        
+
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -52,10 +58,10 @@ namespace RPGMonoGame
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            arialFont = Content.Load<SpriteFont>("StartButtonFont");
+            mainMenuButton = this.Content.Load<Texture2D>("StartButton");
+            quitButton = this.Content.Load<Texture2D>("QuitButton");
         }
 
         /// <summary>
@@ -64,7 +70,7 @@ namespace RPGMonoGame
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -73,12 +79,24 @@ namespace RPGMonoGame
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
-        {         
+        {
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.
+                Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+                Exit();
             base.Update(gameTime);
             switch (State)
             {
                 case GameState.MainMenu:
                     UpdateMainMenu(gameTime);
+                    break;
+                case GameState.StartPage:
+                    UpdateStartPage(gameTime);
+                    break;
+                case GameState.InitWorldPage:
+                    UpdateInitWorldPage(gameTime);
+                    break;
+                case GameState.BattlePage:
+                    UpdateBattlePage(gameTime);
                     break;
                 default:
                     break;
@@ -87,14 +105,55 @@ namespace RPGMonoGame
 
         void UpdateMainMenu(GameTime gameTime)
         {
+            var mouseState = Mouse.GetState();
+            var mousePosition = new Point(mouseState.X, mouseState.Y);
 
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                if (mainMenuButton.Bounds.Contains(mousePosition))
+                {
+                    graphics.GraphicsDevice.Clear(Color.White);
+                    State = GameState.StartPage;
+                }
+            }
         }
-
-        void DrawMainMenu(GameTime gameTime)
+        void UpdateStartPage(GameTime gameTime)
         {
 
         }
+        void UpdateInitWorldPage(GameTime gameTime)
+        {
 
+        }
+        void UpdateBattlePage(GameTime gameTime)
+        {
+
+        }
+        void DrawMainMenu(GameTime gameTime)
+        {
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, graphics.PreferredBackBufferHeight / 2 - mainMenuButton.Height / 2);
+            spriteBatch.Begin();
+            spriteBatch.Draw(mainMenuButton, coor, Color.White);
+            spriteBatch.End();
+        }
+        void DrawStartPage(GameTime gameTime)
+        {
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Height / 2);
+            spriteBatch.Begin();
+            spriteBatch.Draw(mainMenuButton, coor, Color.White);
+            
+            spriteBatch.End();
+        }
+        void DrawInitWorldPage(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            spriteBatch.End();
+        }
+        void DrawBattlePage(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            spriteBatch.End();
+        }
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -108,9 +167,20 @@ namespace RPGMonoGame
                 case GameState.MainMenu:
                     DrawMainMenu(gameTime);
                     break;
+                case GameState.StartPage:
+                    DrawStartPage(gameTime);
+                    break;
+                case GameState.InitWorldPage:
+                    DrawInitWorldPage(gameTime);
+                    break;
+                case GameState.BattlePage:
+                    DrawBattlePage(gameTime);
+                    break;
                 default:
                     break;
             }
         }
+
+        
     }
 }
