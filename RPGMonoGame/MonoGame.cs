@@ -11,6 +11,7 @@ namespace RPGMonoGame
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        bool pushStartGame = false;
         public enum GameState
         {
             MainMenu,
@@ -89,17 +90,27 @@ namespace RPGMonoGame
 
         }
 
+        void DrawMainMenu(GameTime gameTime)
+        {
+
+        }
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            GraphicsDevice.Clear(Color.White);
             base.Draw(gameTime);
+            switch (State)
+            {
+                case GameState.MainMenu:
+                    DrawMainMenu(gameTime);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
