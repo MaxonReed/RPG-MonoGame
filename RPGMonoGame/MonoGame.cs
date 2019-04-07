@@ -15,8 +15,8 @@ namespace RPGMonoGame
         SpriteBatch spriteBatch;
         private SpriteFont arialFont;
         #region MainMenuAssets
-        Texture2D mainMenuButton;
-        Texture2D quitButton;
+        Sprite mainMenuButton;
+        Sprite quitButton;
         #endregion
         public enum GameState
         {
@@ -30,7 +30,7 @@ namespace RPGMonoGame
         {
             get => _state;
 
-            set => value = _state;
+            set => _state = value;
         }
         public MonoGame()
         {
@@ -60,8 +60,11 @@ namespace RPGMonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
-            mainMenuButton = this.Content.Load<Texture2D>("StartButton");
-            quitButton = this.Content.Load<Texture2D>("QuitButton");
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("StartButton").Height / 2);
+            mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
+            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
+            quitButton = new Sprite(this.Content.Load<Texture2D>("QuitButton"), coor);
+
         }
 
         /// <summary>
@@ -108,22 +111,37 @@ namespace RPGMonoGame
             var mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             Rectangle mouseRec = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
-            Rectangle mainMenuRect = mainMenuButton.Bounds;
-            mainMenuRect.X = 
+            Rectangle mainMenuRect = mainMenuButton.Texture.Bounds;
+            mainMenuRect.X = (int)mainMenuButton.Position.X;
+            mainMenuRect.Y = (int)mainMenuButton.Position.Y;
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                Debug.WriteLine("hello");
-                if (mainMenuButton.Bounds.Contains(mouseState.X, mouseState.Y))
+                if (mainMenuRect.Contains(mouseRec))
                 {
-                    Debug.WriteLine("bye");
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.StartPage;
-                    Debug.WriteLine(State);
                 }
             }
         }
         void UpdateStartPage(GameTime gameTime)
         {
+            var mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            Rectangle mouseRec = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
+            Rectangle mainMenuRect = mainMenuButton.Texture.Bounds;
+            mainMenuRect.X = (int)mainMenuButton.Position.X;
+            mainMenuRect.Y = (int)mainMenuButton.Position.Y;
+            Rectangle quitButtonRect = quitButton.Texture.Bounds;
+            quitButtonRect.X = (int)quitButton.Position.X;
+            quitButtonRect.Y = (int)quitButton.Position.Y;
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                if(mainMenuRect.Contains(mouseRec))
+                {
+                    graphics.GraphicsDevice.Clear(Color.White);
+                    State = GameState.InitWorldPage;
+                }
+            }
 
         }
         void UpdateInitWorldPage(GameTime gameTime)
@@ -136,18 +154,19 @@ namespace RPGMonoGame
         }
         void DrawMainMenu(GameTime gameTime)
         {
-            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, graphics.PreferredBackBufferHeight / 2 - mainMenuButton.Height / 2);
             spriteBatch.Begin();
-            spriteBatch.Draw(mainMenuButton, coor, Color.White);
+            mainMenuButton.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
         void DrawStartPage(GameTime gameTime)
         {
-            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Height / 2);
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Texture.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Texture.Height / 2);
             spriteBatch.Begin();
-            spriteBatch.Draw(mainMenuButton, coor, Color.White);
-            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Width / 2, 2 * graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Height / 2);
-            spriteBatch.Draw(quitButton, coor, Color.White);
+            mainMenuButton.Position = coor;
+            mainMenuButton.Draw(spriteBatch, gameTime);
+            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - quitButton.Texture.Width / 2, 2 * graphics.PreferredBackBufferHeight / 3 - quitButton.Texture.Height / 2);
+            quitButton.Position = coor;
+            quitButton.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
         void DrawInitWorldPage(GameTime gameTime)
@@ -187,6 +206,34 @@ namespace RPGMonoGame
             }
         }
 
-        
+
+    }
+    public class TextBox
+    {
+        public Vector2 Position { get; set; }
+        public Texture2D Background { get; set; }
+        public string Text { get; set; }
+
+        public TextBox(Vector2 pos, Texture2D bg, string text)
+        {
+            Position = pos;
+            Background = bg;
+            Text = text;
+        }
+    }
+    public class Sprite
+    {
+        public Texture2D Texture { get; set; }
+        public Vector2 Position { get; set; }
+
+        public Sprite(Texture2D texture, Vector2 initialPosition)
+        {
+            Texture = texture;
+            Position = initialPosition;
+        }
+        public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            spriteBatch.Draw(Texture, Position, Color.White);
+        }
     }
 }
