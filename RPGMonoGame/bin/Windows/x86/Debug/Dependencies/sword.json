@@ -1,0 +1,113 @@
+[
+  /*
+  Add attributes (Attr)
+  */
+  {
+    "Name": "Bronze Sword",
+    "Attack": 3,
+    "Defense": 2,
+    "Buy Price": 10,
+    "Sell Price": 5,
+    "Rarity Level": 15,
+    "Attr": "None"
+  },
+  {
+    "Name": "Iron Sword",
+    "Attack": 10,
+    "Defense": 7,
+    "Buy Price": 20,
+    "Sell Price": 10,
+    "Rarity Level": 50,
+    "Attr": "None"
+  },
+  {
+    "Name": "Silver Sword",
+    "Attack": 20,
+    "Defense": 9,
+    "Buy Price": 50,
+    "Sell Price": 25,
+    "Rarity Level": 100,
+    "Attr": "None"
+  },
+  {
+    "Name": "Broadsword",
+    "Attack": 9,
+    "Defense": 12,
+    "Buy Price": 35,
+    "Sell Price": 15,
+    "Rarity Level": 80,
+    "Attr": "None"
+  },
+  {
+    "Name": "Rapier",
+    "Attack": 15,
+    "Defense": 7,
+    "Buy Price": 35,
+    "Sell Price": 15,
+    "Rarity Level": 80,
+    "Attr": "None"
+  },
+  {
+    "Name": "Black Blade",
+    "Attack": 25,
+    "Defense": 17,
+    "Buy Price": 125,
+    "Sell Price": 1,
+    "Rarity Level": 175,
+    "Attr": "Curse" //You (The player) Lose your first turn
+  },
+  {
+    "Name": "Ice Blade",
+    "Attack": 10,
+    "Defense": 5,
+    "Buy Price": 30,
+    "Sell Price": 10,
+    "Rarity Level": 90,
+    "Attr": "Frozen" // Your opponent is immobile for X amount of turns
+  },
+  {
+    "Name": "Gold Sword",
+    "Attack": 20,
+    "Defense": 15,
+    "Buy Price": 300,
+    "Sell Price": 50,
+    "Rarity Level": 175,
+    "Attr": "None"
+  },
+  {
+    "Name": "Black Blade Reforged",
+    "Attack": 40,
+    "Defense": 30,
+    "Buy Price": 700,
+    "Sell Price": 1,
+    "Rarity Level": 750,
+    "Attr": "Curse" //You (The player) Lose your first turn
+  },
+  {
+    "Name": "Commander's Blade",
+    "Attack": 27,
+    "Defense": 19,
+    "Buy Price": 345,
+    "Sell Price": 78,
+    "Rarity Level": 250,
+    "Attr": "Commander" //You (The Player) Gain 1 attack per turn
+  },
+  {
+    "Name": "True Black Blade of the Night",
+    "Attack": 75,
+    "Defense": 45,
+    "Buy Price": 1000,
+    "Sell Price": 1,
+    "Rarity Level": 1750,
+    "Attr": "Night's Bane" //If you (The Player) Take Damage You (The Player) lose the game
+  },
+  {
+    "Name": "BloodClot",
+    "Attack": 27,
+    "Defense": 18,
+    "Buy Price": 279,
+    "Sell Price": 74,
+    "Rarity Level": 225,
+    "Attr": "Bloodthirsty" //Your opponent loses 5 defense per turn and you lose 1 defense per turn
+  }
+]
