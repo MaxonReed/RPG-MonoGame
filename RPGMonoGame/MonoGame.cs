@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
+using MonoGame.Extended;
 
 namespace RPGMonoGame
 {
@@ -64,7 +66,7 @@ namespace RPGMonoGame
             mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
             quitButton = new Sprite(this.Content.Load<Texture2D>("QuitButton"), coor);
-
+            
         }
 
         /// <summary>
@@ -140,6 +142,9 @@ namespace RPGMonoGame
                 {
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.InitWorldPage;
+                } else if (quitButtonRect.Contains(mouseRec))
+                {
+                    Exit();
                 }
             }
 
@@ -208,17 +213,28 @@ namespace RPGMonoGame
 
 
     }
-    public class TextBox
+    public class NumberBox
     {
         public Vector2 Position { get; set; }
         public Texture2D Background { get; set; }
         public string Text { get; set; }
 
-        public TextBox(Vector2 pos, Texture2D bg, string text)
+        public NumberBox(Vector2 pos, string text, ContentManager content)
         {
             Position = pos;
-            Background = bg;
+            Background = content.Load<Texture2D>("TextBox");
             Text = text;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, SpriteFont sf)
+        {
+            spriteBatch.Draw(Background, Position, Color.White);
+            spriteBatch.DrawString(sf, Text, new Vector2(Position.X + 2, Position.Y + 2), Color.Black);
+        }
+
+        public string EnterText()
+        {
+            return "";
         }
     }
     public class Sprite

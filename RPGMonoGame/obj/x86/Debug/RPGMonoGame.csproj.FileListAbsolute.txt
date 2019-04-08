@@ -57,3 +57,4 @@ C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\MonoG
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\StartButtonFont.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\StartButton.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\QuitButton.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\TextBox.xnb

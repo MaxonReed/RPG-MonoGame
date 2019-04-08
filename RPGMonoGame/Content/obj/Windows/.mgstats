@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/StartButtonFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0.4639981
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/QuitButton.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/QuitButton.xnb","TextureProcessor","Texture2DContent",1024,38461,0.2019989
+"C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/TextBox.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/TextBox.xnb","TextureProcessor","Texture2DContent",254,8405,0.2849938
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Untitled.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/StartButton.xnb","TextureProcessor","Texture2DContent",1097,38461,0.0070047
