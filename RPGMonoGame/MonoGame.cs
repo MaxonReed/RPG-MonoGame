@@ -21,11 +21,23 @@ namespace RPGMonoGame
         Sprite quitButton;
         #endregion
         #region initWorldAssets
-        string yearNum;
-        string facCreate;
-        string facDestroyed;
-        string eventName;
+        string inpText = "";
+        string yearNum = "";
+        string facCreate = "";
+        string facDestroyed = "";
+        string eventName = "";
         bool startGen = false;
+        Sprite one;
+        Sprite two;
+        Sprite thr;
+        Sprite four;
+        Sprite five;
+        Sprite six;
+        Sprite sev;
+        Sprite eight;
+        Sprite nine;
+        Sprite zer;
+        Sprite enter;
         #endregion
         public enum GameState
         {
@@ -62,6 +74,9 @@ namespace RPGMonoGame
         /// </summary>
         protected override void Initialize()
         {
+            graphics.PreferredBackBufferWidth = 900;
+            graphics.PreferredBackBufferHeight = 500;
+            graphics.ApplyChanges();
             this.IsMouseVisible = true;
             base.Initialize();
         }
@@ -78,6 +93,18 @@ namespace RPGMonoGame
             mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
             quitButton = new Sprite(this.Content.Load<Texture2D>("QuitButton"), coor);
+            one = new Sprite(Content.Load<Texture2D>("One"), new Vector2(100, 100));
+            two = new Sprite(Content.Load<Texture2D>("Two"), new Vector2(210, 100));
+            thr = new Sprite(Content.Load<Texture2D>("Thr"), new Vector2(320, 100));
+            four = new Sprite(Content.Load<Texture2D>("For"), new Vector2(100, 200));
+            five = new Sprite(Content.Load<Texture2D>("Fiv"), new Vector2(210, 200));
+            six = new Sprite(Content.Load<Texture2D>("Six"), new Vector2(320, 200));
+            sev = new Sprite(Content.Load<Texture2D>("Sev"), new Vector2(100, 300));
+            eight = new Sprite(Content.Load<Texture2D>("Eight"), new Vector2(210, 300));
+            nine = new Sprite(Content.Load<Texture2D>("Nine"), new Vector2(320, 300));
+            zer = new Sprite(Content.Load<Texture2D>("Zero"), new Vector2(210, 400));
+            enter = new Sprite(Content.Load<Texture2D>("Arrow"), new Vector2(320, 400));
+            //290 width
         }
 
         /// <summary>
@@ -162,7 +189,8 @@ namespace RPGMonoGame
         }
         void UpdateInitWorldPage(GameTime gameTime)
         {
-            if(!startGen)
+            
+            if (!startGen)
             {
 
             }
@@ -191,6 +219,16 @@ namespace RPGMonoGame
         void DrawInitWorldPage(GameTime gameTime)
         {
             spriteBatch.Begin();
+            one.Draw(spriteBatch, gameTime);
+            two.Draw(spriteBatch, gameTime);
+            thr.Draw(spriteBatch, gameTime);
+            four.Draw(spriteBatch, gameTime);
+            five.Draw(spriteBatch, gameTime);
+            six.Draw(spriteBatch, gameTime);
+            sev.Draw(spriteBatch, gameTime);
+            eight.Draw(spriteBatch, gameTime);
+            nine.Draw(spriteBatch, gameTime);
+            zer.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
         void DrawBattlePage(GameTime gameTime)

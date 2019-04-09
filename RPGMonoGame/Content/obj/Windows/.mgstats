@@ -1,9 +1,11 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Arrow.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Arrow.xnb","TextureProcessor","Texture2DContent",568,24421,0.1709982
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Eight.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Eight.xnb","TextureProcessor","Texture2DContent",1172,26981,0.2699956
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/StartButtonFont.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0.4639981
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Fiv.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Fiv.xnb","TextureProcessor","Texture2DContent",827,26981,0.005001
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/For.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/For.xnb","TextureProcessor","Texture2DContent",694,26981,0.005001
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Nine.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Nine.xnb","TextureProcessor","Texture2DContent",1124,26981,0.0070011
+"C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/NumInput.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/NumInput.xnb","TextureProcessor","Texture2DContent",432,93061,0.1629993
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/One.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/One.xnb","TextureProcessor","Texture2DContent",450,26981,0.0059991
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/QuitButton.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/QuitButton.xnb","TextureProcessor","Texture2DContent",1024,38461,0.2019989
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Sev.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Sev.xnb","TextureProcessor","Texture2DContent",816,26981,0.0060017
