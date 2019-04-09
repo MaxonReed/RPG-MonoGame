@@ -20,6 +20,13 @@ namespace RPGMonoGame
         Sprite mainMenuButton;
         Sprite quitButton;
         #endregion
+        #region initWorldAssets
+        string yearNum;
+        string facCreate;
+        string facDestroyed;
+        string eventName;
+        bool startGen = false;
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -34,6 +41,11 @@ namespace RPGMonoGame
 
             set => _state = value;
         }
+        public string YearNum { get => yearNum; set => yearNum = value; }
+        public string FacCreate { get => facCreate; set => facCreate = value; }
+        public string FacDestroyed { get => facDestroyed; set => facDestroyed = value; }
+        public string EventName { get => eventName; set => eventName = value; }
+
         public MonoGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -66,7 +78,6 @@ namespace RPGMonoGame
             mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
             quitButton = new Sprite(this.Content.Load<Texture2D>("QuitButton"), coor);
-            
         }
 
         /// <summary>
@@ -112,7 +123,7 @@ namespace RPGMonoGame
         {
             var mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-            Rectangle mouseRec = new Rectangle(mouseState.X, mouseState.Y, 1, 1);
+            Rectangle mouseRec = new Microsoft.Xna.Framework.Rectangle(mouseState.X, mouseState.Y, 1, 1);
             Rectangle mainMenuRect = mainMenuButton.Texture.Bounds;
             mainMenuRect.X = (int)mainMenuButton.Position.X;
             mainMenuRect.Y = (int)mainMenuButton.Position.Y;
@@ -151,7 +162,10 @@ namespace RPGMonoGame
         }
         void UpdateInitWorldPage(GameTime gameTime)
         {
+            if(!startGen)
+            {
 
+            }
         }
         void UpdateBattlePage(GameTime gameTime)
         {
