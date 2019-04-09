@@ -197,8 +197,12 @@ namespace RPGv2
     public class GlobalValues
     {
         public static int inp = -1;
-        
-
+        public static string inpText = "";
+        public static string yearNum = "";
+        public static string facCreate = "";
+        public static string facDestroyed = "";
+        public static string eventName = "";
+        public static bool startGen = false;
 
 
         public static int Inp

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using RPGMonoGame;
 
 namespace RPGv2
 {
@@ -12,61 +13,13 @@ namespace RPGv2
 
         public static void StartGame()
         {
-            /*
-            bool done = false;
-            
-            while (!done)
-            {
-                Console.Write(">");
-                string[] inp = Console.ReadLine().Split(' ');
-                string input = "";
-                for (int i = 1; i < inp.Length; i++)
-                {
-                    if (i != inp.Length - 1)
-                        input += inp[i] + " ";
-                    else
-                        input += inp[i];
-                }
-                Console.WriteLine(input);
-                switch (inp[0])
-                {
-                    case "map":
-                        h.Map.OutputMap();
-                        break;
-                    case "get":
-                        foreach (Faction fac in h.Factions)
-                            if (fac.Name == input)
-                            {
-                                Console.WriteLine(fac.ToString());
-                            }
-                        break;
-                    case "hist":
-                        foreach (Faction fac in h.Factions)
-                            if (fac.Name == input)
-                            {
-                                foreach (HistoricalEvent he in fac.HistoricalEvents.ToArray())
-                                    Console.WriteLine(he.ToString());
-                            }
-                        break;
-                    case "list":
-                        foreach (Faction f in h.Factions)
-                            Console.WriteLine(f.ToString());
-                        break;
-                    case "clear":
-                        Console.Clear();
-                        break;
-                    case "restart":
-                        StartGame();
-                        break;
-                    default:
-                        done = true;
-                        break;
-                }
-            }
-
-            Console.ReadKey();
-            */
+            int years = int.Parse(GlobalValues.inpText);
+            // TODO: When start button is clicked the game will start 
+            GlobalValues.startGen = true;
+            StartHistory(years);
         }
+
+        //public static 
         public static History StartHistory(int years)
         {
             EventList el = new EventList();
@@ -154,7 +107,7 @@ namespace RPGv2
             }
             for (int i = 0; i <= years; i++)
             {
-
+                GlobalValues.yearNum = "Year: " + i;
                 totalPeople = 0;
                 averagePopSeverity = 0;
                 foreach (Faction f in factions)
@@ -174,6 +127,7 @@ namespace RPGv2
                     {
                         Event newEvent = new Event(el);
                         EventVar e = newEvent.Chosen;
+                        GlobalValues.eventName = e.Name;
 
                         switch (e.Name)
                         {
@@ -255,6 +209,7 @@ namespace RPGv2
                                 newFaction.Pop += breakOff;
                                 f.Pop -= breakOff;
                                 factions.Add(newFaction);
+                                GlobalValues.facCreate = f.Name + " has been created!";
                                 newFaction.HistoricalEvents.Add(new HistoricalEvent("Broke off from " + f.Name, i));
                                 h.Map.InitFaction(newFaction);
                                 break;
@@ -392,6 +347,7 @@ namespace RPGv2
                     Faction f = factions[i1];
                     if (f.Pop <= 0)
                     {
+                        GlobalValues.facDestroyed = f.Name + " has been destroyed!";
                         factions.Remove(f);
                     }
                 }
