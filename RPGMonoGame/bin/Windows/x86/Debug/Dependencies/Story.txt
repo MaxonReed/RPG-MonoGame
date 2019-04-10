@@ -1,0 +1,50 @@
+[Scene:1]
+*I-Its cold...*
+*I am... toto, Named after my father*
+*They're coming again*
+"|if|(inWar){The War between {WarFactionName} and }|else|{}
+The War between {WarFactionName} and Affrieca rages on, toto the commander of the Affriecan army was overrun.
+Everyone in affrieca either died or was taken prisoner, except one person.
+?:"You there! On your feet!"
+?:"State Your Name, Now!"
+*...*
+Toto:"I... I am Toto of the proud affri-"
+?:"Affrieca is no more stand up and follow me."
+?:"You will be born anew, toto."
+Toto's life was spared because he was useful... will this be {WarFactionName}'s downfall?
+Or A Rebirth...
+
+[Scene:2]
+?:"You must prove yourself to me, toto scum of Affrieca."
+*Why must I fight him.*
+*This battle seems like it should be in his favor...*
+*But I will avenge my Father!*
+Toto:"For My father!"
+|battle:id=firstBattle|
+?:"You are weak..."
+*Then everything faded to black, I was going to die*
+*This is the end...*
+
+[Scene:3]
+*Is this death...*
+*I don't feel the pain anymore just regret...*
+??:"So you still want to live..."
+??:"Then I shall give you a purpose!"
+Toto:"Who are You...?! Where am I!"
+Luna:"I am Luna, The goddess of Light"
+Toto:"Luna?"
+Luna:"Toto, May I ask, Who are you really?"
+:ClassSelect:
+Luna:"Then Be reborn as a {ClassName}!"
+
+[Scene:4]
+?:"You show promise kid, I almost feel bad for trying to kill you."
+*Wait what...*
+?:"Fight well for {WarFactionName}!"
+Toto:"Ok..."
+?:"Oh yeah I almost forgot, My name is Pheonix"
+Pheonix:"Good Luck"
+*He said that in a meanacing way on purpose...*
+*Is he a friend or a foe*
+
+[Scene:5]
