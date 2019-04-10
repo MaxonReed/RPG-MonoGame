@@ -194,6 +194,30 @@ namespace RPGv2
         }
     }
 
+    public class Story
+    {
+        public string[] GetScene(int index)
+        {
+            string[] strArr;
+            strArr = File.ReadAllLines("Dependencies/Story.txt");
+            return strArr;
+        }
+
+        public string FormatString(string s)
+        {
+            return "";
+        }
+
+        public string Talker(string s)
+        {
+            if(/*name present*/true)
+            {
+                return "name";
+            }
+            return null;
+        }
+    }
+
     public class GlobalValues
     {
         public static int inp = -1;
@@ -203,7 +227,9 @@ namespace RPGv2
         public static string facDestroyed = "";
         public static string eventName = "";
         public static bool startGen = false;
-
+        public static bool done = false;
+        public static string[] strArray;
+        public static int strArrayIndex;
 
         public static int Inp
         {

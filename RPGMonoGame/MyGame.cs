@@ -37,12 +37,17 @@ namespace RPGMonoGame
         Sprite enter;
         Sprite initBox;
         #endregion
+        #region storyAssets
+
+
+        #endregion
         public enum GameState
         {
             MainMenu,
             StartPage,
             InitWorldPage,
-            BattlePage
+            BattlePage,
+            StoryText
         }
         private GameState _state;
         public GameState State
@@ -137,6 +142,9 @@ namespace RPGMonoGame
                 case GameState.BattlePage:
                     UpdateBattlePage(gameTime);
                     break;
+                case GameState.StoryText:
+                    UpdateStoryText(gameTime);
+                    break;
                 default:
                     break;
             }
@@ -215,8 +223,16 @@ namespace RPGMonoGame
                 }
                 
             }
+            if(RPGv2.GlobalValues.done)
+            {
+
+            }
         }
         void UpdateBattlePage(GameTime gameTime)
+        {
+
+        }
+        void UpdateStoryText(GameTime gameTime)
         {
 
         }
@@ -262,6 +278,10 @@ namespace RPGMonoGame
             }
             spriteBatch.End();
         }
+        void DrawStoryText(GameTime gameTime, string[] story, int index)
+        {
+
+        }
         void DrawBattlePage(GameTime gameTime)
         {
             spriteBatch.Begin();
@@ -289,6 +309,9 @@ namespace RPGMonoGame
                 case GameState.BattlePage:
                     DrawBattlePage(gameTime);
                     break;
+                case GameState.StoryText:
+                    DrawStoryText(gameTime, RPGv2.GlobalValues.strArray, RPGv2.GlobalValues.strArrayIndex); ;
+                    break;
                 default:
                     break;
             }
@@ -313,11 +336,6 @@ namespace RPGMonoGame
         {
             spriteBatch.Draw(Background, Position, Color.White);
             spriteBatch.DrawString(sf, Text, new Vector2(Position.X + 2, Position.Y + 2), Color.Black);
-        }
-
-        public string EnterText()
-        {
-            return "";
         }
     }
     public class Sprite

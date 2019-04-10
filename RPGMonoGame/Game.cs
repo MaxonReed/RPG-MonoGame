@@ -16,7 +16,11 @@ namespace RPGv2
             int years = int.Parse(GlobalValues.inpText);
             // TODO: When start button is clicked the game will start 
             GlobalValues.startGen = true;
-            StartHistory(years);
+            History h = StartHistory(years);
+            Faction affrieca = new Faction(new Race(1, 10000), "Affrieca");
+            affrieca.Pop = 20000;
+            h.Factions.Add(affrieca);
+
         }
 
         //public static 
@@ -354,6 +358,7 @@ namespace RPGv2
                 #endregion
             }
 
+            GlobalValues.done = true;
             h.Races = races;
             h.Factions = factions;
             return h;
