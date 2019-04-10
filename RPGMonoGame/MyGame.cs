@@ -57,7 +57,6 @@ namespace RPGMonoGame
             set => _state = value;
         }
 
-
         public MyGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -80,7 +79,6 @@ namespace RPGMonoGame
             this.IsMouseVisible = true;
             base.Initialize();
         }
-
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -174,11 +172,12 @@ namespace RPGMonoGame
 
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                if(mainMenuButton.Contains(mousePoint))
+                if (mainMenuButton.Contains(mousePoint))
                 {
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.InitWorldPage;
-                } else if (quitButton.Contains(mousePoint))
+                }
+                else if (quitButton.Contains(mousePoint))
                 {
                     Exit();
                 }
@@ -195,7 +194,7 @@ namespace RPGMonoGame
             {
                 if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                 {
-                    if(enter.Contains(mousePoint))
+                    if (enter.Contains(mousePoint))
                     {
                         if (RPGv2.GlobalValues.inpText != "")
                             Task.Run(() => RPGv2.Game.StartGame());
@@ -221,11 +220,18 @@ namespace RPGMonoGame
                     if (zer.Contains(mousePoint))
                         RPGv2.GlobalValues.inpText += "0";
                 }
-                
-            }
-            if(RPGv2.GlobalValues.done)
-            {
 
+            }
+            if (RPGv2.GlobalValues.done)
+            {
+                if(mouseState.LeftButton == ButtonState.Pressed)
+                {
+                    if(mainMenuButton.Contains(mousePoint))
+                    {
+                        State = GameState.StoryText;
+                        RPGv2.GlobalValues.storyState = 1;
+                    }
+                }
             }
         }
         void UpdateBattlePage(GameTime gameTime)
@@ -234,6 +240,9 @@ namespace RPGMonoGame
         }
         void UpdateStoryText(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
 
         }
         void DrawMainMenu(GameTime gameTime)
@@ -276,11 +285,15 @@ namespace RPGMonoGame
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
             }
+            if(RPGv2.GlobalValues.done)
+            {
+                mainMenuButton.Draw(spriteBatch, gameTime);
+            }
             spriteBatch.End();
         }
-        void DrawStoryText(GameTime gameTime, string[] story, int index)
+        void DrawStoryText(GameTime gameTime, int index)
         {
-
+            
         }
         void DrawBattlePage(GameTime gameTime)
         {
@@ -310,7 +323,7 @@ namespace RPGMonoGame
                     DrawBattlePage(gameTime);
                     break;
                 case GameState.StoryText:
-                    DrawStoryText(gameTime, RPGv2.GlobalValues.strArray, RPGv2.GlobalValues.strArrayIndex); ;
+                    DrawStoryText(gameTime, RPGv2.GlobalValues.storyIndex); ;
                     break;
                 default:
                     break;

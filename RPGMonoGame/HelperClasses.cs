@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
+using System.Linq;
 
 namespace RPGv2
 {
@@ -196,10 +197,33 @@ namespace RPGv2
 
     public class Story
     {
-        public string[] GetScene(int index)
+        public int maxIndex;
+
+
+        public List<string> GetScene(int index)
         {
-            string[] strArr;
-            strArr = File.ReadAllLines("Dependencies/Story.txt");
+            List<string> strArr;
+            strArr = File.ReadAllLines("Dependencies/Story.txt").ToList();
+            bool found = false;
+            List<string> temp = new List<string>();
+            foreach (string str in strArr.ToArray())
+            {
+                if (str.StartsWith(string.Format("[{0", index)))
+                {
+                    if (!found)
+                        found = true;
+                    else
+                        break;
+                }
+                if (found && str[0] != '[')
+                    temp.Add(str);
+            }
+            strArr = temp;
+            foreach (string str in strArr.ToArray())
+            {
+                if (str.StartsWith("\"") || string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str))
+                    strArr.Remove(str);
+            }
             return strArr;
         }
 
@@ -210,7 +234,7 @@ namespace RPGv2
 
         public string Talker(string s)
         {
-            if(/*name present*/true)
+            if (/*name present*/true)
             {
                 return "name";
             }
@@ -229,8 +253,8 @@ namespace RPGv2
         public static bool startGen = false;
         public static bool done = false;
         public static string[] strArray;
-        public static int strArrayIndex;
-
+        public static int storyIndex = 0;
+        public static int storyState = 0;
         public static int Inp
         {
             get => inp;
