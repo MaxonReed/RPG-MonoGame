@@ -246,6 +246,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+            Debug.WriteLine(1);
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 RPGv2.GlobalValues.storyIndex++;
@@ -290,6 +291,7 @@ namespace RPGMonoGame
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.eventName, new Vector2(500, 200), Color.Black);
                 Debug.WriteLine(RPGv2.GlobalValues.facCreate);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
+                Debug.WriteLine(RPGv2.GlobalValues.facDestroyed);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
             }
             if (RPGv2.GlobalValues.done)

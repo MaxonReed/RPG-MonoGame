@@ -199,6 +199,7 @@ namespace RPGv2
     {
         public static int MaxIndex { get; set; }
 
+        public static string fName = Game.hist.Factions[HelperClasses.RandomNumber(0, Game.hist.Factions.Count - 1)].Name;
 
         public static List<string> GetScene(int index)
         {
@@ -213,6 +214,8 @@ namespace RPGv2
             }
             foreach (string str in strArr.ToArray())
             {
+                if (str.Length > 59)
+                    str.Insert(58, "\n");
                 if (str.StartsWith(string.Format("[{0}", index)))
                 {
                     if (!found)
@@ -232,6 +235,7 @@ namespace RPGv2
             {
                 while (!done)
                 {
+                    Debug.WriteLine(str);
                     if (str.Contains("{"))
                     {
                         tempStr = str.Substring(str.IndexOf("{") + 1);
@@ -245,8 +249,9 @@ namespace RPGv2
                         switch(obj)
                         {
                             case "WarFactionName":
-                                replacement = Game.hist.Factions[HelperClasses.RandomNumber(0, Game.hist.Factions.Count - 1)].Name;
-                                str.Replace("{" + obj + "}", replacement);
+                                replacement = fName;
+                                strArr[strArr.IndexOf(str)] = str.Replace("{WarFactionName}", replacement);
+                                done = true;
                                 break;
                             default:
                                 break;
