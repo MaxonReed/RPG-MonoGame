@@ -195,10 +195,22 @@ namespace RPGv2
         }
     }
 
+    public class SceneText
+    {
+        public static List<bool> wrapText = new List<bool>();
+        public static List<string> strArr;
+
+        public static void GetText()
+        {
+            strArr = Story.GetScene(GlobalValues.storyState);
+            foreach (string str in strArr.ToArray())
+                wrapText.Add(str.Length >= 50);
+        }
+    }
+
     public class Story
     {
         public static int MaxIndex { get; set; }
-
         public static string fName = Game.hist.Factions[HelperClasses.RandomNumber(0, Game.hist.Factions.Count - 1)].Name;
 
         public static List<string> GetScene(int index)
@@ -214,8 +226,6 @@ namespace RPGv2
             }
             foreach (string str in strArr.ToArray())
             {
-                if (str.Length > 59)
-                    str.Insert(58, "\n");
                 if (str.StartsWith(string.Format("[{0}", index)))
                 {
                     if (!found)
@@ -226,6 +236,23 @@ namespace RPGv2
                 if (found && str[0] != '[')
                     temp.Add(str);
             }
+            if (strArr.Count - 1 == GlobalValues.storyIndex)
+            {
+                GlobalValues.storyIndex = 0;
+                GlobalValues.storyState++;
+                foreach (string str in strArr.ToArray())
+                {
+                    if (str.StartsWith(string.Format("[{0}", index)))
+                    {
+                        if (!found)
+                            found = true;
+                        else
+                            break;
+                    }
+                    if (found && str[0] != '[')
+                        temp.Add(str);
+                }
+            }
             strArr = temp;
             string obj = "";
             bool done = false;
@@ -235,7 +262,6 @@ namespace RPGv2
             {
                 while (!done)
                 {
-                    Debug.WriteLine(str);
                     if (str.Contains("{"))
                     {
                         tempStr = str.Substring(str.IndexOf("{") + 1);
@@ -246,7 +272,7 @@ namespace RPGv2
                             else
                                 break;
                         }
-                        switch(obj)
+                        switch (obj)
                         {
                             case "WarFactionName":
                                 replacement = fName;
@@ -256,7 +282,8 @@ namespace RPGv2
                             default:
                                 break;
                         }
-                    } else
+                    }
+                    else
                     {
                         done = true;
                     }
@@ -264,11 +291,6 @@ namespace RPGv2
                 done = false;
             }
             return strArr;
-        }
-
-        public static string FormatString(string s)
-        {
-            return "";
         }
 
         public static string Talker(string s)
@@ -289,11 +311,13 @@ namespace RPGv2
         public static string facCreate = "";
         public static string facDestroyed = "";
         public static string eventName = "";
+        public static string battleID = "null";
         public static bool startGen = false;
         public static bool done = false;
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
+
         public static int Inp
         {
             get => inp;

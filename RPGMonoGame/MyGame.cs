@@ -246,7 +246,6 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-            Debug.WriteLine(1);
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 RPGv2.GlobalValues.storyIndex++;
@@ -302,11 +301,67 @@ namespace RPGMonoGame
         }
         void DrawStoryText(GameTime gameTime)
         {
-            List<string> strArray = RPGv2.Story.GetScene(RPGv2.GlobalValues.storyState);
+            RPGv2.SceneText.GetText();
+            //get array of text
+            List<string> strArray = RPGv2.SceneText.strArr;
+            //get text to be displayed
             string text = strArray[RPGv2.GlobalValues.storyIndex];
             spriteBatch.Begin();
+            //draw text box
             textBox.Draw(spriteBatch, gameTime);
-            spriteBatch.DrawString(storyFont, text, new Vector2(102, 317), Color.Black);
+            //get specieal events
+            if(text.StartsWith("|battle:"))
+            {
+                string id = text.Substring(8);
+                RPGv2.GlobalValues.battleID = id;
+                State = GameState.BattlePage;
+                return;
+            }
+            //text wrapping
+            if (!RPGv2.SceneText.wrapText[RPGv2.GlobalValues.storyIndex])
+                spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
+            else
+            {
+                List<string> textWrappers = new List<string>();
+                int iterations = text.Length / 50;
+                int begin = 0;
+                int next = 0;
+                for (int i = 0; i <= iterations; i++)
+                {
+                    begin += next;
+                    next = 50;
+                    if (50 + begin > text.Length)
+                        next = text.Length - begin;
+                    //dont split sentences/words
+                    bool done = false;
+                    while (!done)
+                    {
+                        if (begin + next < text.Length)
+                        {
+                            if (text[begin + next] != ' ' && text[begin + next] != '.')
+                            {
+                                next++;
+                            }
+                            else
+                                done = true;
+                        }
+                        else
+                            done = true;
+                    }
+                    textWrappers.Add(text.Substring(begin, next));
+                }
+                if(textWrappers[textWrappers.Count - 1] == ".")
+                {
+                    textWrappers.RemoveAt(textWrappers.Count - 1);
+                    textWrappers[textWrappers.Count - 1] += ".";
+                }
+                for (int i = 0; i < textWrappers.Count; i++)
+                {
+                    if (textWrappers[i].StartsWith(" "))
+                        textWrappers[i] = textWrappers[i].Substring(1);
+                    spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 20)), Color.Black);
+                }
+            }
             spriteBatch.End();
         }
         void DrawBattlePage(GameTime gameTime)
