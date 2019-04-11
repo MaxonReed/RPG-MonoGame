@@ -16,10 +16,10 @@ namespace RPGv2
             int years = int.Parse(GlobalValues.inpText);
             // TODO: When start button is clicked the game will start 
             GlobalValues.startGen = true;
-            History h = StartHistory(years);
+            hist = StartHistory(years);
             Faction affrieca = new Faction(new Race(1, 10000), "Affrieca");
             affrieca.Pop = 20000;
-            h.Factions.Add(affrieca);
+            hist.Factions.Add(affrieca);
 
         }
 
@@ -34,7 +34,7 @@ namespace RPGv2
             List<Faction> factions = new List<Faction>();
             for (int i = 0; i < Race.RacesAmount(); i++)
             {
-                races.Add(new Race(i, new Random().Next(30000)));
+                races.Add(new Race(i, new Random().Next(100000)));
             }
 
             Random rand = new Random();
@@ -47,12 +47,12 @@ namespace RPGv2
                 for (int j = 0; j <= vals[3]; j++)
                 {
                     int num = rand.Next(100);
-                    if (num < 80)
+                    if (num < 75)
                     {
                         factions[mainCityInd].Pop++;
                         num = 101;
                     }
-                    if (num < 95)
+                    if (num < 90)
                     {
                         bool done = false;
                         Random rand2 = new Random();

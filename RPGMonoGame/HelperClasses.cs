@@ -197,10 +197,10 @@ namespace RPGv2
 
     public class Story
     {
-        public int maxIndex;
+        public static int MaxIndex { get; set; }
 
 
-        public List<string> GetScene(int index)
+        public static List<string> GetScene(int index)
         {
             List<string> strArr;
             strArr = File.ReadAllLines("Dependencies/Story.txt").ToList();
@@ -208,7 +208,12 @@ namespace RPGv2
             List<string> temp = new List<string>();
             foreach (string str in strArr.ToArray())
             {
-                if (str.StartsWith(string.Format("[{0", index)))
+                if (str.StartsWith("\"") || string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str))
+                    strArr.Remove(str);
+            }
+            foreach (string str in strArr.ToArray())
+            {
+                if (str.StartsWith(string.Format("[{0}", index)))
                 {
                     if (!found)
                         found = true;
@@ -219,20 +224,49 @@ namespace RPGv2
                     temp.Add(str);
             }
             strArr = temp;
+            string obj = "";
+            bool done = false;
+            string tempStr = "";
+            string replacement;
             foreach (string str in strArr.ToArray())
             {
-                if (str.StartsWith("\"") || string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str))
-                    strArr.Remove(str);
+                while (!done)
+                {
+                    if (str.Contains("{"))
+                    {
+                        tempStr = str.Substring(str.IndexOf("{") + 1);
+                        foreach (char c in tempStr)
+                        {
+                            if (c != '}')
+                                obj += c;
+                            else
+                                break;
+                        }
+                        switch(obj)
+                        {
+                            case "WarFactionName":
+                                replacement = Game.hist.Factions[HelperClasses.RandomNumber(0, Game.hist.Factions.Count - 1)].Name;
+                                str.Replace("{" + obj + "}", replacement);
+                                break;
+                            default:
+                                break;
+                        }
+                    } else
+                    {
+                        done = true;
+                    }
+                }
+                done = false;
             }
             return strArr;
         }
 
-        public string FormatString(string s)
+        public static string FormatString(string s)
         {
             return "";
         }
 
-        public string Talker(string s)
+        public static string Talker(string s)
         {
             if (/*name present*/true)
             {

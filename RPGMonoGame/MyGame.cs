@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics;
 using MonoGame.Extended;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace RPGMonoGame
 {
@@ -38,8 +39,8 @@ namespace RPGMonoGame
         Sprite initBox;
         #endregion
         #region storyAssets
-
-
+        SpriteFont storyFont;
+        Sprite textBox;
         #endregion
         public enum GameState
         {
@@ -87,6 +88,7 @@ namespace RPGMonoGame
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
+            storyFont = Content.Load<SpriteFont>("Story");
             Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("StartButton").Height / 2);
             mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
@@ -103,6 +105,7 @@ namespace RPGMonoGame
             zer = new Sprite(Content.Load<Texture2D>("Zero"), new Vector2(210, 400));
             enter = new Sprite(Content.Load<Texture2D>("Arrow"), new Vector2(320, 400));
             initBox = new Sprite(Content.Load<Texture2D>("NumInput"), new Vector2(100, 20));
+            textBox = new Sprite(Content.Load<Texture2D>("TextBox"), new Vector2(100, 315));
             //290 width
         }
 
@@ -224,9 +227,9 @@ namespace RPGMonoGame
             }
             if (RPGv2.GlobalValues.done)
             {
-                if(mouseState.LeftButton == ButtonState.Pressed)
+                if (mouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if(mainMenuButton.Contains(mousePoint))
+                    if (mainMenuButton.Contains(mousePoint))
                     {
                         State = GameState.StoryText;
                         RPGv2.GlobalValues.storyState = 1;
@@ -243,7 +246,10 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-
+            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+            {
+                RPGv2.GlobalValues.storyIndex++;
+            }
         }
         void DrawMainMenu(GameTime gameTime)
         {
@@ -282,18 +288,24 @@ namespace RPGMonoGame
             {
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.eventName, new Vector2(500, 200), Color.Black);
+                Debug.WriteLine(RPGv2.GlobalValues.facCreate);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
             }
-            if(RPGv2.GlobalValues.done)
+            if (RPGv2.GlobalValues.done)
             {
                 mainMenuButton.Draw(spriteBatch, gameTime);
             }
             spriteBatch.End();
         }
-        void DrawStoryText(GameTime gameTime, int index)
+        void DrawStoryText(GameTime gameTime)
         {
-            
+            List<string> strArray = RPGv2.Story.GetScene(RPGv2.GlobalValues.storyState);
+            string text = strArray[RPGv2.GlobalValues.storyIndex];
+            spriteBatch.Begin();
+            textBox.Draw(spriteBatch, gameTime);
+            spriteBatch.DrawString(storyFont, text, new Vector2(102, 317), Color.Black);
+            spriteBatch.End();
         }
         void DrawBattlePage(GameTime gameTime)
         {
@@ -323,7 +335,7 @@ namespace RPGMonoGame
                     DrawBattlePage(gameTime);
                     break;
                 case GameState.StoryText:
-                    DrawStoryText(gameTime, RPGv2.GlobalValues.storyIndex); ;
+                    DrawStoryText(gameTime);
                     break;
                 default:
                     break;

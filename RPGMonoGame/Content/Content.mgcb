@@ -141,6 +141,13 @@
 /processorParam:TextureFormat=Color
 /build:Six.png
 
+#begin Story.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Story.spritefont
+
 #begin TextBox.png
 /importer:TextureImporter
 /processor:TextureProcessor

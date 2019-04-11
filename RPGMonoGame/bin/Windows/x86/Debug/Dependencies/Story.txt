@@ -10,7 +10,7 @@ Everyone in affrieca either died or was taken prisoner, except one person.
 *...*
 Toto:"I... I am Toto of the proud affri-"
 ?:"Affrieca is no more stand up and follow me."
-?:"You will be born anew, toto."
+?:"You will be born anew, Toto."
 Toto's life was spared because he was useful... will this be {WarFactionName}'s downfall?
 Or A Rebirth...
 
