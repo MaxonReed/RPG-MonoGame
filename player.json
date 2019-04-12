@@ -1,0 +1,54 @@
+[
+  {
+    "Attack": 10,
+    "Class": "Warrior",
+    "Defense": 7,
+    "Evasion": 0,
+    "Intelligence": 3,
+    "Luck": 1,
+    "Magic Attack": 0,
+    "Magic Defense": 1,
+    "Money": 10,
+    "Name": "Toto",
+    "Race": "Affriecan"
+  },
+  {
+    "Attack": 7,
+    "Class": "Rouge",
+    "Defense": 2,
+    "Evasion": 10,
+    "Intelligence": 5,
+    "Luck": 1,
+    "Magic Attack": 1,
+    "Magic Defense": 1,
+    "Money": 10,
+    "Name": "Toto",
+    "Race": "Affriecan"
+  },
+  {
+    "Attack": 5,
+    "Class": "Ranger",
+    "Defense": 2,
+    "Evasion": 4,
+    "Intelligence": 4,
+    "Luck": 2,
+    "Magic Attack": 0,
+    "Magic Defense": 0,
+    "Money": 10,
+    "Name": "Toto",
+    "Race": "Affriecan"
+  }
+  {
+    "Attack": 8,
+    "Class": "Sharpshooter",
+    "Defense": 0,
+    "Evasion": 2,
+    "Intelligence": 6,
+    "Luck": 3,
+    "Magic Attack": 4,
+    "Magic Defense": 1,
+    "Money": 10,
+    "Name": "Toto",
+    "Race": "Affriecan"
+  }
+]
