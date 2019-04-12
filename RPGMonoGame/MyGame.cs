@@ -40,6 +40,7 @@ namespace RPGMonoGame
         #endregion
         #region storyAssets
         SpriteFont storyFont;
+        SpriteFont storyFontI;
         Sprite textBox;
         #endregion
         public enum GameState
@@ -89,6 +90,7 @@ namespace RPGMonoGame
             spriteBatch = new SpriteBatch(GraphicsDevice);
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
             storyFont = Content.Load<SpriteFont>("Story");
+            storyFontI = Content.Load<SpriteFont>("StoryItalics");
             Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("StartButton").Height / 2);
             mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
@@ -288,9 +290,7 @@ namespace RPGMonoGame
             {
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.eventName, new Vector2(500, 200), Color.Black);
-                Debug.WriteLine(RPGv2.GlobalValues.facCreate);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
-                Debug.WriteLine(RPGv2.GlobalValues.facDestroyed);
                 spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
             }
             if (RPGv2.GlobalValues.done)
@@ -319,7 +319,12 @@ namespace RPGMonoGame
             }
             //text wrapping
             if (!RPGv2.SceneText.wrapText[RPGv2.GlobalValues.storyIndex])
-                spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
+            { 
+                if (text[0] == '*')
+                    spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
+                else
+                    spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
+            }
             else
             {
                 List<string> textWrappers = new List<string>();
@@ -359,7 +364,10 @@ namespace RPGMonoGame
                 {
                     if (textWrappers[i].StartsWith(" "))
                         textWrappers[i] = textWrappers[i].Substring(1);
-                    spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 20)), Color.Black);
+                    if(textWrappers[i][0] == '*')
+                        spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
+                    else
+                        spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
                 }
             }
             spriteBatch.End();

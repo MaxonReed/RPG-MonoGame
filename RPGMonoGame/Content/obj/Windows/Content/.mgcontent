@@ -16,6 +16,7 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Sev.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Six.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Story.spritefont</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/StoryItalics.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/TextBox.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Thr.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Two.png</File>
@@ -26,6 +27,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>StartButtonFont.spritefont</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

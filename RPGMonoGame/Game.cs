@@ -17,10 +17,17 @@ namespace RPGv2
             // TODO: When start button is clicked the game will start 
             GlobalValues.startGen = true;
             hist = StartHistory(years);
+            Faction fac = new Faction(new Race(1, 2), " ");
+            foreach(Faction f in hist.Factions.ToArray())
+            {
+                if (f.Pop >= fac.Pop)
+                    fac = f;
+            }
+            Story.enemyFaction = fac;
             Faction affrieca = new Faction(new Race(1, 10000), "Affrieca");
             affrieca.Pop = 20000;
             hist.Factions.Add(affrieca);
-
+            
         }
 
         //public static 

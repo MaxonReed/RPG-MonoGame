@@ -148,6 +148,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Story.spritefont
 
+#begin StoryItalics.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:StoryItalics.spritefont
+
 #begin TextBox.png
 /importer:TextureImporter
 /processor:TextureProcessor

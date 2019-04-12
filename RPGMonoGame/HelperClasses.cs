@@ -211,7 +211,7 @@ namespace RPGv2
     public class Story
     {
         public static int MaxIndex { get; set; }
-        public static string fName = Game.hist.Factions[HelperClasses.RandomNumber(0, Game.hist.Factions.Count - 1)].Name;
+        public static Faction enemyFaction;
 
         public static List<string> GetScene(int index)
         {
@@ -275,7 +275,7 @@ namespace RPGv2
                         switch (obj)
                         {
                             case "WarFactionName":
-                                replacement = fName;
+                                replacement = enemyFaction.Name;
                                 strArr[strArr.IndexOf(str)] = str.Replace("{WarFactionName}", replacement);
                                 done = true;
                                 break;
