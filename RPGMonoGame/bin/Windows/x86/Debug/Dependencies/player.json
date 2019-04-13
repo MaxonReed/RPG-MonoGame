@@ -8,6 +8,7 @@
     "Luck": 0,
     "Magic Attack": 0,
     "Magic Defense": 0,
+    "Speed":  0,
     "Money": 0,
     "Name": "",
     "Race": ""
@@ -21,6 +22,7 @@
     "Luck": 0,
     "Magic Attack": 0,
     "Magic Defense": 0,
+    "Speed": 0,
     "Money": 0,
     "Name": "",
     "Race": ""
@@ -32,6 +34,7 @@
     "Evasion": 0,
     "Intelligence": 0,
     "Luck": 0,
+    "Speed": 0,
     "Magic Attack": 0,
     "Magic Defense": 0,
     "Money": 0,

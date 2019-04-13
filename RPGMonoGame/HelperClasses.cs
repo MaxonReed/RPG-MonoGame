@@ -303,6 +303,35 @@ namespace RPGv2
         }
     }
 
+    public class BattleVars
+    {
+        public static Enemy e;
+
+    }
+
+    public class Enemy
+    {
+        string name;
+        int att;
+        int def;
+        int spd;
+
+        public Enemy(string id)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\enemy.json"));
+            JObject obj = new JObject();
+            foreach(JObject jObj in array)
+            {
+                if ((string)jObj["Id"] == id)
+                    obj = jObj;
+            }
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            spd = (int)obj["Speed"];
+        }
+    }
+
     public class GlobalValues
     {
         public static int inp = -1;
@@ -312,6 +341,7 @@ namespace RPGv2
         public static string facDestroyed = "";
         public static string eventName = "";
         public static string battleID = "null";
+        public static string battleState = "prologue";
         public static bool startGen = false;
         public static bool done = false;
         public static string[] strArray;

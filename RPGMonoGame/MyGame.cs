@@ -241,7 +241,20 @@ namespace RPGMonoGame
         }
         void UpdateBattlePage(GameTime gameTime)
         {
+            switch (RPGv2.GlobalValues.battleState)
+            {
+                case "prologue":
+                    prevState = mouseState;
+                    mouseState = Mouse.GetState();
+                    var mousePoint = new Point(mouseState.X, mouseState.Y);
+                    if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                        RPGv2.GlobalValues.battleState = "battle";
+                    break;
+                case "battle":
 
+                default:
+                    break;
+            }
         }
         void UpdateStoryText(GameTime gameTime)
         {
@@ -310,16 +323,17 @@ namespace RPGMonoGame
             //draw text box
             textBox.Draw(spriteBatch, gameTime);
             //get specieal events
-            if(text.StartsWith("|battle:"))
+            if (text.StartsWith("|battle:"))
             {
-                string id = text.Substring(8);
+                string id = text.Substring(11);
                 RPGv2.GlobalValues.battleID = id;
                 State = GameState.BattlePage;
+                spriteBatch.End();
                 return;
             }
             //text wrapping
             if (!RPGv2.SceneText.wrapText[RPGv2.GlobalValues.storyIndex])
-            { 
+            {
                 if (text[0] == '*')
                     spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
                 else
@@ -355,7 +369,7 @@ namespace RPGMonoGame
                     }
                     textWrappers.Add(text.Substring(begin, next));
                 }
-                if(textWrappers[textWrappers.Count - 1] == ".")
+                if (textWrappers[textWrappers.Count - 1] == ".")
                 {
                     textWrappers.RemoveAt(textWrappers.Count - 1);
                     textWrappers[textWrappers.Count - 1] += ".";
@@ -364,7 +378,7 @@ namespace RPGMonoGame
                 {
                     if (textWrappers[i].StartsWith(" "))
                         textWrappers[i] = textWrappers[i].Substring(1);
-                    if(textWrappers[i][0] == '*')
+                    if (textWrappers[i][0] == '*')
                         spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
                     else
                         spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
@@ -375,6 +389,22 @@ namespace RPGMonoGame
         void DrawBattlePage(GameTime gameTime)
         {
             spriteBatch.Begin();
+            switch (RPGv2.GlobalValues.battleID)
+            {
+                case "firstBattle":
+                    switch (RPGv2.GlobalValues.battleState)
+                    {
+                        case "prologue":
+                            textBox.Draw(spriteBatch, gameTime);
+                            spriteBatch.DrawString(storyFont, "You dare fight me fool?!", new Vector2(110, 319), Color.Black);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
             spriteBatch.End();
         }
         /// <summary>
