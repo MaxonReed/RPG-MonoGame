@@ -817,7 +817,15 @@ namespace RPGv2
                 CreateCharacter(slot, saves, c);
             }
         }
-
+        public Player(int slot)
+        {
+            JArray saves = JArray.Parse(File.ReadAllText(@"Dependencies\player.json"));
+            JObject save = JObject.Parse(saves[slot - 1].ToString());
+            if (string.IsNullOrEmpty(save["Name"].ToString()))
+            {
+                return;
+            }
+        }
         public string Cla { get => cla; set => cla = value; }
         public string Race { get => race; set => race = value; }
         public string Faction { get => faction; set => faction = value; }
@@ -872,7 +880,7 @@ namespace RPGv2
             save["Money"] = money;
             save["Luck"] = luck;
             save["Evasion"] = eva;
-            arr[slot - 1] = JArray.Parse(save.ToString());
+            arr[slot - 1] = JObject.Parse(save.ToString());
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }
     }
