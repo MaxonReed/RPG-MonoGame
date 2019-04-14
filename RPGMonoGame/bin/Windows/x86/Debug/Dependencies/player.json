@@ -10,7 +10,8 @@
     "Magic Defense": 5,
     "Speed": 0,
     "Money": 0.0,
-    "Inventory": {}
+    "Inventory": [],
+    "Equipped": []
   },
   {
     "Attack": 0,
@@ -23,8 +24,8 @@
     "Magic Defense": 0,
     "Speed": 0,
     "Money": 0,
-    "Name": "",
-    "Race": ""
+    "Inventory": [],
+    "Equipped": []
   },
   {
     "Attack": 0,
@@ -37,7 +38,7 @@
     "Magic Attack": 0,
     "Magic Defense": 0,
     "Money": 0,
-    "Name": "",
-    "Race": ""
+    "Inventory": [],
+    "Equipped": []
   }
 ]

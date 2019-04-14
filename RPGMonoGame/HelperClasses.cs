@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace RPGv2
 {
@@ -305,9 +306,10 @@ namespace RPGv2
 
     public class Battle
     {
-        public Enemy e;
-        public Player p = Game.player;
-
+        public static Enemy e;
+        public static Player p = Game.player;
+        public static int playerHP;
+        public static int enemyHP;
 
     }
 
@@ -811,8 +813,10 @@ namespace RPGv2
         private double money;
         private double luck;
         private double eva;
-        private string[] invString;
+        private List<string> invString;
         private List<Item> inv;
+        private List<string> equipString;
+        private List<Item> equip;
 
         public Player(int slot, int c)
         {
@@ -831,10 +835,33 @@ namespace RPGv2
         }
         public string Cla { get => cla; set => cla = value; }
 
+        public void InitEquip()
+        {
+            string[] split;
+            foreach (string str in equipString.ToArray())
+            {
+                split = str.Split(':');
+                switch (split[0])
+                {
+                    case "sword":
+                        equip.Add(new Sword(split[1]));
+                        break;
+                    case "staff":
+                        equip.Add(new Staff(split[1]));
+                        break;
+                    case "knife":
+                        equip.Add(new Knife(split[1]));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
         public void InitInv()
         {
             string[] split;
-            foreach(string str in invString)
+            foreach(string str in invString.ToArray())
             {
                 split = str.Split(':');
                 switch(split[0])
@@ -869,7 +896,7 @@ namespace RPGv2
                     money = 0;
                     luck = 4;
                     eva = 3;
-                    invString = new string[] { "staff:Wood Staff" };
+                    invString = new List<string> { "staff:Wood Staff" };
                     break;
                 case 2:
                     Cla = "Warrior";
@@ -881,7 +908,7 @@ namespace RPGv2
                     money = 0;
                     luck = 2;
                     eva = 2;
-                    invString = new string[] { "sword:Bronze Sword" };
+                    invString = new List<string> { "sword:Bronze Sword" };
                     break;
                 case 3:
                     Cla = "Rogue";
@@ -893,7 +920,7 @@ namespace RPGv2
                     money = 0;
                     luck = 8;
                     eva = 8;
-                    invString = new string[] { "knife:Bronze Dagger" };
+                    invString = new List<string> { "knife:Bronze Dagger" };
                     break;
                 default:
                     break;
@@ -907,6 +934,10 @@ namespace RPGv2
             save["Money"] = money;
             save["Luck"] = luck;
             save["Evasion"] = eva;
+            save["Inventory"] = JsonConvert.SerializeObject(invString);
+            save["Equipped"] = JsonConvert.SerializeObject(equipString);
+            InitInv();
+            InitEquip();
             arr[slot - 1] = JObject.Parse(save.ToString());
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }
