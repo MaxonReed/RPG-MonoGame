@@ -494,12 +494,16 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             string fightText = "";
-            spriteBatch.Begin();
 
+            spriteBatch.Begin();
             switch (RPGv2.GlobalValues.battleID)
             {
                 case "firstBattle":
                     fightText = "You dare fight me fool?!";
+                    RPGv2.Battle.e = new RPGv2.Enemy("Unknown StartGame");
+                    RPGv2.Battle.p = RPGv2.Game.player;
+                    RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
+                    RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
                     break;
                 default:
                     break;

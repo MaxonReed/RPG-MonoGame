@@ -319,10 +319,11 @@ namespace RPGv2
 
     public class Enemy
     {
-        string name;
-        int att;
-        int def;
-        int spd;
+        public int Health { get; set; }
+        public string Name { get; set; }
+        public int Att { get; set; }
+        public int Def { get; set; }
+        public int Spd { get; set; }
 
         public Enemy(string id)
         {
@@ -333,10 +334,11 @@ namespace RPGv2
                 if ((string)jObj["Id"] == id)
                     obj = jObj;
             }
-            name = (string)obj["Name"];
-            att = (int)obj["Attack"];
-            def = (int)obj["Defense"];
-            spd = (int)obj["Speed"];
+            Name = (string)obj["Name"];
+            Att = (int)obj["Attack"];
+            Def = (int)obj["Defense"];
+            Spd = (int)obj["Speed"];
+            Health = (int)obj["Health"];
         }
     }
 
@@ -808,15 +810,16 @@ namespace RPGv2
 
     public class Player
     {
-        private string cla;
-        private int att;
-        private int matk;
-        private int def;
-        private int mdef;
-        private int intel;
-        private double money;
-        private double luck;
-        private double eva;
+        public string Class { get; set; }
+        public int Health { get; set; }
+        public int Attack { get; set; }
+        public int MAtk { get; set; }
+        public int Defense { get; set; }
+        public int MDef { get; set; }
+        public int Intelligence { get; set; }
+        public double Money { get; set; }
+        public double Luck { get; set; }
+        public double Evasion { get; set; }
         public List<string> invString;
         public List<Item> Inv { get; set; }
         public List<string> equipString;
@@ -848,7 +851,7 @@ namespace RPGv2
                 return;
             }
         }
-        public string Cla { get => cla; set => cla = value; }
+        public string Cla { get => Class; set => Class = value; }
 
         public void InitEquip()
         {
@@ -903,42 +906,45 @@ namespace RPGv2
             {
                 case 1:
                     Cla = "Mage";
-                    att = 2;
-                    matk = 7;
-                    def = 1;
-                    mdef = 5;
-                    intel = 9;
-                    money = 0;
-                    luck = 4;
-                    eva = 3;
+                    Attack = 2;
+                    MAtk = 7;
+                    Defense = 1;
+                    MDef = 5;
+                    Intelligence = 9;
+                    Money = 0;
+                    Luck = 4;
+                    Evasion = 3;
+                    Health = 80;
                     invString = new List<string> { };
                     equipString = new List<string> { "staff:Wooden Staff" };
                     Special = new List<int> { 1, 0, 0, 0 };
                     break;
                 case 2:
                     Cla = "Warrior";
-                    att = 9;
-                    matk = 2;
-                    def = 5;
-                    mdef = 3;
-                    intel = 4;
-                    money = 0;
-                    luck = 2;
-                    eva = 2;
+                    Attack = 9;
+                    MAtk = 2;
+                    Defense = 5;
+                    MDef = 3;
+                    Intelligence = 4;
+                    Money = 0;
+                    Luck = 2;
+                    Evasion = 2;
+                    Health = 110;
                     invString = new List<string> { };
                     equipString = new List<string> { "sword:Bronze Sword" };
                     Special = new List<int> { 3, 0, 0, 0 };
                     break;
                 case 3:
                     Cla = "Rogue";
-                    att = 6;
-                    matk = 4;
-                    def = 2;
-                    mdef = 3;
-                    intel = 6;
-                    money = 0;
-                    luck = 8;
-                    eva = 8;
+                    Attack = 6;
+                    MAtk = 4;
+                    Defense = 2;
+                    MDef = 3;
+                    Intelligence = 6;
+                    Money = 0;
+                    Luck = 8;
+                    Evasion = 8;
+                    Health = 90;
                     invString = new List<string> { };
                     equipString = new List<string> { "knife:Bronze Dagger" };
                     Special = new List<int> { 4, 0, 0, 0 };
@@ -947,14 +953,15 @@ namespace RPGv2
                     break;
             }
             save["Class"] = Cla;
-            save["Attack"] = att;
-            save["Defense"] = def;
-            save["Magic Attack"] = matk;
-            save["Magic Defense"] = mdef;
-            save["Intelligence"] = intel;
-            save["Money"] = money;
-            save["Luck"] = luck;
-            save["Evasion"] = eva;
+            save["Attack"] = Attack;
+            save["Defense"] = Defense;
+            save["Health"] = Health;
+            save["Magic Attack"] = MAtk;
+            save["Magic Defense"] = MDef;
+            save["Intelligence"] = Intelligence;
+            save["Money"] = Money;
+            save["Luck"] = Luck;
+            save["Evasion"] = Evasion;
             save["Inventory"] = JsonConvert.SerializeObject(invString);
             save["Equipped"] = JsonConvert.SerializeObject(equipString);
             Equip = new List<Item>();

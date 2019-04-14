@@ -2,6 +2,7 @@
   {
     "Attack": 9,
     "Class": "Warrior",
+    "Health": 0,
     "Defense": 5,
     "Evasion": 2.0,
     "Intelligence": 4,
@@ -22,6 +23,7 @@
   {
     "Attack": 0,
     "Class": "Unknown",
+    "Health": 0,
     "Defense": 0,
     "Evasion": 0,
     "Intelligence": 0,
@@ -42,6 +44,7 @@
   {
     "Attack": 0,
     "Class": "Unknown",
+    "Health": 0,
     "Defense": 0,
     "Evasion": 0,
     "Intelligence": 0,
