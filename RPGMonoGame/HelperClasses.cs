@@ -310,8 +310,14 @@ namespace RPGv2
         public static Player p = Game.player;
         public static int playerHP;
         public static int enemyHP;
+        public static bool turn = false;
 
         public static void HandleSpecial(int sp)
+        {
+
+        }
+
+        public static void RegularAttack()
         {
 
         }
@@ -556,8 +562,6 @@ namespace RPGv2
         private Faction side1;
         private Faction side2;
         private bool onGoing = true;
-
-
 
         public War(int year, Faction s1, Faction s2)
         {
