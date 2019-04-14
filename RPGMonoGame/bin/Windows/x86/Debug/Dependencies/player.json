@@ -1,17 +1,23 @@
 [
   {
-    "Attack": 2,
-    "Class": "Mage",
-    "Defense": 1,
-    "Evasion": 3.0,
-    "Intelligence": 9,
-    "Luck": 4.0,
-    "Magic Attack": 7,
-    "Magic Defense": 5,
+    "Attack": 9,
+    "Class": "Warrior",
+    "Defense": 5,
+    "Evasion": 2.0,
+    "Intelligence": 4,
+    "Luck": 2.0,
+    "Magic Attack": 2,
+    "Magic Defense": 3,
     "Speed": 0,
     "Money": 0.0,
-    "Inventory": [],
-    "Equipped": []
+    "Inventory": "[]",
+    "Equipped": "[\"sword:Bronze Sword\"]",
+    "Specials": [
+      0,
+      0,
+      0,
+      0
+    ]
   },
   {
     "Attack": 0,
@@ -25,7 +31,13 @@
     "Speed": 0,
     "Money": 0,
     "Inventory": [],
-    "Equipped": []
+    "Equipped": [],
+    "Specials": [
+      0,
+      0,
+      0,
+      0
+    ]
   },
   {
     "Attack": 0,
@@ -39,6 +51,12 @@
     "Magic Defense": 0,
     "Money": 0,
     "Inventory": [],
-    "Equipped": []
+    "Equipped": [],
+    "Specials": [
+      0,
+      0,
+      0,
+      0
+    ]
   }
 ]

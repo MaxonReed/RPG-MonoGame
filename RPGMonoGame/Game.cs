@@ -42,7 +42,7 @@ namespace RPGv2
             {
                 races.Add(new Race(i, new Random().Next(100000)));
             }
-
+            int num;
             for (int i = 0; i < races.Count; i++)
             {
                 Race race = races[i];
@@ -51,7 +51,7 @@ namespace RPGv2
                 int mainCityInd = factions.Count - 1;
                 for (int j = 0; j <= vals[3]; j++)
                 {
-                    int num = HelperClasses.RandomNumber(0, 100);
+                    num = HelperClasses.RandomNumber(0, 100);
                     if (num < 75)
                     {
                         factions[mainCityInd].Pop++;
@@ -203,7 +203,7 @@ namespace RPGv2
                                 Faction opp = new Faction(new Race(0, 0));
                                 while (!doneFinding)
                                 {
-                                    int num = HelperClasses.RandomNumber(0, factions.Count);
+                                    num = HelperClasses.RandomNumber(0, factions.Count);
                                     opp = factions[num];
                                     if (opp.Race != f.Race && opp != f && f.Pop > opp.Pop / 2 && f.Pop < opp.Pop * 2)
                                         doneFinding = true;

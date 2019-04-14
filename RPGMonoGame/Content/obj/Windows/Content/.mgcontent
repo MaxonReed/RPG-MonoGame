@@ -13,10 +13,14 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectRogueHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectWarrior.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectWarriorHover.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/DefaultButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/DefaultButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Eight.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Fiv.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/For.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/MagicButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/MagicButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Nine.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/NumInput.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/One.png</File>
@@ -25,6 +29,8 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/RunButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Sev.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Six.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/SkillsButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/SkillsButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Story.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/StoryItalics.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/TextBox.png</File>
@@ -44,7 +50,13 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>StartButtonFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

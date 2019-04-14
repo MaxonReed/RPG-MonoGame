@@ -311,6 +311,10 @@ namespace RPGv2
         public static int playerHP;
         public static int enemyHP;
 
+        public static void HandleSpecial(int sp)
+        {
+
+        }
     }
 
     public class Enemy
@@ -813,10 +817,11 @@ namespace RPGv2
         private double money;
         private double luck;
         private double eva;
-        private List<string> invString;
-        private List<Item> inv;
-        private List<string> equipString;
-        private List<Item> equip;
+        public List<string> invString;
+        public List<Item> Inv { get; set; }
+        public List<string> equipString;
+        public List<Item> Equip { get; set; }
+        public List<int> Special { get;set; }
         /*
         equip:
         0: weapon
@@ -854,13 +859,13 @@ namespace RPGv2
                 switch (split[0])
                 {
                     case "sword":
-                        equip.Add(new Sword(split[1]));
+                        Equip.Add(new Sword(split[1]));
                         break;
                     case "staff":
-                        equip.Add(new Staff(split[1]));
+                        Equip.Add(new Staff(split[1]));
                         break;
                     case "knife":
-                        equip.Add(new Knife(split[1]));
+                        Equip.Add(new Knife(split[1]));
                         break;
                     default:
                         break;
@@ -877,13 +882,13 @@ namespace RPGv2
                 switch(split[0])
                 {
                     case "sword":
-                        inv.Add(new Sword(split[1]));
+                        Inv.Add(new Sword(split[1]));
                         break;
                     case "staff":
-                        inv.Add(new Staff(split[1]));
+                        Inv.Add(new Staff(split[1]));
                         break;
                     case "knife":
-                        inv.Add(new Knife(split[1]));
+                        Inv.Add(new Knife(split[1]));
                         break;
                     default:
                         break;
@@ -906,7 +911,9 @@ namespace RPGv2
                     money = 0;
                     luck = 4;
                     eva = 3;
-                    equipString = new List<string> { "staff:Wood Staff" };
+                    invString = new List<string> { };
+                    equipString = new List<string> { "staff:Wooden Staff" };
+                    Special = new List<int> { 1, 0, 0, 0 };
                     break;
                 case 2:
                     Cla = "Warrior";
@@ -918,7 +925,9 @@ namespace RPGv2
                     money = 0;
                     luck = 2;
                     eva = 2;
+                    invString = new List<string> { };
                     equipString = new List<string> { "sword:Bronze Sword" };
+                    Special = new List<int> { 3, 0, 0, 0 };
                     break;
                 case 3:
                     Cla = "Rogue";
@@ -930,7 +939,9 @@ namespace RPGv2
                     money = 0;
                     luck = 8;
                     eva = 8;
+                    invString = new List<string> { };
                     equipString = new List<string> { "knife:Bronze Dagger" };
+                    Special = new List<int> { 4, 0, 0, 0 };
                     break;
                 default:
                     break;
@@ -946,6 +957,8 @@ namespace RPGv2
             save["Evasion"] = eva;
             save["Inventory"] = JsonConvert.SerializeObject(invString);
             save["Equipped"] = JsonConvert.SerializeObject(equipString);
+            Equip = new List<Item>();
+            Inv = new List<Item>();
             InitInv();
             InitEquip();
             arr[slot - 1] = JObject.Parse(save.ToString());

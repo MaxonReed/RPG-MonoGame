@@ -64,6 +64,10 @@ namespace RPGMonoGame
         Sprite secondSpecial;
         Sprite thirdSpecial;
         Sprite fourthSpecial;
+        Sprite defHover1;
+        Sprite defHover2;
+        Sprite defHover3;
+        Sprite defHover4;
         bool clickedSpecial = false;
         #endregion
         public enum GameState
@@ -142,16 +146,20 @@ namespace RPGMonoGame
             classSelectWarriorHover = new Sprite(Content.Load<Texture2D>("ClassSelectWarriorHover"), new Vector2(middle, middleY + 150));
             battleButton = new Sprite(Content.Load<Texture2D>("battleButton"), new Vector2(200, 350));
             battleButtonHover = new Sprite(Content.Load<Texture2D>("battleButtonHover"), battleButton.Position);
-            runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(600,350));
+            runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(600, 350));
             runButtonHover = new Sprite(Content.Load<Texture2D>("runButtonHover"), runButton.Position);
-            skillButton = new Sprite(Content.Load<Texture2D>("skillButton"), new Vector2(400, 350));
-            skillButtonHover = new Sprite(Content.Load<Texture2D>("skillButtonHover"), skillButton.Position);
+            skillButton = new Sprite(Content.Load<Texture2D>("skillsButton"), new Vector2(400, 350));
+            skillButtonHover = new Sprite(Content.Load<Texture2D>("skillsButtonHover"), skillButton.Position);
             magicButton = new Sprite(Content.Load<Texture2D>("magicButton"), new Vector2(400, 350));
             magicButtonHover = new Sprite(Content.Load<Texture2D>("magicButtonHover"), magicButton.Position);
-            firstSpecial  = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(200,350));
-            secondSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(400, 350));
-            thirdSpecial  = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(600, 350));
-            fourthSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(800, 350));
+            firstSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(100, 350));
+            secondSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(300, 350));
+            thirdSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(500, 350));
+            fourthSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(700, 350));
+            defHover1 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(100, 350));
+            defHover2 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(300, 350));
+            defHover3 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(500, 350));
+            defHover4 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(700, 350));
             //290 width
         }
 
@@ -205,7 +213,7 @@ namespace RPGMonoGame
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
-                if(classSelectMage.Contains(mousePoint))
+                if (classSelectMage.Contains(mousePoint))
                 {
                     RPGv2.Game.player = new RPGv2.Player(1, 1);
                     State = GameState.StoryText;
@@ -313,6 +321,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+
             switch (RPGv2.GlobalValues.battleState)
             {
                 case "prologue":
@@ -320,6 +329,25 @@ namespace RPGMonoGame
                         RPGv2.GlobalValues.battleState = "battle";
                     break;
                 case "battle":
+                    if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                    {
+                        if (!clickedSpecial)
+                        {
+                            if (magicButton.Contains(mousePoint))
+                                clickedSpecial = true;
+                        }
+                        else
+                        {
+                            if (firstSpecial.Contains(mousePoint))
+                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
+                            if (secondSpecial.Contains(mousePoint))
+                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
+                            if (thirdSpecial.Contains(mousePoint))
+                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
+                            if (fourthSpecial.Contains(mousePoint))
+                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -494,12 +522,69 @@ namespace RPGMonoGame
                                     else
                                         skillButton.Draw(spriteBatch, gameTime);
                                 }
-                            } else
+                            }
+                            else
                             {
-                                firstSpecial.Draw(spriteBatch, gameTime);
-                                secondSpecial.Draw(spriteBatch, gameTime);
-                                thirdSpecial.Draw(spriteBatch, gameTime);
-                                fourthSpecial.Draw(spriteBatch, gameTime);
+                                if (firstSpecial.Contains(mousePoint))
+                                    firstSpecial.Draw(spriteBatch, gameTime);
+                                else
+                                    defHover1.Draw(spriteBatch, gameTime);
+                                if (secondSpecial.Contains(mousePoint))
+                                    secondSpecial.Draw(spriteBatch, gameTime);
+                                else
+                                    defHover2.Draw(spriteBatch, gameTime);
+                                if (thirdSpecial.Contains(mousePoint))
+                                    thirdSpecial.Draw(spriteBatch, gameTime);
+                                else
+                                    defHover3.Draw(spriteBatch, gameTime);
+                                if (fourthSpecial.Contains(mousePoint))
+                                    fourthSpecial.Draw(spriteBatch, gameTime);
+                                else
+                                    defHover4.Draw(spriteBatch, gameTime);
+                                int sp;
+                                string name = "";
+                                for (int i = 0; i < 4; i++)
+                                {
+                                    sp = RPGv2.Game.player.Special[i];
+                                    switch (sp)
+                                    {
+                                        case 0:
+                                            name = "None";
+                                            break;
+                                        case 1:
+                                            name = "Fire Ball";
+                                            break;
+                                        case 2:
+                                            name = "Hide";
+                                            break;
+                                        case 3:
+                                            name = "Hard Hit";
+                                            break;
+                                        case 4:
+                                            name = "Gloss";
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    switch (i)
+                                    {
+                                        case 0:
+                                            spriteBatch.DrawString(storyFont, name, new Vector2(firstSpecial.Position.X + 5, firstSpecial.Position.Y + 7), Color.Black);
+                                            break;
+                                        case 1:
+                                            spriteBatch.DrawString(storyFont, name, new Vector2(secondSpecial.Position.X + 5, secondSpecial.Position.Y + 7), Color.Black);
+                                            break;
+                                        case 2:
+                                            spriteBatch.DrawString(storyFont, name, new Vector2(thirdSpecial.Position.X + 5, thirdSpecial.Position.Y + 7), Color.Black);
+                                            break;
+                                        case 3:
+                                            spriteBatch.DrawString(storyFont, name, new Vector2(fourthSpecial.Position.X + 5, fourthSpecial.Position.Y + 7), Color.Black);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                }
                             }
                             break;
                         default:
