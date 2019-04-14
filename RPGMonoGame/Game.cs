@@ -30,7 +30,6 @@ namespace RPGv2
             hist.Factions.Add(affrieca);
         }
 
-        //public static 
         public static History StartHistory(int years)
         {
             EventList el = new EventList();

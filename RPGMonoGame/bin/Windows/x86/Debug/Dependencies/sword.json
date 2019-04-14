@@ -3,6 +3,15 @@
   Add attributes (Attr)
   */
   {
+    "Name": "None",
+    "Attack": 0,
+    "Defense": 0,
+    "Buy Price": 0,
+    "Sell Price": 0,
+    "Rarity Level": 0,
+    "Attr": "None"
+  },
+  {
     "Name": "Bronze Sword",
     "Attack": 3,
     "Defense": 2,

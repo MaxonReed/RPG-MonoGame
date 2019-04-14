@@ -56,6 +56,15 @@ namespace RPGMonoGame
         Sprite battleButtonHover;
         Sprite runButton;
         Sprite runButtonHover;
+        Sprite skillButton;
+        Sprite skillButtonHover;
+        Sprite magicButton;
+        Sprite magicButtonHover;
+        Sprite firstSpecial;
+        Sprite secondSpecial;
+        Sprite thirdSpecial;
+        Sprite fourthSpecial;
+        bool clickedSpecial = false;
         #endregion
         public enum GameState
         {
@@ -106,10 +115,10 @@ namespace RPGMonoGame
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
             storyFont = Content.Load<SpriteFont>("Story");
             storyFontI = Content.Load<SpriteFont>("StoryItalics");
-            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("StartButton").Height / 2);
-            mainMenuButton = new Sprite(this.Content.Load<Texture2D>("StartButton"), coor);
-            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - this.Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - this.Content.Load<Texture2D>("QuitButton").Height / 2);
-            quitButton = new Sprite(this.Content.Load<Texture2D>("QuitButton"), coor);
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("StartButton").Height / 2);
+            mainMenuButton = new Sprite(Content.Load<Texture2D>("StartButton"), coor);
+            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("QuitButton").Height / 2);
+            quitButton = new Sprite(Content.Load<Texture2D>("QuitButton"), coor);
             one = new Sprite(Content.Load<Texture2D>("One"), new Vector2(100, 100));
             two = new Sprite(Content.Load<Texture2D>("Two"), new Vector2(210, 100));
             thr = new Sprite(Content.Load<Texture2D>("Thr"), new Vector2(320, 100));
@@ -135,6 +144,14 @@ namespace RPGMonoGame
             battleButtonHover = new Sprite(Content.Load<Texture2D>("battleButtonHover"), battleButton.Position);
             runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(600,350));
             runButtonHover = new Sprite(Content.Load<Texture2D>("runButtonHover"), runButton.Position);
+            skillButton = new Sprite(Content.Load<Texture2D>("skillButton"), new Vector2(400, 350));
+            skillButtonHover = new Sprite(Content.Load<Texture2D>("skillButtonHover"), skillButton.Position);
+            magicButton = new Sprite(Content.Load<Texture2D>("magicButton"), new Vector2(400, 350));
+            magicButtonHover = new Sprite(Content.Load<Texture2D>("magicButtonHover"), magicButton.Position);
+            firstSpecial  = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(200,350));
+            secondSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(400, 350));
+            thirdSpecial  = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(600, 350));
+            fourthSpecial = new Sprite(Content.Load<Texture2D>("DefaultButton"), new Vector2(800, 350));
             //290 width
         }
 
@@ -453,14 +470,37 @@ namespace RPGMonoGame
                             spriteBatch.DrawString(storyFont, "You dare fight me fool?!", new Vector2(110, 319), Color.Black);
                             break;
                         case "battle":
-                            if (battleButton.Contains(mousePoint))
-                                battleButtonHover.Draw(spriteBatch, gameTime);
-                            else
-                                battleButton.Draw(spriteBatch, gameTime);
-                            if (runButton.Contains(mousePoint))
-                                runButtonHover.Draw(spriteBatch, gameTime);
-                            else
-                                runButton.Draw(spriteBatch, gameTime);
+                            if (!clickedSpecial)
+                            {
+                                if (battleButton.Contains(mousePoint))
+                                    battleButtonHover.Draw(spriteBatch, gameTime);
+                                else
+                                    battleButton.Draw(spriteBatch, gameTime);
+                                if (runButton.Contains(mousePoint))
+                                    runButtonHover.Draw(spriteBatch, gameTime);
+                                else
+                                    runButton.Draw(spriteBatch, gameTime);
+                                if (RPGv2.Game.player.Cla == "Mage")
+                                {
+                                    if (magicButton.Contains(mousePoint))
+                                        magicButtonHover.Draw(spriteBatch, gameTime);
+                                    else
+                                        magicButton.Draw(spriteBatch, gameTime);
+                                }
+                                else
+                                {
+                                    if (skillButton.Contains(mousePoint))
+                                        skillButtonHover.Draw(spriteBatch, gameTime);
+                                    else
+                                        skillButton.Draw(spriteBatch, gameTime);
+                                }
+                            } else
+                            {
+                                firstSpecial.Draw(spriteBatch, gameTime);
+                                secondSpecial.Draw(spriteBatch, gameTime);
+                                thirdSpecial.Draw(spriteBatch, gameTime);
+                                fourthSpecial.Draw(spriteBatch, gameTime);
+                            }
                             break;
                         default:
                             break;

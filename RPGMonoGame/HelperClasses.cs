@@ -817,6 +817,16 @@ namespace RPGv2
         private List<Item> inv;
         private List<string> equipString;
         private List<Item> equip;
+        /*
+        equip:
+        0: weapon
+        1: armor
+        2: arms
+        3: hands
+        4: legs
+        5: feet
+    
+        */
 
         public Player(int slot, int c)
         {
@@ -896,7 +906,7 @@ namespace RPGv2
                     money = 0;
                     luck = 4;
                     eva = 3;
-                    invString = new List<string> { "staff:Wood Staff" };
+                    equipString = new List<string> { "staff:Wood Staff" };
                     break;
                 case 2:
                     Cla = "Warrior";
@@ -908,7 +918,7 @@ namespace RPGv2
                     money = 0;
                     luck = 2;
                     eva = 2;
-                    invString = new List<string> { "sword:Bronze Sword" };
+                    equipString = new List<string> { "sword:Bronze Sword" };
                     break;
                 case 3:
                     Cla = "Rogue";
@@ -920,7 +930,7 @@ namespace RPGv2
                     money = 0;
                     luck = 8;
                     eva = 8;
-                    invString = new List<string> { "knife:Bronze Dagger" };
+                    equipString = new List<string> { "knife:Bronze Dagger" };
                     break;
                 default:
                     break;
