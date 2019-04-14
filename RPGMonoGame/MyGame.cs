@@ -51,6 +51,12 @@ namespace RPGMonoGame
         Sprite classSelectWarrior;
         Sprite classSelectWarriorHover;
         #endregion
+        #region battleAssets
+        Sprite battleButton;
+        Sprite battleButtonHover;
+        Sprite runButton;
+        Sprite runButtonHover;
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -125,6 +131,10 @@ namespace RPGMonoGame
             classSelectRogueHover = new Sprite(Content.Load<Texture2D>("ClassSelectRogueHover"), new Vector2(middle, middleY));
             classSelectWarrior = new Sprite(Content.Load<Texture2D>("ClassSelectWarrior"), new Vector2(middle, middleY + 150));
             classSelectWarriorHover = new Sprite(Content.Load<Texture2D>("ClassSelectWarriorHover"), new Vector2(middle, middleY + 150));
+            battleButton = new Sprite(Content.Load<Texture2D>("battleButton"), new Vector2(100,400));
+            battleButtonHover = new Sprite(Content.Load<Texture2D>("battleButtonHover"), battleButton.Position);
+            runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(400,400));
+            runButtonHover = new Sprite(Content.Load<Texture2D>("runButtonHover"), runButton.Position);
             //290 width
         }
 
@@ -144,8 +154,7 @@ namespace RPGMonoGame
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.
-                Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             base.Update(gameTime);
             switch (State)

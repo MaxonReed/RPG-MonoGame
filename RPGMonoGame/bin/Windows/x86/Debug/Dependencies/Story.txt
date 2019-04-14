@@ -24,30 +24,9 @@ I don't trust this man...
 *If I can make one swift strike I may be able to escape...
 *Well... It is now or never.
 |battle:id=firstBattle
-?:"You are weak..."
-*Then everything faded to black, I was going to die
-*This is the end...
+I won...
+I have no idea where I am so I believe it will be best to settle down.
 
 [3]
-*Is this death...*
-*I don't feel the pain anymore just regret...*
-??:"So you still want to live..."
-??:"Then I shall give you a purpose!"
-Toto:"Who are You...?! Where am I!"
-Luna:"I am Luna, The goddess of Light"
-Toto:"Luna?"
-Luna:"Toto, May I ask, Who are you really?"
-:ClassSelect:
-"Luna:"Then Be reborn as a {ClassName}!"
 
-[4]
-?:"You show promise kid, I almost feel bad for trying to kill you."
-*Wait what...*
-"?:"Fight well for {WarFactionName}!"
-Toto:"Ok..."
-?:"Oh yeah I almost forgot, My name is Pheonix"
-Pheonix:"Good Luck"
-*He said that in a meanacing way on purpose...*
-*Is he a friend or a foe*
 
-[5]

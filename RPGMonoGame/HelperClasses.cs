@@ -798,8 +798,6 @@ namespace RPGv2
     public class Player
     {
         private string cla;
-        private string race;
-        private string faction;
         private int att;
         private int matk;
         private int def;
@@ -827,8 +825,6 @@ namespace RPGv2
             }
         }
         public string Cla { get => cla; set => cla = value; }
-        public string Race { get => race; set => race = value; }
-        public string Faction { get => faction; set => faction = value; }
 
         public void CreateCharacter(int slot, JArray arr, int inp)
         {

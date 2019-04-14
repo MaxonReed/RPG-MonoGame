@@ -28,7 +28,6 @@ namespace RPGv2
             Faction affrieca = new Faction(new Race(1, 10000), "Affrieca");
             affrieca.Pop = 20000;
             hist.Factions.Add(affrieca);
-            
         }
 
         //public static 

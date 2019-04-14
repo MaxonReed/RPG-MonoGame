@@ -5,6 +5,8 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Arrow.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/BattleButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/BattleButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectMage.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectMageHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/ClassSelectRogue.png</File>
@@ -19,6 +21,8 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/NumInput.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/One.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/QuitButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/RunButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/RunButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Sev.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Six.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Story.spritefont</File>
@@ -38,7 +42,11 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>StartButtonFont.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
