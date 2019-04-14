@@ -322,7 +322,7 @@ namespace RPGv2
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\enemy.json"));
             JObject obj = new JObject();
-            foreach(JObject jObj in array)
+            foreach (JObject jObj in array)
             {
                 if ((string)jObj["Id"] == id)
                     obj = jObj;
@@ -663,6 +663,11 @@ namespace RPGv2
         internal EventVar Chosen { get => chosen; set => chosen = value; }
     }
 
+    public interface Item
+    {
+
+    }
+
     class WarEvent
     {
         string name;
@@ -806,14 +811,14 @@ namespace RPGv2
         private double money;
         private double luck;
         private double eva;
+        private string[] invString;
+        private List<Item> inv;
+
         public Player(int slot, int c)
         {
             JArray saves = JArray.Parse(File.ReadAllText(@"Dependencies\player.json"));
             JObject save = JObject.Parse(saves[slot - 1].ToString());
-            if (string.IsNullOrEmpty(save["Name"].ToString()))
-            {
-                CreateCharacter(slot, saves, c);
-            }
+            CreateCharacter(slot, saves, c);
         }
         public Player(int slot)
         {
@@ -825,6 +830,29 @@ namespace RPGv2
             }
         }
         public string Cla { get => cla; set => cla = value; }
+
+        public void InitInv()
+        {
+            string[] split;
+            foreach(string str in invString)
+            {
+                split = str.Split(':');
+                switch(split[0])
+                {
+                    case "sword":
+                        inv.Add(new Sword(split[1]));
+                        break;
+                    case "staff":
+                        inv.Add(new Staff(split[1]));
+                        break;
+                    case "knife":
+                        inv.Add(new Knife(split[1]));
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         public void CreateCharacter(int slot, JArray arr, int inp)
         {
@@ -841,6 +869,7 @@ namespace RPGv2
                     money = 0;
                     luck = 4;
                     eva = 3;
+                    invString = new string[] { "staff:Wood Staff" };
                     break;
                 case 2:
                     Cla = "Warrior";
@@ -852,6 +881,7 @@ namespace RPGv2
                     money = 0;
                     luck = 2;
                     eva = 2;
+                    invString = new string[] { "sword:Bronze Sword" };
                     break;
                 case 3:
                     Cla = "Rogue";
@@ -863,6 +893,7 @@ namespace RPGv2
                     money = 0;
                     luck = 8;
                     eva = 8;
+                    invString = new string[] { "knife:Bronze Dagger" };
                     break;
                 default:
                     break;
@@ -897,7 +928,7 @@ namespace RPGv2
         }
     }
 
-    internal class Sword
+    public class Staff : Item
     {
         private readonly string name;
         private readonly int att;
@@ -905,6 +936,128 @@ namespace RPGv2
         private readonly int buyPrice;
         private readonly int sellPrice;
         private readonly int rarity;
+        private readonly string attr;
+
+        public Staff(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\staff.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            attr = (string)obj["Attr"];
+        }
+        public Staff(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\staff.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    attr = (string)obj["Attr"];
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find sword: " + n);
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+
+    public class Knife : Item
+    {
+        private readonly string name;
+        private readonly int att;
+        private readonly int def;
+        private readonly int buyPrice;
+        private readonly int sellPrice;
+        private readonly int rarity;
+        private readonly string attr;
+
+        public Knife(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\knife.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            attr = (string)obj["Attr"];
+        }
+        public Knife(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\knife.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    attr = (string)obj["Attr"];
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find sword: " + n);
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+
+    public class Sword : Item
+    {
+        private readonly string name;
+        private readonly int att;
+        private readonly int def;
+        private readonly int buyPrice;
+        private readonly int sellPrice;
+        private readonly int rarity;
+        private readonly string attr;
+
         public Sword(int index)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\sword.json"));
@@ -915,6 +1068,7 @@ namespace RPGv2
             buyPrice = (int)obj["Buy Price"];
             sellPrice = (int)obj["Sell Price"];
             rarity = (int)obj["Rarity Level"];
+            attr = (string)obj["Attr"];
         }
         public Sword(string n)
         {
@@ -929,6 +1083,7 @@ namespace RPGv2
                     buyPrice = (int)obj["Buy Price"];
                     sellPrice = (int)obj["Sell Price"];
                     rarity = (int)obj["Rarity Level"];
+                    attr = (string)obj["Attr"];
                 }
             }
             if (string.IsNullOrEmpty(name))

@@ -78,3 +78,7 @@ C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Conte
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\ClassSelectRogueHover.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\ClassSelectWarrior.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\ClassSelectWarriorHover.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\BattleButton.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\BattleButtonHover.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\RunButton.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\RunButtonHover.xnb

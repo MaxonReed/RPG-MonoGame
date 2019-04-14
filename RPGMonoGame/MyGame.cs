@@ -131,9 +131,9 @@ namespace RPGMonoGame
             classSelectRogueHover = new Sprite(Content.Load<Texture2D>("ClassSelectRogueHover"), new Vector2(middle, middleY));
             classSelectWarrior = new Sprite(Content.Load<Texture2D>("ClassSelectWarrior"), new Vector2(middle, middleY + 150));
             classSelectWarriorHover = new Sprite(Content.Load<Texture2D>("ClassSelectWarriorHover"), new Vector2(middle, middleY + 150));
-            battleButton = new Sprite(Content.Load<Texture2D>("battleButton"), new Vector2(100,400));
+            battleButton = new Sprite(Content.Load<Texture2D>("battleButton"), new Vector2(200, 350));
             battleButtonHover = new Sprite(Content.Load<Texture2D>("battleButtonHover"), battleButton.Position);
-            runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(400,400));
+            runButton = new Sprite(Content.Load<Texture2D>("runButton"), new Vector2(600,350));
             runButtonHover = new Sprite(Content.Load<Texture2D>("runButtonHover"), runButton.Position);
             //290 width
         }
@@ -293,17 +293,17 @@ namespace RPGMonoGame
         }
         void UpdateBattlePage(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
             switch (RPGv2.GlobalValues.battleState)
             {
                 case "prologue":
-                    prevState = mouseState;
-                    mouseState = Mouse.GetState();
-                    var mousePoint = new Point(mouseState.X, mouseState.Y);
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                         RPGv2.GlobalValues.battleState = "battle";
                     break;
                 case "battle":
-
+                    break;
                 default:
                     break;
             }
@@ -439,6 +439,9 @@ namespace RPGMonoGame
         }
         void DrawBattlePage(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
             spriteBatch.Begin();
             switch (RPGv2.GlobalValues.battleID)
             {
@@ -448,6 +451,16 @@ namespace RPGMonoGame
                         case "prologue":
                             textBox.Draw(spriteBatch, gameTime);
                             spriteBatch.DrawString(storyFont, "You dare fight me fool?!", new Vector2(110, 319), Color.Black);
+                            break;
+                        case "battle":
+                            if (battleButton.Contains(mousePoint))
+                                battleButtonHover.Draw(spriteBatch, gameTime);
+                            else
+                                battleButton.Draw(spriteBatch, gameTime);
+                            if (runButton.Contains(mousePoint))
+                                runButtonHover.Draw(spriteBatch, gameTime);
+                            else
+                                runButton.Draw(spriteBatch, gameTime);
                             break;
                         default:
                             break;

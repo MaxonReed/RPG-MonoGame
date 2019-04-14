@@ -1,15 +1,16 @@
 [
   {
-    "Attack": 6,
-    "Class": "Rogue",
-    "Defense": 2,
-    "Evasion": 8.0,
-    "Intelligence": 6,
-    "Luck": 8.0,
-    "Magic Attack": 4,
-    "Magic Defense": 3,
+    "Attack": 2,
+    "Class": "Mage",
+    "Defense": 1,
+    "Evasion": 3.0,
+    "Intelligence": 9,
+    "Luck": 4.0,
+    "Magic Attack": 7,
+    "Magic Defense": 5,
     "Speed": 0,
-    "Money": 0.0
+    "Money": 0.0,
+    "Inventory": {}
   },
   {
     "Attack": 0,

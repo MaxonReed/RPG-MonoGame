@@ -1,0 +1,14 @@
+[
+  /*
+  Add attributes (Attr)
+  */
+  {
+    "Name": "Bronze Sword",
+    "Attack": 3,
+    "Defense": 2,
+    "Buy Price": 10,
+    "Sell Price": 5,
+    "Rarity Level": 15,
+    "Attr": "None"
+  }
+]
