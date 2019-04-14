@@ -349,7 +349,6 @@ namespace RPGv2
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
-        public static int characterCreatorState = 1;
 
         public static int Inp
         {
@@ -796,9 +795,8 @@ namespace RPGv2
         internal Map Map { get => map; set => map = value; }
     }
 
-    internal class Player
+    public class Player
     {
-        private string name;
         private string cla;
         private string race;
         private string faction;
@@ -810,28 +808,23 @@ namespace RPGv2
         private double money;
         private double luck;
         private double eva;
-        public Player(int slot)
+        public Player(int slot, int c)
         {
             JArray saves = JArray.Parse(File.ReadAllText(@"Dependencies\player.json"));
             JObject save = JObject.Parse(saves[slot - 1].ToString());
             if (string.IsNullOrEmpty(save["Name"].ToString()))
             {
-                CreateCharacter(slot, saves);
+                CreateCharacter(slot, saves, c);
             }
         }
 
-        public string Name { get => name; set => name = value; }
         public string Cla { get => cla; set => cla = value; }
         public string Race { get => race; set => race = value; }
         public string Faction { get => faction; set => faction = value; }
 
-        public void CreateCharacter(int slot, JArray arr)
+        public void CreateCharacter(int slot, JArray arr, int inp)
         {
             JObject save = JObject.Parse(arr[slot - 1].ToString());
-            Console.Write("Enter Name: ");
-            Name = Console.ReadLine();
-            save["Name"] = Name;
-            int inp = HelperClasses.MultipleChoice(false, "Mage", "Warrior", "Rogue");
             switch (inp)
             {
                 case 1:
@@ -879,7 +872,6 @@ namespace RPGv2
             save["Money"] = money;
             save["Luck"] = luck;
             save["Evasion"] = eva;
-            Console.WriteLine((string)save["Name"]);
             arr[slot - 1] = JArray.Parse(save.ToString());
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }

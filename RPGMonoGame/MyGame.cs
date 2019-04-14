@@ -44,8 +44,12 @@ namespace RPGMonoGame
         Sprite textBox;
         #endregion
         #region characterCreationAssets
-        Sprite characterCButton;
-        Sprite characterCButtonHover;
+        Sprite classSelectMage;
+        Sprite classSelectMageHover;
+        Sprite classSelectRogue;
+        Sprite classSelectRogueHover;
+        Sprite classSelectWarrior;
+        Sprite classSelectWarriorHover;
         #endregion
         public enum GameState
         {
@@ -113,9 +117,14 @@ namespace RPGMonoGame
             enter = new Sprite(Content.Load<Texture2D>("Arrow"), new Vector2(320, 400));
             initBox = new Sprite(Content.Load<Texture2D>("NumInput"), new Vector2(100, 20));
             textBox = new Sprite(Content.Load<Texture2D>("TextBox"), new Vector2(100, 315));
-            characterCButton = new Sprite(Content.Load<Texture2D>("CharacterCButton"), new Vector2(100, 315));
-            characterCButtonHover = new Sprite(Content.Load<Texture2D>("CharacterCButtonHover"), new Vector2(100, 315));
-
+            int middle = graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("ClassSelectRogue").Width / 2;
+            int middleY = graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("ClassSelectRogue").Height / 2;
+            classSelectMage = new Sprite(Content.Load<Texture2D>("ClassSelectMage"), new Vector2(middle, middleY - 150));
+            classSelectMageHover = new Sprite(Content.Load<Texture2D>("ClassSelectMageHover"), new Vector2(middle, middleY - 150));
+            classSelectRogue = new Sprite(Content.Load<Texture2D>("ClassSelectRogue"), new Vector2(middle, middleY));
+            classSelectRogueHover = new Sprite(Content.Load<Texture2D>("ClassSelectRogueHover"), new Vector2(middle, middleY));
+            classSelectWarrior = new Sprite(Content.Load<Texture2D>("ClassSelectWarrior"), new Vector2(middle, middleY + 150));
+            classSelectWarriorHover = new Sprite(Content.Load<Texture2D>("ClassSelectWarriorHover"), new Vector2(middle, middleY + 150));
             //290 width
         }
 
@@ -165,7 +174,27 @@ namespace RPGMonoGame
         }
         void UpdateCharacterCreate(GameTime gameTime)
         {
-
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+            {
+                if(classSelectMage.Contains(mousePoint))
+                {
+                    RPGv2.Game.player = new RPGv2.Player(1, 1);
+                    State = GameState.StoryText;
+                }
+                if (classSelectRogue.Contains(mousePoint))
+                {
+                    RPGv2.Game.player = new RPGv2.Player(1, 2);
+                    State = GameState.StoryText;
+                }
+                if (classSelectWarrior.Contains(mousePoint))
+                {
+                    RPGv2.Game.player = new RPGv2.Player(1, 3);
+                    State = GameState.StoryText;
+                }
+            }
         }
         void UpdateMainMenu(GameTime gameTime)
         {
@@ -247,7 +276,7 @@ namespace RPGMonoGame
                 {
                     if (mainMenuButton.Contains(mousePoint))
                     {
-                        State = GameState.StoryText;
+                        State = GameState.CharacterCreate;
                         RPGv2.GlobalValues.storyState = 1;
                     }
                 }
@@ -274,7 +303,6 @@ namespace RPGMonoGame
         {
             prevState = mouseState;
             mouseState = Mouse.GetState();
-            var mousePoint = new Point(mouseState.X, mouseState.Y);
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 RPGv2.GlobalValues.storyIndex++;
@@ -423,13 +451,23 @@ namespace RPGMonoGame
         }
         void DrawCharacterCreate(GameTime gameTime)
         {
-            switch(RPGv2.GlobalValues.characterCreatorState)
-            {
-                case 0:
-                    
-                default:
-                    break;
-            }
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            spriteBatch.Begin();
+            if (classSelectMage.Contains(mousePoint))
+                classSelectMageHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectMage.Draw(spriteBatch, gameTime);
+            if (classSelectRogue.Contains(mousePoint))
+                classSelectRogueHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectRogue.Draw(spriteBatch, gameTime);
+            if (classSelectWarrior.Contains(mousePoint))
+                classSelectWarriorHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectWarrior.Draw(spriteBatch, gameTime);
+            spriteBatch.End();
         }
         /// <summary>
         /// This is called when the game should draw itself.
