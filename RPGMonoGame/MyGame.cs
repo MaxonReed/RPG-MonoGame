@@ -69,6 +69,8 @@ namespace RPGMonoGame
         Sprite defHover3;
         Sprite defHover4;
         bool clickedSpecial = false;
+        bool clickedRun = false;
+        bool canRun = true;
         #endregion
         public enum GameState
         {
@@ -335,6 +337,8 @@ namespace RPGMonoGame
                         {
                             if (magicButton.Contains(mousePoint))
                                 clickedSpecial = true;
+                            if (runButton.Contains(mousePoint))
+                                clickedRun = true;
                         }
                         else
                         {
@@ -346,6 +350,8 @@ namespace RPGMonoGame
                                 RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
                             if (fourthSpecial.Contains(mousePoint))
                                 RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
+                            if (quitButton.Contains(mousePoint))
+                                clickedSpecial = false;
                         }
                     }
                     break;
@@ -487,108 +493,116 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+            string fightText = "";
             spriteBatch.Begin();
+
             switch (RPGv2.GlobalValues.battleID)
             {
                 case "firstBattle":
-                    switch (RPGv2.GlobalValues.battleState)
+                    fightText = "You dare fight me fool?!";
+                    break;
+                default:
+                    break;
+            }
+            switch (RPGv2.GlobalValues.battleState)
+            {
+                case "prologue":
+                    textBox.Draw(spriteBatch, gameTime);
+                    spriteBatch.DrawString(storyFont, fightText, new Vector2(110, 319), Color.Black);
+                    break;
+                case "battle":
+                    if(clickedRun)
                     {
-                        case "prologue":
-                            textBox.Draw(spriteBatch, gameTime);
-                            spriteBatch.DrawString(storyFont, "You dare fight me fool?!", new Vector2(110, 319), Color.Black);
-                            break;
-                        case "battle":
-                            if (!clickedSpecial)
-                            {
-                                if (battleButton.Contains(mousePoint))
-                                    battleButtonHover.Draw(spriteBatch, gameTime);
-                                else
-                                    battleButton.Draw(spriteBatch, gameTime);
-                                if (runButton.Contains(mousePoint))
-                                    runButtonHover.Draw(spriteBatch, gameTime);
-                                else
-                                    runButton.Draw(spriteBatch, gameTime);
-                                if (RPGv2.Game.player.Cla == "Mage")
-                                {
-                                    if (magicButton.Contains(mousePoint))
-                                        magicButtonHover.Draw(spriteBatch, gameTime);
-                                    else
-                                        magicButton.Draw(spriteBatch, gameTime);
-                                }
-                                else
-                                {
-                                    if (skillButton.Contains(mousePoint))
-                                        skillButtonHover.Draw(spriteBatch, gameTime);
-                                    else
-                                        skillButton.Draw(spriteBatch, gameTime);
-                                }
-                            }
+                        textBox.Draw(spriteBatch, gameTime);
+                    }
+                    if (!clickedSpecial)
+                    {
+                        if (battleButton.Contains(mousePoint))
+                            battleButtonHover.Draw(spriteBatch, gameTime);
+                        else
+                            battleButton.Draw(spriteBatch, gameTime);
+                        if (runButton.Contains(mousePoint))
+                            runButtonHover.Draw(spriteBatch, gameTime);
+                        else
+                            runButton.Draw(spriteBatch, gameTime);
+                        if (RPGv2.Game.player.Cla == "Mage")
+                        {
+                            if (magicButton.Contains(mousePoint))
+                                magicButtonHover.Draw(spriteBatch, gameTime);
                             else
+                                magicButton.Draw(spriteBatch, gameTime);
+                        }
+                        else
+                        {
+                            if (skillButton.Contains(mousePoint))
+                                skillButtonHover.Draw(spriteBatch, gameTime);
+                            else
+                                skillButton.Draw(spriteBatch, gameTime);
+                        }
+                    }
+                    else
+                    {
+                        quitButton.Draw(spriteBatch, gameTime);
+                        if (firstSpecial.Contains(mousePoint))
+                            firstSpecial.Draw(spriteBatch, gameTime);
+                        else
+                            defHover1.Draw(spriteBatch, gameTime);
+                        if (secondSpecial.Contains(mousePoint))
+                            secondSpecial.Draw(spriteBatch, gameTime);
+                        else
+                            defHover2.Draw(spriteBatch, gameTime);
+                        if (thirdSpecial.Contains(mousePoint))
+                            thirdSpecial.Draw(spriteBatch, gameTime);
+                        else
+                            defHover3.Draw(spriteBatch, gameTime);
+                        if (fourthSpecial.Contains(mousePoint))
+                            fourthSpecial.Draw(spriteBatch, gameTime);
+                        else
+                            defHover4.Draw(spriteBatch, gameTime);
+                        int sp;
+                        string name = "";
+                        for (int i = 0; i < 4; i++)
+                        {
+                            sp = RPGv2.Game.player.Special[i];
+                            switch (sp)
                             {
-                                if (firstSpecial.Contains(mousePoint))
-                                    firstSpecial.Draw(spriteBatch, gameTime);
-                                else
-                                    defHover1.Draw(spriteBatch, gameTime);
-                                if (secondSpecial.Contains(mousePoint))
-                                    secondSpecial.Draw(spriteBatch, gameTime);
-                                else
-                                    defHover2.Draw(spriteBatch, gameTime);
-                                if (thirdSpecial.Contains(mousePoint))
-                                    thirdSpecial.Draw(spriteBatch, gameTime);
-                                else
-                                    defHover3.Draw(spriteBatch, gameTime);
-                                if (fourthSpecial.Contains(mousePoint))
-                                    fourthSpecial.Draw(spriteBatch, gameTime);
-                                else
-                                    defHover4.Draw(spriteBatch, gameTime);
-                                int sp;
-                                string name = "";
-                                for (int i = 0; i < 4; i++)
-                                {
-                                    sp = RPGv2.Game.player.Special[i];
-                                    switch (sp)
-                                    {
-                                        case 0:
-                                            name = "None";
-                                            break;
-                                        case 1:
-                                            name = "Fire Ball";
-                                            break;
-                                        case 2:
-                                            name = "Hide";
-                                            break;
-                                        case 3:
-                                            name = "Hard Hit";
-                                            break;
-                                        case 4:
-                                            name = "Gloss";
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    switch (i)
-                                    {
-                                        case 0:
-                                            spriteBatch.DrawString(storyFont, name, new Vector2(firstSpecial.Position.X + 5, firstSpecial.Position.Y + 7), Color.Black);
-                                            break;
-                                        case 1:
-                                            spriteBatch.DrawString(storyFont, name, new Vector2(secondSpecial.Position.X + 5, secondSpecial.Position.Y + 7), Color.Black);
-                                            break;
-                                        case 2:
-                                            spriteBatch.DrawString(storyFont, name, new Vector2(thirdSpecial.Position.X + 5, thirdSpecial.Position.Y + 7), Color.Black);
-                                            break;
-                                        case 3:
-                                            spriteBatch.DrawString(storyFont, name, new Vector2(fourthSpecial.Position.X + 5, fourthSpecial.Position.Y + 7), Color.Black);
-                                            break;
-                                        default:
-                                            break;
-                                    }
-
-                                }
+                                case 0:
+                                    name = "None";
+                                    break;
+                                case 1:
+                                    name = "Fire Ball";
+                                    break;
+                                case 2:
+                                    name = "Hide";
+                                    break;
+                                case 3:
+                                    name = "Hard Hit";
+                                    break;
+                                case 4:
+                                    name = "Gloss";
+                                    break;
+                                default:
+                                    break;
                             }
-                            break;
-                        default:
-                            break;
+                            switch (i)
+                            {
+                                case 0:
+                                    spriteBatch.DrawString(storyFont, name, new Vector2(firstSpecial.Position.X + 5, firstSpecial.Position.Y + 7), Color.Black);
+                                    break;
+                                case 1:
+                                    spriteBatch.DrawString(storyFont, name, new Vector2(secondSpecial.Position.X + 5, secondSpecial.Position.Y + 7), Color.Black);
+                                    break;
+                                case 2:
+                                    spriteBatch.DrawString(storyFont, name, new Vector2(thirdSpecial.Position.X + 5, thirdSpecial.Position.Y + 7), Color.Black);
+                                    break;
+                                case 3:
+                                    spriteBatch.DrawString(storyFont, name, new Vector2(fourthSpecial.Position.X + 5, fourthSpecial.Position.Y + 7), Color.Black);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                        }
                     }
                     break;
                 default:
