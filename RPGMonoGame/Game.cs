@@ -10,6 +10,7 @@ namespace RPGv2
         HelperClasses hc = new HelperClasses();
         public static History hist = new History();
         internal HelperClasses HC { get => HC; set => HC = value; }
+        public static Player player;
 
         public static void StartGame()
         {

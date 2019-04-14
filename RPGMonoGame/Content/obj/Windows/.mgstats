@@ -1,5 +1,7 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Arrow.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Arrow.xnb","TextureProcessor","Texture2DContent",568,24421,0.2519964
+"C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/CharacterCButton.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/CharacterCButton.xnb","TextureProcessor","Texture2DContent",722,25141,0.2469978
+"C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/CharacterCButtonHover.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/CharacterCButtonHover.xnb","TextureProcessor","Texture2DContent",724,25141,0.0069979
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Eight.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Eight.xnb","TextureProcessor","Texture2DContent",1172,26981,0.0050068
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/StartButtonFont.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21521,0.2999956
 "C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Fiv.png","C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Fiv.xnb","TextureProcessor","Texture2DContent",827,26981,0.0060004

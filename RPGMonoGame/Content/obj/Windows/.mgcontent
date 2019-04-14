@@ -5,6 +5,8 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Arrow.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/CharacterCButton.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/CharacterCButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Eight.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Fiv.png</File>
@@ -24,6 +26,8 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Zero.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>StartButtonFont.spritefont</File>

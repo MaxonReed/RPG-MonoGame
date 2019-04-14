@@ -43,13 +43,18 @@ namespace RPGMonoGame
         SpriteFont storyFontI;
         Sprite textBox;
         #endregion
+        #region characterCreationAssets
+        Sprite characterCButton;
+        Sprite characterCButtonHover;
+        #endregion
         public enum GameState
         {
             MainMenu,
             StartPage,
             InitWorldPage,
             BattlePage,
-            StoryText
+            StoryText,
+            CharacterCreate
         }
         private GameState _state;
         public GameState State
@@ -108,6 +113,9 @@ namespace RPGMonoGame
             enter = new Sprite(Content.Load<Texture2D>("Arrow"), new Vector2(320, 400));
             initBox = new Sprite(Content.Load<Texture2D>("NumInput"), new Vector2(100, 20));
             textBox = new Sprite(Content.Load<Texture2D>("TextBox"), new Vector2(100, 315));
+            characterCButton = new Sprite(Content.Load<Texture2D>("CharacterCButton"), new Vector2(100, 315));
+            characterCButtonHover = new Sprite(Content.Load<Texture2D>("CharacterCButtonHover"), new Vector2(100, 315));
+
             //290 width
         }
 
@@ -148,11 +156,17 @@ namespace RPGMonoGame
                 case GameState.StoryText:
                     UpdateStoryText(gameTime);
                     break;
+                case GameState.CharacterCreate:
+                    UpdateCharacterCreate(gameTime);
+                    break;
                 default:
                     break;
             }
         }
+        void UpdateCharacterCreate(GameTime gameTime)
+        {
 
+        }
         void UpdateMainMenu(GameTime gameTime)
         {
             var mouseState = Mouse.GetState();
@@ -407,6 +421,16 @@ namespace RPGMonoGame
             }
             spriteBatch.End();
         }
+        void DrawCharacterCreate(GameTime gameTime)
+        {
+            switch(RPGv2.GlobalValues.characterCreatorState)
+            {
+                case 0:
+                    
+                default:
+                    break;
+            }
+        }
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -431,6 +455,9 @@ namespace RPGMonoGame
                     break;
                 case GameState.StoryText:
                     DrawStoryText(gameTime);
+                    break;
+                case GameState.CharacterCreate:
+                    DrawCharacterCreate(gameTime);
                     break;
                 default:
                     break;

@@ -303,9 +303,11 @@ namespace RPGv2
         }
     }
 
-    public class BattleVars
+    public class Battle
     {
-        public static Enemy e;
+        public Enemy e;
+        public Player p = Game.player;
+
 
     }
 
@@ -347,6 +349,7 @@ namespace RPGv2
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
+        public static int characterCreatorState = 1;
 
         public static int Inp
         {
