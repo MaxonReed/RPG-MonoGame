@@ -19,5 +19,95 @@
     "Sell Price": 5,
     "Rarity Level": 15,
     "Attr": "None"
+  },
+  {
+    "Name": "Iron Staff",
+    "Attack": 7,
+    "Defense": 3,
+    "Buy Price": 40,
+    "Sell Price": 10,
+    "Rarity Level": 40,
+    "Attr": "None"
+  }
+  {
+    "Name": "Silver Staff",
+    "Attack": 11,
+    "Defense": 5,
+    "Buy Price": 50,
+    "Sell Price": 30,
+    "Rarity Level": 75,
+    "Attr": "None"
+  },
+  {
+    "Name": "Heroic Staff",
+    "Attack": 15,
+    "Defense": 7,
+    "Buy Price": 130,
+    "Sell Price": 45,
+    "Rarity Level": 115,
+    "Attr": "Commander"//You the Player Gain one attack
+  },
+  {
+    "Name": "Magic Cannon",
+    "Attack": 50,
+    "Defense": 0,
+    "Buy Price": 750,
+    "Sell Price": 400,
+    "Rarity Level": 1000,
+    "Attr": "Curse|Conflux"//Conflux: Enemies loses 10 defense and loses 1 attack per turn
+  },
+  {
+    "Name": "Staff of Life",
+    "Attack": 10,
+    "Defense": 4,
+    "Buy Price": 100,
+    "Sell Price": 30,
+    "Rarity Level": 750,
+    "Attr": "Blessing|Hope"//Blessing: You the player cannot gain debuffs and gain 1 hp per action || Hope : You the player are immune to damage when you do action pray
+  },
+  {
+    "Name": "Gold Staff",
+    "Attack": 17,
+    "Defense": 7,
+    "Buy Price": 300,
+    "Sell Price": 70,
+    "Rarity Level": 150,
+    "Attr": "Commander"
+  },
+  {
+    "Name": "Staff of Justice",
+    "Attack": 1,
+    "Defense": 30,
+    "Buy Price": 500,
+    "Sell Price": 150,
+    "Rarity Level": 300,
+    "Attr": "Commander|Freeze"
+  },
+  {
+    "Name": "Staff of Lies",
+    "Attack": 30,
+    "Defense": 1,
+    "Buy Price": 500,
+    "Sell Price": 150,
+    "Rarity Level": 325,
+    "Attr": "Curse||Purjury"//Purjury: If you evade an attack gain 10 M attk
+  },
+  {
+    "Name": "Infinity Staves",
+    "Attack": 18,
+    "Defense": 18,
+    "Buy Price": 800,
+    "Sell Price": 88,
+    "Rarity Level": 888,
+    "Attr": "Infinite"//Infinite: You take 2 turns before your opponent takes 1
+  },
+  {
+    "Name": "Flame Caster Blade",
+    "Attack": 35,
+    "Defense": 12,
+    "Buy Price": 750,
+    "Sell Price": 325,
+    "Rarity Level": 800,
+    "Attr": "CounterMagic"//CounterMagic: Deal All magic damage as normal damage
   }
 ]
