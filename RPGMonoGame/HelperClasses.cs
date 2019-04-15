@@ -314,9 +314,52 @@ namespace RPGv2
         public static int round = -1;
         public static int outcome = -1;
 
+
+        /*
+        case 0:
+            name = "None";
+            break;
+        case 1:
+            name = "Fire Ball";
+            break;
+        case 2:
+            name = "Hide";
+            break;
+        case 3:
+            name = "Hard Hit";
+            break;
+        case 4:
+            name = "Gloss";
+            break;
+         */
+        public static void HandleAttr()
+        {
+
+        }
         public static void HandleSpecial(int sp)
         {
-            
+            int damage = 0;
+            switch (sp)
+            {
+                case 0:
+                    break;
+                case 1:
+                    damage = Convert.ToInt32((p.MAtk * HelperClasses.RandomNumber(0, p.MAtk * 4) / e.Def) + (HelperClasses.RandomNumber(0, p.MAtk * 2) - Math.Sqrt(e.MDef * 2)));
+                    enemyHP -= damage;
+                    break;
+                case 2:
+                    p.Evasion *= 2.3;
+                    break;
+                case 3:
+                    damage = Convert.ToInt32((p.Attack * HelperClasses.RandomNumber(0, p.Attack * 2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def * 2)));
+                    enemyHP -= Convert.ToInt32(damage * 1.5);
+                    break;
+                case 4:
+                    p.Speed = Convert.ToInt32(p.Speed * 1.2);
+                    break;
+                default:
+                    break;
+            }
         }
 
         public static int RegularAttack()
@@ -324,7 +367,7 @@ namespace RPGv2
             int damage = 0;
             if (turn)
             {
-                damage = Convert.ToInt32((p.Attack* HelperClasses.RandomNumber(0, p.Attack*2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def *2)));
+                damage = Convert.ToInt32((p.Attack * HelperClasses.RandomNumber(0, p.Attack*2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def *2)));
                 enemyHP -= damage;
             }
             else
@@ -336,6 +379,7 @@ namespace RPGv2
                 BattleFinish(false);
             if (enemyHP <= 0)
                 BattleFinish(true);
+            turn = !turn;
             return damage;
         }
 
@@ -361,6 +405,7 @@ namespace RPGv2
         public int Att { get; set; }
         public int Def { get; set; }
         public int Spd { get; set; }
+        public int MDef { get; set; }
 
         public Enemy()
         {
@@ -381,6 +426,7 @@ namespace RPGv2
             Def = (int)obj["Defense"];
             Spd = (int)obj["Speed"];
             Health = (int)obj["Health"];
+            MDef = (int)obj["MDef"];
         }
     }
 
@@ -866,15 +912,15 @@ namespace RPGv2
         public List<string> equipString;
         public List<Item> Equip { get; set; }
         public List<int> Special { get;set; }
+
         /*
         equip:
         0: weapon
         1: armor
         2: arms
-        3: hands
-        4: legs
-        5: feet
-    
+        3: gloves
+        4: pants
+        5: boots
         */
 
         public Player(int slot, int c)

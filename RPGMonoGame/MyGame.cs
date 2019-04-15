@@ -71,6 +71,7 @@ namespace RPGMonoGame
         bool clickedSpecial = false;
         bool clickedRun = false;
         bool canRun = true;
+        int damage = 0;
         #endregion
         public enum GameState
         {
@@ -329,6 +330,8 @@ namespace RPGMonoGame
                 case "battle":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
+                        if (clickedRun)
+                            clickedRun = false;
                         if (!clickedSpecial)
                         {
                             if (magicButton.Contains(mousePoint))
@@ -349,6 +352,17 @@ namespace RPGMonoGame
                             if (quitButton.Contains(mousePoint))
                                 clickedSpecial = false;
                         }
+                        if (battleButton.Contains(mousePoint))
+                        {
+                            damage = RPGv2.Battle.RegularAttack();
+                            RPGv2.GlobalValues.battleState = "damageDealt";
+                        }
+                    }
+                    break;
+                case "damageDealt":
+                    if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                    {
+                        RPGv2.GlobalValues.battleState = "battle";
                     }
                     break;
                 default:
@@ -517,9 +531,14 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-                    if(clickedRun)
+                    if (clickedRun)
                     {
+                        graphics.GraphicsDevice.Clear(Color.White);
                         textBox.Draw(spriteBatch, gameTime);
+                        if (!canRun)
+                        {
+                            spriteBatch.DrawString(storyFont, "You can't run.", new Vector2(textBox.Position.X + 5, textBox.Position.Y + 5), Color.Black);
+                        }
                     }
                     if (!clickedSpecial)
                     {
@@ -550,21 +569,21 @@ namespace RPGMonoGame
                     {
                         quitButton.Draw(spriteBatch, gameTime);
                         if (firstSpecial.Contains(mousePoint))
-                            firstSpecial.Draw(spriteBatch, gameTime);
-                        else
                             defHover1.Draw(spriteBatch, gameTime);
+                        else
+                            firstSpecial.Draw(spriteBatch, gameTime);
                         if (secondSpecial.Contains(mousePoint))
-                            secondSpecial.Draw(spriteBatch, gameTime);
-                        else
                             defHover2.Draw(spriteBatch, gameTime);
+                        else
+                            secondSpecial.Draw(spriteBatch, gameTime);
                         if (thirdSpecial.Contains(mousePoint))
-                            thirdSpecial.Draw(spriteBatch, gameTime);
-                        else
                             defHover3.Draw(spriteBatch, gameTime);
-                        if (fourthSpecial.Contains(mousePoint))
-                            fourthSpecial.Draw(spriteBatch, gameTime);
                         else
+                            thirdSpecial.Draw(spriteBatch, gameTime);
+                        if (fourthSpecial.Contains(mousePoint))
                             defHover4.Draw(spriteBatch, gameTime);
+                        else
+                            fourthSpecial.Draw(spriteBatch, gameTime);
                         int sp;
                         string name = "";
                         for (int i = 0; i < 4; i++)
@@ -585,7 +604,7 @@ namespace RPGMonoGame
                                     name = "Hard Hit";
                                     break;
                                 case 4:
-                                    name = "Gloss";
+                                    name = "Butter Up";
                                     break;
                                 default:
                                     break;
@@ -613,13 +632,16 @@ namespace RPGMonoGame
                     #endregion
                     break;
                 case "damageDealt":
-                    if(RPGv2.Battle.turn)
+                    graphics.GraphicsDevice.Clear(Color.White);
+                    if (RPGv2.Battle.turn)
                     {
-
-                    } else
+                        
+                    }
+                    else
                     {
 
                     }
+                    break;
                 default:
                     break;
             }
