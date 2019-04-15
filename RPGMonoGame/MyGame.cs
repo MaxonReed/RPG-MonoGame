@@ -71,7 +71,9 @@ namespace RPGMonoGame
         bool clickedSpecial = false;
         bool clickedRun = false;
         bool canRun = true;
-        int damage = 0;
+        int damagePlayer = -1;
+        int damageEnemy = -1;
+        bool dispPlayerDamage = true;
         #endregion
         public enum GameState
         {
@@ -343,7 +345,8 @@ namespace RPGMonoGame
                                 clickedRun = true;
                             if (battleButton.Contains(mousePoint))
                             {
-                                damage = RPGv2.Battle.RegularAttack();
+                                damagePlayer = RPGv2.Battle.RegularAttack();
+                                damageEnemy = RPGv2.Battle.RegularAttack();
                                 RPGv2.GlobalValues.battleState = "damageDealt";
                             }
                         }
@@ -351,22 +354,22 @@ namespace RPGMonoGame
                         {
                             if (firstSpecial.Contains(mousePoint))
                             {
-                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
+                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
                                 RPGv2.GlobalValues.battleState = "damageDealt";
                             }
                             if (secondSpecial.Contains(mousePoint))
                             {
-                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
+                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
                                 RPGv2.GlobalValues.battleState = "damageDealt";
                             }
                             if (thirdSpecial.Contains(mousePoint))
                             {
-                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
+                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
                                 RPGv2.GlobalValues.battleState = "damageDealt";
                             }
                             if (fourthSpecial.Contains(mousePoint))
                             {
-                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
+                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
                                 RPGv2.GlobalValues.battleState = "damageDealt";
                             }
                             if (quitButton.Contains(mousePoint))
@@ -378,7 +381,10 @@ namespace RPGMonoGame
                 case "damageDealt":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
-                        RPGv2.GlobalValues.battleState = "battle";
+                        if (!dispPlayerDamage)
+                            RPGv2.GlobalValues.battleState = "battle";
+                        else
+                            dispPlayerDamage = false;
                     }
                     break;
                 default:
@@ -520,6 +526,8 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             string fightText = "";
+            graphics.GraphicsDevice.Clear(Color.Red);
+
 
             spriteBatch.Begin();
             switch (RPGv2.GlobalValues.battleID)
@@ -533,6 +541,11 @@ namespace RPGMonoGame
                         RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
                         RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
                         RPGv2.Battle.turn = RPGv2.Battle.p.Speed > RPGv2.Battle.e.Speed;
+                        if (!RPGv2.Battle.turn)
+                        {
+                            damageEnemy = RPGv2.Battle.RegularAttack();
+                            RPGv2.GlobalValues.battleState = "damageDealt";
+                        }
                     }
                     break;
                 default:
@@ -547,14 +560,9 @@ namespace RPGMonoGame
                 case "battle":
                     #region battleCase
                     Debug.WriteLine(RPGv2.Battle.turn);
-                    if (!RPGv2.Battle.turn)
-                    {
-                        RPGv2.Battle.RegularAttack();
-                        RPGv2.GlobalValues.battleState = "damageDealt";
-                    }
                     if (clickedRun)
                     {
-                        graphics.GraphicsDevice.Clear(Color.White);
+                        graphics.GraphicsDevice.Clear(Color.Blue);
                         textBox.Draw(spriteBatch, gameTime);
                         if (!canRun)
                         {
@@ -655,13 +663,20 @@ namespace RPGMonoGame
                 case "damageDealt":
                     graphics.GraphicsDevice.Clear(Color.White);
                     textBox.Draw(spriteBatch, gameTime);
-                    if (RPGv2.Battle.turn)
+                    if (damagePlayer != -1)
                     {
-                        spriteBatch.DrawString(storyFont, "You dealt " + damage + " damage to " + RPGv2.Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
+                        if (dispPlayerDamage)
+                        {
+                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + RPGv2.Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
+                        }
+                        else
+                        {
+                            spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                        }
                     }
                     else
                     {
-                        spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damage + " to you.", new Vector2(110, 319), Color.Black);
+                        spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
                     }
                     Debug.WriteLine($"Enemy HP: {RPGv2.Battle.enemyHP}/{RPGv2.Battle.e.Health}");
                     Debug.WriteLine($"Player HP: {RPGv2.Battle.playerHP}/{RPGv2.Battle.p.Health}");

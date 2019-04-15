@@ -348,6 +348,8 @@ namespace RPGv2
                 case 1:
                     //Fire ball
                     damage = Convert.ToInt32(HelperClasses.RandomNumber(0, Convert.ToInt32(p.MAtk * 1.5)) - HelperClasses.RandomNumber(0, e.Defense));
+                    if (damage < 0)
+                        damage = 0;
                     enemyHP -= damage;
                     break;
                 case 2:
@@ -357,6 +359,8 @@ namespace RPGv2
                 case 3:
                     //Hard hit
                     damage = Convert.ToInt32(HelperClasses.RandomNumber(0, p.Attack) - HelperClasses.RandomNumber(0, e.Defense));
+                    if (damage < 0)
+                        damage = 0;
                     enemyHP -= Convert.ToInt32(damage * 1.5);
                     break;
                 case 4:
