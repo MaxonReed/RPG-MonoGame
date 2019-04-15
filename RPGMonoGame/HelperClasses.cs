@@ -317,49 +317,57 @@ namespace RPGv2
 
         /*
         case 0:
-            name = "None";
-            break;
-        case 1:
-            name = "Fire Ball";
-            break;
-        case 2:
-            name = "Hide";
-            break;
-        case 3:
-            name = "Hard Hit";
-            break;
-        case 4:
-            name = "Gloss";
-            break;
-         */
+             name = "None";
+             break;
+         case 1:
+             name = "Fire Ball";
+             break;
+         case 2:
+             name = "Hide";
+             break;
+         case 3:
+             name = "Hard Hit";
+             break;
+         case 4:
+             name = "Gloss";
+             break;
+        */
+
         public static void HandleAttr()
         {
 
         }
-        public static void HandleSpecial(int sp)
+
+        public static int HandleSpecial(int sp)
         {
-            int damage = 0;
+            int damage = -1;
             switch (sp)
             {
                 case 0:
                     break;
                 case 1:
-                    damage = Convert.ToInt32((p.MAtk * HelperClasses.RandomNumber(0, p.MAtk * 4) / e.Def) + (HelperClasses.RandomNumber(0, p.MAtk * 2) - Math.Sqrt(e.MDef * 2)));
+                    //Fire ball
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, Convert.ToInt32(p.MAtk * 1.5)) - HelperClasses.RandomNumber(0, e.Defense));
                     enemyHP -= damage;
                     break;
                 case 2:
+                    //Hide
                     p.Evasion *= 2.3;
                     break;
                 case 3:
-                    damage = Convert.ToInt32((p.Attack * HelperClasses.RandomNumber(0, p.Attack * 2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def * 2)));
+                    //Hard hit
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, p.Attack) - HelperClasses.RandomNumber(0, e.Defense));
                     enemyHP -= Convert.ToInt32(damage * 1.5);
                     break;
                 case 4:
+                    //Gloss
                     p.Speed = Convert.ToInt32(p.Speed * 1.2);
                     break;
                 default:
                     break;
             }
+            turn = !turn;
+            return damage;
         }
 
         public static int RegularAttack()
@@ -367,12 +375,16 @@ namespace RPGv2
             int damage = 0;
             if (turn)
             {
-                damage = Convert.ToInt32((p.Attack * HelperClasses.RandomNumber(0, p.Attack*2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def *2)));
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, p.Attack) - HelperClasses.RandomNumber(0, e.Defense));
+                if (damage < 0)
+                    damage = 0;
                 enemyHP -= damage;
             }
             else
             {
-                damage = Convert.ToInt32((e.Att * HelperClasses.RandomNumber(0, e.Att * 2) / p.Defense) + (HelperClasses.RandomNumber(0, e.Att) - Math.Sqrt(p.Defense * 2)));
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, e.Attack) - HelperClasses.RandomNumber(0, p.Defense));
+                if (damage < 0)
+                    damage = 0;
                 playerHP -= damage;
             }
             if (playerHP <= 0)
@@ -402,9 +414,9 @@ namespace RPGv2
     {
         public int Health { get; set; }
         public string Name { get; set; }
-        public int Att { get; set; }
-        public int Def { get; set; }
-        public int Spd { get; set; }
+        public int Attack { get; set; }
+        public int Defense { get; set; }
+        public int Speed { get; set; }
         public int MDef { get; set; }
 
         public Enemy()
@@ -422,9 +434,9 @@ namespace RPGv2
                     obj = jObj;
             }
             Name = (string)obj["Name"];
-            Att = (int)obj["Attack"];
-            Def = (int)obj["Defense"];
-            Spd = (int)obj["Speed"];
+            Attack = (int)obj["Attack"];
+            Defense = (int)obj["Defense"];
+            Speed = (int)obj["Speed"];
             Health = (int)obj["Health"];
             MDef = (int)obj["MDef"];
         }
@@ -923,6 +935,26 @@ namespace RPGv2
         5: boots
         */
 
+        public Player(Player p)
+        {
+            Attack = p.Attack;
+            Class = p.Class;
+            Defense = p.Defense;
+            Evasion = p.Evasion;
+            Health = p.Health;
+            MAtk = p.MAtk;
+            MDef = p.MDef;
+            Intelligence = p.Intelligence;
+            Money = p.Money;
+            Luck = p.Luck;
+            Speed = p.Speed;
+            Inv = p.Inv;
+            invString = p.invString;
+            Equip = p.Equip;
+            equipString = p.equipString;
+            Special = p.Special;
+        }
+
         public Player(int slot, int c)
         {
             JArray saves = JArray.Parse(File.ReadAllText(@"Dependencies\player.json"));
@@ -938,7 +970,6 @@ namespace RPGv2
                 return;
             }
         }
-        public string Cla { get => Class; set => Class = value; }
 
         public void InitEquip()
         {
@@ -992,10 +1023,10 @@ namespace RPGv2
             switch (inp)
             {
                 case 1:
-                    Cla = "Mage";
-                    Attack = 2;
-                    MAtk = 7;
-                    Defense = 1;
+                    Class = "Mage";
+                    Attack = 4;
+                    MAtk = 8;
+                    Defense = 2;
                     MDef = 5;
                     Intelligence = 9;
                     Money = 0;
@@ -1008,7 +1039,7 @@ namespace RPGv2
                     Special = new List<int> { 1, 0, 0, 0 };
                     break;
                 case 2:
-                    Cla = "Warrior";
+                    Class = "Warrior";
                     Attack = 9;
                     MAtk = 2;
                     Defense = 5;
@@ -1024,7 +1055,7 @@ namespace RPGv2
                     Special = new List<int> { 3, 0, 0, 0 };
                     break;
                 case 3:
-                    Cla = "Rogue";
+                    Class = "Rogue";
                     Attack = 6;
                     MAtk = 4;
                     Defense = 2;
@@ -1042,7 +1073,7 @@ namespace RPGv2
                 default:
                     break;
             }
-            save["Class"] = Cla;
+            save["Class"] = Class;
             save["Attack"] = Attack;
             save["Defense"] = Defense;
             save["Health"] = Health;

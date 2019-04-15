@@ -325,7 +325,10 @@ namespace RPGMonoGame
             {
                 case "prologue":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                    {
+                        RPGv2.Battle.round++;
                         RPGv2.GlobalValues.battleState = "battle";
+                    }
                     break;
                 case "battle":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
@@ -338,25 +341,38 @@ namespace RPGMonoGame
                                 clickedSpecial = true;
                             if (runButton.Contains(mousePoint))
                                 clickedRun = true;
+                            if (battleButton.Contains(mousePoint))
+                            {
+                                damage = RPGv2.Battle.RegularAttack();
+                                RPGv2.GlobalValues.battleState = "damageDealt";
+                            }
                         }
                         else
                         {
                             if (firstSpecial.Contains(mousePoint))
-                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
+                            {
+                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
+                                RPGv2.GlobalValues.battleState = "damageDealt";
+                            }
                             if (secondSpecial.Contains(mousePoint))
-                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
+                            {
+                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
+                                RPGv2.GlobalValues.battleState = "damageDealt";
+                            }
                             if (thirdSpecial.Contains(mousePoint))
-                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
+                            {
+                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
+                                RPGv2.GlobalValues.battleState = "damageDealt";
+                            }
                             if (fourthSpecial.Contains(mousePoint))
-                                RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
+                            {
+                                damage = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
+                                RPGv2.GlobalValues.battleState = "damageDealt";
+                            }
                             if (quitButton.Contains(mousePoint))
                                 clickedSpecial = false;
                         }
-                        if (battleButton.Contains(mousePoint))
-                        {
-                            damage = RPGv2.Battle.RegularAttack();
-                            RPGv2.GlobalValues.battleState = "damageDealt";
-                        }
+
                     }
                     break;
                 case "damageDealt":
@@ -513,11 +529,10 @@ namespace RPGMonoGame
                     {
                         fightText = "You dare fight me fool?!";
                         RPGv2.Battle.e = new RPGv2.Enemy("Unknown StartGame");
-                        RPGv2.Battle.p = RPGv2.Game.player;
+                        RPGv2.Battle.p = new RPGv2.Player(RPGv2.Game.player);
                         RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
                         RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
-                        RPGv2.Battle.turn = RPGv2.Battle.p.Speed > RPGv2.Battle.e.Spd;
-                        RPGv2.Battle.round++;
+                        RPGv2.Battle.turn = RPGv2.Battle.p.Speed > RPGv2.Battle.e.Speed;
                     }
                     break;
                 default:
@@ -531,6 +546,12 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
+                    Debug.WriteLine(RPGv2.Battle.turn);
+                    if (!RPGv2.Battle.turn)
+                    {
+                        RPGv2.Battle.RegularAttack();
+                        RPGv2.GlobalValues.battleState = "damageDealt";
+                    }
                     if (clickedRun)
                     {
                         graphics.GraphicsDevice.Clear(Color.White);
@@ -550,7 +571,7 @@ namespace RPGMonoGame
                             runButtonHover.Draw(spriteBatch, gameTime);
                         else
                             runButton.Draw(spriteBatch, gameTime);
-                        if (RPGv2.Game.player.Cla == "Mage")
+                        if (RPGv2.Game.player.Class == "Mage")
                         {
                             if (magicButton.Contains(mousePoint))
                                 magicButtonHover.Draw(spriteBatch, gameTime);
@@ -633,14 +654,17 @@ namespace RPGMonoGame
                     break;
                 case "damageDealt":
                     graphics.GraphicsDevice.Clear(Color.White);
+                    textBox.Draw(spriteBatch, gameTime);
                     if (RPGv2.Battle.turn)
                     {
-                        
+                        spriteBatch.DrawString(storyFont, "You dealt " + damage + " damage to " + RPGv2.Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
                     }
                     else
                     {
-
+                        spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damage + " to you.", new Vector2(110, 319), Color.Black);
                     }
+                    Debug.WriteLine($"Enemy HP: {RPGv2.Battle.enemyHP}/{RPGv2.Battle.e.Health}");
+                    Debug.WriteLine($"Player HP: {RPGv2.Battle.playerHP}/{RPGv2.Battle.p.Health}");
                     break;
                 default:
                     break;
