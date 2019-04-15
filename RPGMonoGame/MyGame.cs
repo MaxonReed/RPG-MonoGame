@@ -236,13 +236,9 @@ namespace RPGMonoGame
         {
             var mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-            Rectangle mouseRec = new Microsoft.Xna.Framework.Rectangle(mouseState.X, mouseState.Y, 1, 1);
-            Rectangle mainMenuRect = mainMenuButton.Texture.Bounds;
-            mainMenuRect.X = (int)mainMenuButton.Position.X;
-            mainMenuRect.Y = (int)mainMenuButton.Position.Y;
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                if (mainMenuRect.Contains(mouseRec))
+                if (mainMenuButton.Contains(mousePoint))
                 {
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.StartPage;
@@ -499,11 +495,16 @@ namespace RPGMonoGame
             switch (RPGv2.GlobalValues.battleID)
             {
                 case "firstBattle":
-                    fightText = "You dare fight me fool?!";
-                    RPGv2.Battle.e = new RPGv2.Enemy("Unknown StartGame");
-                    RPGv2.Battle.p = RPGv2.Game.player;
-                    RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
-                    RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
+                    if (RPGv2.Battle.round == -1)
+                    {
+                        fightText = "You dare fight me fool?!";
+                        RPGv2.Battle.e = new RPGv2.Enemy("Unknown StartGame");
+                        RPGv2.Battle.p = RPGv2.Game.player;
+                        RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
+                        RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
+                        RPGv2.Battle.turn = RPGv2.Battle.p.Speed > RPGv2.Battle.e.Spd;
+                        RPGv2.Battle.round++;
+                    }
                     break;
                 default:
                     break;
@@ -515,6 +516,7 @@ namespace RPGMonoGame
                     spriteBatch.DrawString(storyFont, fightText, new Vector2(110, 319), Color.Black);
                     break;
                 case "battle":
+                    #region battleCase
                     if(clickedRun)
                     {
                         textBox.Draw(spriteBatch, gameTime);
@@ -608,7 +610,16 @@ namespace RPGMonoGame
 
                         }
                     }
+                    #endregion
                     break;
+                case "damageDealt":
+                    if(RPGv2.Battle.turn)
+                    {
+
+                    } else
+                    {
+
+                    }
                 default:
                     break;
             }

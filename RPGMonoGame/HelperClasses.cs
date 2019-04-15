@@ -306,20 +306,51 @@ namespace RPGv2
 
     public class Battle
     {
-        public static Enemy e;
+        public static Enemy e = new Enemy();
         public static Player p = Game.player;
-        public static int playerHP;
-        public static int enemyHP;
+        public static int playerHP = 0;
+        public static int enemyHP = 0;
         public static bool turn = false;
+        public static int round = -1;
+        public static int outcome = -1;
 
         public static void HandleSpecial(int sp)
         {
-
+            
         }
 
-        public static void RegularAttack()
+        public static int RegularAttack()
         {
+            int damage = 0;
+            if (turn)
+            {
+                damage = Convert.ToInt32((p.Attack* HelperClasses.RandomNumber(0, p.Attack*2) / e.Def) + (HelperClasses.RandomNumber(0, p.Attack) - Math.Sqrt(e.Def *2)));
+                enemyHP -= damage;
+            }
+            else
+            {
+                damage = Convert.ToInt32((e.Att * HelperClasses.RandomNumber(0, e.Att * 2) / p.Defense) + (HelperClasses.RandomNumber(0, e.Att) - Math.Sqrt(p.Defense * 2)));
+                playerHP -= damage;
+            }
+            if (playerHP <= 0)
+                BattleFinish(false);
+            if (enemyHP <= 0)
+                BattleFinish(true);
+            return damage;
+        }
 
+        public static void BattleFinish(bool winner)
+        {
+            e = new Enemy();
+            p = Game.player;
+            playerHP = 0;
+            enemyHP = 0;
+            turn = false;
+            round = -1;
+            if (winner)
+                outcome = 1;
+            else
+                outcome = 0;
         }
     }
 
@@ -330,6 +361,11 @@ namespace RPGv2
         public int Att { get; set; }
         public int Def { get; set; }
         public int Spd { get; set; }
+
+        public Enemy()
+        {
+
+        }
 
         public Enemy(string id)
         {
@@ -824,6 +860,7 @@ namespace RPGv2
         public double Money { get; set; }
         public double Luck { get; set; }
         public double Evasion { get; set; }
+        public int Speed { get; set; }
         public List<string> invString;
         public List<Item> Inv { get; set; }
         public List<string> equipString;
@@ -919,6 +956,7 @@ namespace RPGv2
                     Luck = 4;
                     Evasion = 3;
                     Health = 80;
+                    Speed = 6;
                     invString = new List<string> { };
                     equipString = new List<string> { "staff:Wooden Staff" };
                     Special = new List<int> { 1, 0, 0, 0 };
@@ -934,6 +972,7 @@ namespace RPGv2
                     Luck = 2;
                     Evasion = 2;
                     Health = 110;
+                    Speed = 2;
                     invString = new List<string> { };
                     equipString = new List<string> { "sword:Bronze Sword" };
                     Special = new List<int> { 3, 0, 0, 0 };
@@ -948,6 +987,7 @@ namespace RPGv2
                     Money = 0;
                     Luck = 8;
                     Evasion = 8;
+                    Speed = 9;
                     Health = 90;
                     invString = new List<string> { };
                     equipString = new List<string> { "knife:Bronze Dagger" };
@@ -966,6 +1006,7 @@ namespace RPGv2
             save["Money"] = Money;
             save["Luck"] = Luck;
             save["Evasion"] = Evasion;
+            save["Speed"] = Speed;
             save["Inventory"] = JsonConvert.SerializeObject(invString);
             save["Equipped"] = JsonConvert.SerializeObject(equipString);
             Equip = new List<Item>();
