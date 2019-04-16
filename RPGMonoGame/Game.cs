@@ -5,12 +5,12 @@ using RPGMonoGame;
 
 namespace RPGv2
 {
-    internal class Game
+    internal class GamePlay
     {
         HelperClasses hc = new HelperClasses();
         public static History hist = new History();
         internal HelperClasses HC { get => HC; set => HC = value; }
-        public static Player player;
+        public static Player player = new Player();
 
         public static void StartGame()
         {

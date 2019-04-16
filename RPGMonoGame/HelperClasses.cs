@@ -32,6 +32,8 @@ namespace RPGv2
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
 
+        
+
         public static int RandomNumber(int min, int max)
         {
             lock (syncLock)
@@ -196,6 +198,27 @@ namespace RPGv2
         }
     }
 
+    public class Save
+    {
+        public History hist = new History();
+        public Player player = new Player();
+
+        public Save()
+        {
+
+        }
+
+        public void SaveGame()
+        {
+            File.WriteAllText(@"Dependencies\saveDefault.json", JsonConvert.SerializeObject(GlobalValues.save));
+        }
+
+        public void LoadGame()
+        {
+            GlobalValues.save = JsonConvert.DeserializeObject<Save>("Dependencies\\save.json");
+        }
+    }
+
     public class SceneText
     {
         public static List<bool> wrapText = new List<bool>();
@@ -307,7 +330,7 @@ namespace RPGv2
     public class Battle
     {
         public static Enemy e = new Enemy();
-        public static Player p = Game.player;
+        public static Player p = GamePlay.player;
         public static int playerHP = 0;
         public static int enemyHP = 0;
         public static bool turn = false;
@@ -402,7 +425,7 @@ namespace RPGv2
         public static void BattleFinish(bool winner)
         {
             e = new Enemy();
-            p = Game.player;
+            p = GamePlay.player;
             playerHP = 0;
             enemyHP = 0;
             turn = false;
@@ -461,6 +484,7 @@ namespace RPGv2
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
+        public static Save save;
 
         public static int Inp
         {
@@ -839,19 +863,19 @@ namespace RPGv2
         public string Name { get => name; set => name = value; }
         public int Year { get => year; set => year = value; }
     }
-    class Point
+    class PointClass
     {
         int x;
         int y;
         string type;
 
-        public Point(int xCoord, int yCoord)
+        public PointClass(int xCoord, int yCoord)
         {
             X = xCoord;
             Y = yCoord;
         }
 
-        public double Distance(Point p) => Math.Sqrt(Math.Pow(p.X - X, 2) + Math.Pow(p.Y - Y, 2));
+        public double Distance(PointClass p) => Math.Sqrt(Math.Pow(p.X - X, 2) + Math.Pow(p.Y - Y, 2));
 
         public int X { get => x; set => x = value; }
         public int Y { get => y; set => y = value; }
@@ -867,7 +891,7 @@ namespace RPGv2
         List<string> advances = new List<string>();
         List<War> wars = new List<War>();
         List<HistoricalEvent> historicalEvents = new List<HistoricalEvent>();
-        Point loc = new Point(0, 0);
+        PointClass loc = new PointClass(0, 0);
 
         public int Pop { get => pop; set => pop = value; }
         internal Race Race { get => race; set => race = value; }
@@ -876,7 +900,7 @@ namespace RPGv2
         internal List<War> Wars { get => wars; set => wars = value; }
         public List<string> Advances { get => advances; set => advances = value; }
         public double PopSeverity { get => popSeverity; set => popSeverity = value; }
-        internal Point Loc { get => loc; set => loc = value; }
+        internal PointClass Loc { get => loc; set => loc = value; }
 
         public Faction(Race r, string n)
         {
@@ -899,7 +923,7 @@ namespace RPGv2
         }
     }
 
-    class History
+    public class History
     {
         List<Race> races = new List<Race>();
         List<Faction> factions = new List<Faction>();
@@ -938,6 +962,11 @@ namespace RPGv2
         4: pants
         5: boots
         */
+
+        public Player()
+        {
+
+        }
 
         public Player(Player p)
         {

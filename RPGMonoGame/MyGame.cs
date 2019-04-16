@@ -7,6 +7,7 @@ using System.Diagnostics;
 using MonoGame.Extended;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using RPGv2;
 
 namespace RPGMonoGame
 {
@@ -220,19 +221,29 @@ namespace RPGMonoGame
             {
                 if (classSelectMage.Contains(mousePoint))
                 {
-                    RPGv2.Game.player = new RPGv2.Player(1, 1);
+                    GamePlay.player = new Player(1, 1);
                     State = GameState.StoryText;
+                    GlobalValues.save.player = GamePlay.player;
+                    GlobalValues.save.hist = GamePlay.hist;
+                    GlobalValues.save.SaveGame();
                 }
                 if (classSelectRogue.Contains(mousePoint))
                 {
-                    RPGv2.Game.player = new RPGv2.Player(1, 2);
+                    GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
+                    GlobalValues.save.player = GamePlay.player;
+                    GlobalValues.save.hist = GamePlay.hist;
+                    GlobalValues.save.SaveGame();
                 }
                 if (classSelectWarrior.Contains(mousePoint))
                 {
-                    RPGv2.Game.player = new RPGv2.Player(1, 3);
+                    GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
+                    GlobalValues.save.player = GamePlay.player;
+                    GlobalValues.save.hist = GamePlay.hist;
+                    GlobalValues.save.SaveGame();
                 }
+                
             }
         }
         void UpdateMainMenu(GameTime gameTime)
@@ -273,46 +284,46 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
-            if (!RPGv2.GlobalValues.startGen)
+            if (!GlobalValues.startGen)
             {
                 if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                 {
                     if (enter.Contains(mousePoint))
                     {
-                        if (RPGv2.GlobalValues.inpText != "")
-                            Task.Run(() => RPGv2.Game.StartGame());
+                        if (GlobalValues.inpText != "")
+                            Task.Run(() => GamePlay.StartGame());
                     }
                     if (one.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "1";
+                        GlobalValues.inpText += "1";
                     if (two.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "2";
+                        GlobalValues.inpText += "2";
                     if (thr.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "3";
+                        GlobalValues.inpText += "3";
                     if (four.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "4";
+                        GlobalValues.inpText += "4";
                     if (five.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "5";
+                        GlobalValues.inpText += "5";
                     if (six.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "6";
+                        GlobalValues.inpText += "6";
                     if (sev.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "7";
+                        GlobalValues.inpText += "7";
                     if (eight.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "8";
+                        GlobalValues.inpText += "8";
                     if (nine.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "9";
+                        GlobalValues.inpText += "9";
                     if (zer.Contains(mousePoint))
-                        RPGv2.GlobalValues.inpText += "0";
+                        GlobalValues.inpText += "0";
                 }
 
             }
-            if (RPGv2.GlobalValues.done)
+            if (GlobalValues.done)
             {
                 if (mouseState.LeftButton == ButtonState.Pressed)
                 {
                     if (mainMenuButton.Contains(mousePoint))
                     {
                         State = GameState.CharacterCreate;
-                        RPGv2.GlobalValues.storyState = 1;
+                        GlobalValues.storyState = 1;
                     }
                 }
             }
@@ -323,13 +334,13 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
-            switch (RPGv2.GlobalValues.battleState)
+            switch (GlobalValues.battleState)
             {
                 case "prologue":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
-                        RPGv2.Battle.round++;
-                        RPGv2.GlobalValues.battleState = "battle";
+                        Battle.round++;
+                        GlobalValues.battleState = "battle";
                     }
                     break;
                 case "battle":
@@ -345,32 +356,32 @@ namespace RPGMonoGame
                                 clickedRun = true;
                             if (battleButton.Contains(mousePoint))
                             {
-                                damagePlayer = RPGv2.Battle.RegularAttack();
-                                damageEnemy = RPGv2.Battle.RegularAttack();
-                                RPGv2.GlobalValues.battleState = "damageDealt";
+                                damagePlayer = Battle.RegularAttack();
+                                damageEnemy = Battle.RegularAttack();
+                                GlobalValues.battleState = "damageDealt";
                             }
                         }
                         else
                         {
                             if (firstSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[0]);
-                                RPGv2.GlobalValues.battleState = "damageDealt";
+                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[0]);
+                                GlobalValues.battleState = "damageDealt";
                             }
                             if (secondSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[1]);
-                                RPGv2.GlobalValues.battleState = "damageDealt";
+                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[1]);
+                                GlobalValues.battleState = "damageDealt";
                             }
                             if (thirdSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[2]);
-                                RPGv2.GlobalValues.battleState = "damageDealt";
+                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[2]);
+                                GlobalValues.battleState = "damageDealt";
                             }
                             if (fourthSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = RPGv2.Battle.HandleSpecial(RPGv2.Game.player.Special[3]);
-                                RPGv2.GlobalValues.battleState = "damageDealt";
+                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[3]);
+                                GlobalValues.battleState = "damageDealt";
                             }
                             if (quitButton.Contains(mousePoint))
                                 clickedSpecial = false;
@@ -382,7 +393,7 @@ namespace RPGMonoGame
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
                         if (!dispPlayerDamage)
-                            RPGv2.GlobalValues.battleState = "battle";
+                            GlobalValues.battleState = "battle";
                         else
                             dispPlayerDamage = false;
                     }
@@ -397,7 +408,7 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
-                RPGv2.GlobalValues.storyIndex++;
+                GlobalValues.storyIndex++;
             }
         }
         void DrawMainMenu(GameTime gameTime)
@@ -432,15 +443,15 @@ namespace RPGMonoGame
             zer.Draw(spriteBatch, gameTime);
             enter.Draw(spriteBatch, gameTime);
             initBox.Draw(spriteBatch, gameTime);
-            spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.inpText, new Vector2(initBox.Position.X + 4, initBox.Position.Y + 4), Color.Black);
-            if (RPGv2.GlobalValues.startGen)
+            spriteBatch.DrawString(arialFont, GlobalValues.inpText, new Vector2(initBox.Position.X + 4, initBox.Position.Y + 4), Color.Black);
+            if (GlobalValues.startGen)
             {
-                spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
-                spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.eventName, new Vector2(500, 200), Color.Black);
-                spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
-                spriteBatch.DrawString(arialFont, RPGv2.GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.eventName, new Vector2(500, 200), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
             }
-            if (RPGv2.GlobalValues.done)
+            if (GlobalValues.done)
             {
                 mainMenuButton.Draw(spriteBatch, gameTime);
             }
@@ -448,11 +459,11 @@ namespace RPGMonoGame
         }
         void DrawStoryText(GameTime gameTime)
         {
-            RPGv2.SceneText.GetText();
+            SceneText.GetText();
             //get array of text
-            List<string> strArray = RPGv2.SceneText.strArr;
+            List<string> strArray = SceneText.strArr;
             //get text to be displayed
-            string text = strArray[RPGv2.GlobalValues.storyIndex];
+            string text = strArray[GlobalValues.storyIndex];
             spriteBatch.Begin();
             //draw text box
             textBox.Draw(spriteBatch, gameTime);
@@ -460,13 +471,13 @@ namespace RPGMonoGame
             if (text.StartsWith("|battle:"))
             {
                 string id = text.Substring(11);
-                RPGv2.GlobalValues.battleID = id;
+                GlobalValues.battleID = id;
                 State = GameState.BattlePage;
                 spriteBatch.End();
                 return;
             }
             //text wrapping
-            if (!RPGv2.SceneText.wrapText[RPGv2.GlobalValues.storyIndex])
+            if (!SceneText.wrapText[GlobalValues.storyIndex])
             {
                 if (text[0] == '*')
                     spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
@@ -530,28 +541,28 @@ namespace RPGMonoGame
 
 
             spriteBatch.Begin();
-            switch (RPGv2.GlobalValues.battleID)
+            switch (GlobalValues.battleID)
             {
                 case "firstBattle":
-                    if (RPGv2.Battle.round == -1)
+                    if (Battle.round == -1)
                     {
                         fightText = "You dare fight me fool?!";
-                        RPGv2.Battle.e = new RPGv2.Enemy("Unknown StartGame");
-                        RPGv2.Battle.p = new RPGv2.Player(RPGv2.Game.player);
-                        RPGv2.Battle.enemyHP = RPGv2.Battle.e.Health;
-                        RPGv2.Battle.playerHP = RPGv2.Battle.p.Health;
-                        RPGv2.Battle.turn = RPGv2.Battle.p.Speed > RPGv2.Battle.e.Speed;
-                        if (!RPGv2.Battle.turn)
+                        Battle.e = new Enemy("Unknown StartGame");
+                        Battle.p = new Player(GamePlay.player);
+                        Battle.enemyHP = Battle.e.Health;
+                        Battle.playerHP = Battle.p.Health;
+                        Battle.turn = Battle.p.Speed > Battle.e.Speed;
+                        if (!Battle.turn)
                         {
-                            damageEnemy = RPGv2.Battle.RegularAttack();
-                            RPGv2.GlobalValues.battleState = "damageDealt";
+                            damageEnemy = Battle.RegularAttack();
+                            GlobalValues.battleState = "damageDealt";
                         }
                     }
                     break;
                 default:
                     break;
             }
-            switch (RPGv2.GlobalValues.battleState)
+            switch (GlobalValues.battleState)
             {
                 case "prologue":
                     textBox.Draw(spriteBatch, gameTime);
@@ -559,7 +570,7 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-                    Debug.WriteLine(RPGv2.Battle.turn);
+                    Debug.WriteLine(Battle.turn);
                     if (clickedRun)
                     {
                         graphics.GraphicsDevice.Clear(Color.Blue);
@@ -579,7 +590,7 @@ namespace RPGMonoGame
                             runButtonHover.Draw(spriteBatch, gameTime);
                         else
                             runButton.Draw(spriteBatch, gameTime);
-                        if (RPGv2.Game.player.Class == "Mage")
+                        if (GamePlay.player.Class == "Mage")
                         {
                             if (magicButton.Contains(mousePoint))
                                 magicButtonHover.Draw(spriteBatch, gameTime);
@@ -617,7 +628,7 @@ namespace RPGMonoGame
                         string name = "";
                         for (int i = 0; i < 4; i++)
                         {
-                            sp = RPGv2.Game.player.Special[i];
+                            sp = GamePlay.player.Special[i];
                             switch (sp)
                             {
                                 case 0:
@@ -667,19 +678,19 @@ namespace RPGMonoGame
                     {
                         if (dispPlayerDamage)
                         {
-                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + RPGv2.Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
+                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
                         }
                         else
                         {
-                            spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                            spriteBatch.DrawString(storyFont, Battle.e.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                         }
                     }
                     else
                     {
-                        spriteBatch.DrawString(storyFont, RPGv2.Battle.e.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
+                        spriteBatch.DrawString(storyFont, Battle.e.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
                     }
-                    Debug.WriteLine($"Enemy HP: {RPGv2.Battle.enemyHP}/{RPGv2.Battle.e.Health}");
-                    Debug.WriteLine($"Player HP: {RPGv2.Battle.playerHP}/{RPGv2.Battle.p.Health}");
+                    Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.e.Health}");
+                    Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.p.Health}");
                     break;
                 default:
                     break;
