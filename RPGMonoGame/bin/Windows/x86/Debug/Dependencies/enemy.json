@@ -2,6 +2,60 @@
   {
     "Id": "Unknown StartGame",
     "Health": 110,
+    "Name": "?",
+    "Attack": 6,
+    "Defense": 3,
+    "MDef": 3,
+    "Speed": 4
+  },
+  {
+    "Id": "Rngen",//Random encounter
+    "Health": 30,
+    "Name": "Big Crow",
+    "Attack": 1,
+    "Defense": 1,
+    "MDef": 1,
+    "Speed": 4
+  },
+  {
+    "Id": "Rngen",
+    "Health": 45,
+    "Name": "Bear",
+    "Attack": 8,
+    "Defense": 3,
+    "MDef": 3,
+    "Speed": 3
+  },
+  {
+    "Id": "Rngen",
+    "Health": 65,
+    "Name": "Scavenger",
+    "Attack": 5,
+    "Defense": 4,
+    "MDef": 2,
+    "Speed": 1
+  },
+  {
+    "Id": "Rngen",
+    "Health": 110,
+    "Name": "Lunatic",
+    "Attack": 10,
+    "Defense": 7,
+    "MDef": 7,
+    "Speed": 7
+  },
+  {
+    "Id": "Rngen",
+    "Health": 1,
+    "Name": "Shadow Creep",
+    "Attack": 20,
+    "Defense": 20,
+    "MDef": 20,
+    "Speed": 20
+  },
+  {
+    "Id": "Rngen",
+    "Health": 110,
     "Name": "Unknown",
     "Attack": 6,
     "Defense": 3,
