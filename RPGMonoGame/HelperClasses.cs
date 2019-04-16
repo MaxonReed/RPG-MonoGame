@@ -8,7 +8,6 @@ using System.Windows;
 using System.Diagnostics;
 using System.Linq;
 using Newtonsoft.Json;
-
 namespace RPGv2
 {
     internal class HelperClasses
@@ -32,7 +31,7 @@ namespace RPGv2
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
 
-        
+
 
         public static int RandomNumber(int min, int max)
         {
@@ -210,12 +209,100 @@ namespace RPGv2
 
         public void SaveGame()
         {
-            File.WriteAllText(@"Dependencies\saveDefault.json", JsonConvert.SerializeObject(GlobalValues.save));
+            JsonSerializer serializer = new JsonSerializer();
+
+            using (StreamWriter sw = new StreamWriter(@"Dependencies\saveDefault.json"))
+            {
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    string json = JsonConvert.SerializeObject(this, Formatting.Indented, new KeysJsonConverter(typeof(RPGv2.Save)));
+                    JObject obj = JObject.Parse(json);
+                    JObject histObj = (JObject)obj["hist"];
+                    string histStr = histObj.ToString();
+                    StreamWriter stw = new StreamWriter(histStr);
+
+                    using (JsonWriter writ = new JsonTextWriter(stw))
+                    {
+                        writ.Formatting = Formatting.Indented;
+
+                        writ.WriteStartObject();
+                        writ.WritePropertyName("races");
+                        writ.WriteStartArray();
+                        foreach(Race r in hist.Races)
+                        {
+                            writ.WriteValue(r.Name);
+                        }
+                        writ.WriteEnd();
+                        writ.WritePropertyName("factions");
+                        writ.WriteStartArray();
+                        foreach(Faction f in hist.Factions)
+                        {
+                            writ.WritePropertyName(f.Name);
+                            writ.WriteStartArray();
+                            writ.WritePropertyName("Population");
+                            writ.WriteValue(f.Pop);
+                            writ.WritePropertyName("Race");
+                            writ.WriteValue(f.Race.Name);
+                            writ.WriteEnd();
+
+                        }
+                        writ.WriteEnd();
+                        writ.WriteEndObject();
+                    }
+                    histObj = JObject.Parse(histStr);
+                    obj["hist"] = histObj;
+                    sw.WriteLine(obj.ToString());
+                }
+            }
         }
 
         public void LoadGame()
         {
             GlobalValues.save = JsonConvert.DeserializeObject<Save>("Dependencies\\save.json");
+        }
+    }
+
+    public class KeysJsonConverter : JsonConverter
+    {
+        private readonly Type[] _types;
+
+        public KeysJsonConverter(params Type[] types)
+        {
+            _types = types;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            JToken t = JToken.FromObject(value);
+
+            if (t.Type != JTokenType.Object)
+            {
+                t.WriteTo(writer);
+            }
+            else
+            {
+                JObject o = (JObject)t;
+                IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
+
+                o.AddFirst(new JProperty("Keys", new JArray(propertyNames)));
+
+                o.WriteTo(writer);
+            }
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException("Unnecessary because CanRead is false. The type will skip the converter.");
+        }
+
+        public override bool CanRead
+        {
+            get { return false; }
+        }
+
+        public override bool CanConvert(Type objectType)
+        {
+            return _types.Any(t => t == objectType);
         }
     }
 
@@ -484,7 +571,9 @@ namespace RPGv2
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
-        public static Save save;
+        public static Save save = new Save();
+        public static KeysJsonConverter conv = new KeysJsonConverter();
+
 
         public static int Inp
         {
@@ -951,7 +1040,7 @@ namespace RPGv2
         public List<Item> Inv { get; set; }
         public List<string> equipString;
         public List<Item> Equip { get; set; }
-        public List<int> Special { get;set; }
+        public List<int> Special { get; set; }
 
         /*
         equip:
@@ -1030,10 +1119,10 @@ namespace RPGv2
         public void InitInv()
         {
             string[] split;
-            foreach(string str in invString.ToArray())
+            foreach (string str in invString.ToArray())
             {
                 split = str.Split(':');
-                switch(split[0])
+                switch (split[0])
                 {
                     case "sword":
                         Inv.Add(new Sword(split[1]));

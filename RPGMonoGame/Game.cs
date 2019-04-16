@@ -28,6 +28,9 @@ namespace RPGv2
             Faction affrieca = new Faction(new Race(1, 10000), "Affrieca");
             affrieca.Pop = 20000;
             hist.Factions.Add(affrieca);
+            GlobalValues.save.player = player;
+            GlobalValues.save.hist = hist;
+            GlobalValues.save.SaveGame();
         }
 
         public static History StartHistory(int years)

@@ -223,25 +223,16 @@ namespace RPGMonoGame
                 {
                     GamePlay.player = new Player(1, 1);
                     State = GameState.StoryText;
-                    GlobalValues.save.player = GamePlay.player;
-                    GlobalValues.save.hist = GamePlay.hist;
-                    GlobalValues.save.SaveGame();
                 }
                 if (classSelectRogue.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
-                    GlobalValues.save.player = GamePlay.player;
-                    GlobalValues.save.hist = GamePlay.hist;
-                    GlobalValues.save.SaveGame();
                 }
                 if (classSelectWarrior.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
-                    GlobalValues.save.player = GamePlay.player;
-                    GlobalValues.save.hist = GamePlay.hist;
-                    GlobalValues.save.SaveGame();
                 }
                 
             }
