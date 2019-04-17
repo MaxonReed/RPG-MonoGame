@@ -1,0 +1,1230 @@
+{
+  "races": [
+    "Elves",
+    "Orcs",
+    "Humans",
+    "Stronnothyes"
+  ],
+  "factions": [
+    {
+      "Name": "UNDERoATH",
+      "Population": 423,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Iron",
+      "Population": 341,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Kiwi Legion ",
+      "Population": 154,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Mexican Border Patrol",
+      "Population": 436,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Two Gruuls One Cup",
+      "Population": 813,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Don  t Laugh At My Giraffe",
+      "Population": 329,
+      "Race": "Elves"
+    },
+    {
+      "Name": "I Left My Wife For Wow",
+      "Population": 993,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Nexus",
+      "Population": 473,
+      "Race": "Elves"
+    },
+    {
+      "Name": "The Guilty Have No Pride",
+      "Population": 303,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Super Mega Ultra Panda Attack Force",
+      "Population": 22,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Reign of the Digital Guild",
+      "Population": 1424,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Twinkle Twinkle Little Horde",
+      "Population": 1415,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Sweeping WAtch",
+      "Population": 218,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Valkaria",
+      "Population": 39,
+      "Race": "Elves"
+    },
+    {
+      "Name": "General Goods Merchant",
+      "Population": 77,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Constant Motion ",
+      "Population": 271,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Winds of Legio Redemption",
+      "Population": 53,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Grand Theft Kodo",
+      "Population": 662,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Gold Plz",
+      "Population": 302,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Gnomish Love Machines",
+      "Population": 260,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Will Dance For Gold",
+      "Population": 212,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Elite Waffle Squad",
+      "Population": 197,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Headless Deer Society",
+      "Population": 154,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Deities",
+      "Population": 1075,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Order Of The Flaming Phoenix ",
+      "Population": 75,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Beta Tested Ur Gf",
+      "Population": 295,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Ice Cream Club",
+      "Population": 30,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Jetpack Ninja Dinosaurs",
+      "Population": 206,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Mercenaries of Vogon Poets Blade",
+      "Population": 437,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Evolved",
+      "Population": 333,
+      "Race": "Elves"
+    },
+    {
+      "Name": "The Cucarachas Guardians",
+      "Population": 708,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Wipes On Trash",
+      "Population": 310,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Dawnlight",
+      "Population": 2705,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "10 Inches Unbuffed",
+      "Population": 672,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Less Qq More Pew Pew",
+      "Population": 1198,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Fus Ro Dah",
+      "Population": 1515,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "And Two Stealthed Rogues",
+      "Population": 798,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Chaotic",
+      "Population": 208,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Catgirl Sparkle Vampires",
+      "Population": 1025,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "The Liberationagainstgnomes",
+      "Population": 18,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Nerds With Sandwiches ",
+      "Population": 257,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Fireblades ",
+      "Population": 977,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "SLAYER",
+      "Population": 1600,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Urgh Urgh Ima Seel",
+      "Population": 257,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Pice Vendor",
+      "Population": 731,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Chicken Mcnubblets",
+      "Population": 172,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Come Honor Face",
+      "Population": 200,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "The Barcode Squad",
+      "Population": 750,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Severed",
+      "Population": 39,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Pirates Of Ballz Deep",
+      "Population": 316,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Karma",
+      "Population": 87,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Channel Four News Team",
+      "Population": 182,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "The Legions of Carpe Sun",
+      "Population": 31,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "The Great",
+      "Population": 557,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Ebony",
+      "Population": 972,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "The Cake Is A Lie  ",
+      "Population": 94,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Straight Outta Gnomeregan",
+      "Population": 409,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Seems Good",
+      "Population": 41,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Noobs Use Mice",
+      "Population": 218,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "At Least We Capped Stables",
+      "Population": 168,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Gruul  s Gone Wild",
+      "Population": 86,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Farms Gold",
+      "Population": 459,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Angels of Royal Geographic Clan",
+      "Population": 73,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Catch Me Glidin Dirty",
+      "Population": 305,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Ban Me",
+      "Population": 532,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "DISCIPLES",
+      "Population": 54,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "AngelBeats",
+      "Population": 13,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Sick My Duck",
+      "Population": 151,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Alliance of Burning Guards",
+      "Population": 42,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Bikini Bottom Barbarians",
+      "Population": 345,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Rez Please",
+      "Population": 225,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Illuminus",
+      "Population": 102,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "She Looked Eighteen",
+      "Population": 41,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Zomg Im In A Guild",
+      "Population": 168,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Redd Alliance ",
+      "Population": 577,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Cult Of The Lobster",
+      "Population": 40,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Pure",
+      "Population": 496,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Noobs Use Keyboards",
+      "Population": 252,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "ACCOLADES",
+      "Population": 334,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Vortex",
+      "Population": 259,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Main City: Humans",
+      "Population": 438002,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Art of Unsung Tide",
+      "Population": 834,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Doesn  t Need You",
+      "Population": 856,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Can I Hav Sum Gold Plx",
+      "Population": 1113,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Gold Farmer",
+      "Population": 792,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Fallen",
+      "Population": 922,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Is Guildless",
+      "Population": 1035,
+      "Race": "Humans"
+    },
+    {
+      "Name": "It Hurts When I Pvp",
+      "Population": 524,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Cenarioncircle Jerk",
+      "Population": 242,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Pet Teh Chicken",
+      "Population": 439,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Aralith",
+      "Population": 1994,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Click To Insert Text",
+      "Population": 819,
+      "Race": "Humans"
+    },
+    {
+      "Name": "FORESWORN",
+      "Population": 566,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Horde League",
+      "Population": 267,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Asian Powerleveler",
+      "Population": 1018,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Sap It Then Tap It",
+      "Population": 373,
+      "Race": "Humans"
+    },
+    {
+      "Name": "War Brothers ",
+      "Population": 696,
+      "Race": "Humans"
+    },
+    {
+      "Name": "My Little Ponies",
+      "Population": 233,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Noobs Enfuego",
+      "Population": 57,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Avalanche",
+      "Population": 145,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Lolliance",
+      "Population": 41,
+      "Race": "Humans"
+    },
+    {
+      "Name": "If Ganked Will Log Main Anddont Make Me Get My Main",
+      "Population": 66,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Immortal Kots",
+      "Population": 592,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Exalted With New England",
+      "Population": 38,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Csi Stormwind",
+      "Population": 299,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Shields of Blazing Heart Darkness",
+      "Population": 1383,
+      "Race": "Humans"
+    },
+    {
+      "Name": "The Nut Hut",
+      "Population": 542,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Two Ocs One Cup",
+      "Population": 265,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Stealthed Suicide",
+      "Population": 224,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Thatched Roof Cottages",
+      "Population": 1238,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Sap It Before You Tap It",
+      "Population": 302,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Eclipse",
+      "Population": 185,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Hogger Raiders Inc",
+      "Population": 683,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Legion of Warcraft Jubei",
+      "Population": 110,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Iron Will ",
+      "Population": 327,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Overward",
+      "Population": 91,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Hardcore Pwnography",
+      "Population": 106,
+      "Race": "Humans"
+    },
+    {
+      "Name": "The Bloodlust",
+      "Population": 140,
+      "Race": "Humans"
+    },
+    {
+      "Name": "I Go A Huge Pvpness",
+      "Population": 224,
+      "Race": "Humans"
+    },
+    {
+      "Name": "I Have Candy Get In The Van",
+      "Population": 208,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Guardians",
+      "Population": 6,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Lionel Ritchie Fan Club",
+      "Population": 75,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Armor Is For Noobs",
+      "Population": 3,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Team Bubblehearth",
+      "Population": 945,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Main City: Stronnothyes",
+      "Population": 250781,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Tank And Spank",
+      "Population": 66,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Scarlet Justice",
+      "Population": 1024,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Vendetta",
+      "Population": 247,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Teh Penguin Mafia",
+      "Population": 1196,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Fat Kids Lag Irl",
+      "Population": 593,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "TOXIN",
+      "Population": 527,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Jfk Was Flagged",
+      "Population": 1038,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Strawberry Banana Fusion",
+      "Population": 1389,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Twilight Errant",
+      "Population": 542,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Exalted With Your Mom",
+      "Population": 76,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Dial M For Murloc",
+      "Population": 541,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Uc Elevator Victims",
+      "Population": 389,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Triade ",
+      "Population": 865,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Keepers",
+      "Population": 552,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Our Servah Bin Laggin",
+      "Population": 580,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Sapped Girls Dont Say No",
+      "Population": 616,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Ur Mom Is My Epic Mount",
+      "Population": 933,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Vanity",
+      "Population": 395,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Blades of the Unforgiven Barbies",
+      "Population": 781,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "The Department of LANe Soul",
+      "Population": 1394,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Your Mom Is My Epic Mount",
+      "Population": 1692,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Stds Are Bop",
+      "Population": 309,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Myth",
+      "Population": 876,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Hispanic Fighters ",
+      "Population": 205,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Hates You",
+      "Population": 293,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Thunderbluff Steakhouse",
+      "Population": 124,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Ten Inches Unbuffed",
+      "Population": 367,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Impulse",
+      "Population": 69,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Bloodbath And Beyond",
+      "Population": 250,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Disciples Of Cloisture",
+      "Population": 528,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Arcadian Lords",
+      "Population": 517,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "I Ebayed",
+      "Population": 249,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Horde Immortal",
+      "Population": 416,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Iridium",
+      "Population": 397,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Leather Gear Solid",
+      "Population": 110,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Time Lords ",
+      "Population": 1595,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Out of Lord Lothars Guard",
+      "Population": 593,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Sunken Temple Pilots",
+      "Population": 403,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Korat",
+      "Population": 600,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Pvpness",
+      "Population": 459,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "More Hks Than Hitler",
+      "Population": 1230,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "You Don  t Know Karate",
+      "Population": 163,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Miasmador",
+      "Population": 337,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Lowercase Gs Gnome Guild",
+      "Population": 41,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Lords of the Unholy Brothers",
+      "Population": 362,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Judegement Of Justice",
+      "Population": 1288,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Im A Cop You Idiot",
+      "Population": 184,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Aman Shot",
+      "Population": 173,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "I Haerd U Liek Mudkipz",
+      "Population": 104,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Chosen Civil Defenders ",
+      "Population": 41,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Lords of Spinal Treachery",
+      "Population": 68,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Just Gave You Rabies",
+      "Population": 222,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Scholomance Chess Team",
+      "Population": 326,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Nova",
+      "Population": 173,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Buds Til Disband",
+      "Population": 21,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "We  re Pissing All Over You",
+      "Population": 403,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "LASTSTAND",
+      "Population": 152,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Read Books Not Guildnames",
+      "Population": 276,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Backdoor Bandits",
+      "Population": 630,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Krag",
+      "Population": 1476,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "My Lil Pwny",
+      "Population": 318,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Cyclone Explorers",
+      "Population": 261,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "DEFIANT",
+      "Population": 31,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Hangin   With My Gnomies",
+      "Population": 182,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "C A R E P O L I C E",
+      "Population": 67,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Viligance",
+      "Population": 413,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Wandering Lost Souls ",
+      "Population": 243,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "I Have A Heart On",
+      "Population": 130,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "For Your Health",
+      "Population": 72,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Stds Are Bops",
+      "Population": 129,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "The Empire of Mithril Minions",
+      "Population": 4,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Resistance",
+      "Population": 131,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Nightmare On Elf Street",
+      "Population": 297,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Death Wrath",
+      "Population": 8,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Revolution",
+      "Population": 303,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "White And Nerdy",
+      "Population": 492,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Shadow Vengeance",
+      "Population": 288,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Morrissey Eats Kittens",
+      "Population": 66,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Kamikaze Penguins",
+      "Population": 163,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Omgflammingkittenlollollol",
+      "Population": 103,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Jesus   Was Soulstoned",
+      "Population": 373,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Neocrypt",
+      "Population": 248,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Men In Tights",
+      "Population": 252,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Gnomosexual",
+      "Population": 145,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Rofles And Pwncake",
+      "Population": 130,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Turmoil",
+      "Population": 102,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Champions of Y Town Army",
+      "Population": 145,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "The Flame",
+      "Population": 29,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Punishers Of Uranus",
+      "Population": 206,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Myspacebarisbroken",
+      "Population": 383,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Whack A Gnome",
+      "Population": 204,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Wintersong",
+      "Population": 231,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Mommythetrolltouchedme",
+      "Population": 77,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Swordattackklangklang",
+      "Population": 73,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Spank My Kodo",
+      "Population": 248,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "United Alcoholic Pirates",
+      "Population": 96,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Anthemic",
+      "Population": 41,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Lfg Kara Doh Bg Popped",
+      "Population": 69,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Armageddon ",
+      "Population": 102,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Don  t Laugh At My Giraffe",
+      "Population": 991,
+      "Race": "Elves"
+    },
+    {
+      "Name": "The Guilty Have No Pride",
+      "Population": 18792,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Punishers Of Uranus",
+      "Population": 554,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Crimson Painsmith",
+      "Population": 36,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Immortal Kots",
+      "Population": 36,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Hamsandwiches Guild",
+      "Population": 307,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "The Sponge Bob Clan",
+      "Population": 44,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Sap It Before You Tap It",
+      "Population": 48,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Grim",
+      "Population": 124,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Beep Beep I  m A Jeep",
+      "Population": 43,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Originais ",
+      "Population": 231,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Originais ",
+      "Population": 33,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Buds Til Disband",
+      "Population": 264,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Lolbster",
+      "Population": 2,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Delta",
+      "Population": 108,
+      "Race": "Humans"
+    },
+    {
+      "Name": "Gods of Legionarios De Blade",
+      "Population": 198,
+      "Race": "Orcs"
+    },
+    {
+      "Name": "Champions of Y Town Army",
+      "Population": 23,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Constant Motion ",
+      "Population": 14,
+      "Race": "Elves"
+    },
+    {
+      "Name": "Slaystation",
+      "Population": 136,
+      "Race": "Stronnothyes"
+    },
+    {
+      "Name": "Affrieca",
+      "Population": 20000,
+      "Race": "Orcs"
+    }
+  ]
+}

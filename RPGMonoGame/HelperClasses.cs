@@ -197,6 +197,8 @@ namespace RPGv2
         }
     }
 
+   
+
     public class Save
     {
         public History hist = new History();
@@ -215,43 +217,8 @@ namespace RPGv2
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(this, Formatting.Indented, new KeysJsonConverter(typeof(RPGv2.Save)));
-                    JObject obj = JObject.Parse(json);
-                    JObject histObj = (JObject)obj["hist"];
-                    string histStr = histObj.ToString();
-                    StreamWriter stw = new StreamWriter(histStr);
-
-                    using (JsonWriter writ = new JsonTextWriter(stw))
-                    {
-                        writ.Formatting = Formatting.Indented;
-
-                        writ.WriteStartObject();
-                        writ.WritePropertyName("races");
-                        writ.WriteStartArray();
-                        foreach(Race r in hist.Races)
-                        {
-                            writ.WriteValue(r.Name);
-                        }
-                        writ.WriteEnd();
-                        writ.WritePropertyName("factions");
-                        writ.WriteStartArray();
-                        foreach(Faction f in hist.Factions)
-                        {
-                            writ.WritePropertyName(f.Name);
-                            writ.WriteStartArray();
-                            writ.WritePropertyName("Population");
-                            writ.WriteValue(f.Pop);
-                            writ.WritePropertyName("Race");
-                            writ.WriteValue(f.Race.Name);
-                            writ.WriteEnd();
-
-                        }
-                        writ.WriteEnd();
-                        writ.WriteEndObject();
-                    }
-                    histObj = JObject.Parse(histStr);
-                    obj["hist"] = histObj;
-                    sw.WriteLine(obj.ToString());
+                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races }, Formatting.Indented);
+                    sw.Write(json);
                 }
             }
         }
@@ -971,6 +938,8 @@ namespace RPGv2
         public string Type { get => type; set => type = value; }
     }
 
+
+
     public class Faction
     {
         string name;
@@ -1016,11 +985,20 @@ namespace RPGv2
     {
         List<Race> races = new List<Race>();
         List<Faction> factions = new List<Faction>();
+        List<List<HistoricalEvent>> hEvents = new List<List<HistoricalEvent>>();
         Map map;
 
         internal List<Race> Races { get => races; set => races = value; }
         internal List<Faction> Factions { get => factions; set => factions = value; }
         internal Map Map { get => map; set => map = value; }
+        List<List<HistoricalEvent>> HEvents
+        {
+            get
+            {
+                string[] names;
+                string[] vals;
+            }
+        }
     }
 
     public class Player
