@@ -19,6 +19,7 @@
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/File.spritefont</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Fiv.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/For.png</File>
+    <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/LoadGame.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/MagicButton.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/MagicButtonHover.png</File>
     <File>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Nine.png</File>
@@ -53,6 +54,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>StartButtonFont.spritefont</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

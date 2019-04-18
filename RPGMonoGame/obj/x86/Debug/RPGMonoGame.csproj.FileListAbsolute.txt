@@ -88,3 +88,4 @@ C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Conte
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\MagicButtonHover.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\SkillsButton.xnb
 C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\SkillsButtonHover.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\LoadGame.xnb

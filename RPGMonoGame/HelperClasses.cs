@@ -211,9 +211,11 @@ namespace RPGv2
 
         public void SaveGame()
         {
+            Debug.WriteLine("Saving game...");
+            player = GamePlay.player;
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamWriter sw = new StreamWriter(@"Dependencies\saveDefault.json"))
+            using (StreamWriter sw = new StreamWriter(@"Dependencies\save.json"))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
@@ -225,7 +227,9 @@ namespace RPGv2
 
         public void LoadGame()
         {
-            GlobalValues.save = JsonConvert.DeserializeObject<Save>("Dependencies\\save.json");
+            GlobalValues.save = JsonConvert.DeserializeObject<Save>(File.ReadAllText(@"Dependencies\save.json"));
+            foreach (Faction f in hist.Factions)
+                Debug.WriteLine(f.Name);
         }
     }
 
@@ -944,6 +948,7 @@ namespace RPGv2
     {
         string name;
         Race race;
+        string raceName;
         int pop = 0;
         double popSeverity;
         List<string> advances = new List<string>();
@@ -959,6 +964,7 @@ namespace RPGv2
         public List<string> Advances { get => advances; set => advances = value; }
         public double PopSeverity { get => popSeverity; set => popSeverity = value; }
         internal PointClass Loc { get => loc; set => loc = value; }
+        public string RaceName { get => race.Name; }
 
         public Faction(Race r, string n)
         {
@@ -985,20 +991,11 @@ namespace RPGv2
     {
         List<Race> races = new List<Race>();
         List<Faction> factions = new List<Faction>();
-        List<List<HistoricalEvent>> hEvents = new List<List<HistoricalEvent>>();
         Map map;
 
         internal List<Race> Races { get => races; set => races = value; }
         internal List<Faction> Factions { get => factions; set => factions = value; }
         internal Map Map { get => map; set => map = value; }
-        List<List<HistoricalEvent>> HEvents
-        {
-            get
-            {
-                string[] names;
-                string[] vals;
-            }
-        }
     }
 
     public class Player

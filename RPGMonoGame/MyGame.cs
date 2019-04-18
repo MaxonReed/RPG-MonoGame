@@ -8,6 +8,7 @@ using MonoGame.Extended;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using RPGv2;
+using System.Threading;
 
 namespace RPGMonoGame
 {
@@ -21,9 +22,12 @@ namespace RPGMonoGame
         private SpriteFont arialFont;
         MouseState mouseState = Mouse.GetState();
         MouseState prevState;
+        bool saveEnabled = false;
+        Stopwatch timer = new Stopwatch();
         #region MainMenuAssets
         Sprite mainMenuButton;
         Sprite quitButton;
+        Sprite loadGame;
         #endregion
         #region initWorldAssets
         Sprite one;
@@ -113,6 +117,7 @@ namespace RPGMonoGame
             graphics.PreferredBackBufferHeight = 500;
             graphics.ApplyChanges();
             this.IsMouseVisible = true;
+            timer.Start();
             base.Initialize();
         }
         /// <summary>
@@ -125,10 +130,11 @@ namespace RPGMonoGame
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
             storyFont = Content.Load<SpriteFont>("Story");
             storyFontI = Content.Load<SpriteFont>("StoryItalics");
-            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("StartButton").Height / 2);
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("StartButton").Height / 2 - 70);
             mainMenuButton = new Sprite(Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("QuitButton").Height / 2);
             quitButton = new Sprite(Content.Load<Texture2D>("QuitButton"), coor);
+            loadGame = new Sprite(Content.Load<Texture2D>("LoadGame"), new Vector2(mainMenuButton.Position.X, mainMenuButton.Position.Y + 140));
             one = new Sprite(Content.Load<Texture2D>("One"), new Vector2(100, 100));
             two = new Sprite(Content.Load<Texture2D>("Two"), new Vector2(210, 100));
             thr = new Sprite(Content.Load<Texture2D>("Thr"), new Vector2(320, 100));
@@ -166,6 +172,7 @@ namespace RPGMonoGame
             defHover2 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(300, 350));
             defHover3 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(500, 350));
             defHover4 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(700, 350));
+
             //290 width
         }
 
@@ -187,6 +194,12 @@ namespace RPGMonoGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            if (timer.ElapsedMilliseconds >= 5000)
+            {
+                timer.Restart();
+                if (saveEnabled)
+                    GlobalValues.save.SaveGame();
+            }
             base.Update(gameTime);
             switch (State)
             {
@@ -223,19 +236,19 @@ namespace RPGMonoGame
                 {
                     GamePlay.player = new Player(1, 1);
                     State = GameState.StoryText;
-                    GlobalValues.save.SaveGame();
+                    saveEnabled = true;
                 }
                 if (classSelectRogue.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
-                    GlobalValues.save.SaveGame();
+                    saveEnabled = true;
                 }
                 if (classSelectWarrior.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
-                    GlobalValues.save.SaveGame();
+                    saveEnabled = true;
                 }
 
             }
@@ -250,6 +263,11 @@ namespace RPGMonoGame
                 {
                     graphics.GraphicsDevice.Clear(Color.White);
                     State = GameState.StartPage;
+                }
+                if (loadGame.Contains(mousePoint))
+                {
+                    GlobalValues.save.LoadGame();
+                    State = GameState.StoryText;
                 }
             }
         }
@@ -409,6 +427,7 @@ namespace RPGMonoGame
         {
             spriteBatch.Begin();
             mainMenuButton.Draw(spriteBatch, gameTime);
+            loadGame.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
         void DrawStartPage(GameTime gameTime)
@@ -564,7 +583,6 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-                    Debug.WriteLine(Battle.turn);
                     if (clickedRun)
                     {
                         graphics.GraphicsDevice.Clear(Color.Blue);
