@@ -28,5 +28,26 @@ I won...
 I have no idea where I am so I believe it will be best to settle down.
 
 [3]
+:req 3 gangsters dead:
+Toto: "I've been hearing of a big chedda?"
+*Big chedda that's an odd name for a gangster
+Gangster: "I-I ain't never heard of a B-big chedda..."
+?: Who's lookin' for big chedda!
+Gangster: "It's the boss oh shi-"
+Toto: "I'm looking for big chedda..."
+*A big guy just walks out from the corner with a massive cigar
+Big Chedda: "And I suppose you're from a diffrent Gang?"
+*Diffrent gang?
+Big Chedda: "You see kid..."
+Big Chedda: "I own all the gangs"
+*This is my chance to remove such scum off the face of this planet
+*I can't back down
+|battle:id=bigboyBattle
+*I look into his souless eyes before I leave
+Toto: "Big boy down"
+*He was most likely the hardest foe I've ever faced
+*But he will seem easy compared to what is ahead
 
+[4]
 
+			

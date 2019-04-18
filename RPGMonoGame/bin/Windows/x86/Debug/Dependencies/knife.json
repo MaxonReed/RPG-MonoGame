@@ -39,7 +39,7 @@
     "Attr": "None"
   },
   {
-    "Name": "SharkTooth Knife",
+    "Name": "Shark Tooth Knife",
     "Attack": 10,
     "Defense": 3,
     "Buy Price": 75,
@@ -72,7 +72,7 @@
     "Buy Price": 220,
     "Sell Price": 95,
     "Rarity Level": 40,
-    "Attr": "CounterMagic||Dexterity"//CounterMagic: Deal damage as M Dmg || Dexterity: add evade stat to dmg when calculating damage
+    "Attr": "CounterMagic|Dexterity"//CounterMagic: Deal damage as M Dmg || Dexterity: add evade stat to dmg when calculating damage
   },
   {
     "Name": "Scarab of the Pharaoh",
@@ -81,7 +81,7 @@
     "Buy Price": 130,
     "Sell Price": 60,
     "Rarity Level": 75,
-    "Attr": "Infect||Dexterity"
+    "Attr": "Infect|Dexterity"
   },
   {
     "Name": "Gold Dagger",
@@ -109,5 +109,5 @@
     "Sell Price": 100,
     "Rarity Level": 22,
     "Attr": "Freeze"
-  },
+  }
 ]

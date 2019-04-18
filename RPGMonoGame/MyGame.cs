@@ -198,7 +198,11 @@ namespace RPGMonoGame
             {
                 timer.Restart();
                 if (saveEnabled)
+                {
+                    Battle.GetVals(GlobalValues.battleJson);
+                    GlobalValues.GetVals();
                     GlobalValues.save.SaveGame();
+                }
             }
             base.Update(gameTime);
             switch (State)
@@ -549,7 +553,6 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-            string fightText = "";
             graphics.GraphicsDevice.Clear(Color.Red);
 
 
@@ -559,17 +562,21 @@ namespace RPGMonoGame
                 case "firstBattle":
                     if (Battle.round == -1)
                     {
-                        fightText = "You dare fight me fool?!";
-                        Battle.e = new Enemy("Unknown StartGame");
-                        Battle.p = new Player(GamePlay.player);
-                        Battle.enemyHP = Battle.e.Health;
-                        Battle.playerHP = Battle.p.Health;
-                        Battle.turn = Battle.p.Speed > Battle.e.Speed;
+                        Debug.WriteLine("hello world");
+                        Battle.fightText = "You dare fight me fool?!";
+                        Battle.enemy = new Enemy("Unknown StartGame");
+                        Debug.WriteLine(Battle.enemy.Name);
+                        Battle.player = new Player(GamePlay.player);
+                        Battle.enemyHP = Battle.enemy.Health;
+                        Battle.playerHP = Battle.player.Health;
+                        Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         if (!Battle.turn)
                         {
                             damageEnemy = Battle.RegularAttack();
                             GlobalValues.battleState = "damageDealt";
                         }
+                        Battle.SetVals(GlobalValues.battleJson);
+                        Battle.round++;
                     }
                     break;
                 default:
@@ -579,7 +586,7 @@ namespace RPGMonoGame
             {
                 case "prologue":
                     textBox.Draw(spriteBatch, gameTime);
-                    spriteBatch.DrawString(storyFont, fightText, new Vector2(110, 319), Color.Black);
+                    spriteBatch.DrawString(storyFont, Battle.fightText, new Vector2(110, 319), Color.Black);
                     break;
                 case "battle":
                     #region battleCase
@@ -690,19 +697,19 @@ namespace RPGMonoGame
                     {
                         if (dispPlayerDamage)
                         {
-                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.e.Name + ".", new Vector2(110, 319), Color.Black);
+                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
                         }
                         else
                         {
-                            spriteBatch.DrawString(storyFont, Battle.e.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                            spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                         }
                     }
                     else
                     {
-                        spriteBatch.DrawString(storyFont, Battle.e.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
+                        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
                     }
-                    Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.e.Health}");
-                    Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.p.Health}");
+                    Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.enemy.Health}");
+                    Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.player.Health}");
                     break;
                 default:
                     break;

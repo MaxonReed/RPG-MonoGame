@@ -12,6 +12,7 @@ namespace RPGv2
 {
     internal class HelperClasses
     {
+        public static GlobalValues gv = new GlobalValues();
         [STAThread]
         public static void MainProgram()
         {
@@ -219,7 +220,7 @@ namespace RPGv2
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues = new GlobalValues() }, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
                     sw.Write(json);
                 }
             }
@@ -231,7 +232,12 @@ namespace RPGv2
             player = JsonConvert.DeserializeObject<Player>(obj["player"].ToString());
             hist.Factions = JsonConvert.DeserializeObject<List<Faction>>(obj["Factions"].ToString());
             hist.Races = JsonConvert.DeserializeObject<List<Race>>(obj["Races"].ToString());
-            Debug.WriteLine(player.Class);
+            GlobalValues.jsonVals = JsonConvert.DeserializeObject<JsonValues>(obj["jsonVals"].ToString());
+            Story.enemyFaction = JsonConvert.DeserializeObject<Faction>(obj["enemyFaction"].ToString());
+            GlobalValues.battleJson = JsonConvert.DeserializeObject<BattleJson>(obj["battleJson"].ToString());
+            GlobalValues.SetVals(GlobalValues.jsonVals);
+            Battle.SetVals(GlobalValues.battleJson);
+            Debug.WriteLine(player.Health);
         }
     }
 
@@ -251,7 +257,7 @@ namespace RPGv2
     public class Story
     {
         public static int MaxIndex { get; set; }
-        public static Faction enemyFaction;
+        public static Faction enemyFaction ;
 
         public static List<string> GetScene(int index)
         {
@@ -343,17 +349,46 @@ namespace RPGv2
         }
     }
 
+    public class BattleJson
+    {
+        public Enemy enemy = new Enemy();
+        public Player player = GamePlay.player;
+        public int playerHP = 0;
+        public int enemyHP = 0;
+        public bool turn = false;
+        public int round = -1;
+        public int outcome = -1;
+        public string fightText = "";
+
+        public BattleJson()
+        {
+
+        }
+
+        [JsonConstructor] public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText)
+        {
+            enemy = jEnemy;
+            player = jPlayer;
+            playerHP = jPlayerHP;
+            enemyHP = jEnemyHP;
+            turn = jTurn;
+            round = jRound;
+            outcome = jOutcome;
+            fightText = jFightText;
+        }
+
+    }
+
     public class Battle
     {
-        public static Enemy e = new Enemy();
-        public static Player p = GamePlay.player;
+        public static Enemy enemy = new Enemy();
+        public static Player player = GamePlay.player;
         public static int playerHP = 0;
         public static int enemyHP = 0;
         public static bool turn = false;
         public static int round = -1;
         public static int outcome = -1;
-
-
+        public static string fightText = "";
         /*
         case 0:
              name = "None";
@@ -372,6 +407,30 @@ namespace RPGv2
              break;
         */
 
+        public static void GetVals(BattleJson battleJson)
+        {
+            enemy = battleJson.enemy;
+            player = battleJson.player;
+            playerHP = battleJson.playerHP;
+            enemyHP = battleJson.enemyHP;
+            turn = battleJson.turn;
+            round = battleJson.round;
+            outcome = battleJson.outcome;
+            fightText = battleJson.fightText;
+        }
+
+        public static void SetVals(BattleJson battleJson)
+        {
+            battleJson.enemy = enemy;
+            battleJson.player = player;
+            battleJson.playerHP = playerHP;
+            battleJson.enemyHP = enemyHP;
+            battleJson.turn = turn;
+            battleJson.round = round;
+            battleJson.outcome = outcome;
+            battleJson.fightText = fightText;
+        }
+
         public static void HandleAttr()
         {
 
@@ -386,25 +445,25 @@ namespace RPGv2
                     break;
                 case 1:
                     //Fire ball
-                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, Convert.ToInt32(p.MAtk * 1.5)) - HelperClasses.RandomNumber(0, e.Defense));
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, Convert.ToInt32(player.MAtk * 1.5)) - HelperClasses.RandomNumber(0, enemy.Defense));
                     if (damage < 0)
                         damage = 0;
                     enemyHP -= damage;
                     break;
                 case 2:
                     //Hide
-                    p.Evasion *= 2.3;
+                    player.Evasion *= 2.3;
                     break;
                 case 3:
                     //Hard hit
-                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, p.Attack) - HelperClasses.RandomNumber(0, e.Defense));
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
                     if (damage < 0)
                         damage = 0;
                     enemyHP -= Convert.ToInt32(damage * 1.5);
                     break;
                 case 4:
                     //Gloss
-                    p.Speed = Convert.ToInt32(p.Speed * 1.2);
+                    player.Speed = Convert.ToInt32(player.Speed * 1.2);
                     break;
                 default:
                     break;
@@ -418,14 +477,14 @@ namespace RPGv2
             int damage = 0;
             if (turn)
             {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, p.Attack) - HelperClasses.RandomNumber(0, e.Defense));
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
                 if (damage < 0)
                     damage = 0;
                 enemyHP -= damage;
             }
             else
             {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, e.Attack) - HelperClasses.RandomNumber(0, p.Defense));
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
                 if (damage < 0)
                     damage = 0;
                 playerHP -= damage;
@@ -440,8 +499,8 @@ namespace RPGv2
 
         public static void BattleFinish(bool winner)
         {
-            e = new Enemy();
-            p = GamePlay.player;
+            enemy = new Enemy();
+            player = GamePlay.player;
             playerHP = 0;
             enemyHP = 0;
             turn = false;
@@ -485,6 +544,48 @@ namespace RPGv2
         }
     }
 
+
+    public class JsonValues
+    {
+        public int inp = -1;
+        public string inpText = "";
+        public string yearNum = "";
+        public string facCreate = "";
+        public string facDestroyed = "";
+        public string eventName = "";
+        public string battleID = "null";
+        public string battleState = "prologue";
+        public bool startGen = false;
+        public bool done = false;
+        public string[] strArray;
+        public int storyIndex = 0;
+        public int storyState = 0;
+
+        public JsonValues()
+        {
+
+        }
+
+        [JsonConstructor] public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID, 
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState)
+        {
+            inp = jInp;
+            inpText = jInpText;
+            yearNum = jYearNum;
+            facCreate = jFacCreate;
+            facDestroyed = jFacDestroyed;
+            eventName = jEventName;
+            battleID = jBattleID;
+            battleState = jBattleState;
+            startGen = jStartGen;
+            done = jDone;
+            strArray = jStrArray;
+            storyIndex = jStoryIndex;
+            storyState = jStoryState;
+        }
+    }
+
+
     public class GlobalValues
     {
         public static int inp = -1;
@@ -501,10 +602,41 @@ namespace RPGv2
         public static int storyIndex = 0;
         public static int storyState = 0;
         public static Save save = new Save();
+        public static JsonValues jsonVals = new JsonValues();
+        public static BattleJson battleJson = new BattleJson();
 
-        public GlobalValues()
+        public static void SetVals(JsonValues jVals)
         {
+            inp = jVals.inp;
+            inpText = jVals.inpText;
+            yearNum = jVals.yearNum;
+            facCreate = jVals.facCreate;
+            facDestroyed = jVals.facDestroyed;
+            eventName = jVals.eventName;
+            battleID = jVals.battleID;
+            battleState = jVals.battleState;
+            startGen = jVals.startGen;
+            done = jVals.done;
+            strArray = jVals.strArray;
+            storyIndex = jVals.storyIndex;
+            storyState = jVals.storyState;
+        }
 
+        public static void GetVals()
+        {
+            jsonVals.inp = inp;
+            jsonVals.inpText = inpText;
+            jsonVals.yearNum = yearNum;
+            jsonVals.facCreate = facCreate;
+            jsonVals.facDestroyed = facDestroyed;
+            jsonVals.eventName = eventName;
+            jsonVals.battleID = battleID;
+            jsonVals.battleState = battleState;
+            jsonVals.startGen = startGen;
+            jsonVals.done = done;
+            jsonVals.strArray = strArray;
+            jsonVals.storyIndex = storyIndex;
+            jsonVals.storyState = storyState;
         }
 
         public static int Inp
