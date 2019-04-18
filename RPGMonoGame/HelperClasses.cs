@@ -197,7 +197,7 @@ namespace RPGv2
         }
     }
 
-   
+
 
     public class Save
     {
@@ -219,7 +219,7 @@ namespace RPGv2
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races }, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues = new GlobalValues() }, Formatting.Indented);
                     sw.Write(json);
                 }
             }
@@ -227,53 +227,11 @@ namespace RPGv2
 
         public void LoadGame()
         {
-            GlobalValues.save = JsonConvert.DeserializeObject<Save>(File.ReadAllText(@"Dependencies\save.json"));
-            foreach (Faction f in hist.Factions)
-                Debug.WriteLine(f.Name);
-        }
-    }
-
-    public class KeysJsonConverter : JsonConverter
-    {
-        private readonly Type[] _types;
-
-        public KeysJsonConverter(params Type[] types)
-        {
-            _types = types;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            JToken t = JToken.FromObject(value);
-
-            if (t.Type != JTokenType.Object)
-            {
-                t.WriteTo(writer);
-            }
-            else
-            {
-                JObject o = (JObject)t;
-                IList<string> propertyNames = o.Properties().Select(p => p.Name).ToList();
-
-                o.AddFirst(new JProperty("Keys", new JArray(propertyNames)));
-
-                o.WriteTo(writer);
-            }
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            throw new NotImplementedException("Unnecessary because CanRead is false. The type will skip the converter.");
-        }
-
-        public override bool CanRead
-        {
-            get { return false; }
-        }
-
-        public override bool CanConvert(Type objectType)
-        {
-            return _types.Any(t => t == objectType);
+            JObject obj = JObject.Parse(File.ReadAllText(@"Dependencies\save.json"));
+            player = JsonConvert.DeserializeObject<Player>(obj["player"].ToString());
+            hist.Factions = JsonConvert.DeserializeObject<List<Faction>>(obj["Factions"].ToString());
+            hist.Races = JsonConvert.DeserializeObject<List<Race>>(obj["Races"].ToString());
+            Debug.WriteLine(player.Class);
         }
     }
 
@@ -543,8 +501,11 @@ namespace RPGv2
         public static int storyIndex = 0;
         public static int storyState = 0;
         public static Save save = new Save();
-        public static KeysJsonConverter conv = new KeysJsonConverter();
 
+        public GlobalValues()
+        {
+
+        }
 
         public static int Inp
         {
@@ -706,6 +667,11 @@ namespace RPGv2
         int pop;
 
         public string Name { get => name; set => name = value; }
+
+        [JsonConstructor] public Race(string Name)
+        {
+            this.Name = Name;
+        }
 
         public Race(int index, int p)
         {
@@ -906,22 +872,22 @@ namespace RPGv2
     }
     class HistoricalEvent
     {
-        string name;
-        int year;
+        string nameEvent;
+        int yearEvent;
 
-        public HistoricalEvent(string n, int y)
+        public HistoricalEvent(string name, int year)
         {
-            Name = n;
-            Year = y;
+            Name = name;
+            Year = year;
         }
 
         public override string ToString()
         {
-            return String.Format("{0}\nYear: {1}", name, year);
+            return String.Format("{0}\nYear: {1}", nameEvent, yearEvent);
         }
 
-        public string Name { get => name; set => name = value; }
-        public int Year { get => year; set => year = value; }
+        public string Name { get => nameEvent; set => nameEvent = value; }
+        public int Year { get => yearEvent; set => yearEvent = value; }
     }
     class PointClass
     {
@@ -959,12 +925,23 @@ namespace RPGv2
         public int Pop { get => pop; set => pop = value; }
         internal Race Race { get => race; set => race = value; }
         public string Name { get => name; set => name = value; }
-        internal List<HistoricalEvent> HistoricalEvents { get => historicalEvents; set => historicalEvents = value; }
+        internal List<HistoricalEvent> HistoricalEvents
+        {
+            get => historicalEvents;
+            set => historicalEvents = value;
+        }
         internal List<War> Wars { get => wars; set => wars = value; }
         public List<string> Advances { get => advances; set => advances = value; }
         public double PopSeverity { get => popSeverity; set => popSeverity = value; }
         internal PointClass Loc { get => loc; set => loc = value; }
-        public string RaceName { get => race.Name; }
+
+        [JsonConstructor] public Faction(int Pop, string Name, string[] Advances,double PopSeverity)
+        {
+            this.Pop = Pop;
+            this.Name = Name;
+            this.PopSeverity = PopSeverity;
+            this.Advances = Advances.ToList<string>();
+        }
 
         public Faction(Race r, string n)
         {
@@ -1011,10 +988,12 @@ namespace RPGv2
         public double Luck { get; set; }
         public double Evasion { get; set; }
         public int Speed { get; set; }
+        public int Level { get; set; }
+        public int Exp { get; set; }
         public List<string> invString;
-        public List<Item> Inv { get; set; }
+        [JsonIgnore] public List<Item> Inv { get; set; }
         public List<string> equipString;
-        public List<Item> Equip { get; set; }
+        [JsonIgnore] public List<Item> Equip { get; set; }
         public List<int> Special { get; set; }
 
         /*

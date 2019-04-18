@@ -1,0 +1,113 @@
+[
+  /*
+  Add attributes (Attr)
+  */
+  {
+    "Name": "None",
+    "Attack": 0,
+    "Defense": 0,
+    "Buy Price": 0,
+    "Sell Price": 0,
+    "Rarity Level": 10000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Bronze Dagger",
+    "Attack": 3,
+    "Defense": 2,
+    "Buy Price": 10,
+    "Sell Price": 5,
+    "Rarity Level": 580,
+    "Attr": "None"
+  },
+  {
+    "Name": "Iron Dagger",
+    "Attack": 4,
+    "Defense": 2,
+    "Buy Price": 25,
+    "Sell Price": 10,
+    "Rarity Level": 475,
+    "Attr": "None"
+  },
+  {
+    "Name": "Silver Dagger",
+    "Attack": 6,
+    "Defense": 4,
+    "Buy Price": 50,
+    "Sell Price": 25,
+    "Rarity Level": 300,
+    "Attr": "None"
+  },
+  {
+    "Name": "Shark Tooth Knife",
+    "Attack": 10,
+    "Defense": 3,
+    "Buy Price": 75,
+    "Sell Price": 35,
+    "Rarity Level": 180,
+    "Attr": "Bloodthirsty"//Your opponent loses 5 Defense you lose 1 Defense per turn
+  },
+  {
+    "Name": "Infectious Stinger",
+    "Attack": 13,
+    "Defense": 4,
+    "Buy Price": 100,
+    "Sell Price": 50,
+    "Rarity Level": 110,
+    "Attr": "Infect"//Deal double damage to people with lower defense than the player
+  },
+  {
+    "Name": "Medusa's Dagger",
+    "Attack": 14,
+    "Defense": 4,
+    "Buy Price": 115,
+    "Sell Price": 55,
+    "Rarity Level": 100,
+    "Attr": "Freeze"
+  },
+  {
+    "Name": "GunBlade",
+    "Attack": 20,
+    "Defense": 7,
+    "Buy Price": 220,
+    "Sell Price": 95,
+    "Rarity Level": 40,
+    "Attr": "CounterMagic|Dexterity"//CounterMagic: Deal damage as M Dmg || Dexterity: add evade stat to dmg when calculating damage
+  },
+  {
+    "Name": "Scarab of the Pharaoh",
+    "Attack": 15,
+    "Defense": 6,
+    "Buy Price": 130,
+    "Sell Price": 60,
+    "Rarity Level": 75,
+    "Attr": "Infect|Dexterity"
+  },
+  {
+    "Name": "Gold Dagger",
+    "Attack": 15,
+    "Defense": 5,
+    "Buy Price": 100,
+    "Sell Price": 50,
+    "Rarity Level": 150,
+    "Attr": "None"
+  },
+  {
+    "Name": "Force of Will",
+    "Attack": 65,
+    "Defense": 1,
+    "Buy Price": 500,
+    "Sell Price": 250,
+    "Rarity Level": 14,
+    "Attr": "ForceOfWill"//You are immune to magic attacks for the first 5 turns
+  },
+  {
+    "Name": "Frost Dagger",
+    "Attack": 45,
+    "Defense": 2,
+    "Buy Price": 310,
+    "Sell Price": 100,
+    "Rarity Level": 22,
+    "Attr": "Freeze"
+  }
+]

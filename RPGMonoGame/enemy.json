@@ -1,0 +1,132 @@
+[
+  {
+    "Id": "Unknown StartGame",
+    "Health": 110,
+    "Name": "?",
+    "Attack": 6,
+    "Defense": 3,
+    "MDef": 3,
+    "Speed": 4,
+	"EnRate": 0
+  },
+  {
+    "Id": "Rngen",//Random encounter
+    "Health": 30,
+    "Name": "Big Crow",
+    "Attack": 1,
+    "Defense": 1,
+    "MDef": 1,
+    "Speed": 4,
+	"EnRate": 100000
+  },
+  {
+    "Id": "Rngen",
+    "Health": 45,
+    "Name": "Bear",
+    "Attack": 8,
+    "Defense": 3,
+    "MDef": 3,
+    "Speed": 3,
+	"EnRate": 100000
+  },
+  {
+    "Id": "Rngen",
+    "Health": 65,
+    "Name": "Scavenger",
+    "Attack": 5,
+    "Defense": 4,
+    "MDef": 2,
+    "Speed": 1,
+	"EnRate": 99999
+  },
+  {
+    "Id": "Rngen",
+    "Health": 110,
+    "Name": "Lunatic",
+    "Attack": 10,
+    "Defense": 3,
+    "MDef": 7,
+    "Speed": 7,
+	"EnRate": 99900
+  },
+  {
+    "Id": "Rngen",
+    "Health": 1,
+    "Name": "Shadow Creep",
+    "Attack": 20,
+    "Defense": 20,
+    "MDef": 20,
+    "Speed": 20,
+	"EnRate": 10
+  },
+  {
+    "Id": "Rngen",
+    "Health": 120,
+    "Name": "Gangster",
+    "Attack": 17,
+    "Defense": 1,
+    "MDef": 4,
+    "Speed": 7,
+	"EnRate": 99788
+  },
+  {
+    "Id": "Rngen",
+    "Health": 100,
+    "Name": "Magic Archer",
+    "Attack": 10,
+    "Defense": 1,
+    "MDef": 25,
+    "Speed": 30,
+	"EnRate": 99566
+  },
+  {
+    "Id": "Seten MiniBoss",//set encounter and a mini boss
+    "Health": 300,
+    "Name": "High Orc",
+    "Attack": 37,
+    "Defense": 4,
+    "MDef": 20,
+    "Speed": 2,
+	"EnRate": 0
+  },
+  {
+    "Id": "Rngen",
+    "Health": 150,
+    "Name": "Orc",
+    "Attack": 27,
+    "Defense": 2,
+    "MDef": 10,
+    "Speed": 1,
+	"EnRate": 99444
+  },
+  {
+    "Id": "Rngen MiniBoss",//Random encounter and a mini boss
+    "Health": 50,
+    "Name": "MadMan",
+    "Attack": 50,
+    "Defense": 5,
+    "MDef": 0,
+    "Speed": 25,
+	"EnRate": 444
+  },
+  {
+    "Id": "Rngen",
+    "Health": 120,
+    "Name": "SwordMaster",
+    "Attack": 20,
+    "Defense": 6,
+    "MDef": 4,
+    "Speed": 7,
+	"EnRate": 99400
+  },
+  {
+    "Id": "Seten BigCheddaBoss",//Big Chedda encounter
+    "Health": 800,
+    "Name": "Big Chedda",
+    "Attack": 75,
+    "Defense": 15,
+    "MDef": 50,
+    "Speed": 20,
+	"EnRate": 0
+  }
+]
