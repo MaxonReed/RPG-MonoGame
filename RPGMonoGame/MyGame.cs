@@ -425,7 +425,11 @@ namespace RPGMonoGame
                 case "winner":
                     if (Battle.outcome == 1)
                     {
-
+                        if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                        {
+                            GlobalValues.storyIndex++;
+                            State = GameState.StoryText;
+                        }
                     }
                     else
                     {
