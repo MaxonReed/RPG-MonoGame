@@ -519,6 +519,7 @@ namespace RPGv2
                 outcome = 1;
             else
                 outcome = 0;
+            GlobalValues.battleState = "winner";
             SetVals(GlobalValues.battleJson);
         }
     }
@@ -1120,6 +1121,9 @@ namespace RPGv2
 
     public class Player
     {
+        int exp = 0;
+        int level = 1;
+
         public string Class { get; set; }
         public int Health { get; set; }
         public int Attack { get; set; }
@@ -1131,8 +1135,8 @@ namespace RPGv2
         public double Luck { get; set; }
         public double Evasion { get; set; }
         public int Speed { get; set; }
-        public int Level { get; set; }
-        public int Exp { get; set; }
+        public int Level { get => level; set => level = value; }
+        public int Exp { get => exp; set => exp = value; }
         public List<string> invString;
         [JsonIgnore] public List<Item> Inv { get; set; }
         public List<string> equipString;
@@ -1172,6 +1176,8 @@ namespace RPGv2
             Equip = p.Equip;
             equipString = p.equipString;
             Special = p.Special;
+            Exp = p.Exp;
+            Level = p.Level;
         }
 
         public Player(int slot, int c)

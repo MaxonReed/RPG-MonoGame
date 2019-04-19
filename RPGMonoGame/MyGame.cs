@@ -422,6 +422,20 @@ namespace RPGMonoGame
                             dispPlayerDamage = false;
                     }
                     break;
+                case "winner":
+                    if (Battle.outcome == 1)
+                    {
+
+                    }
+                    else
+                    {
+                        if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                        {
+                            GlobalValues.storyIndex = 0;
+                            State = GameState.StoryText;
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
@@ -598,15 +612,7 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-                    if (clickedRun)
-                    {
-                        graphics.GraphicsDevice.Clear(Color.Blue);
-                        textBox.Draw(spriteBatch, gameTime);
-                        if (!canRun)
-                        {
-                            spriteBatch.DrawString(storyFont, "You can't run.", new Vector2(textBox.Position.X + 5, textBox.Position.Y + 5), Color.Black);
-                        }
-                    }
+
                     if (!clickedSpecial)
                     {
                         if (battleButton.Contains(mousePoint))
@@ -696,6 +702,15 @@ namespace RPGMonoGame
 
                         }
                     }
+                    if (clickedRun)
+                    {
+                        graphics.GraphicsDevice.Clear(Color.Blue);
+                        textBox.Draw(spriteBatch, gameTime);
+                        if (!canRun)
+                        {
+                            spriteBatch.DrawString(storyFont, "You can't run.", new Vector2(textBox.Position.X + 5, textBox.Position.Y + 5), Color.Black);
+                        }
+                    }
                     #endregion
                     break;
                 case "damageDealt":
@@ -709,30 +724,19 @@ namespace RPGMonoGame
                     {
                         spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                     }
-                    //if (damagePlayer != -1)
-                    //{
-                    //    if (dispPlayerDamage)
-                    //    {
-                    //        spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
-                    //    }
-                    //    else
-                    //    {
-                    //        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    if (dispPlayerDamage)
-                    //    {
-                    //        spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
-                    //    }
-                    //    else
-                    //    {
-                    //        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
-                    //    }
-                    //}
                     Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.enemy.Health}");
                     Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.player.Health}");
+                    break;
+                case "winner":
+                    if (Battle.outcome == 1)
+                    {
+
+                    }
+                    else
+                    {
+                        textBox.Draw(spriteBatch, gameTime);
+                        spriteBatch.DrawString(storyFont, "You have lost...", new Vector2(110, 319), Color.Black);
+                    }
                     break;
                 default:
                     break;
