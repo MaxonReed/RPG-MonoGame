@@ -3,7 +3,7 @@
     "Id": "Unknown StartGame",
     "Health": 110,
     "Name": "?",
-    "Attack": 6,
+    "Attack": 10,
     "Defense": 3,
     "MDef": 3,
     "Speed": 4,

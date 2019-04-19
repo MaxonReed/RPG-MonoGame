@@ -383,21 +383,26 @@ namespace RPGMonoGame
                             {
                                 damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[0]);
                                 GlobalValues.battleState = "damageDealt";
+                                damageEnemy = Battle.RegularAttack();
                             }
                             if (secondSpecial.Contains(mousePoint))
                             {
                                 damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[1]);
                                 GlobalValues.battleState = "damageDealt";
+                                damageEnemy = Battle.RegularAttack();
+
                             }
                             if (thirdSpecial.Contains(mousePoint))
                             {
                                 damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[2]);
                                 GlobalValues.battleState = "damageDealt";
+                                damageEnemy = Battle.RegularAttack();
                             }
                             if (fourthSpecial.Contains(mousePoint))
                             {
                                 damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[3]);
                                 GlobalValues.battleState = "damageDealt";
+                                damageEnemy = Battle.RegularAttack();
                             }
                             if (quitButton.Contains(mousePoint))
                                 clickedSpecial = false;

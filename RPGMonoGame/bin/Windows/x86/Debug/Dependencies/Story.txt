@@ -26,9 +26,11 @@ I don't trust this man...
 |battle:id=firstBattle
 I won...
 I have no idea where I am so I believe it will be best to settle down.
+:free=true
 
 [3]
-:req 3 gangsters dead:
+:req 3 gangster|You need to defeat 3 Gangsters to continue
+:free=false
 Toto: "I've been hearing of a big chedda?"
 *Big chedda that's an odd name for a gangster
 Gangster: "I-I ain't never heard of a B-big chedda..."

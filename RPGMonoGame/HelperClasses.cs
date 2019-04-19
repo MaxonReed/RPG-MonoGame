@@ -473,7 +473,11 @@ namespace RPGv2
                     break;
             }
             SetVals(GlobalValues.battleJson);
-            turn = !turn;
+            if (playerHP <= 0)
+                BattleFinish(false);
+            if (enemyHP <= 0)
+                BattleFinish(true);
+            turn = false;
             return damage;
         }
 
@@ -1239,7 +1243,7 @@ namespace RPGv2
             {
                 case 1:
                     Class = "Mage";
-                    Attack = 4;
+                    Attack = 6;
                     MAtk = 8;
                     Defense = 2;
                     MDef = 5;
