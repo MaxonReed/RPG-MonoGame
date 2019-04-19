@@ -409,7 +409,10 @@ namespace RPGMonoGame
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
                         if (!dispPlayerDamage)
+                        {
+                            dispPlayerDamage = true;
                             GlobalValues.battleState = "battle";
+                        }
                         else
                             dispPlayerDamage = false;
                     }
@@ -693,21 +696,36 @@ namespace RPGMonoGame
                 case "damageDealt":
                     graphics.GraphicsDevice.Clear(Color.White);
                     textBox.Draw(spriteBatch, gameTime);
-                    if (damagePlayer != -1)
+                    if (dispPlayerDamage)
                     {
-                        if (dispPlayerDamage)
-                        {
-                            spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
-                        }
-                        else
-                        {
-                            spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
-                        }
+                        spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
                     }
                     else
                     {
-                        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damagePlayer + " to you.", new Vector2(110, 319), Color.Black);
+                        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                     }
+                    //if (damagePlayer != -1)
+                    //{
+                    //    if (dispPlayerDamage)
+                    //    {
+                    //        spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
+                    //    }
+                    //    else
+                    //    {
+                    //        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    if (dispPlayerDamage)
+                    //    {
+                    //        spriteBatch.DrawString(storyFont, "You dealt " + damagePlayer + " damage to " + Battle.enemy.Name + ".", new Vector2(110, 319), Color.Black);
+                    //    }
+                    //    else
+                    //    {
+                    //        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                    //    }
+                    //}
                     Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.enemy.Health}");
                     Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.player.Health}");
                     break;

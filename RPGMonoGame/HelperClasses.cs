@@ -230,13 +230,16 @@ namespace RPGv2
         {
             JObject obj = JObject.Parse(File.ReadAllText(@"Dependencies\save.json"));
             player = JsonConvert.DeserializeObject<Player>(obj["player"].ToString());
+            GamePlay.player = player;
             hist.Factions = JsonConvert.DeserializeObject<List<Faction>>(obj["Factions"].ToString());
             hist.Races = JsonConvert.DeserializeObject<List<Race>>(obj["Races"].ToString());
             GlobalValues.jsonVals = JsonConvert.DeserializeObject<JsonValues>(obj["jsonVals"].ToString());
             Story.enemyFaction = JsonConvert.DeserializeObject<Faction>(obj["enemyFaction"].ToString());
             GlobalValues.battleJson = JsonConvert.DeserializeObject<BattleJson>(obj["battleJson"].ToString());
             GlobalValues.SetVals(GlobalValues.jsonVals);
-            Battle.SetVals(GlobalValues.battleJson);
+            Battle.GetVals(GlobalValues.battleJson);
+            Debug.WriteLine(Battle.enemy.Name);
+            GlobalValues.battleState = "battle";
             Debug.WriteLine(player.Health);
         }
     }
@@ -389,6 +392,7 @@ namespace RPGv2
         public static int round = -1;
         public static int outcome = -1;
         public static string fightText = "";
+
         /*
         case 0:
              name = "None";
@@ -468,6 +472,7 @@ namespace RPGv2
                 default:
                     break;
             }
+            SetVals(GlobalValues.battleJson);
             turn = !turn;
             return damage;
         }
@@ -494,6 +499,7 @@ namespace RPGv2
             if (enemyHP <= 0)
                 BattleFinish(true);
             turn = !turn;
+            SetVals(GlobalValues.battleJson);
             return damage;
         }
 
@@ -509,6 +515,7 @@ namespace RPGv2
                 outcome = 1;
             else
                 outcome = 0;
+            SetVals(GlobalValues.battleJson);
         }
     }
 
