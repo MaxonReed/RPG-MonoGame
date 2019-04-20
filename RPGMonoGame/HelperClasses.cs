@@ -260,7 +260,7 @@ namespace RPGv2
     public class Story
     {
         public static int MaxIndex { get; set; }
-        public static Faction enemyFaction ;
+        public static Faction enemyFaction;
 
         public static List<string> GetScene(int index)
         {
@@ -347,11 +347,12 @@ namespace RPGv2
             int length = 0;
             List<string> strArray = SceneText.strArr;
             length = strArray.Count - 1;
-            if(GlobalValues.storyIndex == length)
+            if (GlobalValues.storyIndex == length)
             {
                 GlobalValues.storyIndex = 0;
                 GlobalValues.storyState++;
-            } else
+            }
+            else
             {
                 GlobalValues.storyIndex++;
             }
@@ -383,7 +384,8 @@ namespace RPGv2
 
         }
 
-        [JsonConstructor] public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText)
+        [JsonConstructor]
+        public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText)
         {
             enemy = jEnemy;
             player = jPlayer;
@@ -524,7 +526,6 @@ namespace RPGv2
 
         public static void BattleFinish(bool winner)
         {
-            enemy = new Enemy();
             player = GamePlay.player;
             playerHP = 0;
             enemyHP = 0;
@@ -547,6 +548,8 @@ namespace RPGv2
         public int Defense { get; set; }
         public int Speed { get; set; }
         public int MDef { get; set; }
+        public int Level { get; set; }
+
 
         public Enemy()
         {
@@ -568,6 +571,7 @@ namespace RPGv2
             Speed = (int)obj["Speed"];
             Health = (int)obj["Health"];
             MDef = (int)obj["MDef"];
+            Level = (int)obj["Level"];
         }
     }
 
@@ -595,7 +599,8 @@ namespace RPGv2
 
         }
 
-        [JsonConstructor] public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID, 
+        [JsonConstructor]
+        public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
             string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction)
         {
             inp = jInp;
@@ -636,7 +641,7 @@ namespace RPGv2
         public static JsonValues jsonVals = new JsonValues();
         public static BattleJson battleJson = new BattleJson();
         public static Faction locationFaction = new Faction();
-        
+
 
         public static void SetVals(JsonValues jVals)
         {
@@ -839,7 +844,8 @@ namespace RPGv2
 
         public string Name { get => name; set => name = value; }
 
-        [JsonConstructor] public Race(string Name)
+        [JsonConstructor]
+        public Race(string Name)
         {
             this.Name = Name;
         }
@@ -1111,7 +1117,8 @@ namespace RPGv2
 
         }
 
-        [JsonConstructor] public Faction(int Pop, string Name, string[] Advances,double PopSeverity)
+        [JsonConstructor]
+        public Faction(int Pop, string Name, string[] Advances, double PopSeverity)
         {
             this.Pop = Pop;
             this.Name = Name;
@@ -1250,6 +1257,8 @@ namespace RPGv2
                 }
             }
         }
+
+        public int NextLevel() => Convert.ToInt32((4 * (Level * Level * Level)) / 5.0);
 
         public void InitInv()
         {

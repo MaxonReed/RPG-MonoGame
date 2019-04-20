@@ -83,6 +83,13 @@ namespace RPGMonoGame
         #region factionAssets
 
         #endregion
+        #region levelUpAssets
+        int GainedHealth = 0;
+        int GainedAttack = 0;
+        int GainedMAtk = 0;
+        int GainedMDef = 0;
+
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -434,8 +441,16 @@ namespace RPGMonoGame
                     {
                         if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                         {
-                            Story.Progress();
-                            State = GameState.StoryText;
+                            if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
+                            {
+                                GlobalValues.battleState = "levelup";
+                                goto case "levelup";
+                            }
+                            else
+                            {
+                                Story.Progress();
+                                State = GameState.StoryText;
+                            }
                         }
                     }
                     else
@@ -446,6 +461,9 @@ namespace RPGMonoGame
                             State = GameState.StoryText;
                         }
                     }
+                    break;
+                case "levelup":
+
                     break;
                 default:
                     break;
@@ -752,13 +770,18 @@ namespace RPGMonoGame
                 case "winner":
                     if (Battle.outcome == 1)
                     {
-
+                        GamePlay.player.Exp += HelperClasses.RandomNumber(0, HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(0, Battle.enemy.Level)));
+                        Battle.enemy = new Enemy();
+                        Battle.outcome = -1;
                     }
-                    else
+                    else if (Battle.outcome == 0)
                     {
                         textBox.Draw(spriteBatch, gameTime);
                         spriteBatch.DrawString(storyFont, "You have lost...", new Vector2(110, 319), Color.Black);
                     }
+                    break;
+                case "levelup":
+
                     break;
                 default:
                     break;
@@ -855,8 +878,9 @@ namespace RPGMonoGame
             Font = spriteFont;
         }
 
-        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, MouseState mouseState)
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
+            MouseState mouseState = Mouse.GetState();
             if (Img.Contains(mouseState.Position))
                 spriteBatch.Draw(HoverImg.Texture, Img.Position, Color.White);
             else
