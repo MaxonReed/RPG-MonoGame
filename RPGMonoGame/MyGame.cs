@@ -80,6 +80,9 @@ namespace RPGMonoGame
         int damageEnemy = -1;
         bool dispPlayerDamage = true;
         #endregion
+        #region factionAssets
+
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -87,7 +90,8 @@ namespace RPGMonoGame
             InitWorldPage,
             BattlePage,
             StoryText,
-            CharacterCreate
+            CharacterCreate,
+            InFaction
         }
         private GameState _state;
         public GameState State
@@ -240,18 +244,21 @@ namespace RPGMonoGame
                 {
                     GamePlay.player = new Player(1, 1);
                     State = GameState.StoryText;
+                    GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
                 if (classSelectRogue.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
+                    GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
                 if (classSelectWarrior.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
+                    GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
 
@@ -427,7 +434,7 @@ namespace RPGMonoGame
                     {
                         if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                         {
-                            GlobalValues.storyIndex++;
+                            Story.Progress();
                             State = GameState.StoryText;
                         }
                     }
@@ -450,7 +457,7 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
-                GlobalValues.storyIndex++;
+                Story.Progress();
             }
         }
         void DrawMainMenu(GameTime gameTime)
@@ -516,6 +523,17 @@ namespace RPGMonoGame
                 string id = text.Substring(11);
                 GlobalValues.battleID = id;
                 State = GameState.BattlePage;
+                spriteBatch.End();
+                return;
+            }
+            if(text.StartsWith(":free="))
+            {
+                if (text[6] == 'f')
+                    GlobalValues.free = false;
+                else if (text[6] == 't')
+                    GlobalValues.free = true;
+                State = GameState.InFaction;
+                Story.Progress();
                 spriteBatch.End();
                 return;
             }
@@ -821,6 +839,32 @@ namespace RPGMonoGame
             spriteBatch.DrawString(sf, Text, new Vector2(Position.X + 2, Position.Y + 2), Color.Black);
         }
     }
+
+    public class Button
+    {
+        public Sprite Img { get; set; }
+        public Sprite HoverImg { get; set; }
+        public string Text { get; set; }
+        public SpriteFont Font { get; set; }
+
+        public Button(Sprite image, Sprite hoverImage, string text, SpriteFont spriteFont)
+        {
+            Img = image;
+            HoverImg = hoverImage;
+            Text = text;
+            Font = spriteFont;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, GameTime gameTime, MouseState mouseState)
+        {
+            if (Img.Contains(mouseState.Position))
+                spriteBatch.Draw(HoverImg.Texture, Img.Position, Color.White);
+            else
+                spriteBatch.Draw(Img.Texture, Img.Position, Color.White);
+            spriteBatch.DrawString(Font, Text, new Vector2(Img.Position.X + 7, Img.Position.Y + 7), Color.Black);
+        }
+    }
+    
     public class Sprite
     {
         public Texture2D Texture { get; set; }

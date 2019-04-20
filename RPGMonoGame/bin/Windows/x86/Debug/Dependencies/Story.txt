@@ -26,6 +26,7 @@ I don't trust this man...
 |battle:id=firstBattle
 I won...
 I have no idea where I am so I believe it will be best to settle down.
+"v player goes to faction when done with battle
 :free=true
 
 [3]

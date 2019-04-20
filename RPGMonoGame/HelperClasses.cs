@@ -342,6 +342,21 @@ namespace RPGv2
             return strArr;
         }
 
+        public static void Progress()
+        {
+            int length = 0;
+            List<string> strArray = SceneText.strArr;
+            length = strArray.Count - 1;
+            if(GlobalValues.storyIndex == length)
+            {
+                GlobalValues.storyIndex = 0;
+                GlobalValues.storyState++;
+            } else
+            {
+                GlobalValues.storyIndex++;
+            }
+        }
+
         public static string Talker(string s)
         {
             if (/*name present*/true)
@@ -569,9 +584,11 @@ namespace RPGv2
         public string battleState = "prologue";
         public bool startGen = false;
         public bool done = false;
+        public bool free = false;
         public string[] strArray;
         public int storyIndex = 0;
         public int storyState = 0;
+        public Faction locationFaction = new Faction();
 
         public JsonValues()
         {
@@ -579,7 +596,7 @@ namespace RPGv2
         }
 
         [JsonConstructor] public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID, 
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction)
         {
             inp = jInp;
             inpText = jInpText;
@@ -594,6 +611,7 @@ namespace RPGv2
             strArray = jStrArray;
             storyIndex = jStoryIndex;
             storyState = jStoryState;
+            locationFaction = faction;
         }
     }
 
@@ -610,12 +628,15 @@ namespace RPGv2
         public static string battleState = "prologue";
         public static bool startGen = false;
         public static bool done = false;
+        public static bool free = false;
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
         public static Save save = new Save();
         public static JsonValues jsonVals = new JsonValues();
         public static BattleJson battleJson = new BattleJson();
+        public static Faction locationFaction = new Faction();
+        
 
         public static void SetVals(JsonValues jVals)
         {
@@ -632,6 +653,8 @@ namespace RPGv2
             strArray = jVals.strArray;
             storyIndex = jVals.storyIndex;
             storyState = jVals.storyState;
+            locationFaction = jVals.locationFaction;
+            free = jVals.free;
         }
 
         public static void GetVals()
@@ -649,6 +672,10 @@ namespace RPGv2
             jsonVals.strArray = strArray;
             jsonVals.storyIndex = storyIndex;
             jsonVals.storyState = storyState;
+            jsonVals.locationFaction = locationFaction;
+            jsonVals.free = free;
+
+
         }
 
         public static int Inp
@@ -1078,6 +1105,11 @@ namespace RPGv2
         public List<string> Advances { get => advances; set => advances = value; }
         public double PopSeverity { get => popSeverity; set => popSeverity = value; }
         internal PointClass Loc { get => loc; set => loc = value; }
+
+        public Faction()
+        {
+
+        }
 
         [JsonConstructor] public Faction(int Pop, string Name, string[] Advances,double PopSeverity)
         {
