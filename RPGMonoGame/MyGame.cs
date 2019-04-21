@@ -366,7 +366,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-
+            
             switch (GlobalValues.battleState)
             {
                 case "prologue":
@@ -529,6 +529,7 @@ namespace RPGMonoGame
                 default:
                     break;
             }
+            
         }
         void UpdateStoryText(GameTime gameTime)
         {
@@ -713,7 +714,8 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-
+                    //673, 59
+                    //92, 59
                     if (!clickedSpecial)
                     {
                         if (battleButton.Contains(mousePoint))
@@ -839,6 +841,12 @@ namespace RPGMonoGame
                     {
                         textBox.Draw(spriteBatch, gameTime);
                         spriteBatch.DrawString(storyFont, "You have lost...", new Vector2(110, 319), Color.Black);
+                    } 
+                    if(Battle.outcome == -1)
+                    {
+                        GraphicsDevice.Clear(Color.LightGreen);
+                        textBox.Draw(spriteBatch, gameTime);
+                        spriteBatch.DrawString(storyFont, "You won! Exp: " + GamePlay.player.Exp + " / " + GamePlay.player.NextLevel(), new Vector2(110, 319), Color.Black);
                     }
                     break;
                 case "levelup":
@@ -865,6 +873,13 @@ namespace RPGMonoGame
                     break;
                 default:
                     break;
+            }
+            if (GlobalValues.battleState != "prologue" && Battle.round != -1)
+            {
+                if (Battle.playerHP <= 0)
+                    Battle.BattleFinish(false);
+                else if (Battle.enemyHP <= 0)
+                    Battle.BattleFinish(true);
             }
             spriteBatch.End();
         }

@@ -2,23 +2,23 @@
   "player": {
     "invString": [],
     "equipString": [
-      "staff:Wooden Staff"
+      "knife:Bronze Dagger"
     ],
-    "Class": "Mage",
+    "Class": "Rogue",
     "Health": 40,
-    "Attack": 10,
-    "MAtk": 18,
-    "Defense": 7,
-    "MDef": 15,
-    "Intelligence": 9,
+    "Attack": 17,
+    "MAtk": 4,
+    "Defense": 10,
+    "MDef": 3,
+    "Intelligence": 6,
     "Money": 0.0,
-    "Luck": 4.0,
-    "Evasion": 3.0,
-    "Speed": 6,
+    "Luck": 8.0,
+    "Evasion": 8.0,
+    "Speed": 9,
     "Level": 1,
     "Exp": 0,
     "Special": [
-      1,
+      4,
       0,
       0,
       0
@@ -26,1522 +26,2230 @@
   },
   "Factions": [
     {
-      "Pop": 22060,
+      "Pop": 39188,
       "Name": "Main City: Elves",
       "Advances": [],
-      "PopSeverity": 0.03112091731936889
+      "PopSeverity": 0.10599515843284692
     },
     {
-      "Pop": 289,
-      "Name": "Arabain Assasin",
+      "Pop": 440,
+      "Name": "I Haerd U Liek Mudkipz",
       "Advances": [],
-      "PopSeverity": 0.00035409565943615555
+      "PopSeverity": 0.0011901058923765604
     },
     {
-      "Pop": 485,
-      "Name": "One Of Us Is Stealthed",
+      "Pop": 311,
+      "Name": "Chosen Civil Defenders ",
       "Advances": [],
-      "PopSeverity": 0.0006842087443288265
+      "PopSeverity": 0.00084118848302070512
     },
     {
-      "Pop": 717,
-      "Name": "Mystic",
+      "Pop": 418,
+      "Name": "Sap It Before You Tap It",
       "Advances": [],
-      "PopSeverity": 0.0010115003498634403
+      "PopSeverity": 0.0011306005977577323
     },
     {
-      "Pop": 8,
-      "Name": "Risen United",
+      "Pop": 342,
+      "Name": "Just Gave You Rabies",
       "Advances": [],
-      "PopSeverity": 1.1285917432228067E-05
+      "PopSeverity": 0.00092503685271087192
     },
     {
-      "Pop": 487,
-      "Name": "LIGH",
+      "Pop": 278,
+      "Name": "Hogger Raiders Inc",
       "Advances": [],
-      "PopSeverity": 0.0015264203327088458
+      "PopSeverity": 0.00075193054109246309
     },
     {
-      "Pop": 37,
-      "Name": "Murlocalypse",
+      "Pop": 439,
+      "Name": "Scholomance Chess Team",
       "Advances": [],
-      "PopSeverity": 4.937588876599779E-05
+      "PopSeverity": 0.0011874011062575228
     },
     {
-      "Pop": 324,
-      "Name": "Neocrypt",
+      "Pop": 457,
+      "Name": "Nova",
       "Advances": [],
-      "PopSeverity": 0.00045707965600523667
+      "PopSeverity": 0.0012360872564002002
     },
     {
-      "Pop": 713,
-      "Name": "Doesn  t Preview Strategy ",
+      "Pop": 33,
+      "Name": "Power Word Drunk",
       "Advances": [],
-      "PopSeverity": 0.0010058573911473263
-    },
-    {
-      "Pop": 256,
-      "Name": "The Fire Heals You",
-      "Advances": [],
-      "PopSeverity": 0.00036114935783129813
-    },
-    {
-      "Pop": 79,
-      "Name": "Less Beans",
-      "Advances": [],
-      "PopSeverity": 0.00051491998284540551
-    },
-    {
-      "Pop": 92,
-      "Name": "Urgh Urgh Ima Seel",
-      "Advances": [],
-      "PopSeverity": 0.00012978805047062276
-    },
-    {
-      "Pop": 17,
-      "Name": "I Hate Walking",
-      "Advances": [],
-      "PopSeverity": 2.3982574543484639E-05
-    },
-    {
-      "Pop": 67640,
-      "Name": "Main City: Orcs",
-      "Advances": [],
-      "PopSeverity": 0.095422431889488291
-    },
-    {
-      "Pop": 1852,
-      "Name": "Doomsday Dragoons",
-      "Advances": [],
-      "PopSeverity": 0.0024419903843983476
-    },
-    {
-      "Pop": 164,
-      "Name": "Twisted",
-      "Advances": [],
-      "PopSeverity": 0.00023136130736067535
-    },
-    {
-      "Pop": 400,
-      "Name": "Vendor",
-      "Advances": [],
-      "PopSeverity": 0.00056429587161140331
-    },
-    {
-      "Pop": 3112,
-      "Name": "The Barcode Squad",
-      "Advances": [],
-      "PopSeverity": 0.004390221881136718
-    },
-    {
-      "Pop": 124,
-      "Name": "Medievil Lordaeron",
-      "Advances": [],
-      "PopSeverity": 0.00017493172019953502
-    },
-    {
-      "Pop": 723,
-      "Name": "Vanguard",
-      "Advances": [],
-      "PopSeverity": 0.0009536600230232716
-    },
-    {
-      "Pop": 574,
-      "Name": "Is Godlike",
-      "Advances": [],
-      "PopSeverity": 0.00080976457576236371
-    },
-    {
-      "Pop": 495,
-      "Name": "The Deadly Magic",
-      "Advances": [],
-      "PopSeverity": 0.00069831614111911155
-    },
-    {
-      "Pop": 388,
-      "Name": "Omg Brb Ice Cream Truck",
-      "Advances": [],
-      "PopSeverity": 0.00054736699546306124
-    },
-    {
-      "Pop": 9,
-      "Name": "Fuzzy Wuzzy Panda Bears",
-      "Advances": [],
-      "PopSeverity": 2.2571834864456133E-05
-    },
-    {
-      "Pop": 1112,
-      "Name": "Gnomeregan Was Our Fault",
-      "Advances": [],
-      "PopSeverity": 0.0015687425230797012
-    },
-    {
-      "Pop": 352,
-      "Name": "Strength of Stormpike Inc",
-      "Advances": [],
-      "PopSeverity": 0.00049658036701803493
-    },
-    {
-      "Pop": 508,
-      "Name": "Id Mana Tap That",
-      "Advances": [],
-      "PopSeverity": 0.00071665575694648213
-    },
-    {
-      "Pop": 15,
-      "Name": "Ebony",
-      "Advances": [],
-      "PopSeverity": 2.1161095185427624E-05
-    },
-    {
-      "Pop": 318,
-      "Name": "Readthiswhileiyankyou",
-      "Advances": [],
-      "PopSeverity": 0.00044861521793106564
-    },
-    {
-      "Pop": 626,
-      "Name": "Guild Name Here",
-      "Advances": [],
-      "PopSeverity": 0.00088312303907184611
-    },
-    {
-      "Pop": 685,
-      "Name": "Lincoln Wiped On Opera",
-      "Advances": [],
-      "PopSeverity": 0.00096635668013452815
-    },
-    {
-      "Pop": 840,
-      "Name": "Lividia",
-      "Advances": [],
-      "PopSeverity": 0.0011850213303839468
-    },
-    {
-      "Pop": 1053,
-      "Name": "Noobs Use Mice",
-      "Advances": [],
-      "PopSeverity": 0.0013881678441640521
-    },
-    {
-      "Pop": 1,
-      "Name": "Lords of Corpse Skirmishers",
-      "Advances": [],
-      "PopSeverity": 1.4107396790285083E-06
-    },
-    {
-      "Pop": 172,
-      "Name": "LLM",
-      "Advances": [],
-      "PopSeverity": 0.00024264722479290342
-    },
-    {
-      "Pop": 405,
-      "Name": "Roflcers Of The Lawl",
-      "Advances": [],
-      "PopSeverity": 0.00057134957000654584
-    },
-    {
-      "Pop": 563,
-      "Name": "Fellowship Of The Bling",
-      "Advances": [],
-      "PopSeverity": 0.00079424643929305015
-    },
-    {
-      "Pop": 574,
-      "Name": "Anthrax",
-      "Advances": [],
-      "PopSeverity": 0.00070395909983522558
-    },
-    {
-      "Pop": 52,
-      "Name": "R Kelly Pvped On Me",
-      "Advances": [],
-      "PopSeverity": 7.3358463309482425E-05
-    },
-    {
-      "Pop": 1197,
-      "Name": "Light Zuljin",
-      "Advances": [],
-      "PopSeverity": 0.0016886553957971243
-    },
-    {
-      "Pop": 613,
-      "Name": "Popsicles In The Cellar",
-      "Advances": [],
-      "PopSeverity": 0.00080835383608333521
-    },
-    {
-      "Pop": 740,
-      "Name": "Deadly Penguin Squad",
-      "Advances": [],
-      "PopSeverity": 0.0010439473624810961
-    },
-    {
-      "Pop": 629,
-      "Name": "Slaystation",
-      "Advances": [],
-      "PopSeverity": 0.00088735525810893163
-    },
-    {
-      "Pop": 26,
-      "Name": "Psycopath",
-      "Advances": [],
-      "PopSeverity": 3.6679231654741212E-05
-    },
-    {
-      "Pop": 447,
-      "Name": "The Guilty Have No Pride",
-      "Advances": [],
-      "PopSeverity": 0.00063060063652574318
-    },
-    {
-      "Pop": 626,
-      "Name": "Omgkittensmewmewmew",
-      "Advances": [],
-      "PopSeverity": 0.00088312303907184611
-    },
-    {
-      "Pop": 217,
-      "Name": "Reign of the Digital Guild",
-      "Advances": [],
-      "PopSeverity": 0.0003061305103491863
-    },
-    {
-      "Pop": 93,
-      "Name": "Elite Militia ",
-      "Advances": [],
-      "PopSeverity": 0.00013119879014965126
-    },
-    {
-      "Pop": 8,
-      "Name": "Sweeping WAtch",
-      "Advances": [],
-      "PopSeverity": 4.7965149086969277E-05
-    },
-    {
-      "Pop": 371,
-      "Name": "General Goods Merchant",
-      "Advances": [],
-      "PopSeverity": 0.00052338442091957654
+      "PopSeverity": 8.9257941928242018E-05
     },
     {
       "Pop": 71,
-      "Name": "Constant Motion ",
+      "Name": "We  re Pissing All Over You",
       "Advances": [],
-      "PopSeverity": 0.00010016251721102409
+      "PopSeverity": 0.00019203981445167222
     },
     {
-      "Pop": 594,
-      "Name": "Winds of Legio Redemption",
+      "Pop": 182,
+      "Name": "LASTSTAND",
       "Advances": [],
-      "PopSeverity": 0.00083797936934293393
+      "PopSeverity": 0.0004922710736648499
     },
     {
-      "Pop": 834,
-      "Name": "Grand Theft Kodo",
+      "Pop": 377,
+      "Name": "Overward",
       "Advances": [],
-      "PopSeverity": 0.002200753899284473
-    },
-    {
-      "Pop": 40,
-      "Name": "Brb Cat On Fire",
-      "Advances": [],
-      "PopSeverity": 5.6429587161140331E-05
-    },
-    {
-      "Pop": 809,
-      "Name": "Gnomish Love Machines",
-      "Advances": [],
-      "PopSeverity": 0.0011412884003340631
-    },
-    {
-      "Pop": 220,
-      "Name": "Will Dance For Gold",
-      "Advances": [],
-      "PopSeverity": 0.00026945127869444505
-    },
-    {
-      "Pop": 188,
-      "Name": "Elite Waffle Squad",
-      "Advances": [],
-      "PopSeverity": 0.00024829018350901747
-    },
-    {
-      "Pop": 83,
-      "Name": "Headless Deer Society",
-      "Advances": [],
-      "PopSeverity": 0.00011709139335936618
-    },
-    {
-      "Pop": 599,
-      "Name": "Deities",
-      "Advances": [],
-      "PopSeverity": 0.00079001422025596463
-    },
-    {
-      "Pop": 636,
-      "Name": "Order Of The Flaming Phoenix ",
-      "Advances": [],
-      "PopSeverity": 0.00089723043586213127
-    },
-    {
-      "Pop": 406,
-      "Name": "Beta Tested Ur Gf",
-      "Advances": [],
-      "PopSeverity": 0.00057276030968557434
-    },
-    {
-      "Pop": 240,
-      "Name": "Fallen",
-      "Advances": [],
-      "PopSeverity": 0.000338577522966842
-    },
-    {
-      "Pop": 967,
-      "Name": "Ice Cream Club",
-      "Advances": [],
-      "PopSeverity": 0.0013641852696205674
-    },
-    {
-      "Pop": 3,
-      "Name": "Jetpack Ninja Dinosaurs",
-      "Advances": [],
-      "PopSeverity": 4.2322190370855243E-06
-    },
-    {
-      "Pop": 19,
-      "Name": "Evolved",
-      "Advances": [],
-      "PopSeverity": 2.5393314222513148E-05
-    },
-    {
-      "Pop": 244,
-      "Name": "Agents Of Shield ",
-      "Advances": [],
-      "PopSeverity": 0.000344220481682956
-    },
-    {
-      "Pop": 1,
-      "Name": "Wipes On Trash",
-      "Advances": [],
-      "PopSeverity": 1.4107396790285083E-06
-    },
-    {
-      "Pop": 684,
-      "Name": "Beep Boop Im A Robot Lol",
-      "Advances": [],
-      "PopSeverity": 0.00096494594045549965
-    },
-    {
-      "Pop": 144,
-      "Name": "Noctem",
-      "Advances": [],
-      "PopSeverity": 0.00020314651378010518
-    },
-    {
-      "Pop": 285,
-      "Name": "10 Inches Unbuffed",
-      "Advances": [],
-      "PopSeverity": 0.00040206080852312484
-    },
-    {
-      "Pop": 47,
-      "Name": "Less Qq More Pew Pew",
-      "Advances": [],
-      "PopSeverity": 6.6304764914339883E-05
-    },
-    {
-      "Pop": 28,
-      "Name": "And Two Stealthed Rogues",
-      "Advances": [],
-      "PopSeverity": 3.950071101279823E-05
-    },
-    {
-      "Pop": 591,
-      "Name": "Children Of Truth",
-      "Advances": [],
-      "PopSeverity": 0.00083374715030584841
-    },
-    {
-      "Pop": 232,
-      "Name": "Snakes On A Planestrider",
-      "Advances": [],
-      "PopSeverity": 0.0003061305103491863
-    },
-    {
-      "Pop": 131,
-      "Name": "The Waste Justice",
-      "Advances": [],
-      "PopSeverity": 0.00018480689795273458
-    },
-    {
-      "Pop": 25,
-      "Name": "Nerds With Sandwiches ",
-      "Advances": [],
-      "PopSeverity": 3.5268491975712707E-05
-    },
-    {
-      "Pop": 406,
-      "Name": "SLAYER",
-      "Advances": [],
-      "PopSeverity": 0.00057276030968557434
-    },
-    {
-      "Pop": 231,
-      "Name": "I Dps My Kids Irl",
-      "Advances": [],
-      "PopSeverity": 0.00032588086585558538
-    },
-    {
-      "Pop": 75,
-      "Name": "Come Honor Face",
-      "Advances": [],
-      "PopSeverity": 0.00010580547592713812
-    },
-    {
-      "Pop": 187,
-      "Name": "Severed",
-      "Advances": [],
-      "PopSeverity": 0.00026380831997833103
-    },
-    {
-      "Pop": 1,
-      "Name": "Pirates Of Ballz Deep",
-      "Advances": [],
-      "PopSeverity": 1.4107396790285083E-06
-    },
-    {
-      "Pop": 370,
-      "Name": "Two Ocs One Cup",
-      "Advances": [],
-      "PopSeverity": 0.000521973681240548
-    },
-    {
-      "Pop": 381,
-      "Name": "Pretty Pink Pwnies",
-      "Advances": [],
-      "PopSeverity": 0.0005374918177098616
-    },
-    {
-      "Pop": 287,
-      "Name": "Karma",
-      "Advances": [],
-      "PopSeverity": 0.00040488228788118186
-    },
-    {
-      "Pop": 124,
-      "Name": "Glad Us Knights And The Pimps",
-      "Advances": [],
-      "PopSeverity": 0.00016364580276730694
-    },
-    {
-      "Pop": 8,
-      "Name": "The Great",
-      "Advances": [],
-      "PopSeverity": 1.1285917432228067E-05
-    },
-    {
-      "Pop": 34,
-      "Name": "The Cake Is A Lie  ",
-      "Advances": [],
-      "PopSeverity": 4.7965149086969277E-05
-    },
-    {
-      "Pop": 328146,
-      "Name": "Main City: Humans",
-      "Advances": [],
-      "PopSeverity": 0.46292858271448883
-    },
-    {
-      "Pop": 163,
-      "Name": "Pew Pew Sharks Wit Lasers",
-      "Advances": [],
-      "PopSeverity": 0.00022995056768164684
-    },
-    {
-      "Pop": 1348,
-      "Name": "Straight Outta Gnomeregan",
-      "Advances": [],
-      "PopSeverity": 0.0019016770873304292
-    },
-    {
-      "Pop": 575,
-      "Name": "At Least We Capped Stables",
-      "Advances": [],
-      "PopSeverity": 0.00081117531544139222
-    },
-    {
-      "Pop": 694,
-      "Name": "I Go A Huge Pvpness",
-      "Advances": [],
-      "PopSeverity": 0.00097905333724578481
-    },
-    {
-      "Pop": 3086,
-      "Name": "Angels of Royal Geographic Clan",
-      "Advances": [],
-      "PopSeverity": 0.0043535426494819762
-    },
-    {
-      "Pop": 771,
-      "Name": "Catch Me Glidin Dirty",
-      "Advances": [],
-      "PopSeverity": 0.0010876802925309799
-    },
-    {
-      "Pop": 165,
-      "Name": "Ban Me",
-      "Advances": [],
-      "PopSeverity": 0.00023277204703970385
-    },
-    {
-      "Pop": 1340,
-      "Name": "AngelBeats",
-      "Advances": [],
-      "PopSeverity": 0.0018903911698982009
-    },
-    {
-      "Pop": 375,
-      "Name": "Crayons Taste Like Purple",
-      "Advances": [],
-      "PopSeverity": 0.00052902737963569056
-    },
-    {
-      "Pop": 162,
-      "Name": "Scarlet Justice",
-      "Advances": [],
-      "PopSeverity": 0.00022853982800261834
-    },
-    {
-      "Pop": 806,
-      "Name": "Eternal Honor",
-      "Advances": [],
-      "PopSeverity": 0.0011370561812969777
-    },
-    {
-      "Pop": 171,
-      "Name": "The Sponge Bob Clan",
-      "Advances": [],
-      "PopSeverity": 0.00024123648511387491
-    },
-    {
-      "Pop": 1652,
-      "Name": "Rez Please",
-      "Advances": [],
-      "PopSeverity": 0.0023305419497550955
-    },
-    {
-      "Pop": 583,
-      "Name": "Malice",
-      "Advances": [],
-      "PopSeverity": 0.00082246123287362026
-    },
-    {
-      "Pop": 485,
-      "Name": "Latinos Company ",
-      "Advances": [],
-      "PopSeverity": 0.0006842087443288265
-    },
-    {
-      "Pop": 41,
-      "Name": "Hardcorepwnography",
-      "Advances": [],
-      "PopSeverity": 5.7840326840168836E-05
-    },
-    {
-      "Pop": 279,
-      "Name": "Children Of Virtue ",
-      "Advances": [],
-      "PopSeverity": 0.00039359637044895381
-    },
-    {
-      "Pop": 703,
-      "Name": "Lolimlegolas",
-      "Advances": [],
-      "PopSeverity": 0.00099174999435704125
-    },
-    {
-      "Pop": 104,
-      "Name": "Children of Dark Scarlet Mercenaries",
-      "Advances": [],
-      "PopSeverity": 0.00014671692661896485
-    },
-    {
-      "Pop": 1153,
-      "Name": "Purge",
-      "Advances": [],
-      "PopSeverity": 0.00162658284991987
-    },
-    {
-      "Pop": 108,
-      "Name": "Noobs Use Keyboards",
-      "Advances": [],
-      "PopSeverity": 0.0001523598853350789
-    },
-    {
-      "Pop": 86,
-      "Name": "ACCOLADES",
-      "Advances": [],
-      "PopSeverity": 0.00012132361239645171
-    },
-    {
-      "Pop": 190,
-      "Name": "Vortex",
-      "Advances": [],
-      "PopSeverity": 0.00026804053901541654
-    },
-    {
-      "Pop": 111,
-      "Name": "Sapped Girls Dont Say No",
-      "Advances": [],
-      "PopSeverity": 0.00015659210437216442
-    },
-    {
-      "Pop": 89,
-      "Name": "Art of Unsung Tide",
-      "Advances": [],
-      "PopSeverity": 0.00026239758029930252
-    },
-    {
-      "Pop": 1364,
-      "Name": "Doesn  t Need You",
-      "Advances": [],
-      "PopSeverity": 0.0019242489221948853
-    },
-    {
-      "Pop": 922,
-      "Name": "Can I Hav Sum Gold Plx",
-      "Advances": [],
-      "PopSeverity": 0.0013007019840642845
-    },
-    {
-      "Pop": 340,
-      "Name": "Gold Farmer",
-      "Advances": [],
-      "PopSeverity": 0.00044861521793106564
-    },
-    {
-      "Pop": 271,
-      "Name": "Two Gruuls One Cup",
-      "Advances": [],
-      "PopSeverity": 0.00035691713879421256
-    },
-    {
-      "Pop": 136,
-      "Name": "Is Guildless",
-      "Advances": [],
-      "PopSeverity": 0.00019186059634787711
-    },
-    {
-      "Pop": 8,
-      "Name": "Myth",
-      "Advances": [],
-      "PopSeverity": 1.1285917432228067E-05
-    },
-    {
-      "Pop": 155,
-      "Name": "It Hurts When I Pvp",
-      "Advances": [],
-      "PopSeverity": 0.00021866465024941877
-    },
-    {
-      "Pop": 162,
-      "Name": "Cenarioncircle Jerk",
-      "Advances": [],
-      "PopSeverity": 0.00022853982800261834
-    },
-    {
-      "Pop": 274,
-      "Name": "Pet Teh Chicken",
-      "Advances": [],
-      "PopSeverity": 0.00038654267205381123
-    },
-    {
-      "Pop": 463,
-      "Name": "Aralith",
-      "Advances": [],
-      "PopSeverity": 0.00065317247139019927
-    },
-    {
-      "Pop": 277,
-      "Name": "FORESWORN",
-      "Advances": [],
-      "PopSeverity": 0.0003907748910908968
-    },
-    {
-      "Pop": 186,
-      "Name": "Horde League",
-      "Advances": [],
-      "PopSeverity": 0.00026239758029930252
-    },
-    {
-      "Pop": 395,
-      "Name": "Bloodbath And Beyond",
-      "Advances": [],
-      "PopSeverity": 0.00055724217321626078
+      "PopSeverity": 0.0010197043668771892
     },
     {
       "Pop": 276,
-      "Name": "The Horde",
-      "Advances": [],
-      "PopSeverity": 0.00038936415141186829
-    },
-    {
-      "Pop": 392,
-      "Name": "Sap It Then Tap It",
-      "Advances": [],
-      "PopSeverity": 0.00055300995417917526
-    },
-    {
-      "Pop": 277,
-      "Name": "War Brothers ",
-      "Advances": [],
-      "PopSeverity": 0.0003907748910908968
-    },
-    {
-      "Pop": 270,
-      "Name": "My Little Ponies",
-      "Advances": [],
-      "PopSeverity": 0.00038089971333769721
-    },
-    {
-      "Pop": 368,
-      "Name": "Time Lords ",
-      "Advances": [],
-      "PopSeverity": 0.000519152201882491
-    },
-    {
-      "Pop": 72,
-      "Name": "Wts Krol Blade Pst",
-      "Advances": [],
-      "PopSeverity": 0.00010157325689005259
-    },
-    {
-      "Pop": 336,
-      "Name": "Pouch My Tenis",
-      "Advances": [],
-      "PopSeverity": 0.00047400853215357879
-    },
-    {
-      "Pop": 778,
-      "Name": "Council of Ranger Pain",
-      "Advances": [],
-      "PopSeverity": 0.0010975554702841795
-    },
-    {
-      "Pop": 227,
-      "Name": "Not The Face",
-      "Advances": [],
-      "PopSeverity": 0.00029907681195404372
-    },
-    {
-      "Pop": 10,
-      "Name": "Night Remnant",
-      "Advances": [],
-      "PopSeverity": 1.2696657111256574E-05
-    },
-    {
-      "Pop": 269,
-      "Name": "Balmar",
-      "Advances": [],
-      "PopSeverity": 0.0003794889736586687
-    },
-    {
-      "Pop": 12,
-      "Name": "Has A Monitor Tan",
-      "Advances": [],
-      "PopSeverity": 1.6928876148342097E-05
-    },
-    {
-      "Pop": 858,
-      "Name": "Beep Beep I  m A Jeep",
-      "Advances": [],
-      "PopSeverity": 0.0012104146446064602
-    },
-    {
-      "Pop": 198,
-      "Name": "The Fist of Easy Justice",
-      "Advances": [],
-      "PopSeverity": 0.00027932645644764464
-    },
-    {
-      "Pop": 218,
-      "Name": "Muffin",
-      "Advances": [],
-      "PopSeverity": 0.00030754125002821481
-    },
-    {
-      "Pop": 483,
-      "Name": "Delta",
-      "Advances": [],
-      "PopSeverity": 0.00068138726497076949
-    },
-    {
-      "Pop": 480,
-      "Name": "Thatched Roof Cottages",
-      "Advances": [],
-      "PopSeverity": 0.000677155045933684
-    },
-    {
-      "Pop": 26,
-      "Name": "Eclipse",
-      "Advances": [],
-      "PopSeverity": 3.6679231654741212E-05
-    },
-    {
-      "Pop": 81,
-      "Name": "Vengence of Reported Ignored Playground",
-      "Advances": [],
-      "PopSeverity": 0.00011426991400130917
-    },
-    {
-      "Pop": 46,
-      "Name": "Power Word Drunk",
-      "Advances": [],
-      "PopSeverity": 6.4894025235311378E-05
-    },
-    {
-      "Pop": 270,
-      "Name": "Iron Will ",
-      "Advances": [],
-      "PopSeverity": 0.00038089971333769721
-    },
-    {
-      "Pop": 215,
-      "Name": "Overward",
-      "Advances": [],
-      "PopSeverity": 0.00030330903099112929
-    },
-    {
-      "Pop": 61,
-      "Name": "Hardcore Pwnography",
-      "Advances": [],
-      "PopSeverity": 8.6055120420739E-05
-    },
-    {
-      "Pop": 359,
-      "Name": "Mad Turkey Disease",
-      "Advances": [],
-      "PopSeverity": 0.00044015077985689455
-    },
-    {
-      "Pop": 169,
-      "Name": "I Have Candy Get In The Van",
-      "Advances": [],
-      "PopSeverity": 0.0002384150057558179
-    },
-    {
-      "Pop": 22,
-      "Name": "Guardians",
-      "Advances": [],
-      "PopSeverity": 3.1036272938627183E-05
-    },
-    {
-      "Pop": 266,
-      "Name": "Armor Is For Noobs",
-      "Advances": [],
-      "PopSeverity": 0.00037525675462158318
-    },
-    {
-      "Pop": 14,
-      "Name": "Team Bubblehearth",
-      "Advances": [],
-      "PopSeverity": 1.9750355506399115E-05
-    },
-    {
-      "Pop": 29,
-      "Name": "Tank And Spank",
-      "Advances": [],
-      "PopSeverity": 4.0911450691826736E-05
-    },
-    {
-      "Pop": 223,
-      "Name": "Vendetta",
-      "Advances": [],
-      "PopSeverity": 0.00031459494842335734
-    },
-    {
-      "Pop": 192745,
-      "Name": "Main City: Stronnothyes",
-      "Advances": [],
-      "PopSeverity": 0.27191301943434981
-    },
-    {
-      "Pop": 862,
-      "Name": "The Empire of Mithril Minions",
-      "Advances": [],
-      "PopSeverity": 0.0012160576033225742
-    },
-    {
-      "Pop": 734,
-      "Name": "TOXIN",
-      "Advances": [],
-      "PopSeverity": 0.001035482924406925
-    },
-    {
-      "Pop": 1742,
-      "Name": "I Have A Big Pvpness",
-      "Advances": [],
-      "PopSeverity": 0.0024575085208676612
-    },
-    {
-      "Pop": 1809,
-      "Name": "Strawberry Banana Fusion",
-      "Advances": [],
-      "PopSeverity": 0.0025520280793625712
-    },
-    {
-      "Pop": 2017,
-      "Name": "Something Really Pretentious",
-      "Advances": [],
-      "PopSeverity": 0.0028454619326005012
-    },
-    {
-      "Pop": 1072,
-      "Name": "Exalted With Your Mom",
-      "Advances": [],
-      "PopSeverity": 0.0015123129359185608
-    },
-    {
-      "Pop": 149,
-      "Name": "Get Rich Or Die Grinding",
-      "Advances": [],
-      "PopSeverity": 0.00021020021217524774
-    },
-    {
-      "Pop": 648,
-      "Name": "Dial M For Dyslexia",
-      "Advances": [],
-      "PopSeverity": 0.00091415931201047334
-    },
-    {
-      "Pop": 903,
-      "Name": "Not A Loser",
-      "Advances": [],
-      "PopSeverity": 0.001273897930162743
-    },
-    {
-      "Pop": 1948,
-      "Name": "Dorito  s Rule",
-      "Advances": [],
-      "PopSeverity": 0.002748120894747534
-    },
-    {
-      "Pop": 141,
-      "Name": "Lament",
-      "Advances": [],
-      "PopSeverity": 0.00019891429474301966
-    },
-    {
-      "Pop": 588,
-      "Name": "Sapped Girls Can  t Say No",
-      "Advances": [],
-      "PopSeverity": 0.00082951493126876279
-    },
-    {
-      "Pop": 1374,
-      "Name": "The Deadbeat Ninjas",
-      "Advances": [],
-      "PopSeverity": 0.0019383563189851703
-    },
-    {
-      "Pop": 434,
-      "Name": "Vanity",
-      "Advances": [],
-      "PopSeverity": 0.00061226102069837261
-    },
-    {
-      "Pop": 3450,
-      "Name": "Shaman Stole My Bike Andnaga Stole My Bike",
-      "Advances": [],
-      "PopSeverity": 0.0048670518926483535
-    },
-    {
-      "Pop": 139,
-      "Name": "Blades of the Unforgiven Barbies",
-      "Advances": [],
-      "PopSeverity": 0.00019609281538496265
-    },
-    {
-      "Pop": 821,
-      "Name": "The Department of LANe Soul",
-      "Advances": [],
-      "PopSeverity": 0.0011582172764824053
-    },
-    {
-      "Pop": 125,
-      "Name": "We Pvp Irl",
-      "Advances": [],
-      "PopSeverity": 0.00017634245987856352
-    },
-    {
-      "Pop": 339,
-      "Name": "Stds Are Bop",
-      "Advances": [],
-      "PopSeverity": 0.00047824075119066431
-    },
-    {
-      "Pop": 234,
-      "Name": "Hispanic Fighters ",
-      "Advances": [],
-      "PopSeverity": 0.00033011308489267095
-    },
-    {
-      "Pop": 394,
-      "Name": "Hates You",
-      "Advances": [],
-      "PopSeverity": 0.00055583143353723228
-    },
-    {
-      "Pop": 55,
-      "Name": "Whack A Gnome",
-      "Advances": [],
-      "PopSeverity": 7.7590682346567955E-05
-    },
-    {
-      "Pop": 1206,
-      "Name": "Thunderbluff Steakhouse",
-      "Advances": [],
-      "PopSeverity": 0.001701352052908381
-    },
-    {
-      "Pop": 370,
-      "Name": "Ten Inches Unbuffed",
-      "Advances": [],
-      "PopSeverity": 0.000521973681240548
-    },
-    {
-      "Pop": 287,
-      "Name": "Ur Mom Is My Epic Mount",
-      "Advances": [],
-      "PopSeverity": 0.00040488228788118186
-    },
-    {
-      "Pop": 197,
-      "Name": "Impulse",
-      "Advances": [],
-      "PopSeverity": 0.00027791571676861614
-    },
-    {
-      "Pop": 158,
-      "Name": "Disciples Of Cloisture",
-      "Advances": [],
-      "PopSeverity": 0.00022289686928650431
-    },
-    {
-      "Pop": 372,
-      "Name": "Arcadian Lords",
-      "Advances": [],
-      "PopSeverity": 0.000524795160598605
-    },
-    {
-      "Pop": 37,
-      "Name": "Lfg Kara Doh Bg Popped",
-      "Advances": [],
-      "PopSeverity": 5.2197368124054807E-05
-    },
-    {
-      "Pop": 216,
-      "Name": "I Ebayed",
-      "Advances": [],
-      "PopSeverity": 0.0003047197706701578
-    },
-    {
-      "Pop": 222,
-      "Name": "Horde Immortal",
-      "Advances": [],
-      "PopSeverity": 0.00031318420874432883
-    },
-    {
-      "Pop": 322,
-      "Name": "Iridium",
-      "Advances": [],
-      "PopSeverity": 0.00039500711012798232
-    },
-    {
-      "Pop": 223,
-      "Name": "Leather Gear Solid",
-      "Advances": [],
-      "PopSeverity": 0.00031459494842335734
-    },
-    {
-      "Pop": 139,
-      "Name": "Out of Lord Lothars Guard",
-      "Advances": [],
-      "PopSeverity": 0.00019609281538496265
-    },
-    {
-      "Pop": 925,
-      "Name": "Sunken Temple Pilots",
-      "Advances": [],
-      "PopSeverity": 0.0013049342031013701
-    },
-    {
-      "Pop": 81,
-      "Name": "Straight Outta Hillsbrad",
-      "Advances": [],
-      "PopSeverity": 0.00011426991400130917
-    },
-    {
-      "Pop": 347,
-      "Name": "Korat",
-      "Advances": [],
-      "PopSeverity": 0.00048952666862289241
-    },
-    {
-      "Pop": 304,
-      "Name": "Pvpness",
-      "Advances": [],
-      "PopSeverity": 0.00049234814798094942
-    },
-    {
-      "Pop": 199,
-      "Name": "More Hks Than Hitler",
-      "Advances": [],
-      "PopSeverity": 0.00028073719612667315
-    },
-    {
-      "Pop": 530,
-      "Name": "You Don  t Know Karate",
-      "Advances": [],
-      "PopSeverity": 0.00074769202988510936
-    },
-    {
-      "Pop": 340,
-      "Name": "Lowercase Gs Gnome Guild",
-      "Advances": [],
-      "PopSeverity": 0.00047965149086969281
-    },
-    {
-      "Pop": 64,
-      "Name": "The Avalanche",
-      "Advances": [],
-      "PopSeverity": 9.0287339457824532E-05
-    },
-    {
-      "Pop": 170,
-      "Name": "Immortal",
-      "Advances": [],
-      "PopSeverity": 0.00023982574543484641
-    },
-    {
-      "Pop": 878,
-      "Name": "Sonic Death Monkeys",
-      "Advances": [],
-      "PopSeverity": 0.0011582172764824053
-    },
-    {
-      "Pop": 492,
-      "Name": "Shades of Phalanx Immortality",
-      "Advances": [],
-      "PopSeverity": 0.000694083922082026
-    },
-    {
-      "Pop": 170,
-      "Name": "Band Of Brothers And Sisters ",
-      "Advances": [],
-      "PopSeverity": 0.00023982574543484641
-    },
-    {
-      "Pop": 84,
-      "Name": "Shadows of the Arcane Lost",
-      "Advances": [],
-      "PopSeverity": 0.0001185021330383947
-    },
-    {
-      "Pop": 79,
-      "Name": "Raided Your Mom",
-      "Advances": [],
-      "PopSeverity": 0.00011144843464325216
-    },
-    {
-      "Pop": 294,
-      "Name": "Happy Fun Rainbow Adventure",
-      "Advances": [],
-      "PopSeverity": 0.00041475746563438139
-    },
-    {
-      "Pop": 305,
-      "Name": "We Have A Tabard",
-      "Advances": [],
-      "PopSeverity": 0.000430275602103695
-    },
-    {
-      "Pop": 435,
-      "Name": "Nova",
-      "Advances": [],
-      "PopSeverity": 0.00057417104936460285
-    },
-    {
-      "Pop": 595,
-      "Name": "Whispers Of Mutiny",
-      "Advances": [],
-      "PopSeverity": 0.00083939010902196244
-    },
-    {
-      "Pop": 412,
-      "Name": "We  re Pissing All Over You",
-      "Advances": [],
-      "PopSeverity": 0.00058122474775974538
-    },
-    {
-      "Pop": 214,
-      "Name": "Read Books Not Guildnames",
-      "Advances": [],
-      "PopSeverity": 0.00030189829131210079
-    },
-    {
-      "Pop": 140,
       "Name": "Backdoor Bandits",
       "Advances": [],
-      "PopSeverity": 0.00018480689795273458
+      "PopSeverity": 0.0013091164816142163
     },
     {
-      "Pop": 5,
-      "Name": "At Least We Have Stables    Alliance Guild",
+      "Pop": 306,
+      "Name": "The Bloodlust",
       "Advances": [],
-      "PopSeverity": 7.0536983951425414E-06
+      "PopSeverity": 0.000827664552425517
     },
     {
-      "Pop": 575,
+      "Pop": 259,
       "Name": "Krag",
       "Advances": [],
-      "PopSeverity": 0.00081117531544139222
+      "PopSeverity": 0.000700539604830748
     },
     {
-      "Pop": 217,
+      "Pop": 144,
       "Name": "My Lil Pwny",
       "Advances": [],
-      "PopSeverity": 0.0003061305103491863
+      "PopSeverity": 0.00038948920114141973
     },
     {
-      "Pop": 62,
-      "Name": "Cyclone Explorers",
+      "Pop": 53,
+      "Name": "Beep Beep I  m A Jeep",
       "Advances": [],
-      "PopSeverity": 8.7465860099767508E-05
+      "PopSeverity": 0.00014335366430899476
     },
     {
-      "Pop": 46,
+      "Pop": 302,
       "Name": "DEFIANT",
       "Advances": [],
-      "PopSeverity": 6.4894025235311378E-05
+      "PopSeverity": 0.00081684540794936642
     },
     {
-      "Pop": 140,
-      "Name": "C A R E P O L I C E",
+      "Pop": 331,
+      "Name": "Muffin",
       "Advances": [],
-      "PopSeverity": 0.00018480689795273458
+      "PopSeverity": 0.00089528420540145788
     },
     {
-      "Pop": 30,
-      "Name": "Viligance",
+      "Pop": 569,
+      "Name": "Irritable Vowels",
       "Advances": [],
-      "PopSeverity": 4.2322190370855248E-05
+      "PopSeverity": 0.0014118983541376465
+    },
+    {
+      "Pop": 334,
+      "Name": "Delta",
+      "Advances": [],
+      "PopSeverity": 0.000760044899449576
+    },
+    {
+      "Pop": 328,
+      "Name": "Deadmines Is Serious Business",
+      "Advances": [],
+      "PopSeverity": 0.000887169847044345
+    },
+    {
+      "Pop": 191,
+      "Name": "Lazergunspewpew",
+      "Advances": [],
+      "PopSeverity": 0.00051661414873618871
+    },
+    {
+      "Pop": 319,
+      "Name": "Spaceballs The Guild",
+      "Advances": [],
+      "PopSeverity": 0.00072488267990208671
+    },
+    {
+      "Pop": 276,
+      "Name": "Orthynes",
+      "Advances": [],
+      "PopSeverity": 0.00074652096885438786
+    },
+    {
+      "Pop": 136,
+      "Name": "Mega Nubcake Supreme",
+      "Advances": [],
+      "PopSeverity": 0.00036785091218911864
+    },
+    {
+      "Pop": 261,
+      "Name": "Keepers of Vending Machine Coalition",
+      "Advances": [],
+      "PopSeverity": 0.00070594917706882324
+    },
+    {
+      "Pop": 513,
+      "Name": "Voodoo Prawn",
+      "Advances": [],
+      "PopSeverity": 0.0013875552790663078
+    },
+    {
+      "Pop": 263,
+      "Name": "Donkey Punch Sue",
+      "Advances": [],
+      "PopSeverity": 0.00071135874930689858
+    },
+    {
+      "Pop": 249,
+      "Name": "Guild Perks",
+      "Advances": [],
+      "PopSeverity": 0.00067349174364037163
+    },
+    {
+      "Pop": 399,
+      "Name": "SPQR",
+      "Advances": [],
+      "PopSeverity": 0.0010792096614960173
     },
     {
       "Pop": 114,
-      "Name": "When Cows Attack",
+      "Name": "Doomsgate",
       "Advances": [],
-      "PopSeverity": 0.00016082432340924993
+      "PopSeverity": 0.0003083456175702906
     },
     {
-      "Pop": 58,
-      "Name": "Wandering Lost Souls ",
+      "Pop": 79,
+      "Name": "Has Your Ip",
       "Advances": [],
-      "PopSeverity": 8.1822901383653472E-05
+      "PopSeverity": 0.00021367810340397334
     },
     {
-      "Pop": 2,
-      "Name": "I Have A Heart On",
+      "Pop": 320,
+      "Name": "Gods of Legionarios De Blade",
       "Advances": [],
-      "PopSeverity": 8.4644380741710486E-06
+      "PopSeverity": 0.00086553155809204383
     },
     {
-      "Pop": 470,
-      "Name": "For Your Health",
+      "Pop": 96,
+      "Name": "Morrissey Eats Kittens",
       "Advances": [],
-      "PopSeverity": 0.00066304764914339892
+      "PopSeverity": 0.0002190876756420486
     },
     {
-      "Pop": 281,
-      "Name": "Stds Are Bops",
+      "Pop": 86,
+      "Name": "Uc Elevator Victims",
       "Advances": [],
-      "PopSeverity": 0.00039641784980701082
+      "PopSeverity": 0.00023261160623723679
     },
     {
-      "Pop": 25,
-      "Name": "Resistance",
+      "Pop": 85,
+      "Name": "Supersassypandas",
       "Advances": [],
-      "PopSeverity": 4.5143669728912266E-05
+      "PopSeverity": 0.00022990682011819915
+    },
+    {
+      "Pop": 90,
+      "Name": "Keepers",
+      "Advances": [],
+      "PopSeverity": 0.00024343075071338733
+    },
+    {
+      "Pop": 276,
+      "Name": "Kings Of Morality",
+      "Advances": [],
+      "PopSeverity": 0.00074652096885438786
     },
     {
       "Pop": 174,
       "Name": "Nightmare On Elf Street",
       "Advances": [],
-      "PopSeverity": 0.00024546870415096046
+      "PopSeverity": 0.00047063278471254886
     },
     {
-      "Pop": 67,
-      "Name": "Is To L337",
+      "Pop": 69,
+      "Name": "Men In Tights",
       "Advances": [],
-      "PopSeverity": 9.4519558494910049E-05
+      "PopSeverity": 0.00018663024221359697
     },
     {
-      "Pop": 180,
-      "Name": "Death Wrath",
+      "Pop": 72,
+      "Name": "Gnomosexual",
       "Advances": [],
-      "PopSeverity": 0.0002370042660767894
+      "PopSeverity": 0.00019474460057070987
     },
     {
       "Pop": 83,
-      "Name": "Revolution",
+      "Name": "Blades of the Unforgiven Barbies",
       "Advances": [],
-      "PopSeverity": 0.00011709139335936618
+      "PopSeverity": 0.00022449724788012389
     },
     {
-      "Pop": 146,
-      "Name": "White And Nerdy",
+      "Pop": 34,
+      "Name": "Turmoil",
       "Advances": [],
-      "PopSeverity": 0.00019186059634787711
+      "PopSeverity": 0.0002109733172849357
     },
     {
-      "Pop": 81,
-      "Name": "Omgflammingkittenlollollol",
+      "Pop": 74,
+      "Name": "Your Mom Is My Epic Mount",
       "Advances": [],
-      "PopSeverity": 0.00011426991400130917
+      "PopSeverity": 0.00020015417280878515
     },
     {
-      "Pop": 166,
-      "Name": "Fat Kids Lag Irl",
+      "Pop": 159,
+      "Name": "Champions of Y Town Army",
       "Advances": [],
-      "PopSeverity": 0.00023418278671873236
+      "PopSeverity": 0.0004300609929269843
     },
     {
-      "Pop": 23,
-      "Name": "Gnomes Gone Gangsta",
+      "Pop": 82,
+      "Name": "The Flame",
       "Advances": [],
-      "PopSeverity": 3.2447012617655689E-05
+      "PopSeverity": 0.00022179246176108624
     },
     {
-      "Pop": 1,
-      "Name": "The Deadly Magic",
+      "Pop": 233,
+      "Name": "Hispanic Fighters ",
       "Advances": [],
-      "PopSeverity": 1.4107396790285083E-06
+      "PopSeverity": 0.00057882422947405437
     },
     {
-      "Pop": 18,
-      "Name": "Omgwatermelonyumyum",
+      "Pop": 187,
+      "Name": "Myspacebarisbroken",
       "Advances": [],
-      "PopSeverity": 2.3982574543484639E-05
+      "PopSeverity": 0.00050579500426003814
     },
     {
-      "Pop": 3,
-      "Name": "LIGH",
+      "Pop": 175,
+      "Name": "Whack A Gnome",
       "Advances": [],
-      "PopSeverity": 4.2322190370855243E-06
+      "PopSeverity": 0.00047333757083158648
     },
     {
-      "Pop": 174,
-      "Name": "Twisted Destiny",
+      "Pop": 86,
+      "Name": "Thunderbluff Steakhouse",
       "Advances": [],
-      "PopSeverity": 0.00022995056768164684
+      "PopSeverity": 0.00023261160623723679
     },
     {
-      "Pop": 47,
-      "Name": "Bikini Bottom Barbarians",
+      "Pop": 79,
+      "Name": "Mommythetrolltouchedme",
       "Advances": [],
-      "PopSeverity": 6.6304764914339883E-05
+      "PopSeverity": 0.00021367810340397334
     },
     {
-      "Pop": 209,
-      "Name": "Twinkle Twinkle Little Horde",
+      "Pop": 281,
+      "Name": "Swordattackklangklang",
       "Advances": [],
-      "PopSeverity": 0.0002948445929169582
+      "PopSeverity": 0.000760044899449576
     },
     {
-      "Pop": 385,
-      "Name": "Vanity",
+      "Pop": 74,
+      "Name": "Spank My Kodo",
       "Advances": [],
-      "PopSeverity": 0.00054313477642597562
+      "PopSeverity": 0.00020015417280878515
     },
     {
       "Pop": 157,
-      "Name": "Miasmador",
+      "Name": "Dorito  s Rule",
       "Advances": [],
-      "PopSeverity": 0.00022148612960747578
-    },
-    {
-      "Pop": 47,
-      "Name": "Keepers of Vending Machine Coalition",
-      "Advances": [],
-      "PopSeverity": 6.6304764914339883E-05
-    },
-    {
-      "Pop": 57,
-      "Name": "Guild Perks",
-      "Advances": [],
-      "PopSeverity": 8.0412161704624966E-05
-    },
-    {
-      "Pop": 160,
-      "Name": "OmA  n of the Stormrage Gods",
-      "Advances": [],
-      "PopSeverity": 0.00022571834864456132
+      "PopSeverity": 0.000424651420688909
     },
     {
       "Pop": 65,
-      "Name": "I Haerd U Liek Mudkipz",
+      "Name": "Anthemic",
       "Advances": [],
-      "PopSeverity": 9.1698079136853038E-05
+      "PopSeverity": 0.00017581109773744642
     },
     {
-      "Pop": 55,
+      "Pop": 230,
+      "Name": "Sapped Girls Can  t Say No",
+      "Advances": [],
+      "PopSeverity": 0.00062210080737865655
+    },
+    {
+      "Pop": 157,
+      "Name": "Pwnography",
+      "Advances": [],
+      "PopSeverity": 0.000424651420688909
+    },
+    {
+      "Pop": 112,
+      "Name": "OmA  n of the Stormrage Gods",
+      "Advances": [],
+      "PopSeverity": 0.00027859297026087661
+    },
+    {
+      "Pop": 132,
+      "Name": "Cosmic",
+      "Advances": [],
+      "PopSeverity": 0.00035703176771296807
+    },
+    {
+      "Pop": 79,
+      "Name": "Botting Around",
+      "Advances": [],
+      "PopSeverity": 0.00021367810340397334
+    },
+    {
+      "Pop": 165,
+      "Name": "Crusaders of the Swift Rejects",
+      "Advances": [],
+      "PopSeverity": 0.0004462897096412101
+    },
+    {
+      "Pop": 82092,
+      "Name": "Main City: Orcs",
+      "Advances": [],
+      "PopSeverity": 0.22204130208403772
+    },
+    {
+      "Pop": 897,
+      "Name": "Mini Hunters",
+      "Advances": [],
+      "PopSeverity": 0.0024261931487767605
+    },
+    {
+      "Pop": 496,
+      "Name": "We Pvp Irl",
+      "Advances": [],
+      "PopSeverity": 0.0013415739150426679
+    },
+    {
+      "Pop": 1177,
+      "Name": "Random People",
+      "Advances": [],
+      "PopSeverity": 0.0031835332621072991
+    },
+    {
+      "Pop": 700,
+      "Name": "Kryptic",
+      "Advances": [],
+      "PopSeverity": 0.0018933502833263459
+    },
+    {
+      "Pop": 318,
+      "Name": "Wedontneedacoolnametoown",
+      "Advances": [],
+      "PopSeverity": 0.0008601219858539686
+    },
+    {
+      "Pop": 272,
+      "Name": "Tier 6 Vendor",
+      "Advances": [],
+      "PopSeverity": 0.00073570182437823729
+    },
+    {
+      "Pop": 872,
+      "Name": "GODS",
+      "Advances": [],
+      "PopSeverity": 0.0023585734958008198
+    },
+    {
+      "Pop": 419,
+      "Name": "Pwnzors You",
+      "Advances": [],
+      "PopSeverity": 0.0010386378697104526
+    },
+    {
+      "Pop": 735,
+      "Name": "Snakes On A Zeppelin",
+      "Advances": [],
+      "PopSeverity": 0.0019880177974926634
+    },
+    {
+      "Pop": 556,
+      "Name": "Kitty Kat Death Squad",
+      "Advances": [],
+      "PopSeverity": 0.0015038610821849262
+    },
+    {
+      "Pop": 438,
+      "Name": "Velocity",
+      "Advances": [],
+      "PopSeverity": 0.0010873240198531302
+    },
+    {
+      "Pop": 525,
+      "Name": "Judegement Of Justice",
+      "Advances": [],
+      "PopSeverity": 0.0014200127124947594
+    },
+    {
+      "Pop": 392,
+      "Name": "Nubcake Is Delicious",
+      "Advances": [],
+      "PopSeverity": 0.0010602761586627537
+    },
+    {
+      "Pop": 204,
+      "Name": "Aman Shot",
+      "Advances": [],
+      "PopSeverity": 0.000551776368283678
+    },
+    {
+      "Pop": 123,
+      "Name": "Rawr Me Eat Ur Brains",
+      "Advances": [],
+      "PopSeverity": 0.00033268869264162936
+    },
+    {
+      "Pop": 298,
+      "Name": "Lol Ur Saped",
+      "Advances": [],
+      "PopSeverity": 0.00080602626347321584
+    },
+    {
+      "Pop": 502,
+      "Name": "Lords of Spinal Treachery",
+      "Advances": [],
+      "PopSeverity": 0.0013578026317568937
+    },
+    {
+      "Pop": 58,
+      "Name": "Irrita",
+      "Advances": [],
+      "PopSeverity": 0.00015687759490418295
+    },
+    {
+      "Pop": 382,
+      "Name": "Bloodthirsty Meerkats",
+      "Advances": [],
+      "PopSeverity": 0.000946675141663173
+    },
+    {
+      "Pop": 549,
+      "Name": "The Noobsauce",
+      "Advances": [],
+      "PopSeverity": 0.0013632122039949691
+    },
+    {
+      "Pop": 78,
+      "Name": "Buds Til Disband",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 298,
+      "Name": "I Touch My Guild Mates",
+      "Advances": [],
+      "PopSeverity": 0.00080602626347321584
+    },
+    {
+      "Pop": 373,
+      "Name": "Jaeden",
+      "Advances": [],
+      "PopSeverity": 0.00092503685271087192
+    },
+    {
+      "Pop": 167,
+      "Name": "Read Books Not Guildnames",
+      "Advances": [],
+      "PopSeverity": 0.00041383227621275849
+    },
+    {
+      "Pop": 703,
+      "Name": "In Urbase Killin Ur Hordes",
+      "Advances": [],
+      "PopSeverity": 0.0019014646416834588
+    },
+    {
+      "Pop": 317,
+      "Name": "At Least We Have Stables    Alliance Guild",
+      "Advances": [],
+      "PopSeverity": 0.00071947310766401148
+    },
+    {
+      "Pop": 199,
+      "Name": "Absolutely Grobbulus",
+      "Advances": [],
+      "PopSeverity": 0.00053825243768848975
+    },
+    {
+      "Pop": 190,
+      "Name": "Cyclone Explorers",
+      "Advances": [],
+      "PopSeverity": 0.000513909362617151
+    },
+    {
+      "Pop": 348,
+      "Name": "Optic",
+      "Advances": [],
+      "PopSeverity": 0.00094126556942509773
+    },
+    {
+      "Pop": 72,
+      "Name": "Lolbster",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 136,
+      "Name": "C A R E P O L I C E",
+      "Advances": [],
+      "PopSeverity": 0.00036785091218911864
+    },
+    {
+      "Pop": 249,
+      "Name": "Ninja Sentenza",
+      "Advances": [],
+      "PopSeverity": 0.00067349174364037163
+    },
+    {
+      "Pop": 318,
+      "Name": "When Cows Attack",
+      "Advances": [],
+      "PopSeverity": 0.00078979754675899
+    },
+    {
+      "Pop": 233,
       "Name": "Interrupts Like Kanye",
       "Advances": [],
-      "PopSeverity": 7.1947723630453919E-05
+      "PopSeverity": 0.00063021516573576945
     },
     {
-      "Pop": 441,
-      "Name": "King Of Sky ",
+      "Pop": 259,
+      "Name": "Raided Your Mom",
       "Advances": [],
-      "PopSeverity": 0.00062213619845157215
+      "PopSeverity": 0.000700539604830748
     },
     {
-      "Pop": 12,
-      "Name": "Rofles And Pwncake",
+      "Pop": 264,
+      "Name": "Riders Of Lohan",
       "Advances": [],
-      "PopSeverity": 1.6928876148342097E-05
+      "PopSeverity": 0.00071406353542593614
     },
     {
-      "Pop": 2,
-      "Name": "Swordattackklangklang",
+      "Pop": 145,
+      "Name": "We Have A Tabard",
       "Advances": [],
-      "PopSeverity": 2.8214793580570166E-06
+      "PopSeverity": 0.0003921939872604574
+    },
+    {
+      "Pop": 142,
+      "Name": "Ravage",
+      "Advances": [],
+      "PopSeverity": 0.00038407962890334445
     },
     {
       "Pop": 224,
+      "Name": "Whispers Of Mutiny",
+      "Advances": [],
+      "PopSeverity": 0.00060587209066443075
+    },
+    {
+      "Pop": 303,
+      "Name": "Tamle Coe",
+      "Advances": [],
+      "PopSeverity": 0.00081955019406840409
+    },
+    {
+      "Pop": 149,
+      "Name": "Epic Thong Droped From Ur Mom",
+      "Advances": [],
+      "PopSeverity": 0.00040301313173660792
+    },
+    {
+      "Pop": 770,
+      "Name": "Roscoes Chicken N Waffles",
+      "Advances": [],
+      "PopSeverity": 0.0020826853116589807
+    },
+    {
+      "Pop": 460,
+      "Name": "Deadly Alliance ",
+      "Advances": [],
+      "PopSeverity": 0.0012442016147573131
+    },
+    {
+      "Pop": 171,
+      "Name": "Amnach",
+      "Advances": [],
+      "PopSeverity": 0.00046251842635543596
+    },
+    {
+      "Pop": 290,
+      "Name": "Offline",
+      "Advances": [],
+      "PopSeverity": 0.00078438797452091481
+    },
+    {
+      "Pop": 164,
+      "Name": "The Yomomma",
+      "Advances": [],
+      "PopSeverity": 0.00044358492352217249
+    },
+    {
+      "Pop": 385,
+      "Name": "PACK",
+      "Advances": [],
+      "PopSeverity": 0.00095478950002028586
+    },
+    {
+      "Pop": 410,
+      "Name": "Kandy Katching Kamels",
+      "Advances": [],
+      "PopSeverity": 0.0011089623088054311
+    },
+    {
+      "Pop": 251,
+      "Name": "Aurum",
+      "Advances": [],
+      "PopSeverity": 0.00067890131587844686
+    },
+    {
+      "Pop": 346,
+      "Name": "Subway Eat Flesh",
+      "Advances": [],
+      "PopSeverity": 0.00093585599718702239
+    },
+    {
+      "Pop": 74,
+      "Name": "Dragons Of Justice ",
+      "Advances": [],
+      "PopSeverity": 0.00020015417280878515
+    },
+    {
+      "Pop": 392,
+      "Name": "Rofles And Pwncake",
+      "Advances": [],
+      "PopSeverity": 0.0010602761586627537
+    },
+    {
+      "Pop": 249,
+      "Name": "Made Of Friends ",
+      "Advances": [],
+      "PopSeverity": 0.00067349174364037163
+    },
+    {
+      "Pop": 56,
+      "Name": "Fat Kids Are Hard To Kidnap",
+      "Advances": [],
+      "PopSeverity": 0.00015146802266610769
+    },
+    {
+      "Pop": 94,
+      "Name": "Azeron",
+      "Advances": [],
+      "PopSeverity": 0.00025424989518953791
+    },
+    {
+      "Pop": 597,
+      "Name": "Punishers Of Uranus",
+      "Advances": [],
+      "PopSeverity": 0.001482222793232625
+    },
+    {
+      "Pop": 213,
+      "Name": "Nutty Squirrel Gang",
+      "Advances": [],
+      "PopSeverity": 0.0005761194433550167
+    },
+    {
+      "Pop": 343,
+      "Name": "Arabain Assasin",
+      "Advances": [],
+      "PopSeverity": 0.00092774163882990948
+    },
+    {
+      "Pop": 232,
+      "Name": "Wintersong",
+      "Advances": [],
+      "PopSeverity": 0.00062751037961673178
+    },
+    {
+      "Pop": 193,
+      "Name": "Alcoholic Task Force",
+      "Advances": [],
+      "PopSeverity": 0.00052202372097426395
+    },
+    {
+      "Pop": 16,
+      "Name": "Crimson Painsmith",
+      "Advances": [],
+      "PopSeverity": 4.3276577904602194E-05
+    },
+    {
+      "Pop": 201,
+      "Name": "Wegottabardlol",
+      "Advances": [],
+      "PopSeverity": 0.00054366200992656509
+    },
+    {
+      "Pop": 226,
+      "Name": "United Alcoholic Pirates",
+      "Advances": [],
+      "PopSeverity": 0.000611281662902506
+    },
+    {
+      "Pop": 298,
+      "Name": "The Killinhorde",
+      "Advances": [],
+      "PopSeverity": 0.00080602626347321584
+    },
+    {
+      "Pop": 95,
+      "Name": "Nicker Stole My Loot",
+      "Advances": [],
+      "PopSeverity": 0.00023531639235627443
+    },
+    {
+      "Pop": 216,
+      "Name": "Armageddon ",
+      "Advances": [],
+      "PopSeverity": 0.0005842338017121296
+    },
+    {
+      "Pop": 176,
+      "Name": "Cedar",
+      "Advances": [],
+      "PopSeverity": 0.00047604235695062415
+    },
+    {
+      "Pop": 75,
+      "Name": "Touch My Totem",
+      "Advances": [],
+      "PopSeverity": 0.00017040152549937113
+    },
+    {
+      "Pop": 143,
+      "Name": "Shaman Stole My Bike Andnaga Stole My Bike",
+      "Advances": [],
+      "PopSeverity": 0.00038678441502238212
+    },
+    {
+      "Pop": 308,
+      "Name": "Powerful Wizards Irl",
+      "Advances": [],
+      "PopSeverity": 0.00083307412466359222
+    },
+    {
+      "Pop": 96,
+      "Name": "Miris",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 178,
+      "Name": "Dreamteam ",
+      "Advances": [],
+      "PopSeverity": 0.00048145192918869938
+    },
+    {
+      "Pop": 73,
+      "Name": "Twisted Destiny",
+      "Advances": [],
+      "PopSeverity": 0.00019744938668974751
+    },
+    {
+      "Pop": 259,
+      "Name": "Legendary AgA  ma",
+      "Advances": [],
+      "PopSeverity": 0.000700539604830748
+    },
+    {
+      "Pop": 308,
+      "Name": "Hells Panty Raiders",
+      "Advances": [],
+      "PopSeverity": 0.00083307412466359222
+    },
+    {
+      "Pop": 129,
+      "Name": "Renegados ",
+      "Advances": [],
+      "PopSeverity": 0.00034891740935585517
+    },
+    {
+      "Pop": 88,
+      "Name": "Vanguard",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 317,
       "Name": "Teh Mudkipz Patrolz",
       "Advances": [],
-      "PopSeverity": 0.00031600568810238584
+      "PopSeverity": 0.00085741719973493093
     },
     {
-      "Pop": 27,
+      "Pop": 164,
+      "Name": "The Deadly Magic",
+      "Advances": [],
+      "PopSeverity": 0.00044358492352217249
+    },
+    {
+      "Pop": 72,
+      "Name": "Omg Brb Ice Cream Truck",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 152,
+      "Name": "Trade Supplies",
+      "Advances": [],
+      "PopSeverity": 0.00041112749009372082
+    },
+    {
+      "Pop": 88,
+      "Name": "Gnomeregan Was Our Fault",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 158,
+      "Name": "Desire",
+      "Advances": [],
+      "PopSeverity": 0.00042735620680794668
+    },
+    {
+      "Pop": 92,
+      "Name": "Chances Are We  re Pro",
+      "Advances": [],
+      "PopSeverity": 0.00024884032295146262
+    },
+    {
+      "Pop": 290,
       "Name": "Everlasting Pajamas",
       "Advances": [],
-      "PopSeverity": 3.8089971333769725E-05
+      "PopSeverity": 0.00078438797452091481
     },
     {
-      "Pop": 2,
+      "Pop": 171,
+      "Name": "Readthiswhileiyankyou",
+      "Advances": [],
+      "PopSeverity": 0.00046251842635543596
+    },
+    {
+      "Pop": 93,
+      "Name": "Guild Name Here",
+      "Advances": [],
+      "PopSeverity": 0.00025154510907050024
+    },
+    {
+      "Pop": 313,
+      "Name": "Forgotten Winter",
+      "Advances": [],
+      "PopSeverity": 0.00084659805525878046
+    },
+    {
+      "Pop": 84,
+      "Name": "Lividia",
+      "Advances": [],
+      "PopSeverity": 0.00022720203399916153
+    },
+    {
+      "Pop": 73,
+      "Name": "Come Honor Chest",
+      "Advances": [],
+      "PopSeverity": 0.00019744938668974751
+    },
+    {
+      "Pop": 85,
+      "Name": "LLM",
+      "Advances": [],
+      "PopSeverity": 0.00022990682011819915
+    },
+    {
+      "Pop": 79,
+      "Name": "The Bunnies Are Angry",
+      "Advances": [],
+      "PopSeverity": 0.00021367810340397334
+    },
+    {
+      "Pop": 28,
+      "Name": "Roflcers Of The Lawl",
+      "Advances": [],
+      "PopSeverity": 7.5734011333053843E-05
+    },
+    {
+      "Pop": 79,
+      "Name": "The Supreme Ganker",
+      "Advances": [],
+      "PopSeverity": 0.00021367810340397334
+    },
+    {
+      "Pop": 181,
+      "Name": "R Kelly Pvped On Me",
+      "Advances": [],
+      "PopSeverity": 0.00048956628754581234
+    },
+    {
+      "Pop": 90,
+      "Name": "My Caps Locks On",
+      "Advances": [],
+      "PopSeverity": 0.00022449724788012389
+    },
+    {
+      "Pop": 80,
+      "Name": "Deadly Penguin Squad",
+      "Advances": [],
+      "PopSeverity": 0.00021638288952301096
+    },
+    {
+      "Pop": 66,
+      "Name": "Merciless Janitors",
+      "Advances": [],
+      "PopSeverity": 0.00017851588385648404
+    },
+    {
+      "Pop": 151,
+      "Name": "Psycopath",
+      "Advances": [],
+      "PopSeverity": 0.00040842270397468321
+    },
+    {
+      "Pop": 273,
+      "Name": "I Have Candy Get In The Van",
+      "Advances": [],
+      "PopSeverity": 0.000738406610497275
+    },
+    {
+      "Pop": 78,
+      "Name": "Syphillis Clinic",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 103,
+      "Name": "Black Chosen",
+      "Advances": [],
+      "PopSeverity": 0.00027859297026087661
+    },
+    {
+      "Pop": 97,
+      "Name": "Barbaric",
+      "Advances": [],
+      "PopSeverity": 0.00026236425354665081
+    },
+    {
+      "Pop": 68,
+      "Name": "Guardians of Traveling Troll Wisdom",
+      "Advances": [],
+      "PopSeverity": 0.00018392545609455932
+    },
+    {
+      "Pop": 275,
+      "Name": "Illuminattes ",
+      "Advances": [],
+      "PopSeverity": 0.00074381618273535019
+    },
+    {
+      "Pop": 69,
       "Name": "Molten Core Swimming Team",
       "Advances": [],
-      "PopSeverity": 2.8214793580570166E-06
+      "PopSeverity": 0.00018663024221359697
     },
     {
-      "Pop": 119,
+      "Pop": 92,
+      "Name": "Gnome Pest Control ",
+      "Advances": [],
+      "PopSeverity": 0.00022720203399916153
+    },
+    {
+      "Pop": 147,
+      "Name": "Gold Plz",
+      "Advances": [],
+      "PopSeverity": 0.00039760355949853264
+    },
+    {
+      "Pop": 72,
+      "Name": "Will Dance For Gold",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 177,
+      "Name": "Raging Horde On",
+      "Advances": [],
+      "PopSeverity": 0.00047874714306966177
+    },
+    {
+      "Pop": 81,
+      "Name": "Exercito Brasileiro ",
+      "Advances": [],
+      "PopSeverity": 0.0002190876756420486
+    },
+    {
+      "Pop": 86,
+      "Name": "Deities",
+      "Advances": [],
+      "PopSeverity": 0.00023261160623723679
+    },
+    {
+      "Pop": 153,
+      "Name": "Work    I  m Guessing They Play From Work  ",
+      "Advances": [],
+      "PopSeverity": 0.00041383227621275849
+    },
+    {
+      "Pop": 234,
+      "Name": "Beta Tested Ur Gf",
+      "Advances": [],
+      "PopSeverity": 0.00063291995185480712
+    },
+    {
+      "Pop": 123,
+      "Name": "The Big Darkness",
+      "Advances": [],
+      "PopSeverity": 0.00033268869264162936
+    },
+    {
+      "Pop": 36,
+      "Name": "Jetpack Ninja Dinosaurs",
+      "Advances": [],
+      "PopSeverity": 8.9257941928242018E-05
+    },
+    {
+      "Pop": 198,
+      "Name": "Evolved",
+      "Advances": [],
+      "PopSeverity": 0.00044899449576024777
+    },
+    {
+      "Pop": 76,
+      "Name": "Agents Of Shield ",
+      "Advances": [],
+      "PopSeverity": 0.00020556374504686041
+    },
+    {
+      "Pop": 118,
+      "Name": "Grabastic Battle Squishys",
+      "Advances": [],
+      "PopSeverity": 0.00031916476204644118
+    },
+    {
+      "Pop": 96,
+      "Name": "Wipes On Trash",
+      "Advances": [],
+      "PopSeverity": 0.00025965946742761314
+    },
+    {
+      "Pop": 45,
+      "Name": "Sapped Girls Don  t Say No",
+      "Advances": [],
+      "PopSeverity": 0.00012171537535669367
+    },
+    {
+      "Pop": 75415,
+      "Name": "Main City: Humans",
+      "Advances": [],
+      "PopSeverity": 0.20398144516722341
+    },
+    {
+      "Pop": 639,
+      "Name": "Noctem",
+      "Advances": [],
+      "PopSeverity": 0.00172835833006505
+    },
+    {
+      "Pop": 701,
+      "Name": "Sap And Go",
+      "Advances": [],
+      "PopSeverity": 0.0018960550694453837
+    },
+    {
+      "Pop": 984,
+      "Name": "Less Qq More Pew Pew",
+      "Advances": [],
+      "PopSeverity": 0.0026615095411330349
+    },
+    {
+      "Pop": 663,
+      "Name": "One Of Us Is Stealthed",
+      "Advances": [],
+      "PopSeverity": 0.0017932731969219533
+    },
+    {
+      "Pop": 409,
+      "Name": "Mystic",
+      "Advances": [],
+      "PopSeverity": 0.0011062575226863936
+    },
+    {
+      "Pop": 608,
+      "Name": "Children Of Truth",
+      "Advances": [],
+      "PopSeverity": 0.0015092706544230015
+    },
+    {
+      "Pop": 287,
+      "Name": "Risen United",
+      "Advances": [],
+      "PopSeverity": 0.0007762736161638018
+    },
+    {
+      "Pop": 310,
+      "Name": "Snakes On A Planestrider",
+      "Advances": [],
+      "PopSeverity": 0.00083848369690166745
+    },
+    {
+      "Pop": 439,
+      "Name": "Super Squishy Squadron",
+      "Advances": [],
+      "PopSeverity": 0.0011874011062575228
+    },
+    {
+      "Pop": 925,
+      "Name": "Priests of Honor En Callers",
+      "Advances": [],
+      "PopSeverity": 0.0025019271601098144
+    },
+    {
+      "Pop": 88,
+      "Name": "Doesn  t Preview Strategy ",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 56,
       "Name": "Hellen Keller Vs Traffic",
       "Advances": [],
-      "PopSeverity": 0.00016787802180439249
+      "PopSeverity": 0.00015146802266610769
+    },
+    {
+      "Pop": 211,
+      "Name": "Girls Gone WoW",
+      "Advances": [],
+      "PopSeverity": 0.00057070987111694147
+    },
+    {
+      "Pop": 208,
+      "Name": "Gank Or Die Trying",
+      "Advances": [],
+      "PopSeverity": 0.00056259551275982856
+    },
+    {
+      "Pop": 497,
+      "Name": "Queer Eye For The Draenei",
+      "Advances": [],
+      "PopSeverity": 0.0013442787011617057
+    },
+    {
+      "Pop": 398,
+      "Name": "Darkened",
+      "Advances": [],
+      "PopSeverity": 0.0010765048753769795
+    },
+    {
+      "Pop": 431,
+      "Name": "Soft Kitty Warm Kitty",
+      "Advances": [],
+      "PopSeverity": 0.0011657628173052216
+    },
+    {
+      "Pop": 431,
+      "Name": "Chairman Of The Horde",
+      "Advances": [],
+      "PopSeverity": 0.0011657628173052216
+    },
+    {
+      "Pop": 328,
+      "Name": "The Cordarei",
+      "Advances": [],
+      "PopSeverity": 0.00081414062183032875
+    },
+    {
+      "Pop": 334,
+      "Name": "Mmos Before Hoes",
+      "Advances": [],
+      "PopSeverity": 0.00090339856375857078
+    },
+    {
+      "Pop": 246,
+      "Name": "Hamsandwiches Guild",
+      "Advances": [],
+      "PopSeverity": 0.00066537738528325873
+    },
+    {
+      "Pop": 400,
+      "Name": "Fatal",
+      "Advances": [],
+      "PopSeverity": 0.0010819144476150548
+    },
+    {
+      "Pop": 273,
+      "Name": "Fuzzy Wuzzy Panda Bears",
+      "Advances": [],
+      "PopSeverity": 0.000738406610497275
+    },
+    {
+      "Pop": 155,
+      "Name": "Necro Service",
+      "Advances": [],
+      "PopSeverity": 0.00041924184845083373
+    },
+    {
+      "Pop": 309,
+      "Name": "Strength of Stormpike Inc",
+      "Advances": [],
+      "PopSeverity": 0.00083577891078262989
+    },
+    {
+      "Pop": 121,
+      "Name": "Id Mana Tap That",
+      "Advances": [],
+      "PopSeverity": 0.0003002312592131777
+    },
+    {
+      "Pop": 343,
+      "Name": "The Great",
+      "Advances": [],
+      "PopSeverity": 0.00092774163882990948
+    },
+    {
+      "Pop": 41,
+      "Name": "Ebony",
+      "Advances": [],
+      "PopSeverity": 0.00011089623088054312
+    },
+    {
+      "Pop": 278,
+      "Name": "Pew Pew Sharks Wit Lasers",
+      "Advances": [],
+      "PopSeverity": 0.00075193054109246309
+    },
+    {
+      "Pop": 383,
+      "Name": "Lincoln Wiped On Opera",
+      "Advances": [],
+      "PopSeverity": 0.001035933083591415
+    },
+    {
+      "Pop": 319,
+      "Name": "Seems Good",
+      "Advances": [],
+      "PopSeverity": 0.00086282677197300627
+    },
+    {
+      "Pop": 308,
+      "Name": "Noobs Use Mice",
+      "Advances": [],
+      "PopSeverity": 0.00083307412466359222
+    },
+    {
+      "Pop": 175,
+      "Name": "Lords of Corpse Skirmishers",
+      "Advances": [],
+      "PopSeverity": 0.00047333757083158648
+    },
+    {
+      "Pop": 233,
+      "Name": "Soar",
+      "Advances": [],
+      "PopSeverity": 0.00063021516573576945
+    },
+    {
+      "Pop": 174,
+      "Name": "Gruul  s Gone Wild",
+      "Advances": [],
+      "PopSeverity": 0.00047063278471254886
+    },
+    {
+      "Pop": 96,
+      "Name": "Angels of Royal Geographic Clan",
+      "Advances": [],
+      "PopSeverity": 0.00025965946742761314
+    },
+    {
+      "Pop": 46,
+      "Name": "Anthrax",
+      "Advances": [],
+      "PopSeverity": 0.00012442016147573131
+    },
+    {
+      "Pop": 480,
+      "Name": "Ban Me",
+      "Advances": [],
+      "PopSeverity": 0.0012982973371380659
+    },
+    {
+      "Pop": 81,
+      "Name": "Light Zuljin",
+      "Advances": [],
+      "PopSeverity": 0.0002190876756420486
+    },
+    {
+      "Pop": 346,
+      "Name": "Popsicles In The Cellar",
+      "Advances": [],
+      "PopSeverity": 0.00093585599718702239
+    },
+    {
+      "Pop": 84,
+      "Name": "Crayons Taste Like Purple",
+      "Advances": [],
+      "PopSeverity": 0.00022720203399916153
+    },
+    {
+      "Pop": 456,
+      "Name": "Slaystation",
+      "Advances": [],
+      "PopSeverity": 0.0012333824702811624
+    },
+    {
+      "Pop": 89,
+      "Name": "The Sponge Bob Clan",
+      "Advances": [],
+      "PopSeverity": 0.00024072596459434969
+    },
+    {
+      "Pop": 70,
+      "Name": "Omgkittensmewmewmew",
+      "Advances": [],
+      "PopSeverity": 0.00018933502833263461
+    },
+    {
+      "Pop": 273,
+      "Name": "Malice",
+      "Advances": [],
+      "PopSeverity": 0.000738406610497275
+    },
+    {
+      "Pop": 82,
+      "Name": "Elite Militia ",
+      "Advances": [],
+      "PopSeverity": 0.00022179246176108624
+    },
+    {
+      "Pop": 88,
+      "Name": "Hardcorepwnography",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 73,
+      "Name": "Valkarie",
+      "Advances": [],
+      "PopSeverity": 0.00019744938668974751
+    },
+    {
+      "Pop": 259,
+      "Name": "Infinity Draco",
+      "Advances": [],
+      "PopSeverity": 0.000700539604830748
+    },
+    {
+      "Pop": 268,
+      "Name": "Night Avengers",
+      "Advances": [],
+      "PopSeverity": 0.00072488267990208671
+    },
+    {
+      "Pop": 422,
+      "Name": "Your Mothers A Horde",
+      "Advances": [],
+      "PopSeverity": 0.0010467522280675655
+    },
+    {
+      "Pop": 436,
+      "Name": "Hard Like Heroic",
+      "Advances": [],
+      "PopSeverity": 0.0010819144476150548
+    },
+    {
+      "Pop": 591,
+      "Name": "Ominous Latin Name",
+      "Advances": [],
+      "PopSeverity": 0.0015985285963512435
+    },
+    {
+      "Pop": 284,
+      "Name": "Demonicum",
+      "Advances": [],
+      "PopSeverity": 0.0007681592578066889
+    },
+    {
+      "Pop": 268,
+      "Name": "Chicks With Dks",
+      "Advances": [],
+      "PopSeverity": 0.00072488267990208671
+    },
+    {
+      "Pop": 275,
+      "Name": "Headless Deer Society",
+      "Advances": [],
+      "PopSeverity": 0.00074381618273535019
+    },
+    {
+      "Pop": 81,
+      "Name": "I Shave My Legs",
+      "Advances": [],
+      "PopSeverity": 0.0002190876756420486
+    },
+    {
+      "Pop": 189,
+      "Name": "Order Of The Flaming Phoenix ",
+      "Advances": [],
+      "PopSeverity": 0.00051120457649811337
+    },
+    {
+      "Pop": 290,
+      "Name": "You Hate Us Cause You Aint Us",
+      "Advances": [],
+      "PopSeverity": 0.00078438797452091481
+    },
+    {
+      "Pop": 80,
+      "Name": "Bloodlust",
+      "Advances": [],
+      "PopSeverity": 0.00021638288952301096
+    },
+    {
+      "Pop": 162,
+      "Name": "Ice Cream Club",
+      "Advances": [],
+      "PopSeverity": 0.0004381753512840972
+    },
+    {
+      "Pop": 471,
+      "Name": "When Fat Kids Attack",
+      "Advances": [],
+      "PopSeverity": 0.0012739542620667272
+    },
+    {
+      "Pop": 80,
+      "Name": "Mercenaries of Vogon Poets Blade",
+      "Advances": [],
+      "PopSeverity": 0.00021638288952301096
+    },
+    {
+      "Pop": 258,
+      "Name": "Cenarioncircle Jerk",
+      "Advances": [],
+      "PopSeverity": 0.00069783481871171034
+    },
+    {
+      "Pop": 80,
+      "Name": "The Cucarachas Guardians",
+      "Advances": [],
+      "PopSeverity": 0.00021638288952301096
+    },
+    {
+      "Pop": 361,
+      "Name": "Aralith",
+      "Advances": [],
+      "PopSeverity": 0.000976427788972587
+    },
+    {
+      "Pop": 178,
+      "Name": "Click To Insert Text",
+      "Advances": [],
+      "PopSeverity": 0.00048145192918869938
+    },
+    {
+      "Pop": 65,
+      "Name": "Beep Boop Im A Robot Lol",
+      "Advances": [],
+      "PopSeverity": 0.00017581109773744642
+    },
+    {
+      "Pop": 69,
+      "Name": "Horde League",
+      "Advances": [],
+      "PopSeverity": 0.00018663024221359697
+    },
+    {
+      "Pop": 64,
+      "Name": "10 Inches Unbuffed",
+      "Advances": [],
+      "PopSeverity": 0.00017310631161840878
+    },
+    {
+      "Pop": 89,
+      "Name": "The Horde",
+      "Advances": [],
+      "PopSeverity": 0.00024072596459434969
+    },
+    {
+      "Pop": 52,
+      "Name": "And Two Stealthed Rogues",
+      "Advances": [],
+      "PopSeverity": 0.00014064887818995714
+    },
+    {
+      "Pop": 175,
+      "Name": "War Brothers ",
+      "Advances": [],
+      "PopSeverity": 0.00043547056516505958
+    },
+    {
+      "Pop": 173,
+      "Name": "Straightjacket Elite",
+      "Advances": [],
+      "PopSeverity": 0.00046792799859351119
+    },
+    {
+      "Pop": 219,
+      "Name": "Spartan",
+      "Advances": [],
+      "PopSeverity": 0.0005923481600692425
+    },
+    {
+      "Pop": 64,
+      "Name": "Noobs Enfuego",
+      "Advances": [],
+      "PopSeverity": 0.00017310631161840878
+    },
+    {
+      "Pop": 73,
+      "Name": "The Waste Justice",
+      "Advances": [],
+      "PopSeverity": 0.00018122066997552168
+    },
+    {
+      "Pop": 193,
+      "Name": "Wts Krol Blade Pst",
+      "Advances": [],
+      "PopSeverity": 0.00052202372097426395
+    },
+    {
+      "Pop": 197,
+      "Name": "Slizzard Bucks",
+      "Advances": [],
+      "PopSeverity": 0.00053284286545041452
+    },
+    {
+      "Pop": 158,
+      "Name": "Council of Ranger Pain",
+      "Advances": [],
+      "PopSeverity": 0.00035973655383200574
+    },
+    {
+      "Pop": 76,
+      "Name": "Grim",
+      "Advances": [],
+      "PopSeverity": 0.00020556374504686041
+    },
+    {
+      "Pop": 71,
+      "Name": "I Dps My Kids Irl",
+      "Advances": [],
+      "PopSeverity": 0.00019203981445167222
+    },
+    {
+      "Pop": 235,
+      "Name": "Night Remnant",
+      "Advances": [],
+      "PopSeverity": 0.00063562473797384468
+    },
+    {
+      "Pop": 24,
+      "Name": "Jesus Had A Soulstone",
+      "Advances": [],
+      "PopSeverity": 6.4914866856903284E-05
+    },
+    {
+      "Pop": 162,
+      "Name": "Exeo",
+      "Advances": [],
+      "PopSeverity": 0.0004381753512840972
+    },
+    {
+      "Pop": 75,
+      "Name": "Defenders Of Pie",
+      "Advances": [],
+      "PopSeverity": 0.00020285895892782277
+    },
+    {
+      "Pop": 237,
+      "Name": "Gluten Intolerant",
+      "Advances": [],
+      "PopSeverity": 0.00058693858783116727
+    },
+    {
+      "Pop": 85,
+      "Name": "Is So Hordey",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 75,
+      "Name": "The Cake Is A Lie  ",
+      "Advances": [],
+      "PopSeverity": 0.00020285895892782277
+    },
+    {
+      "Pop": 72,
+      "Name": "Straight Outta Gnomeregan",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 78,
+      "Name": "Hardcore Pwnography",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 73,
+      "Name": "At Least We Capped Stables",
+      "Advances": [],
+      "PopSeverity": 0.00019744938668974751
+    },
+    {
+      "Pop": 15,
+      "Name": "Mad Turkey Disease",
+      "Advances": [],
+      "PopSeverity": 4.0571791785564558E-05
+    },
+    {
+      "Pop": 68,
+      "Name": "I Go A Huge Pvpness",
+      "Advances": [],
+      "PopSeverity": 0.00018392545609455932
+    },
+    {
+      "Pop": 72,
+      "Name": "Farms Gold",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 62,
+      "Name": "Guardians",
+      "Advances": [],
+      "PopSeverity": 0.00016769673938033349
+    },
+    {
+      "Pop": 77,
+      "Name": "Catch Me Glidin Dirty",
+      "Advances": [],
+      "PopSeverity": 0.00020826853116589806
+    },
+    {
+      "Pop": 81,
+      "Name": "Armor Is For Noobs",
+      "Advances": [],
+      "PopSeverity": 0.0002190876756420486
+    },
+    {
+      "Pop": 79,
+      "Name": "AngelBeats",
+      "Advances": [],
+      "PopSeverity": 0.00021367810340397334
+    },
+    {
+      "Pop": 282,
+      "Name": "Tank And Spank",
+      "Advances": [],
+      "PopSeverity": 0.000700539604830748
+    },
+    {
+      "Pop": 85,
+      "Name": "Scarlet Justice",
+      "Advances": [],
+      "PopSeverity": 0.00022990682011819915
+    },
+    {
+      "Pop": 84,
+      "Name": "Eternal Honor",
+      "Advances": [],
+      "PopSeverity": 0.00019203981445167222
+    },
+    {
+      "Pop": 88,
+      "Name": "Teh Penguin Mafia",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 59,
+      "Name": "Rez Please",
+      "Advances": [],
+      "PopSeverity": 0.00015958238102322059
+    },
+    {
+      "Pop": 74,
+      "Name": "I Have A Big Pvpness",
+      "Advances": [],
+      "PopSeverity": 0.00020015417280878515
+    },
+    {
+      "Pop": 83,
+      "Name": "Latinos Company ",
+      "Advances": [],
+      "PopSeverity": 0.00022449724788012389
+    },
+    {
+      "Pop": 147,
+      "Name": "Something Really Pretentious",
+      "Advances": [],
+      "PopSeverity": 0.00039760355949853264
+    },
+    {
+      "Pop": 83,
+      "Name": "Children Of Virtue ",
+      "Advances": [],
+      "PopSeverity": 0.00022449724788012389
+    },
+    {
+      "Pop": 79,
+      "Name": "Lolimlegolas",
+      "Advances": [],
+      "PopSeverity": 0.00021367810340397334
+    },
+    {
+      "Pop": 40,
+      "Name": "Get Rich Or Die Grinding",
+      "Advances": [],
+      "PopSeverity": 0.00019203981445167222
+    },
+    {
+      "Pop": 71,
+      "Name": "Purge",
+      "Advances": [],
+      "PopSeverity": 0.00019203981445167222
+    },
+    {
+      "Pop": 69,
+      "Name": "The Tender Alliance",
+      "Advances": [],
+      "PopSeverity": 0.00018663024221359697
+    },
+    {
+      "Pop": 86423,
+      "Name": "Main City: Stronnothyes",
+      "Advances": [],
+      "PopSeverity": 0.2337557307655897
+    },
+    {
+      "Pop": 881,
+      "Name": "DEATHSCYTHE",
+      "Advances": [],
+      "PopSeverity": 0.0021854671841824106
+    },
+    {
+      "Pop": 933,
+      "Name": "Law Of Superiority ",
+      "Advances": [],
+      "PopSeverity": 0.0025235654490621154
+    },
+    {
+      "Pop": 938,
+      "Name": "Is No Longer Guildless",
+      "Advances": [],
+      "PopSeverity": 0.0023288208484914057
+    },
+    {
+      "Pop": 776,
+      "Name": "It Hurts When I Pvp",
+      "Advances": [],
+      "PopSeverity": 0.0020989140283732065
+    },
+    {
+      "Pop": 670,
+      "Name": "Originais ",
+      "Advances": [],
+      "PopSeverity": 0.0018122066997552169
+    },
+    {
+      "Pop": 512,
+      "Name": "FORESWORN",
+      "Advances": [],
+      "PopSeverity": 0.0013848504929472702
+    },
+    {
+      "Pop": 82,
+      "Name": "Bloodbath And Beyond",
+      "Advances": [],
+      "PopSeverity": 0.00022179246176108624
+    },
+    {
+      "Pop": 331,
+      "Name": "Asian Powerleveler",
+      "Advances": [],
+      "PopSeverity": 0.00082225498018744165
+    },
+    {
+      "Pop": 538,
+      "Name": "Arcadian Lords",
+      "Advances": [],
+      "PopSeverity": 0.0014551749320422488
+    },
+    {
+      "Pop": 458,
+      "Name": "Sap It Then Tap It",
+      "Advances": [],
+      "PopSeverity": 0.0012387920425192378
+    },
+    {
+      "Pop": 336,
+      "Name": "Horde Immortal",
+      "Advances": [],
+      "PopSeverity": 0.00090880813599664612
+    },
+    {
+      "Pop": 197,
+      "Name": "My Little Ponies",
+      "Advances": [],
+      "PopSeverity": 0.00053284286545041452
+    },
+    {
+      "Pop": 987,
+      "Name": "Leather Gear Solid",
+      "Advances": [],
+      "PopSeverity": 0.0022422676926822011
+    },
+    {
+      "Pop": 711,
+      "Name": "Time Lords ",
+      "Advances": [],
+      "PopSeverity": 0.0017635205496125395
+    },
+    {
+      "Pop": 537,
+      "Name": "Avalanche",
+      "Advances": [],
+      "PopSeverity": 0.0014524701459232112
+    },
+    {
+      "Pop": 379,
+      "Name": "Sunken Temple Pilots",
+      "Advances": [],
+      "PopSeverity": 0.00094126556942509773
+    },
+    {
+      "Pop": 248,
+      "Name": "Pouch My Tenis",
+      "Advances": [],
+      "PopSeverity": 0.000670786957521334
+    },
+    {
+      "Pop": 385,
+      "Name": "Pvpness",
+      "Advances": [],
+      "PopSeverity": 0.0010413426558294903
+    },
+    {
+      "Pop": 326,
+      "Name": "Not The Face",
+      "Advances": [],
+      "PopSeverity": 0.00088176027480626974
+    },
+    {
+      "Pop": 421,
+      "Name": "You Don  t Know Karate",
+      "Advances": [],
+      "PopSeverity": 0.0011387149561148452
+    },
+    {
+      "Pop": 80,
+      "Name": "Balmar",
+      "Advances": [],
+      "PopSeverity": 0.00019744938668974751
+    },
+    {
+      "Pop": 335,
+      "Name": "Has A Monitor Tan",
+      "Advances": [],
+      "PopSeverity": 0.00090610334987760845
+    },
+    {
+      "Pop": 22,
+      "Name": "The Avalanche",
+      "Advances": [],
+      "PopSeverity": 5.9505294618828019E-05
+    },
+    {
+      "Pop": 778,
+      "Name": "The Fist of Easy Justice",
+      "Advances": [],
+      "PopSeverity": 0.0021043236006112816
+    },
+    {
+      "Pop": 383,
+      "Name": "Sonic Death Monkeys",
+      "Advances": [],
+      "PopSeverity": 0.001035933083591415
+    },
+    {
+      "Pop": 754,
+      "Name": "Band Of Brothers And Sisters ",
+      "Advances": [],
+      "PopSeverity": 0.0020394087337543784
+    },
+    {
+      "Pop": 85,
+      "Name": "Hangin   With My Gnomies",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 173,
+      "Name": "Lionel Ritchie Fan Club",
+      "Advances": [],
+      "PopSeverity": 0.00046792799859351119
+    },
+    {
+      "Pop": 117,
+      "Name": "Team Bubblehearth",
+      "Advances": [],
+      "PopSeverity": 0.00031645997592740356
+    },
+    {
+      "Pop": 63,
+      "Name": "I Have A Heart On",
+      "Advances": [],
+      "PopSeverity": 0.00017040152549937113
+    },
+    {
+      "Pop": 355,
+      "Name": "Vendetta",
+      "Advances": [],
+      "PopSeverity": 0.0009601990722583612
+    },
+    {
+      "Pop": 604,
+      "Name": "Stds Are Bops",
+      "Advances": [],
+      "PopSeverity": 0.0016336908158987328
+    },
+    {
+      "Pop": 225,
+      "Name": "The Empire of Mithril Minions",
+      "Advances": [],
+      "PopSeverity": 0.00055718594052175322
+    },
+    {
+      "Pop": 531,
+      "Name": "TOXIN",
+      "Advances": [],
+      "PopSeverity": 0.0014362414292089854
+    },
+    {
+      "Pop": 47,
+      "Name": "Strawberry Banana Fusion",
+      "Advances": [],
+      "PopSeverity": 0.00012712494759476895
+    },
+    {
+      "Pop": 227,
+      "Name": "Revolution",
+      "Advances": [],
+      "PopSeverity": 0.00061398644902154365
+    },
+    {
+      "Pop": 182,
+      "Name": "Exalted With Your Mom",
+      "Advances": [],
+      "PopSeverity": 0.00045169928187928539
+    },
+    {
+      "Pop": 115,
+      "Name": "Shadow Vengeance",
+      "Advances": [],
+      "PopSeverity": 0.00031105040368932827
+    },
+    {
+      "Pop": 354,
+      "Name": "Dial M For Dyslexia",
+      "Advances": [],
+      "PopSeverity": 0.00095749428613932353
+    },
+    {
+      "Pop": 323,
+      "Name": "Not A Loser",
+      "Advances": [],
+      "PopSeverity": 0.00087364591644915673
+    },
+    {
+      "Pop": 405,
+      "Name": "Omgflammingkittenlollollol",
+      "Advances": [],
+      "PopSeverity": 0.0010061804362820009
+    },
+    {
+      "Pop": 77,
+      "Name": "Lament",
+      "Advances": [],
+      "PopSeverity": 0.00020826853116589806
+    },
+    {
+      "Pop": 197,
+      "Name": "Fat Kids Lag Irl",
+      "Advances": [],
+      "PopSeverity": 0.00053284286545041452
+    },
+    {
+      "Pop": 84,
+      "Name": "The Deadbeat Ninjas",
+      "Advances": [],
+      "PopSeverity": 0.00022720203399916153
+    },
+    {
+      "Pop": 447,
+      "Name": "Gnomes Gone Gangsta",
+      "Advances": [],
+      "PopSeverity": 0.0012090393952098237
+    },
+    {
+      "Pop": 424,
+      "Name": "Curse",
+      "Advances": [],
+      "PopSeverity": 0.0011468293144719581
+    },
+    {
+      "Pop": 63,
+      "Name": "I Ebayed",
+      "Advances": [],
+      "PopSeverity": 0.00014335366430899476
+    },
+    {
+      "Pop": 78,
+      "Name": "Iridium",
+      "Advances": [],
+      "PopSeverity": 0.0002109733172849357
+    },
+    {
+      "Pop": 83,
+      "Name": "Dark Vengeance",
+      "Advances": [],
+      "PopSeverity": 0.00022449724788012389
+    },
+    {
+      "Pop": 82,
+      "Name": "Out of Lord Lothars Guard",
+      "Advances": [],
+      "PopSeverity": 0.00022179246176108624
+    },
+    {
+      "Pop": 182,
+      "Name": "Dont Tase Me Bro",
+      "Advances": [],
+      "PopSeverity": 0.0004922710736648499
+    },
+    {
+      "Pop": 88,
+      "Name": "Straight Outta Hillsbrad",
+      "Advances": [],
+      "PopSeverity": 0.00023802117847531208
+    },
+    {
+      "Pop": 205,
+      "Name": "Korat",
+      "Advances": [],
+      "PopSeverity": 0.00055448115440271555
+    },
+    {
+      "Pop": 169,
+      "Name": "Bald Dwarfs ",
+      "Advances": [],
+      "PopSeverity": 0.00045710885411736067
+    },
+    {
+      "Pop": 75,
+      "Name": "More Hks Than Hitler",
+      "Advances": [],
+      "PopSeverity": 0.00020285895892782277
+    },
+    {
+      "Pop": 72,
+      "Name": "Soldoursoulforgreens",
+      "Advances": [],
+      "PopSeverity": 0.00019474460057070987
+    },
+    {
+      "Pop": 68,
+      "Name": "Lowercase Gs Gnome Guild",
+      "Advances": [],
+      "PopSeverity": 0.00018392545609455932
+    },
+    {
+      "Pop": 62,
+      "Name": "Mexican Border Patrol",
+      "Advances": [],
+      "PopSeverity": 0.00016769673938033349
+    },
+    {
+      "Pop": 13,
+      "Name": "Immortal",
+      "Advances": [],
+      "PopSeverity": 3.2457433428451642E-05
+    },
+    {
+      "Pop": 71,
+      "Name": "Grand Theft Kodo",
+      "Advances": [],
+      "PopSeverity": 0.00019203981445167222
+    },
+    {
+      "Pop": 189,
+      "Name": "Omgwatermelonyumyum",
+      "Advances": [],
+      "PopSeverity": 0.00051120457649811337
+    },
+    {
+      "Pop": 57,
+      "Name": "Shades of Phalanx Immortality",
+      "Advances": [],
+      "PopSeverity": 0.0001541728087851453
+    },
+    {
+      "Pop": 90,
+      "Name": "Wttbrokencapslockforspacebar",
+      "Advances": [],
+      "PopSeverity": 0.00022449724788012389
+    },
+    {
+      "Pop": 117,
+      "Name": "Shadows of the Arcane Lost",
+      "Advances": [],
+      "PopSeverity": 0.00031645997592740356
+    },
+    {
+      "Pop": 85,
+      "Name": "Ominous",
+      "Advances": [],
+      "PopSeverity": 0.00022990682011819915
+    },
+    {
+      "Pop": 183,
+      "Name": "Happy Fun Rainbow Adventure",
+      "Advances": [],
+      "PopSeverity": 0.00049497585978388757
+    },
+    {
+      "Pop": 211,
+      "Name": "SHADOWCLAN",
+      "Advances": [],
+      "PopSeverity": 0.00047874714306966177
+    },
+    {
+      "Pop": 77,
+      "Name": "Wandering Lost Souls ",
+      "Advances": [],
+      "PopSeverity": 0.00020826853116589806
+    },
+    {
+      "Pop": 101,
+      "Name": "Readthiswhileiyankyou",
+      "Advances": [],
+      "PopSeverity": 0.00027318339802280133
+    },
+    {
+      "Pop": 23,
+      "Name": "And His Amazing Friends",
+      "Advances": [],
+      "PopSeverity": 6.2210080737865655E-05
+    },
+    {
+      "Pop": 25,
+      "Name": "Ominous",
+      "Advances": [],
+      "PopSeverity": 6.7619652975940928E-05
+    },
+    {
+      "Pop": 69,
+      "Name": "Ominous",
+      "Advances": [],
+      "PopSeverity": 0.00018663024221359697
+    },
+    {
+      "Pop": 174,
+      "Name": "Evolved",
+      "Advances": [],
+      "PopSeverity": 0.0011251910255196571
     },
     {
       "Pop": 20000,
@@ -1566,10 +2274,10 @@
   ],
   "jsonVals": {
     "inp": -1,
-    "inpText": "200",
-    "yearNum": "Year: 200",
-    "facCreate": "Omg Brb Ice Cream Truck has been created!",
-    "facDestroyed": "Curse has been destroyed!",
+    "inpText": "20",
+    "yearNum": "Year: 20",
+    "facCreate": "Roflcers Of The Lawl has been created!",
+    "facDestroyed": "Ur Mom Is My Epic Mount has been destroyed!",
     "eventName": "None",
     "battleID": "firstBattle",
     "battleState": "winner",
@@ -1577,60 +2285,60 @@
     "done": true,
     "free": false,
     "strArray": null,
-    "storyIndex": 12,
+    "storyIndex": 21,
     "storyState": 1,
     "locationFaction": {
-      "Pop": 328146,
-      "Name": "Main City: Humans",
+      "Pop": 86423,
+      "Name": "Main City: Stronnothyes",
       "Advances": [],
-      "PopSeverity": 0.46292858271448883
+      "PopSeverity": 0.2337557307655897
     }
   },
   "enemyFaction": {
-    "Pop": 328146,
-    "Name": "Main City: Humans",
+    "Pop": 86423,
+    "Name": "Main City: Stronnothyes",
     "Advances": [],
-    "PopSeverity": 0.46292858271448883
+    "PopSeverity": 0.2337557307655897
   },
   "battleJson": {
     "enemy": {
-      "Health": 60,
-      "Name": "?",
-      "Attack": 10,
-      "Defense": 2,
-      "Speed": 4,
-      "MDef": 3,
-      "Level": 1
+      "Health": 0,
+      "Name": null,
+      "Attack": 0,
+      "Defense": 0,
+      "Speed": 0,
+      "MDef": 0,
+      "Level": 0
     },
     "player": {
       "invString": [],
       "equipString": [
-        "staff:Wooden Staff"
+        "knife:Bronze Dagger"
       ],
-      "Class": "Mage",
+      "Class": "Rogue",
       "Health": 40,
-      "Attack": 10,
-      "MAtk": 18,
-      "Defense": 7,
-      "MDef": 15,
-      "Intelligence": 9,
+      "Attack": 17,
+      "MAtk": 4,
+      "Defense": 10,
+      "MDef": 3,
+      "Intelligence": 6,
       "Money": 0.0,
-      "Luck": 4.0,
-      "Evasion": 3.0,
-      "Speed": 6,
+      "Luck": 8.0,
+      "Evasion": 8.0,
+      "Speed": 9,
       "Level": 1,
       "Exp": 0,
       "Special": [
-        1,
+        4,
         0,
         0,
         0
       ]
     },
-    "playerHP": 40,
-    "enemyHP": 60,
+    "playerHP": 36,
+    "enemyHP": -6,
     "turn": true,
-    "round": -1,
+    "round": 1,
     "outcome": 1,
     "fightText": "You dare fight me fool?!"
   }

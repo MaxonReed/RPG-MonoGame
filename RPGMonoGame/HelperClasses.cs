@@ -491,10 +491,6 @@ namespace RPGv2
                     break;
             }
             SetVals(GlobalValues.battleJson);
-            if (playerHP <= 0)
-                BattleFinish(false);
-            if (enemyHP <= 0)
-                BattleFinish(true);
             turn = false;
             return damage;
         }
@@ -516,10 +512,6 @@ namespace RPGv2
                     damage = 0;
                 playerHP -= damage;
             }
-            if (playerHP <= 0)
-                BattleFinish(false);
-            if (enemyHP <= 0)
-                BattleFinish(true);
             turn = !turn;
             SetVals(GlobalValues.battleJson);
             return damage;
@@ -527,17 +519,23 @@ namespace RPGv2
 
         public static void BattleFinish(bool winner)
         {
-            player = GamePlay.player;
-            playerHP = 0;
-            enemyHP = 0;
-            turn = false;
-            round = -1;
             if (winner)
                 outcome = 1;
             else
                 outcome = 0;
             GlobalValues.battleState = "winner";
             SetVals(GlobalValues.battleJson);
+        }
+        public static void ResetVals()
+        {
+            enemy = new Enemy();
+            player = GamePlay.player;
+            playerHP = 0;
+            enemyHP = 0;
+            turn = false;
+            round = -1;
+            outcome = -1;
+            fightText = "";
         }
     }
 
