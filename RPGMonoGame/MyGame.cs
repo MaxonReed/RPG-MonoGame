@@ -257,14 +257,16 @@ namespace RPGMonoGame
                     GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
-                if (classSelectRogue.Contains(mousePoint))
+                
+                if (classSelectWarrior.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
                     GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
-                if (classSelectWarrior.Contains(mousePoint))
+
+                if (classSelectRogue.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
@@ -456,7 +458,7 @@ namespace RPGMonoGame
                             }
                         }
                     }
-                    else
+                    else if (Battle.outcome == 0)
                     {
                         if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                         {
@@ -714,8 +716,8 @@ namespace RPGMonoGame
                     break;
                 case "battle":
                     #region battleCase
-                    //673, 59
-                    //92, 59
+                    spriteBatch.DrawString(storyFont, "Enemy HP: " + Battle.enemyHP + " / " + Battle.enemy.Health, new Vector2(92, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(673, 59), Color.Black);
                     if (!clickedSpecial)
                     {
                         if (battleButton.Contains(mousePoint))
@@ -817,7 +819,7 @@ namespace RPGMonoGame
                     #endregion
                     break;
                 case "damageDealt":
-                    graphics.GraphicsDevice.Clear(Color.White);
+                    graphics.GraphicsDevice.Clear(Color.Red);
                     textBox.Draw(spriteBatch, gameTime);
                     if (dispPlayerDamage)
                     {
@@ -827,13 +829,13 @@ namespace RPGMonoGame
                     {
                         spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                     }
-                    Debug.WriteLine($"Enemy HP: {Battle.enemyHP}/{Battle.enemy.Health}");
-                    Debug.WriteLine($"Player HP: {Battle.playerHP}/{Battle.player.Health}");
+                    spriteBatch.DrawString(storyFont, "Enemy HP: " + Battle.enemyHP + " / " + Battle.enemy.Health, new Vector2(92, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(673, 59), Color.Black);
                     break;
                 case "winner":
                     if (Battle.outcome == 1)
                     {
-                        GamePlay.player.Exp += HelperClasses.RandomNumber(0, HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(0, Battle.enemy.Level)));
+                        GamePlay.player.Exp += HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(0, Battle.enemy.Level)));
                         Battle.enemy = new Enemy();
                         Battle.outcome = -1;
                     }
