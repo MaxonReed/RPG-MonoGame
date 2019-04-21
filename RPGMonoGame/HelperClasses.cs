@@ -36,6 +36,7 @@ namespace RPGv2
 
         public static int RandomNumber(int min, int max)
         {
+            max = max <= min ? min + 1 : max;
             lock (syncLock)
             { // synchronize
                 return random.Next(min, max);
@@ -1290,15 +1291,15 @@ namespace RPGv2
             {
                 case 1:
                     Class = "Mage";
-                    Attack = 6;
-                    MAtk = 8;
-                    Defense = 2;
-                    MDef = 5;
+                    Attack = 10;
+                    MAtk = 18;
+                    Defense = 7;
+                    MDef = 15;
                     Intelligence = 9;
                     Money = 0;
                     Luck = 4;
                     Evasion = 3;
-                    Health = 80;
+                    Health = 40;
                     Speed = 6;
                     invString = new List<string> { };
                     equipString = new List<string> { "staff:Wooden Staff" };
@@ -1306,15 +1307,15 @@ namespace RPGv2
                     break;
                 case 2:
                     Class = "Warrior";
-                    Attack = 9;
+                    Attack = 20;
                     MAtk = 2;
-                    Defense = 5;
+                    Defense = 13;
                     MDef = 3;
                     Intelligence = 4;
                     Money = 0;
                     Luck = 2;
                     Evasion = 2;
-                    Health = 110;
+                    Health = 60;
                     Speed = 2;
                     invString = new List<string> { };
                     equipString = new List<string> { "sword:Bronze Sword" };
@@ -1322,16 +1323,16 @@ namespace RPGv2
                     break;
                 case 3:
                     Class = "Rogue";
-                    Attack = 6;
+                    Attack = 17;
                     MAtk = 4;
-                    Defense = 2;
+                    Defense = 10;
                     MDef = 3;
                     Intelligence = 6;
                     Money = 0;
                     Luck = 8;
                     Evasion = 8;
                     Speed = 9;
-                    Health = 90;
+                    Health = 40;
                     invString = new List<string> { };
                     equipString = new List<string> { "knife:Bronze Dagger" };
                     Special = new List<int> { 4, 0, 0, 0 };

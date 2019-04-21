@@ -2,10 +2,10 @@
   {
     "Id": "Unknown StartGame",
     "Level": 1,
-    "Health": 110,
+    "Health": 60,
     "Name": "?",
     "Attack": 10,
-    "Defense": 3,
+    "Defense": 2,
     "MDef": 3,
     "Speed": 4,
     "EnRate": 0
