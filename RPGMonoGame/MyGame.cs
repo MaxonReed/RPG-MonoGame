@@ -240,10 +240,56 @@ namespace RPGMonoGame
                 case GameState.CharacterCreate:
                     UpdateCharacterCreate(gameTime);
                     break;
+                case GameState.InFaction:
+                    UpdateInFaction(gameTime);
+                    break;
                 default:
                     break;
             }
         }
+
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.White);
+            base.Draw(gameTime);
+            switch (State)
+            {
+                case GameState.MainMenu:
+                    DrawMainMenu(gameTime);
+                    break;
+                case GameState.StartPage:
+                    DrawStartPage(gameTime);
+                    break;
+                case GameState.InitWorldPage:
+                    DrawInitWorldPage(gameTime);
+                    break;
+                case GameState.BattlePage:
+                    DrawBattlePage(gameTime);
+                    break;
+                case GameState.StoryText:
+                    DrawStoryText(gameTime);
+                    break;
+                case GameState.CharacterCreate:
+                    DrawCharacterCreate(gameTime);
+                    break;
+                case GameState.InFaction:
+                    DrawInFaction(gameTime);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        void UpdateInFaction(GameTime gameTime)
+        {
+
+        }
+
+        void DrawInFaction(GameTime gameTime)
+        {
+
+        }
+
         void UpdateCharacterCreate(GameTime gameTime)
         {
             prevState = mouseState;
@@ -277,6 +323,28 @@ namespace RPGMonoGame
 
             }
         }
+
+        void DrawCharacterCreate(GameTime gameTime)
+        {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            spriteBatch.Begin();
+            if (classSelectMage.Contains(mousePoint))
+                classSelectMageHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectMage.Draw(spriteBatch, gameTime);
+            if (classSelectRogue.Contains(mousePoint))
+                classSelectRogueHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectRogue.Draw(spriteBatch, gameTime);
+            if (classSelectWarrior.Contains(mousePoint))
+                classSelectWarriorHover.Draw(spriteBatch, gameTime);
+            else
+                classSelectWarrior.Draw(spriteBatch, gameTime);
+            spriteBatch.End();
+        }
+
         void UpdateMainMenu(GameTime gameTime)
         {
             var mouseState = Mouse.GetState();
@@ -295,6 +363,15 @@ namespace RPGMonoGame
                 }
             }
         }
+
+        void DrawMainMenu(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            mainMenuButton.Draw(spriteBatch, gameTime);
+            loadGame.Draw(spriteBatch, gameTime);
+            spriteBatch.End();
+        }
+
         void UpdateStartPage(GameTime gameTime)
         {
             var mouseState = Mouse.GetState();
@@ -314,6 +391,19 @@ namespace RPGMonoGame
             }
 
         }
+
+        void DrawStartPage(GameTime gameTime)
+        {
+            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Texture.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Texture.Height / 2);
+            spriteBatch.Begin();
+            mainMenuButton.Position = coor;
+            mainMenuButton.Draw(spriteBatch, gameTime);
+            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - quitButton.Texture.Width / 2, 2 * graphics.PreferredBackBufferHeight / 3 - quitButton.Texture.Height / 2);
+            quitButton.Position = coor;
+            quitButton.Draw(spriteBatch, gameTime);
+            spriteBatch.End();
+        }
+
         void UpdateInitWorldPage(GameTime gameTime)
         {
             prevState = mouseState;
@@ -364,6 +454,37 @@ namespace RPGMonoGame
                 }
             }
         }
+
+        void DrawInitWorldPage(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            one.Draw(spriteBatch, gameTime);
+            two.Draw(spriteBatch, gameTime);
+            thr.Draw(spriteBatch, gameTime);
+            four.Draw(spriteBatch, gameTime);
+            five.Draw(spriteBatch, gameTime);
+            six.Draw(spriteBatch, gameTime);
+            sev.Draw(spriteBatch, gameTime);
+            eight.Draw(spriteBatch, gameTime);
+            nine.Draw(spriteBatch, gameTime);
+            zer.Draw(spriteBatch, gameTime);
+            enter.Draw(spriteBatch, gameTime);
+            initBox.Draw(spriteBatch, gameTime);
+            spriteBatch.DrawString(arialFont, GlobalValues.inpText, new Vector2(initBox.Position.X + 4, initBox.Position.Y + 4), Color.Black);
+            if (GlobalValues.startGen)
+            {
+                spriteBatch.DrawString(arialFont, GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.eventName, new Vector2(500, 200), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
+                spriteBatch.DrawString(arialFont, GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
+            }
+            if (GlobalValues.done)
+            {
+                mainMenuButton.Draw(spriteBatch, gameTime);
+            }
+            spriteBatch.End();
+        }
+
         void UpdateBattlePage(GameTime gameTime)
         {
             prevState = mouseState;
@@ -502,147 +623,7 @@ namespace RPGMonoGame
 
             }
         }
-        void UpdateStoryText(GameTime gameTime)
-        {
-            prevState = mouseState;
-            mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
-            {
-                Story.Progress();
-            }
-        }
-        void DrawMainMenu(GameTime gameTime)
-        {
-            spriteBatch.Begin();
-            mainMenuButton.Draw(spriteBatch, gameTime);
-            loadGame.Draw(spriteBatch, gameTime);
-            spriteBatch.End();
-        }
-        void DrawStartPage(GameTime gameTime)
-        {
-            Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - mainMenuButton.Texture.Width / 2, graphics.PreferredBackBufferHeight / 3 - mainMenuButton.Texture.Height / 2);
-            spriteBatch.Begin();
-            mainMenuButton.Position = coor;
-            mainMenuButton.Draw(spriteBatch, gameTime);
-            coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - quitButton.Texture.Width / 2, 2 * graphics.PreferredBackBufferHeight / 3 - quitButton.Texture.Height / 2);
-            quitButton.Position = coor;
-            quitButton.Draw(spriteBatch, gameTime);
-            spriteBatch.End();
-        }
-        void DrawInitWorldPage(GameTime gameTime)
-        {
-            spriteBatch.Begin();
-            one.Draw(spriteBatch, gameTime);
-            two.Draw(spriteBatch, gameTime);
-            thr.Draw(spriteBatch, gameTime);
-            four.Draw(spriteBatch, gameTime);
-            five.Draw(spriteBatch, gameTime);
-            six.Draw(spriteBatch, gameTime);
-            sev.Draw(spriteBatch, gameTime);
-            eight.Draw(spriteBatch, gameTime);
-            nine.Draw(spriteBatch, gameTime);
-            zer.Draw(spriteBatch, gameTime);
-            enter.Draw(spriteBatch, gameTime);
-            initBox.Draw(spriteBatch, gameTime);
-            spriteBatch.DrawString(arialFont, GlobalValues.inpText, new Vector2(initBox.Position.X + 4, initBox.Position.Y + 4), Color.Black);
-            if (GlobalValues.startGen)
-            {
-                spriteBatch.DrawString(arialFont, GlobalValues.yearNum, new Vector2(500, 100), Color.Black);
-                spriteBatch.DrawString(arialFont, GlobalValues.eventName, new Vector2(500, 200), Color.Black);
-                spriteBatch.DrawString(arialFont, GlobalValues.facCreate, new Vector2(500, 300), Color.Black);
-                spriteBatch.DrawString(arialFont, GlobalValues.facDestroyed, new Vector2(500, 400), Color.Black);
-            }
-            if (GlobalValues.done)
-            {
-                mainMenuButton.Draw(spriteBatch, gameTime);
-            }
-            spriteBatch.End();
-        }
-        void DrawStoryText(GameTime gameTime)
-        {
-            SceneText.GetText();
-            //get array of text
-            List<string> strArray = SceneText.strArr;
-            //get text to be displayed
-            string text = strArray[GlobalValues.storyIndex];
-            spriteBatch.Begin();
-            //draw text box
-            textBox.Draw(spriteBatch, gameTime);
-            //get specieal events
-            if (text.StartsWith("|battle:"))
-            {
-                string id = text.Substring(11);
-                GlobalValues.battleID = id;
-                State = GameState.BattlePage;
-                spriteBatch.End();
-                return;
-            }
-            if(text.StartsWith(":free="))
-            {
-                if (text[6] == 'f')
-                    GlobalValues.free = false;
-                else if (text[6] == 't')
-                    GlobalValues.free = true;
-                State = GameState.InFaction;
-                Story.Progress();
-                spriteBatch.End();
-                return;
-            }
-            //text wrapping
-            if (!SceneText.wrapText[GlobalValues.storyIndex])
-            {
-                if (text[0] == '*')
-                    spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
-                else
-                    spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
-            }
-            else
-            {
-                List<string> textWrappers = new List<string>();
-                int iterations = text.Length / 50;
-                int begin = 0;
-                int next = 0;
-                for (int i = 0; i <= iterations; i++)
-                {
-                    begin += next;
-                    next = 50;
-                    if (50 + begin > text.Length)
-                        next = text.Length - begin;
-                    //dont split sentences/words
-                    bool done = false;
-                    while (!done)
-                    {
-                        if (begin + next < text.Length)
-                        {
-                            if (text[begin + next] != ' ' && text[begin + next] != '.')
-                            {
-                                next++;
-                            }
-                            else
-                                done = true;
-                        }
-                        else
-                            done = true;
-                    }
-                    textWrappers.Add(text.Substring(begin, next));
-                }
-                if (textWrappers[textWrappers.Count - 1] == ".")
-                {
-                    textWrappers.RemoveAt(textWrappers.Count - 1);
-                    textWrappers[textWrappers.Count - 1] += ".";
-                }
-                for (int i = 0; i < textWrappers.Count; i++)
-                {
-                    if (textWrappers[i].StartsWith(" "))
-                        textWrappers[i] = textWrappers[i].Substring(1);
-                    if (textWrappers[i][0] == '*')
-                        spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
-                    else
-                        spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
-                }
-            }
-            spriteBatch.End();
-        }
+
         void DrawBattlePage(GameTime gameTime)
         {
             prevState = mouseState;
@@ -665,11 +646,13 @@ namespace RPGMonoGame
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         if (!Battle.turn)
                         {
+                            Debug.WriteLine("fornite");
                             damageEnemy = Battle.RegularAttack();
+                            damagePlayer = Battle.RegularAttack();
                             GlobalValues.battleState = "damageDealt";
                         }
-                        Battle.SetVals(GlobalValues.battleJson);
                         Battle.round++;
+                        Battle.SetVals(GlobalValues.battleJson);
                     }
                     break;
                 default:
@@ -810,8 +793,8 @@ namespace RPGMonoGame
                     {
                         textBox.Draw(spriteBatch, gameTime);
                         spriteBatch.DrawString(storyFont, "You have lost...", new Vector2(110, 319), Color.Black);
-                    } 
-                    if(Battle.outcome == -1)
+                    }
+                    if (Battle.outcome == -1)
                     {
                         GraphicsDevice.Clear(Color.LightGreen);
                         textBox.Draw(spriteBatch, gameTime);
@@ -870,7 +853,7 @@ namespace RPGMonoGame
                     spriteBatch.DrawString(storyFont, "Level Up! Level: " + GamePlay.player.Level, new Vector2(80, 40), Color.Black);
                     int increment = 1;
                     int baseY = 90;
-                    spriteBatch.DrawString(storyFont, "HP: " + (GamePlay.player.Health - GainedHealth) + " + " + GainedHealth + " = " + GamePlay.player.Health, new Vector2(80,baseY + (increment*30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "HP: " + (GamePlay.player.Health - GainedHealth) + " + " + GainedHealth + " = " + GamePlay.player.Health, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
                     spriteBatch.DrawString(storyFont, "Attack: " + (GamePlay.player.Attack - GainedAttack) + " + " + GainedAttack + " = " + GamePlay.player.Attack, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
@@ -891,61 +874,112 @@ namespace RPGMonoGame
                 default:
                     break;
             }
-            
+
             spriteBatch.End();
         }
-        void DrawCharacterCreate(GameTime gameTime)
+
+        void UpdateStoryText(GameTime gameTime)
         {
             prevState = mouseState;
             mouseState = Mouse.GetState();
-            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+            {
+                Story.Progress();
+            }
+        }
+
+        void DrawStoryText(GameTime gameTime)
+        {
+            SceneText.GetText();
+            //get array of text
+            List<string> strArray = SceneText.strArr;
+            //get text to be displayed
+            string text = strArray[GlobalValues.storyIndex];
             spriteBatch.Begin();
-            if (classSelectMage.Contains(mousePoint))
-                classSelectMageHover.Draw(spriteBatch, gameTime);
+            //draw text box
+            textBox.Draw(spriteBatch, gameTime);
+            //get specieal events
+            if (text.StartsWith("|battle:"))
+            {
+                string id = text.Substring(11);
+                GlobalValues.battleID = id;
+                State = GameState.BattlePage;
+                spriteBatch.End();
+                return;
+            }
+            if (text.StartsWith(":free="))
+            {
+                if (text[6] == 'f')
+                    GlobalValues.free = false;
+                else if (text[6] == 't')
+                    GlobalValues.free = true;
+                State = GameState.InFaction;
+                Story.Progress();
+                spriteBatch.End();
+                return;
+            }
+            //text wrapping
+            if (!SceneText.wrapText[GlobalValues.storyIndex])
+            {
+                if (text[0] == '*')
+                    spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
+                else
+                    spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
+            }
             else
-                classSelectMage.Draw(spriteBatch, gameTime);
-            if (classSelectRogue.Contains(mousePoint))
-                classSelectRogueHover.Draw(spriteBatch, gameTime);
-            else
-                classSelectRogue.Draw(spriteBatch, gameTime);
-            if (classSelectWarrior.Contains(mousePoint))
-                classSelectWarriorHover.Draw(spriteBatch, gameTime);
-            else
-                classSelectWarrior.Draw(spriteBatch, gameTime);
+            {
+                List<string> textWrappers = new List<string>();
+                int iterations = text.Length / 50;
+                int begin = 0;
+                int next = 0;
+                for (int i = 0; i <= iterations; i++)
+                {
+                    begin += next;
+                    next = 50;
+                    if (50 + begin > text.Length)
+                        next = text.Length - begin;
+                    //dont split sentences/words
+                    bool done = false;
+                    while (!done)
+                    {
+                        if (begin + next < text.Length)
+                        {
+                            if (text[begin + next] != ' ' && text[begin + next] != '.')
+                            {
+                                next++;
+                            }
+                            else
+                                done = true;
+                        }
+                        else
+                            done = true;
+                    }
+                    textWrappers.Add(text.Substring(begin, next));
+                }
+                if (textWrappers[textWrappers.Count - 1] == ".")
+                {
+                    textWrappers.RemoveAt(textWrappers.Count - 1);
+                    textWrappers[textWrappers.Count - 1] += ".";
+                }
+                for (int i = 0; i < textWrappers.Count; i++)
+                {
+                    if (textWrappers[i].StartsWith(" "))
+                        textWrappers[i] = textWrappers[i].Substring(1);
+                    if (textWrappers[i][0] == '*')
+                        spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
+                    else
+                        spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
+                }
+            }
             spriteBatch.End();
         }
+
+
+        
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.White);
-            base.Draw(gameTime);
-            switch (State)
-            {
-                case GameState.MainMenu:
-                    DrawMainMenu(gameTime);
-                    break;
-                case GameState.StartPage:
-                    DrawStartPage(gameTime);
-                    break;
-                case GameState.InitWorldPage:
-                    DrawInitWorldPage(gameTime);
-                    break;
-                case GameState.BattlePage:
-                    DrawBattlePage(gameTime);
-                    break;
-                case GameState.StoryText:
-                    DrawStoryText(gameTime);
-                    break;
-                case GameState.CharacterCreate:
-                    DrawCharacterCreate(gameTime);
-                    break;
-                default:
-                    break;
-            }
-        }
 
 
     }

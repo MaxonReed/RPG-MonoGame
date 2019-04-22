@@ -592,6 +592,7 @@ namespace RPGv2
         public int storyIndex = 0;
         public int storyState = 0;
         public Faction locationFaction = new Faction();
+        public FactionLocation factionLocation = new FactionLocation();
 
         public JsonValues()
         {
@@ -600,7 +601,7 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, FactionLocation jFactionLocation)
         {
             inp = jInp;
             inpText = jInpText;
@@ -616,6 +617,7 @@ namespace RPGv2
             storyIndex = jStoryIndex;
             storyState = jStoryState;
             locationFaction = faction;
+            factionLocation = jFactionLocation;
         }
     }
 
@@ -640,7 +642,7 @@ namespace RPGv2
         public static JsonValues jsonVals = new JsonValues();
         public static BattleJson battleJson = new BattleJson();
         public static Faction locationFaction = new Faction();
-
+        public static FactionLocation factionLocation = new FactionLocation();
 
         public static void SetVals(JsonValues jVals)
         {
@@ -658,6 +660,7 @@ namespace RPGv2
             storyIndex = jVals.storyIndex;
             storyState = jVals.storyState;
             locationFaction = jVals.locationFaction;
+            factionLocation = jVals.factionLocation;
             free = jVals.free;
         }
 
@@ -678,8 +681,7 @@ namespace RPGv2
             jsonVals.storyState = storyState;
             jsonVals.locationFaction = locationFaction;
             jsonVals.free = free;
-
-
+            jsonVals.factionLocation = factionLocation;
         }
 
         public static int Inp
@@ -997,6 +999,11 @@ namespace RPGv2
         }
 
         internal EventVar Chosen { get => chosen; set => chosen = value; }
+    }
+
+    public class FactionLocation
+    {
+
     }
 
     public interface Item
