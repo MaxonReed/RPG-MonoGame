@@ -1003,7 +1003,7 @@ namespace RPGv2
 
     public class FactionLocation
     {
-
+        
     }
 
     public interface Item
