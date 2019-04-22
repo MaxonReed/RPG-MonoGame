@@ -443,16 +443,14 @@ namespace RPGMonoGame
                     }
                     break;
                 case "winner":
-                            Debug.WriteLine("max the nigga");
-                    if (mouseState.LeftButton == ButtonState.Pressed)
+                    if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
-                        if (Battle.outcome == 1)
+                        if (Battle.outcome == 1 || Battle.outcome == -1)
                         {
 
                             if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
                             {
                                 GlobalValues.battleState = "levelup";
-                                goto case "levelup";
                             }
                             else
                             {
@@ -471,55 +469,9 @@ namespace RPGMonoGame
                     }
                     break;
                 case "levelup":
-                    if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
-                    {
-                        GamePlay.player.Level++;
-                        GamePlay.player.Exp -= GamePlay.player.NextLevel();
-                        int level = GamePlay.player.Level;
-                        switch (GamePlay.player.Class)
-                        {
-                            case "Warrior":
-                                GainedHealth = HelperClasses.RandomNumber(0, Convert.ToInt32(level*1.5));
-                                GainedAttack = HelperClasses.RandomNumber(0, level*3);
-                                GainedDefense = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
-                                GainedIntelligence = HelperClasses.RandomNumber(0, level);
-                                GainedLuck = HelperClasses.RandomNumber(0, level);
-                                GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
-                                GainedSpeed = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
-                                break;
-                            case "Rogue":
-                                GainedHealth = HelperClasses.RandomNumber(0, level);
-                                GainedAttack = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 1.25));
-                                GainedDefense = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
-                                GainedIntelligence = HelperClasses.RandomNumber(0, level);
-                                GainedLuck = HelperClasses.RandomNumber(0, level);
-                                GainedEvasion = HelperClasses.RandomNumber(0, level*2);
-                                GainedSpeed = HelperClasses.RandomNumber(0, level*3);
-                                break;
-                            case "Mage":
-                                GainedHealth = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
-                                GainedAttack = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.5));
-                                GainedMAtk = HelperClasses.RandomNumber(0, level*3);
-                                GainedDefense = HelperClasses.RandomNumber(0, level);
-                                GainedMDef = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
-                                GainedIntelligence = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
-                                GainedLuck = HelperClasses.RandomNumber(0, level);
-                                GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
-                                GainedSpeed = HelperClasses.RandomNumber(0, level);
-                                break;
-                            default:
-                                break;
-                        }
-                        GamePlay.player.Health += GainedHealth;
-                        GamePlay.player.Attack += GainedAttack;
-                        GamePlay.player.Defense += GainedDefense;
-                        GamePlay.player.Intelligence += GainedIntelligence;
-                        GamePlay.player.Luck += GainedLuck;
-                        GamePlay.player.Evasion += GainedEvasion;
-                        GamePlay.player.Speed += GainedSpeed;
-                    }
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
+                        Debug.WriteLine("bruh");
                         Battle.ResetVals();
                         if(GlobalValues.free)
                         {
@@ -867,26 +819,74 @@ namespace RPGMonoGame
                     }
                     break;
                 case "levelup":
+                    if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
+                    {
+                        GamePlay.player.Exp -= GamePlay.player.NextLevel();
+                        GamePlay.player.Level++;
+                        int level = GamePlay.player.Level;
+                        switch (GamePlay.player.Class)
+                        {
+                            case "Warrior":
+                                GainedHealth = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 1.5));
+                                GainedAttack = HelperClasses.RandomNumber(0, level * 3);
+                                GainedDefense = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
+                                GainedIntelligence = HelperClasses.RandomNumber(0, level);
+                                GainedLuck = HelperClasses.RandomNumber(0, level);
+                                GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                GainedSpeed = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                break;
+                            case "Rogue":
+                                GainedHealth = HelperClasses.RandomNumber(0, level);
+                                GainedAttack = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 1.25));
+                                GainedDefense = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                GainedIntelligence = HelperClasses.RandomNumber(0, level);
+                                GainedLuck = HelperClasses.RandomNumber(0, level);
+                                GainedEvasion = HelperClasses.RandomNumber(0, level * 2);
+                                GainedSpeed = HelperClasses.RandomNumber(0, level * 3);
+                                break;
+                            case "Mage":
+                                GainedHealth = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                GainedAttack = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.5));
+                                GainedMAtk = HelperClasses.RandomNumber(0, level * 3);
+                                GainedDefense = HelperClasses.RandomNumber(0, level);
+                                GainedMDef = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
+                                GainedIntelligence = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 2.5));
+                                GainedLuck = HelperClasses.RandomNumber(0, level);
+                                GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                GainedSpeed = HelperClasses.RandomNumber(0, level);
+                                break;
+                            default:
+                                break;
+                        }
+                        GamePlay.player.Health += GainedHealth;
+                        GamePlay.player.Attack += GainedAttack;
+                        GamePlay.player.Defense += GainedDefense;
+                        GamePlay.player.Intelligence += GainedIntelligence;
+                        GamePlay.player.Luck += GainedLuck;
+                        GamePlay.player.Evasion += GainedEvasion;
+                        GamePlay.player.Speed += GainedSpeed;
+                    }
                     GraphicsDevice.Clear(Color.LightGreen);
                     spriteBatch.DrawString(storyFont, "Level Up! Level: " + GamePlay.player.Level, new Vector2(80, 40), Color.Black);
                     int increment = 1;
-                    spriteBatch.DrawString(storyFont, "HP: " + (GamePlay.player.Health - GainedHealth) + " + " + GainedHealth, new Vector2(80,70 + (increment*30)), Color.Black);
+                    int baseY = 90;
+                    spriteBatch.DrawString(storyFont, "HP: " + (GamePlay.player.Health - GainedHealth) + " + " + GainedHealth + " = " + GamePlay.player.Health, new Vector2(80,baseY + (increment*30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Attack: " + (GamePlay.player.Attack - GainedAttack) + " + " + GainedAttack, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Attack: " + (GamePlay.player.Attack - GainedAttack) + " + " + GainedAttack + " = " + GamePlay.player.Attack, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Magic Attack: " + (GamePlay.player.MAtk - GainedMAtk) + " + " + GainedMAtk, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Magic Attack: " + (GamePlay.player.MAtk - GainedMAtk) + " + " + GainedMAtk + " = " + GamePlay.player.MAtk, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Defense: " + (GamePlay.player.Defense - GainedDefense) + " + " + GainedDefense, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Defense: " + (GamePlay.player.Defense - GainedDefense) + " + " + GainedDefense + " = " + GamePlay.player.Defense, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Magic Defense: " + (GamePlay.player.MDef - GainedMDef) + " + " + GainedMDef, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Magic Defense: " + (GamePlay.player.MDef - GainedMDef) + " + " + GainedMDef + " = " + GamePlay.player.MDef, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Intelligence: " + (GamePlay.player.Intelligence - GainedIntelligence) + " + " + GainedIntelligence, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Intelligence: " + (GamePlay.player.Intelligence - GainedIntelligence) + " + " + GainedIntelligence + " = " + GamePlay.player.Intelligence, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Luck: " + (GamePlay.player.Luck - GainedLuck) + " + " + GainedLuck, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Luck: " + (GamePlay.player.Luck - GainedLuck) + " + " + GainedLuck + " = " + GamePlay.player.Luck, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Evasion: " + (GamePlay.player.Evasion - GainedEvasion) + " + " + GainedEvasion, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Evasion: " + (GamePlay.player.Evasion - GainedEvasion) + " + " + GainedEvasion + " = " + GamePlay.player.Evasion, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
-                    spriteBatch.DrawString(storyFont, "Speed: " + (GamePlay.player.Speed - GainedSpeed) + " + " + GainedSpeed, new Vector2(80, 70 + (increment * 30)), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Speed: " + (GamePlay.player.Speed - GainedSpeed) + " + " + GainedSpeed + " = " + GamePlay.player.Speed, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     break;
                 default:
                     break;
