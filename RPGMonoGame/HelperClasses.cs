@@ -524,7 +524,7 @@ namespace RPGv2
             else
                 outcome = 0;
             GlobalValues.battleState = "winner";
-            SetVals(GlobalValues.battleJson);
+            //SetVals(GlobalValues.battleJson);
         }
         public static void ResetVals()
         {

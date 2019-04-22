@@ -79,6 +79,7 @@ namespace RPGMonoGame
         int damagePlayer = -1;
         int damageEnemy = -1;
         bool dispPlayerDamage = true;
+        public static bool calledBattleFinish = false;
         #endregion
         #region factionAssets
 
@@ -368,7 +369,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
-            
+
             switch (GlobalValues.battleState)
             {
                 case "prologue":
@@ -442,10 +443,12 @@ namespace RPGMonoGame
                     }
                     break;
                 case "winner":
-                    if (Battle.outcome == 1)
+                            Debug.WriteLine("max the nigga");
+                    if (mouseState.LeftButton == ButtonState.Pressed)
                     {
-                        if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+                        if (Battle.outcome == 1)
                         {
+
                             if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
                             {
                                 GlobalValues.battleState = "levelup";
@@ -453,17 +456,17 @@ namespace RPGMonoGame
                             }
                             else
                             {
+                                Battle.ResetVals();
                                 Story.Progress();
                                 State = GameState.StoryText;
                             }
+
                         }
-                    }
-                    else if (Battle.outcome == 0)
-                    {
-                        if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
-                        {
-                            GlobalValues.storyIndex = 0;
-                            State = GameState.StoryText;
+                        else if (Battle.outcome == 0)
+                        { 
+                                Battle.ResetVals();
+                                GlobalValues.storyIndex = 0;
+                                State = GameState.StoryText;
                         }
                     }
                     break;
@@ -517,6 +520,7 @@ namespace RPGMonoGame
                     }
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
+                        Battle.ResetVals();
                         if(GlobalValues.free)
                         {
                             State = GameState.InFaction;
@@ -531,7 +535,20 @@ namespace RPGMonoGame
                 default:
                     break;
             }
-            
+            if (GlobalValues.battleState != "prologue" && Battle.round != -1 && !calledBattleFinish)
+            {
+                if (Battle.playerHP <= 0)
+                {
+                    Battle.BattleFinish(false);
+                    calledBattleFinish = true;
+                }
+                else if (Battle.enemyHP <= 0)
+                {
+                    Battle.BattleFinish(true);
+                    calledBattleFinish = true;
+                }
+
+            }
         }
         void UpdateStoryText(GameTime gameTime)
         {
@@ -688,10 +705,8 @@ namespace RPGMonoGame
                 case "firstBattle":
                     if (Battle.round == -1)
                     {
-                        Debug.WriteLine("hello world");
                         Battle.fightText = "You dare fight me fool?!";
                         Battle.enemy = new Enemy("Unknown StartGame");
-                        Debug.WriteLine(Battle.enemy.Name);
                         Battle.player = new Player(GamePlay.player);
                         Battle.enemyHP = Battle.enemy.Health;
                         Battle.playerHP = Battle.player.Health;
@@ -876,13 +891,7 @@ namespace RPGMonoGame
                 default:
                     break;
             }
-            if (GlobalValues.battleState != "prologue" && Battle.round != -1)
-            {
-                if (Battle.playerHP <= 0)
-                    Battle.BattleFinish(false);
-                else if (Battle.enemyHP <= 0)
-                    Battle.BattleFinish(true);
-            }
+            
             spriteBatch.End();
         }
         void DrawCharacterCreate(GameTime gameTime)
