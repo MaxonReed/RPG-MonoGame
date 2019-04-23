@@ -287,7 +287,11 @@ namespace RPGMonoGame
 
         void DrawInFaction(GameTime gameTime)
         {
+            spriteBatch.Begin();
+            Faction fac = GlobalValues.locationFaction;
+            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(367, 66), Color.Black);
 
+            spriteBatch.End();
         }
 
         void UpdateCharacterCreate(GameTime gameTime)
@@ -777,7 +781,10 @@ namespace RPGMonoGame
                     }
                     else
                     {
-                        spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                        if(damageEnemy != 0)
+                            spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
+                        else
+                            spriteBatch.DrawString(storyFont, "You dodged the attack.", new Vector2(110, 319), Color.Black);
                     }
                     spriteBatch.DrawString(storyFont, "Enemy HP: " + Battle.enemyHP + " / " + Battle.enemy.Health, new Vector2(92, 59), Color.Black);
                     spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(673, 59), Color.Black);

@@ -467,9 +467,9 @@ namespace RPGv2
                     break;
                 case 1:
                     //Fire ball
-                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, Convert.ToInt32(player.MAtk * 1.5)) - HelperClasses.RandomNumber(0, enemy.Defense));
-                    if (damage < 0)
-                        damage = 0;
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(1, Convert.ToInt32(player.MAtk * 1.5)) - HelperClasses.RandomNumber(0, enemy.Defense));
+                    if (damage <= 0)
+                        damage = 1;
                     enemyHP -= damage;
                     break;
                 case 2:
@@ -478,9 +478,9 @@ namespace RPGv2
                     break;
                 case 3:
                     //Hard hit
-                    damage = Convert.ToInt32(HelperClasses.RandomNumber(0, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
-                    if (damage < 0)
-                        damage = 0;
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(1, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
+                    if (damage <= 0)
+                        damage = 1;
                     enemyHP -= Convert.ToInt32(damage * 1.5);
                     break;
                 case 4:
@@ -490,6 +490,7 @@ namespace RPGv2
                 default:
                     break;
             }
+            
             SetVals(GlobalValues.battleJson);
             turn = false;
             return damage;
@@ -500,21 +501,31 @@ namespace RPGv2
             int damage = 0;
             if (turn)
             {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
-                if (damage < 0)
-                    damage = 0;
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(1, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
+                if (damage <= 0)
+                    damage = 1;
                 enemyHP -= damage;
             }
             else
             {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(0, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
-                if (damage < 0)
+                damage = Convert.ToInt32(HelperClasses.RandomNumber(1, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
+                if (damage <= 0)
+                    damage = 1;
+                if (DodgeChance(player.Evasion, enemy.Speed) > (HelperClasses.RandomNumber(0, 100) / 100.0))
                     damage = 0;
                 playerHP -= damage;
             }
             turn = !turn;
             SetVals(GlobalValues.battleJson);
             return damage;
+        }
+
+        public static double DodgeChance(double defenderEvasion, double attackerSpeed)
+        {
+            double x = defenderEvasion / attackerSpeed;
+            double a = 10.0 / Math.Sqrt(111111.0);
+            double b = 111071.0 / 40000.0;
+            return a * Math.Sqrt(x + b);
         }
 
         public static void BattleFinish(bool winner)
@@ -591,8 +602,7 @@ namespace RPGv2
         public string[] strArray;
         public int storyIndex = 0;
         public int storyState = 0;
-        public Faction locationFaction = new Faction();
-        public FactionLocation factionLocation = new FactionLocation();
+        public Faction locationFaction = Story.enemyFaction;
 
         public JsonValues()
         {
@@ -601,7 +611,7 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, FactionLocation jFactionLocation)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction)
         {
             inp = jInp;
             inpText = jInpText;
@@ -617,7 +627,6 @@ namespace RPGv2
             storyIndex = jStoryIndex;
             storyState = jStoryState;
             locationFaction = faction;
-            factionLocation = jFactionLocation;
         }
     }
 
@@ -641,8 +650,7 @@ namespace RPGv2
         public static Save save = new Save();
         public static JsonValues jsonVals = new JsonValues();
         public static BattleJson battleJson = new BattleJson();
-        public static Faction locationFaction = new Faction();
-        public static FactionLocation factionLocation = new FactionLocation();
+        public static Faction locationFaction = Story.enemyFaction;
 
         public static void SetVals(JsonValues jVals)
         {
@@ -660,7 +668,6 @@ namespace RPGv2
             storyIndex = jVals.storyIndex;
             storyState = jVals.storyState;
             locationFaction = jVals.locationFaction;
-            factionLocation = jVals.factionLocation;
             free = jVals.free;
         }
 
@@ -681,7 +688,6 @@ namespace RPGv2
             jsonVals.storyState = storyState;
             jsonVals.locationFaction = locationFaction;
             jsonVals.free = free;
-            jsonVals.factionLocation = factionLocation;
         }
 
         public static int Inp
@@ -999,11 +1005,6 @@ namespace RPGv2
         }
 
         internal EventVar Chosen { get => chosen; set => chosen = value; }
-    }
-
-    public class FactionLocation
-    {
-        
     }
 
     public interface Item
