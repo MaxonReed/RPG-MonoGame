@@ -1366,6 +1366,50 @@ namespace RPGv2
             arr[slot - 1] = JObject.Parse(save.ToString());
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }
+
+        public void ItemDrop()
+        {
+            int chanceTotal = 0;
+            switch(Class)
+            {
+                case "Warrior":
+                    JArray swords = JArray.Parse(File.ReadAllText("Dependencies\\sword.json"));
+                    foreach (JObject sword in swords)
+                        chanceTotal += (int)sword["Rarity Level"];
+                    int num = HelperClasses.RandomNumber(0, chanceTotal);
+                    List<int> minMax = new List<int>();
+                    minMax.Add(0);
+                    for (int i = 1, j = 0; j < swords.Count; i++)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            minMax.Add((int)swords[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            j++;
+                        }
+                        else
+                            minMax.Add(minMax[i - 1] + 1);
+                    }
+                    for (int i = 0; i < minMax.Count - 1; i++)
+                    {
+                        if (num >= minMax[i] && num <= minMax[i + 1])
+                        {
+                            Inv.Add(new Sword(i / 2));
+                        }
+                    }
+                    break;
+                case "Mage":
+                    JArray staves = JArray.Parse(File.ReadAllText("Dependencies\\staff.json"));
+
+                    break;
+                case "Rogue":
+                    JArray knives = JArray.Parse(File.ReadAllText("Dependencies\\knife.json"));
+
+                    break;
+                default:
+
+                    break;
+            }
+        }
     }
 
     class DefaultRestore
@@ -1544,6 +1588,10 @@ namespace RPGv2
             }
             if (string.IsNullOrEmpty(name))
                 throw new InvalidOperationException("Unable to find sword: " + n);
+        }
+
+        public Sword()
+        {
         }
 
         public override string ToString()

@@ -795,6 +795,7 @@ namespace RPGMonoGame
                         GamePlay.player.Exp += HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(0, Battle.enemy.Level)));
                         Battle.enemy = new Enemy();
                         Battle.outcome = -1;
+                        GamePlay.player.ItemDrop();
                     }
                     else if (Battle.outcome == 0)
                     {
