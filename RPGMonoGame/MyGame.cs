@@ -109,8 +109,8 @@ namespace RPGMonoGame
             CharacterCreate,
             InFaction
         }
-        private GameState _state;
-        public GameState State
+        public static GameState _state;
+        public static GameState State
         {
             get => _state;
 
@@ -223,6 +223,8 @@ namespace RPGMonoGame
                     GlobalValues.save.SaveGame();
                 }
             }
+            if (GlobalValues.free)
+                State = GameState.InFaction;
             base.Update(gameTime);
             switch (State)
             {
@@ -293,7 +295,7 @@ namespace RPGMonoGame
         {
             spriteBatch.Begin();
             Faction fac = GlobalValues.locationFaction;
-            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(367, 66), Color.Black);
+            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 66), Color.Black);
 
             spriteBatch.End();
         }
@@ -902,6 +904,11 @@ namespace RPGMonoGame
 
         void DrawStoryText(GameTime gameTime)
         {
+            if (GlobalValues.free)
+            {
+                State = GameState.InFaction;
+                return;
+            }
             SceneText.GetText();
             //get array of text
             List<string> strArray = SceneText.strArr;

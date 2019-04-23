@@ -239,9 +239,7 @@ namespace RPGv2
             GlobalValues.battleJson = JsonConvert.DeserializeObject<BattleJson>(obj["battleJson"].ToString());
             GlobalValues.SetVals(GlobalValues.jsonVals);
             Battle.GetVals(GlobalValues.battleJson);
-            Debug.WriteLine(Battle.enemy.Name);
             GlobalValues.battleState = "battle";
-            Debug.WriteLine(player.Health);
         }
     }
 
