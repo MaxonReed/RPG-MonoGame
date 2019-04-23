@@ -83,7 +83,10 @@ namespace RPGMonoGame
         string droppedItem = "";
         #endregion
         #region factionAssets
-
+        Button wildButton;
+        Button contButton;
+        Button playerButton;
+        Button shopButton;
         #endregion
         #region levelUpAssets
         int GainedHealth = 0;
