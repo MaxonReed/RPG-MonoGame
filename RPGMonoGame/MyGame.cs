@@ -80,6 +80,7 @@ namespace RPGMonoGame
         int damageEnemy = -1;
         bool dispPlayerDamage = true;
         public static bool calledBattleFinish = false;
+        string droppedItem = "";
         #endregion
         #region factionAssets
 
@@ -650,7 +651,6 @@ namespace RPGMonoGame
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         if (!Battle.turn)
                         {
-                            Debug.WriteLine("fornite");
                             damageEnemy = Battle.RegularAttack();
                             damagePlayer = Battle.RegularAttack();
                             GlobalValues.battleState = "damageDealt";
@@ -795,7 +795,7 @@ namespace RPGMonoGame
                         GamePlay.player.Exp += HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(1, HelperClasses.RandomNumber(0, Battle.enemy.Level)));
                         Battle.enemy = new Enemy();
                         Battle.outcome = -1;
-                        GamePlay.player.ItemDrop();
+                        droppedItem = GamePlay.player.ItemDrop();
                     }
                     else if (Battle.outcome == 0)
                     {
@@ -807,6 +807,7 @@ namespace RPGMonoGame
                         GraphicsDevice.Clear(Color.LightGreen);
                         textBox.Draw(spriteBatch, gameTime);
                         spriteBatch.DrawString(storyFont, "You won! Exp: " + GamePlay.player.Exp + " / " + GamePlay.player.NextLevel(), new Vector2(110, 319), Color.Black);
+                        spriteBatch.DrawString(storyFont, "You have obtained: " + droppedItem, new Vector2(110, 343), Color.Black);
                     }
                     break;
                 case "levelup":

@@ -1367,17 +1367,19 @@ namespace RPGv2
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }
 
-        public void ItemDrop()
+        public string ItemDrop()
         {
             int chanceTotal = 0;
-            switch(Class)
+            int num = 0;
+            List<int> minMax = new List<int>();
+            switch (Class)
             {
                 case "Warrior":
                     JArray swords = JArray.Parse(File.ReadAllText("Dependencies\\sword.json"));
                     foreach (JObject sword in swords)
                         chanceTotal += (int)sword["Rarity Level"];
-                    int num = HelperClasses.RandomNumber(0, chanceTotal);
-                    List<int> minMax = new List<int>();
+                    num = HelperClasses.RandomNumber(0, chanceTotal);
+                    minMax = new List<int>();
                     minMax.Add(0);
                     for (int i = 1, j = 0; j < swords.Count; i++)
                     {
@@ -1393,22 +1395,74 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Inv.Add(new Sword(i / 2));
+                            Sword sw = new Sword(i / 2);
+                            if (sw.GetName() != "None")
+                                Inv.Add(new Sword(i / 2));
+                            return new Sword(i / 2).GetName();
                         }
                     }
                     break;
                 case "Mage":
                     JArray staves = JArray.Parse(File.ReadAllText("Dependencies\\staff.json"));
-
+                    foreach (JObject staff in staves)
+                        chanceTotal += (int)staff["Rarity Level"];
+                    num = HelperClasses.RandomNumber(0, chanceTotal);
+                    minMax = new List<int>();
+                    minMax.Add(0);
+                    for (int i = 1, j = 0; j < staves.Count; i++)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            minMax.Add((int)staves[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            j++;
+                        }
+                        else
+                            minMax.Add(minMax[i - 1] + 1);
+                    }
+                    for (int i = 0; i < minMax.Count - 1; i++)
+                    {
+                        if (num >= minMax[i] && num <= minMax[i + 1])
+                        {
+                            Staff st = new Staff(i / 2);
+                            if (st.GetName() != "None")
+                                Inv.Add(new Staff(i / 2));
+                            return new Staff(i / 2).GetName();
+                        }
+                    }
                     break;
                 case "Rogue":
                     JArray knives = JArray.Parse(File.ReadAllText("Dependencies\\knife.json"));
-
+                    foreach (JObject knife in knives)
+                        chanceTotal += (int)knife["Rarity Level"];
+                    num = HelperClasses.RandomNumber(0, chanceTotal);
+                    minMax = new List<int>();
+                    minMax.Add(0);
+                    for (int i = 1, j = 0; j < knives.Count; i++)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            minMax.Add((int)knives[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            j++;
+                        }
+                        else
+                            minMax.Add(minMax[i - 1] + 1);
+                    }
+                    for (int i = 0; i < minMax.Count - 1; i++)
+                    {
+                        if (num >= minMax[i] && num <= minMax[i + 1])
+                        {
+                            Knife k = new Knife(i / 2);
+                            if(k.GetName() != "None")
+                                Inv.Add(new Knife(i / 2));
+                            return new Knife(i / 2).GetName();
+                        }
+                    }
                     break;
                 default:
 
                     break;
             }
+            return "";
         }
     }
 
