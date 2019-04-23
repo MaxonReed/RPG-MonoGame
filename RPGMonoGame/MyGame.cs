@@ -192,6 +192,10 @@ namespace RPGMonoGame
             defHover2 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(300, 350));
             defHover3 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(500, 350));
             defHover4 = new Sprite(Content.Load<Texture2D>("DefaultButtonHover"), new Vector2(700, 350));
+            contButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Continue", storyFont, new Vector2(middle, 150));
+            wildButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Wild", storyFont, new Vector2(middle, 225));
+            playerButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Player", storyFont, new Vector2(middle, 300));
+            shopButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Shop", storyFont, new Vector2(middle, 375));
 
         }
 
@@ -295,8 +299,11 @@ namespace RPGMonoGame
         {
             spriteBatch.Begin();
             Faction fac = GlobalValues.locationFaction;
-            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 66), Color.Black);
-
+            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 25), Color.Black);
+            contButton.Draw(spriteBatch, gameTime);
+            wildButton.Draw(spriteBatch, gameTime);
+            shopButton.Draw(spriteBatch, gameTime);
+            playerButton.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
 
@@ -314,7 +321,7 @@ namespace RPGMonoGame
                     GlobalValues.locationFaction = Story.enemyFaction;
                     saveEnabled = true;
                 }
-                
+
                 if (classSelectWarrior.Contains(mousePoint))
                 {
                     GamePlay.player = new Player(1, 2);
@@ -592,10 +599,10 @@ namespace RPGMonoGame
 
                         }
                         else if (Battle.outcome == 0)
-                        { 
-                                Battle.ResetVals();
-                                GlobalValues.storyIndex = 0;
-                                State = GameState.StoryText;
+                        {
+                            Battle.ResetVals();
+                            GlobalValues.storyIndex = 0;
+                            State = GameState.StoryText;
                         }
                     }
                     break;
@@ -604,7 +611,7 @@ namespace RPGMonoGame
                     {
                         Debug.WriteLine("bruh");
                         Battle.ResetVals();
-                        if(GlobalValues.free)
+                        if (GlobalValues.free)
                         {
                             State = GameState.InFaction;
                         }
@@ -786,7 +793,7 @@ namespace RPGMonoGame
                     }
                     else
                     {
-                        if(damageEnemy != 0)
+                        if (damageEnemy != 0)
                             spriteBatch.DrawString(storyFont, Battle.enemy.Name + " dealt " + damageEnemy + " to you.", new Vector2(110, 319), Color.Black);
                         else
                             spriteBatch.DrawString(storyFont, "You dodged the attack.", new Vector2(110, 319), Color.Black);
@@ -994,7 +1001,7 @@ namespace RPGMonoGame
         }
 
 
-        
+
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -1024,8 +1031,11 @@ namespace RPGMonoGame
 
     public class Button
     {
-        public Sprite Img { get; set; }
-        public Sprite HoverImg { get; set; }
+        Sprite img = new Sprite();
+        Sprite hoverImg = new Sprite();
+
+        public Sprite Img { get => img; set => img = value; }
+        public Sprite HoverImg { get => hoverImg; set => hoverImg = value; }
         public string Text { get; set; }
         public SpriteFont Font { get; set; }
 
@@ -1033,6 +1043,16 @@ namespace RPGMonoGame
         {
             Img = image;
             HoverImg = hoverImage;
+            Text = text;
+            Font = spriteFont;
+        }
+
+        public Button(Texture2D image, Texture2D hoverImage, string text, SpriteFont spriteFont, Vector2 position)
+        {
+            Img.Texture = image;
+            HoverImg.Texture = hoverImage;
+            Img.Position = position;
+            HoverImg.Position = position;
             Text = text;
             Font = spriteFont;
         }
@@ -1047,7 +1067,7 @@ namespace RPGMonoGame
             spriteBatch.DrawString(Font, Text, new Vector2(Img.Position.X + 7, Img.Position.Y + 7), Color.Black);
         }
     }
-    
+
     public class Sprite
     {
         public Texture2D Texture { get; set; }
@@ -1058,6 +1078,11 @@ namespace RPGMonoGame
             Texture = texture;
             Position = initialPosition;
         }
+
+        public Sprite()
+        {
+        }
+
         public virtual void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
             spriteBatch.Draw(Texture, Position, Color.White);
