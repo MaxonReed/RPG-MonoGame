@@ -356,15 +356,6 @@ namespace RPGv2
                 GlobalValues.storyIndex++;
             }
         }
-
-        public static string Talker(string s)
-        {
-            if (/*name present*/true)
-            {
-                return "name";
-            }
-            return null;
-        }
     }
 
     public class BattleJson

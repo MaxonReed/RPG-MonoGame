@@ -45,16 +45,7 @@
     "Buy Price": 130,
     "Sell Price": 45,
     "Rarity Level": 250,
-    "Attr": "Commander"//You the Player Gain one attack
-  },
-  {
-  	 "Name": "Staff of the goddess",
-	 "Attack": 12,
-	 "Defense": 3,
-	 "Buy Price": 65,
-	 "Sell Price": 32,
-	 "Rarity Level": 245,
-	 "Attr": "Blessing"//You The Player Cannot gain debuffs and gain 1 hp per action
+    "Attr": "Commander" //You the Player Gain one attack
   },
   {
     "Name": "Magic Cannon",
@@ -64,15 +55,6 @@
     "Sell Price": 400,
     "Rarity Level": 15,
     "Attr": "Curse|Conflux"//Conflux: Enemies loses 10 defense and loses 1 attack per turn
-  },
-  {
-    "Name": "Staff of Life",
-    "Attack": 10,
-    "Defense": 4,
-    "Buy Price": 100,
-    "Sell Price": 30,
-    "Rarity Level": 30,
-    "Attr": "Blessing|Hope"//Blessing: You the player cannot gain debuffs and gain 1 hp per action | Hope : You the player are immune to damage when you do action pray
   },
   {
     "Name": "Gold Staff",
@@ -99,7 +81,7 @@
     "Buy Price": 500,
     "Sell Price": 150,
     "Rarity Level": 75,
-    "Attr": "Curse|Purjury"//Purjury: If you evade an attack gain 10 M attk
+    "Attr": "Curse"
   },
   {
     "Name": "Infinity Staves",

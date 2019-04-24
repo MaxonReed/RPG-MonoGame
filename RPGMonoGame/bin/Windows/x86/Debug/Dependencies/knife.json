@@ -66,22 +66,13 @@
     "Attr": "Freeze"
   },
   {
-    "Name": "GunBlade",
-    "Attack": 20,
-    "Defense": 7,
-    "Buy Price": 220,
-    "Sell Price": 95,
-    "Rarity Level": 40,
-    "Attr": "CounterMagic|Dexterity"//CounterMagic: Deal damage as M Dmg || Dexterity: add evade stat to dmg when calculating damage
-  },
-  {
     "Name": "Scarab of the Pharaoh",
     "Attack": 15,
     "Defense": 6,
     "Buy Price": 130,
     "Sell Price": 60,
     "Rarity Level": 75,
-    "Attr": "Infect|Dexterity"
+    "Attr": "Infect|Dexterity" //Dexterity: add evade stat to dmg when calculating damage
   },
   {
     "Name": "Gold Dagger",
@@ -91,15 +82,6 @@
     "Sell Price": 50,
     "Rarity Level": 150,
     "Attr": "None"
-  },
-  {
-    "Name": "Force of Will",
-    "Attack": 65,
-    "Defense": 1,
-    "Buy Price": 500,
-    "Sell Price": 250,
-    "Rarity Level": 14,
-    "Attr": "ForceOfWill"//You are immune to magic attacks for the first 5 turns
   },
   {
     "Name": "Frost Dagger",

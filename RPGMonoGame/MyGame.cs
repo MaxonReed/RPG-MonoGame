@@ -108,7 +108,8 @@ namespace RPGMonoGame
             BattlePage,
             StoryText,
             CharacterCreate,
-            InFaction
+            InFaction,
+            PlayerMenu
         }
         public static GameState _state;
         public static GameState State
@@ -254,6 +255,9 @@ namespace RPGMonoGame
                 case GameState.InFaction:
                     UpdateInFaction(gameTime);
                     break;
+                case GameState.PlayerMenu:
+                    UpdatePlayerMenu(gameTime);
+                    break;
                 default:
                     break;
             }
@@ -286,9 +290,22 @@ namespace RPGMonoGame
                 case GameState.InFaction:
                     DrawInFaction(gameTime);
                     break;
+                case GameState.PlayerMenu:
+                    DrawPlayerMenu(gameTime);
+                    break;
                 default:
                     break;
             }
+        }
+
+        void UpdatePlayerMenu(GameTime gameTime)
+        {
+
+        }
+
+        void DrawPlayerMenu(GameTime gameTime)
+        {
+
         }
 
         void UpdateInFaction(GameTime gameTime)
@@ -303,19 +320,19 @@ namespace RPGMonoGame
                     case "start":
                         if(contButton.Contains(mousePoint))
                         {
-
+                            Story.Progress();
                         }
                         if(wildButton.Contains(mousePoint))
                         {
-
+                            GlobalValues.inFactionState = "wild";
                         }
                         if(shopButton.Contains(mousePoint))
                         {
-
+                            GlobalValues.inFactionState = "shop";
                         }
-                        if(playerButton.Contains(mousePoint))
+                        if (playerButton.Contains(mousePoint))
                         {
-
+                            State = GameState.PlayerMenu;
                         }
                         break;
                     default:
@@ -611,6 +628,84 @@ namespace RPGMonoGame
                         {
                             dispPlayerDamage = true;
                             GlobalValues.battleState = "battle";
+                            switch (Battle.player.Class)
+                            {
+                                case "Warrior":
+                                    Sword sword = (Sword)GamePlay.player.Equip[0];
+                                    foreach (string str in sword.attr.ToArray())
+                                    {
+                                        if (str == @"Night's Bane")
+                                            if (GamePlay.player.Health > Battle.playerHP)
+                                                Battle.playerHP = 0;
+                                        if(str == "Bloodthirsty")
+                                        {
+                                            Battle.player.Defense -= 1;
+                                            Battle.enemy.Defense -= 5;
+                                            if (Battle.player.Defense <= 0)
+                                                Battle.player.Defense = 1;
+                                            if (Battle.enemy.Defense <= 0)
+                                                Battle.enemy.Defense = 1;
+                                        }
+                                        if(str == "Frozen")
+                                        {
+                                            if (Battle.round <= 3)
+                                                Battle.player.Health += damageEnemy;
+                                        }
+                                    }
+                                    break;
+                                case "Mage":
+                                    Staff staff = (Staff)GamePlay.player.Equip[0];
+                                    foreach (string str in staff.attr.ToArray())
+                                    {
+                                        if (str == "Commander")
+                                            Battle.player.Attack++;
+                                        if (str == "Infect")
+                                            if (Battle.player.Defense > Battle.enemy.Defense)
+                                                Battle.enemyHP -= damageEnemy;
+                                        if (str == "Frozen")
+                                        {
+                                            if (Battle.round <= 2)
+                                                Battle.player.Health += damageEnemy;
+                                        }
+                                        if (str == "Conflux")
+                                        {
+                                            Battle.enemy.Attack -= 1;
+                                            Battle.enemy.Defense -= 10;
+                                            if (Battle.enemy.Attack <= 0)
+                                                Battle.enemy.Attack = 1;
+                                            if (Battle.enemy.Defense <= 0)
+                                                Battle.enemy.Defense = 1;
+                                        }
+                                    }
+                                    break;
+                                case "Rogue":
+                                    Knife knife = (Knife)GamePlay.player.Equip[0];
+                                    foreach (string str in knife.attr.ToArray())
+                                    {
+                                        if (str == "Bloodthirsty")
+                                        {
+                                            Battle.player.Defense -= 1;
+                                            Battle.enemy.Defense -= 5;
+                                            if (Battle.player.Defense <= 0)
+                                                Battle.player.Defense = 1;
+                                            if (Battle.enemy.Defense <= 0)
+                                                Battle.enemy.Defense = 1;
+                                        }
+                                        if (str == "Infect")
+                                            if (Battle.player.Defense > Battle.enemy.Defense)
+                                                Battle.enemyHP -= damageEnemy;
+                                        if (str == "Frozen")
+                                        {
+                                            if (Battle.round <= 2)
+                                                Battle.player.Health += damageEnemy;
+                                        }
+                                    }
+                                    break;
+                                default:
+
+                                    break;
+                            }
+                            Battle.round++;
                         }
                         else
                             dispPlayerDamage = false;
@@ -699,8 +794,37 @@ namespace RPGMonoGame
                         Battle.enemyHP = Battle.enemy.Health;
                         Battle.playerHP = Battle.player.Health;
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
-                        Item item = Battle.player.Equip[0];
-                        foreach(string str in item.attr)
+                        //attribute handling
+                        switch(Battle.player.Class)
+                        {
+                            case "Warrior":
+                                Sword sword = (Sword)GamePlay.player.Equip[0];
+                                foreach(string str in sword.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Mage":
+                                Staff staff = (Staff)GamePlay.player.Equip[0];
+                                foreach (string str in staff.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Rogue":
+                                Knife knife = (Knife)GamePlay.player.Equip[0];
+                                foreach (string str in knife.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            default:
+
+                                break;
+                        }
 
                         if (!Battle.turn)
                         {

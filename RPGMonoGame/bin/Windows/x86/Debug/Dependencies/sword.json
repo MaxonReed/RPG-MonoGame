@@ -72,7 +72,7 @@
     "Buy Price": 30,
     "Sell Price": 10,
     "Rarity Level": 190,
-    "Attr": "Frozen" // Your opponent is immobile for X amount of turns
+    "Attr": "Frozen" // Your opponent is immobile for 2 turns
   },
   {
     "Name": "Gold Sword",
