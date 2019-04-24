@@ -76,11 +76,12 @@ namespace RPGMonoGame
         bool clickedSpecial = false;
         bool clickedRun = false;
         bool canRun = true;
-        int damagePlayer = -1;
-        int damageEnemy = -1;
+        int damagePlayer = 0;
+        int damageEnemy = 0;
         bool dispPlayerDamage = true;
         public static bool calledBattleFinish = false;
         string droppedItem = "";
+        double receivedMoney = 0;
         #endregion
         #region factionAssets
         Button wildButton;
@@ -292,7 +293,35 @@ namespace RPGMonoGame
 
         void UpdateInFaction(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+            {
+                switch (GlobalValues.inFactionState)
+                {
+                    case "start":
+                        if(contButton.Contains(mousePoint))
+                        {
 
+                        }
+                        if(wildButton.Contains(mousePoint))
+                        {
+
+                        }
+                        if(shopButton.Contains(mousePoint))
+                        {
+
+                        }
+                        if(playerButton.Contains(mousePoint))
+                        {
+
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         void DrawInFaction(GameTime gameTime)
@@ -300,10 +329,17 @@ namespace RPGMonoGame
             spriteBatch.Begin();
             Faction fac = GlobalValues.locationFaction;
             spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 25), Color.Black);
-            contButton.Draw(spriteBatch, gameTime);
-            wildButton.Draw(spriteBatch, gameTime);
-            shopButton.Draw(spriteBatch, gameTime);
-            playerButton.Draw(spriteBatch, gameTime);
+            switch (GlobalValues.inFactionState)
+            {
+                case "start":
+                    contButton.Draw(spriteBatch, gameTime);
+                    wildButton.Draw(spriteBatch, gameTime);
+                    shopButton.Draw(spriteBatch, gameTime);
+                    playerButton.Draw(spriteBatch, gameTime);
+                    break;
+                default:
+                    break;
+            }
             spriteBatch.End();
         }
 
@@ -585,7 +621,8 @@ namespace RPGMonoGame
                     {
                         if (Battle.outcome == 1 || Battle.outcome == -1)
                         {
-
+                            GamePlay.player.Money += Math.Round(Math.Pow(Battle.enemy.Level, 1.2), 2);
+                            receivedMoney = GamePlay.player.Money + Math.Round(Math.Pow(Battle.enemy.Level, 1.2), 2);
                             if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
                             {
                                 GlobalValues.battleState = "levelup";
@@ -603,13 +640,14 @@ namespace RPGMonoGame
                             Battle.ResetVals();
                             GlobalValues.storyIndex = 0;
                             State = GameState.StoryText;
+                            receivedMoney = 0;
                         }
                     }
                     break;
                 case "levelup":
                     if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
                     {
-                        Debug.WriteLine("bruh");
+                        receivedMoney = 0;
                         Battle.ResetVals();
                         if (GlobalValues.free)
                         {
@@ -661,6 +699,9 @@ namespace RPGMonoGame
                         Battle.enemyHP = Battle.enemy.Health;
                         Battle.playerHP = Battle.player.Health;
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
+                        Item item = Battle.player.Equip[0];
+                        foreach(string str in item.attr)
+
                         if (!Battle.turn)
                         {
                             damageEnemy = Battle.RegularAttack();
@@ -820,6 +861,7 @@ namespace RPGMonoGame
                         textBox.Draw(spriteBatch, gameTime);
                         spriteBatch.DrawString(storyFont, "You won! Exp: " + GamePlay.player.Exp + " / " + GamePlay.player.NextLevel(), new Vector2(110, 319), Color.Black);
                         spriteBatch.DrawString(storyFont, "You have obtained: " + droppedItem, new Vector2(110, 343), Color.Black);
+                        spriteBatch.DrawString(storyFont, "You have received " + receivedMoney + " gold.", new Vector2(110, 367), Color.Black);
                     }
                     break;
                 case "levelup":
@@ -1055,6 +1097,22 @@ namespace RPGMonoGame
             HoverImg.Position = position;
             Text = text;
             Font = spriteFont;
+        }
+
+        public bool Contains(Point pos)
+        {
+            var rect = Img.Texture.Bounds;
+            rect.X = (int)Img.Position.X;
+            rect.Y = (int)Img.Position.Y;
+            return rect.Contains(pos);
+        }
+
+        public bool Contains(Vector2 pos)
+        {
+            var rect = Img.Texture.Bounds;
+            rect.X = (int)Img.Position.X;
+            rect.Y = (int)Img.Position.Y;
+            return rect.Contains(pos);
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)

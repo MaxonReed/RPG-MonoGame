@@ -458,7 +458,7 @@ namespace RPGv2
 
         public static int HandleSpecial(int sp)
         {
-            int damage = -1;
+            int damage = 0;
             switch (sp)
             {
                 case 0:
@@ -601,6 +601,7 @@ namespace RPGv2
         public int storyIndex = 0;
         public int storyState = 0;
         public Faction locationFaction = Story.enemyFaction;
+        public string inFactionState = "start";
 
         public JsonValues()
         {
@@ -609,7 +610,7 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState)
         {
             inp = jInp;
             inpText = jInpText;
@@ -625,6 +626,7 @@ namespace RPGv2
             storyIndex = jStoryIndex;
             storyState = jStoryState;
             locationFaction = faction;
+            inFactionState = jInFactionState;
         }
     }
 
@@ -649,6 +651,7 @@ namespace RPGv2
         public static JsonValues jsonVals = new JsonValues();
         public static BattleJson battleJson = new BattleJson();
         public static Faction locationFaction = Story.enemyFaction;
+        public static string inFactionState = "start";
 
         public static void SetVals(JsonValues jVals)
         {
@@ -667,6 +670,7 @@ namespace RPGv2
             storyState = jVals.storyState;
             locationFaction = jVals.locationFaction;
             free = jVals.free;
+            inFactionState = jVals.inFactionState;
         }
 
         public static void GetVals()
@@ -686,6 +690,8 @@ namespace RPGv2
             jsonVals.storyState = storyState;
             jsonVals.locationFaction = locationFaction;
             jsonVals.free = free;
+            jsonVals.inFactionState = inFactionState;
+
         }
 
         public static int Inp
@@ -694,6 +700,11 @@ namespace RPGv2
 
             set => inp = value;
         }
+
+    }
+
+    public class QuestVals
+    {
 
     }
 
@@ -1482,13 +1493,13 @@ namespace RPGv2
 
     public class Staff : Item
     {
-        private readonly string name;
-        private readonly int att;
-        private readonly int def;
-        private readonly int buyPrice;
-        private readonly int sellPrice;
-        private readonly int rarity;
-        private readonly string attr;
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
 
         public Staff(int index)
         {
@@ -1500,7 +1511,8 @@ namespace RPGv2
             buyPrice = (int)obj["Buy Price"];
             sellPrice = (int)obj["Sell Price"];
             rarity = (int)obj["Rarity Level"];
-            attr = (string)obj["Attr"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
         }
         public Staff(string n)
         {
@@ -1515,7 +1527,8 @@ namespace RPGv2
                     buyPrice = (int)obj["Buy Price"];
                     sellPrice = (int)obj["Sell Price"];
                     rarity = (int)obj["Rarity Level"];
-                    attr = (string)obj["Attr"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
                 }
             }
             if (string.IsNullOrEmpty(name))
@@ -1542,13 +1555,13 @@ namespace RPGv2
 
     public class Knife : Item
     {
-        private readonly string name;
-        private readonly int att;
-        private readonly int def;
-        private readonly int buyPrice;
-        private readonly int sellPrice;
-        private readonly int rarity;
-        private readonly string attr;
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
 
         public Knife(int index)
         {
@@ -1560,7 +1573,8 @@ namespace RPGv2
             buyPrice = (int)obj["Buy Price"];
             sellPrice = (int)obj["Sell Price"];
             rarity = (int)obj["Rarity Level"];
-            attr = (string)obj["Attr"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
         }
         public Knife(string n)
         {
@@ -1575,7 +1589,8 @@ namespace RPGv2
                     buyPrice = (int)obj["Buy Price"];
                     sellPrice = (int)obj["Sell Price"];
                     rarity = (int)obj["Rarity Level"];
-                    attr = (string)obj["Attr"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
                 }
             }
             if (string.IsNullOrEmpty(name))
@@ -1602,14 +1617,14 @@ namespace RPGv2
 
     public class Sword : Item
     {
-        private readonly string name;
-        private readonly int att;
-        private readonly int def;
-        private readonly int buyPrice;
-        private readonly int sellPrice;
-        private readonly int rarity;
-        private readonly string attr;
-
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+       
         public Sword(int index)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\sword.json"));
@@ -1620,7 +1635,8 @@ namespace RPGv2
             buyPrice = (int)obj["Buy Price"];
             sellPrice = (int)obj["Sell Price"];
             rarity = (int)obj["Rarity Level"];
-            attr = (string)obj["Attr"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
         }
         public Sword(string n)
         {
@@ -1635,7 +1651,8 @@ namespace RPGv2
                     buyPrice = (int)obj["Buy Price"];
                     sellPrice = (int)obj["Sell Price"];
                     rarity = (int)obj["Rarity Level"];
-                    attr = (string)obj["Attr"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
                 }
             }
             if (string.IsNullOrEmpty(name))
