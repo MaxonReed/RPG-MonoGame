@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using RPGv2;
 using System.Threading;
+using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace RPGMonoGame
 {
@@ -334,6 +336,38 @@ namespace RPGMonoGame
                         {
                             State = GameState.PlayerMenu;
                         }
+                        break;
+                    case "wild":
+                        int chanceTotal = 0;
+                        int num = 0;
+                        List<int> minMax = new List<int>();
+                        JArray enemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
+                        foreach (JObject enemy in enemies)
+                            chanceTotal += (int)enemy["EnRate"];
+                        num = HelperClasses.RandomNumber(0, chanceTotal);
+                        minMax = new List<int>();
+                        minMax.Add(0);
+                        for (int i = 1, j = 0; j < enemies.Count; i++)
+                        {
+                            if (i % 2 == 1)
+                            {
+                                minMax.Add((int)enemies[j]["EnRate"] + minMax[i - 1] - 1);
+                                j++;
+                            }
+                            else
+                                minMax.Add(minMax[i - 1] + 1);
+                        }
+                        for (int i = 0; i < minMax.Count - 1; i++)
+                        {
+                            if (num >= minMax[i] && num <= minMax[i + 1])
+                            {
+                                Battle.enemy = new Enemy(i / 2);
+                            }
+                        }
+                        Battle.player = GamePlay.player;
+                        break;
+                    case "shop":
+
                         break;
                     default:
                         break;
@@ -795,11 +829,11 @@ namespace RPGMonoGame
                         Battle.playerHP = Battle.player.Health;
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         //attribute handling
-                        switch(Battle.player.Class)
+                        switch (Battle.player.Class)
                         {
                             case "Warrior":
                                 Sword sword = (Sword)GamePlay.player.Equip[0];
-                                foreach(string str in sword.attr.ToArray())
+                                foreach (string str in sword.attr.ToArray())
                                 {
                                     if (str == "Curse")
                                         Battle.turn = false;
@@ -835,8 +869,55 @@ namespace RPGMonoGame
                         Battle.round++;
                         Battle.SetVals(GlobalValues.battleJson);
                     }
+                    else
+                        GlobalValues.battleID = "";
                     break;
                 default:
+                    if (Battle.round == -1)
+                    {
+                        Battle.enemyHP = Battle.enemy.Health;
+                        Battle.playerHP = Battle.player.Health;
+                        Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
+                        switch (Battle.player.Class)
+                        {
+                            case "Warrior":
+                                Sword sword = (Sword)GamePlay.player.Equip[0];
+                                foreach (string str in sword.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Mage":
+                                Staff staff = (Staff)GamePlay.player.Equip[0];
+                                foreach (string str in staff.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Rogue":
+                                Knife knife = (Knife)GamePlay.player.Equip[0];
+                                foreach (string str in knife.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            default:
+                                Battle.round++;
+                                Battle.SetVals(GlobalValues.battleJson);
+                                break;
+                        }
+                        if (!Battle.turn)
+                        {
+                            damageEnemy = Battle.RegularAttack();
+                            damagePlayer = Battle.RegularAttack();
+                            GlobalValues.battleState = "damageDealt";
+                        }
+                        Battle.round++;
+                        Battle.SetVals(GlobalValues.battleJson);
+                    }
                     break;
             }
             switch (GlobalValues.battleState)

@@ -11,7 +11,7 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen", //Random encounter
+    "Id": "Rngen 2 3 4 5 6", //Random encounter
     "Health": 30,
     "Name": "Big Crow",
     "Attack": 1,
@@ -21,7 +21,7 @@
     "EnRate": 100000
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 2 3 4 6",
     "Health": 45,
     "Name": "Bear",
     "Attack": 8,
@@ -31,7 +31,7 @@
     "EnRate": 100000
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 2 3 4 5 6",
     "Health": 65,
     "Name": "Scavenger",
     "Attack": 5,
@@ -41,7 +41,7 @@
     "EnRate": 99999
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 2 3 4",
     "Health": 110,
     "Name": "Lunatic",
     "Attack": 10,
@@ -51,7 +51,7 @@
     "EnRate": 99900
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 2 3 4 5 6",
     "Health": 1,
     "Name": "Shadow Creep",
     "Attack": 20,
@@ -61,7 +61,7 @@
     "EnRate": 10
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 3",
     "Health": 120,
     "Name": "Gangster",
     "Attack": 17,
@@ -71,7 +71,7 @@
     "EnRate": 99788
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 3 4 5 6",
     "Health": 100,
     "Name": "Magic Archer",
     "Attack": 10,
@@ -91,7 +91,7 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 3 4",
     "Health": 150,
     "Name": "Orc",
     "Attack": 27,
@@ -101,7 +101,7 @@
     "EnRate": 99444
   },
   {
-    "Id": "Rngen MiniBoss", //Random encounter and a mini boss
+    "Id": "Rngen MiniBoss 3 4", //Random encounter and a mini boss
     "Health": 50,
     "Name": "MadMan",
     "Attack": 50,
@@ -111,7 +111,7 @@
     "EnRate": 444
   },
   {
-    "Id": "Rngen",
+    "Id": "Rngen 3 4 5 6",
     "Health": 120,
     "Name": "SwordMaster",
     "Attack": 20,
@@ -127,6 +127,106 @@
     "Attack": 75,
     "Defense": 15,
     "MDef": 50,
+    "Speed": 20,
+    "EnRate": 0
+  },
+  {
+    "Id": "Rngen 4 5 6",
+    "Health": 100,
+    "Name": "Zombie",
+    "Attack": 25,
+    "Defense": 12,
+    "MDef": 2,
+    "Speed": 15,
+    "EnRate": 99300
+  },
+  {
+    "Id": "Rngen MiniBoss 4 5 6",
+    "Health": 200,
+    "Name": "Omega Zombie",
+    "Attack": 40,
+    "Defense": 15,
+    "MDef": 4,
+    "Speed": 25,
+    "EnRate": 444
+  },
+  {
+    "Id": "Rngen 4 5 6",
+    "Health": 150,
+    "Name": "Mage apprentice",
+    "Attack": 23,
+    "Defense": 6,
+    "MDef": 23,
+    "Speed": 10,
+    "EnRate": 99350
+  },
+  {
+    "Id": "Rngen 4",
+    "Health": 10,
+    "Name": "Midnight Ghost",
+    "Attack": 28,
+    "Defense": 60,
+    "MDef": 40,
+    "Speed": 70,
+    "EnRate": 99200
+  },
+  {
+    "Id": "Seten DharkBoss",
+    "Health": 750,
+    "Name": "Dharkson Groth",
+    "Attack": 80,
+    "Defense": 1,
+    "MDef": 35,
+    "Speed": 27,
+    "EnRate": 0
+  },
+  {
+    "Id": "Rngen 4",
+    "Health": 100,
+    "Name": "Dhark Minion",
+    "Attack": 15,
+    "Defense": 2,
+    "MDef": 7,
+    "Speed": 15,
+    "EnRate": 99999
+  },
+  {
+    "Id": "Rngen 6",
+    "Health": 220,
+    "Name": "Old Sage",
+    "Attack": 30,
+    "Defense": 0,
+    "MDef": 22,
+    "Speed": 5,
+    "EnRate": 99300
+  },
+  {
+    "Id": "Rngen 6",
+    "Health": 200,
+    "Name": "KeyMaster",
+    "Attack": 24,
+    "Defense": 13,
+    "MDef": 40,
+    "Speed": 10,
+    "EnRate": 99100
+  },
+  {
+    "Id": "Rngen MiniBoss 6",
+    "Health": 500,
+    "Name": "HenchKey",
+    "Attack": 40,
+    "Defense": 0,
+    "MDef": 33,
+    "Speed": 18,
+    "EnRate": 9000
+  },
+  {
+    "Id": "Seten KeyBoss",
+    "Health": 1000,
+    "Name": "Key! Keyboard Warrior",
+    "Attack": 99,
+    "Defense": 5,
+    "MDef": 400,
     "Speed": 20,
     "EnRate": 0
   }

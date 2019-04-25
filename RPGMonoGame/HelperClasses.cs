@@ -555,6 +555,19 @@ namespace RPGv2
 
         }
 
+        public Enemy(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\enemy.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            Name = (string)obj["Name"];
+            Health = (int)obj["Health"];
+            Attack = (int)obj["Attack"];
+            Defense = (int)obj["Defense"];
+            Speed = (int)obj["Speed"];
+            MDef = (int)obj["MDef"];
+            Level = (int)obj["Level"];
+        }
+
         public Enemy(string id)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\enemy.json"));

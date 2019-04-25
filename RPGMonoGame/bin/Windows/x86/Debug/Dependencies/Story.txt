@@ -1,3 +1,8 @@
+
+Max Klassen
+Wed, Apr 24, 9:05 AM (1 day ago)
+to me
+
 [1]
 *We lost...
 *It's all over now...
@@ -52,5 +57,58 @@ Toto: "Big boy down"
 *But he will seem easy compared to what is ahead
 
 [4]
+:req big chedda| beat big chedda
+A paper flies by...
+*A newspaper?
+Toto: "Midnight Murderer...?"
+The paper reads...
+*MIDNIGHT MURDERER: After crime boss big chedda's suprising death we have seen countless new death's all happenening around midnight...
+Toto: "That's probably not good..."
+:free = true
 
-			
+[5]
+:req 15 Dhark Minion|You need to defeat 15 Dhark minions to continue
+:free=false
+Toto: "Talk!"
+Minion: "..."
+*I don't think it understands english...
+?: "YOU!"
+Toto: "?"
+*This thing approches me, it is covered in a thick substence and has a face that constantly changes forms
+Dharkson: "You have been killing my minions!"
+*So this is Dharkson Groth, the mage who fell to ruin
+Dharkson: "You will die for what You've done"
+*I can't back down
+|battle:id=Dharkbattle
+*Upon defeat, It collapses into a puddle and seems to be gone for good
+Toto: "A Terrific Victory"
+
+[6]
+:req Dharkson Groth|You need to defeat Dharson groth
+*You see someone who looks like a kid with a keyboard running around
+Toto: "Hey kid are you lost
+KEY: "No, And I will SMITE you!"
+*uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+*He looks at me as if he might...
+KEY: "Henchmen!"
+Henchkey: "Ok boss"
+*I got slugged in the face
+:free=true
+
+[7]
+:req HenchKey|You need to defeat the henchman
+:free=false
+*That idiot is still just waving that keyboard around after I interrogated his Henchman
+Toto: "Hey Blockhead!"
+KEY: "Your the block head!"
+Toto: "You're*"
+KEY: "Im going to kill you!!!!!!!!!!!"
+Toto: "I'm*"
+*He's sprinting at me
+*I can't back down
+|battle:id=keybattle
+*He falls as I stab him for at least the millionth time
+*He bleeds uncontrolably
+*Then he dies
+Toto: "Nice try kid..."
+*A terrific Victory
