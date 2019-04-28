@@ -12,6 +12,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6", //Random encounter
+    "Level": 1,
     "Health": 30,
     "Name": "Big Crow",
     "Attack": 1,
@@ -22,6 +23,7 @@
   },
   {
     "Id": "Rngen 2 3 4 6",
+    "Level": 1,
     "Health": 45,
     "Name": "Bear",
     "Attack": 8,
@@ -32,6 +34,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6",
+    "Level": 1,
     "Health": 65,
     "Name": "Scavenger",
     "Attack": 5,
@@ -42,6 +45,7 @@
   },
   {
     "Id": "Rngen 2 3 4",
+    "Level": 1,
     "Health": 110,
     "Name": "Lunatic",
     "Attack": 10,
@@ -52,6 +56,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6",
+    "Level": 1,
     "Health": 1,
     "Name": "Shadow Creep",
     "Attack": 20,
@@ -62,6 +67,7 @@
   },
   {
     "Id": "Rngen 3",
+    "Level": 1,
     "Health": 120,
     "Name": "Gangster",
     "Attack": 17,
@@ -72,6 +78,7 @@
   },
   {
     "Id": "Rngen 3 4 5 6",
+    "Level": 1,
     "Health": 100,
     "Name": "Magic Archer",
     "Attack": 10,
@@ -82,6 +89,7 @@
   },
   {
     "Id": "Seten MiniBoss", //set encounter and a mini boss
+    "Level": 1,
     "Health": 300,
     "Name": "High Orc",
     "Attack": 37,
@@ -92,6 +100,7 @@
   },
   {
     "Id": "Rngen 3 4",
+    "Level": 1,
     "Health": 150,
     "Name": "Orc",
     "Attack": 27,
@@ -102,6 +111,7 @@
   },
   {
     "Id": "Rngen MiniBoss 3 4", //Random encounter and a mini boss
+    "Level": 1,
     "Health": 50,
     "Name": "MadMan",
     "Attack": 50,
@@ -112,6 +122,7 @@
   },
   {
     "Id": "Rngen 3 4 5 6",
+    "Level": 1,
     "Health": 120,
     "Name": "SwordMaster",
     "Attack": 20,
@@ -122,6 +133,7 @@
   },
   {
     "Id": "Seten BigCheddaBoss", //Big Chedda encounter
+    "Level": 1,
     "Health": 800,
     "Name": "Big Chedda",
     "Attack": 75,
@@ -132,6 +144,7 @@
   },
   {
     "Id": "Rngen 4 5 6",
+    "Level": 1,
     "Health": 100,
     "Name": "Zombie",
     "Attack": 25,
@@ -142,6 +155,7 @@
   },
   {
     "Id": "Rngen MiniBoss 4 5 6",
+    "Level": 1,
     "Health": 200,
     "Name": "Omega Zombie",
     "Attack": 40,
@@ -152,6 +166,7 @@
   },
   {
     "Id": "Rngen 4 5 6",
+    "Level": 1,
     "Health": 150,
     "Name": "Mage apprentice",
     "Attack": 23,
@@ -162,6 +177,7 @@
   },
   {
     "Id": "Rngen 4",
+    "Level": 1,
     "Health": 10,
     "Name": "Midnight Ghost",
     "Attack": 28,
@@ -172,6 +188,7 @@
   },
   {
     "Id": "Seten DharkBoss",
+    "Level": 1,
     "Health": 750,
     "Name": "Dharkson Groth",
     "Attack": 80,
@@ -182,6 +199,7 @@
   },
   {
     "Id": "Rngen 4",
+    "Level": 1,
     "Health": 100,
     "Name": "Dhark Minion",
     "Attack": 15,
@@ -192,6 +210,7 @@
   },
   {
     "Id": "Rngen 6",
+    "Level": 1,
     "Health": 220,
     "Name": "Old Sage",
     "Attack": 30,
@@ -202,6 +221,7 @@
   },
   {
     "Id": "Rngen 6",
+    "Level": 1,
     "Health": 200,
     "Name": "KeyMaster",
     "Attack": 24,
@@ -212,6 +232,7 @@
   },
   {
     "Id": "Rngen MiniBoss 6",
+    "Level": 1,
     "Health": 500,
     "Name": "HenchKey",
     "Attack": 40,
@@ -222,6 +243,7 @@
   },
   {
     "Id": "Seten KeyBoss",
+    "Level": 1,
     "Health": 1000,
     "Name": "Key! Keyboard Warrior",
     "Attack": 99,

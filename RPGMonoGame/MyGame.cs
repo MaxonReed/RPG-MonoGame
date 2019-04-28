@@ -11,6 +11,7 @@ using RPGv2;
 using System.Threading;
 using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Linq;
 
 namespace RPGMonoGame
 {
@@ -231,7 +232,7 @@ namespace RPGMonoGame
                     GlobalValues.save.SaveGame();
                 }
             }
-            if (GlobalValues.free)
+            if (GlobalValues.free && State != GameState.BattlePage)
                 State = GameState.InFaction;
             base.Update(gameTime);
             switch (State)
@@ -315,6 +316,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 switch (GlobalValues.inFactionState)
@@ -326,7 +328,56 @@ namespace RPGMonoGame
                         }
                         if(wildButton.Contains(mousePoint))
                         {
-                            GlobalValues.inFactionState = "wild";
+                            int chanceTotal = 0;
+                            int num = 0;
+                            List<int> minMax = new List<int>();
+                            JArray enemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
+                            foreach(JObject enemy in enemies.ToArray())
+                            {
+                                if (!enemy["Id"].Value<string>().Contains("Rngen"))
+                                    enemies.Remove(enemy);
+                                else
+                                {
+                                    int start = 1;
+                                    string[] strArr = enemy["Id"].Value<string>().Split(' ');
+                                    if (strArr[1] == "MiniBoss")
+                                        start++;
+                                    for (int i = start; i < strArr.Length; i++)
+                                    {
+                                        if (int.Parse(strArr[i]) == GlobalValues.storyState)
+                                            break;
+                                        else if (i == strArr.Length - 1)
+                                            enemies.Remove(enemy);
+                                    }
+                                }
+                            }
+                            foreach (JObject enemy in enemies.ToArray())
+                                chanceTotal += (int)enemy["EnRate"];
+                            num = HelperClasses.RandomNumber(0, chanceTotal);
+                            minMax = new List<int>();
+                            minMax.Add(0);
+                            for (int i = 1, j = 0; j < enemies.Count; i++)
+                            {
+                                if (i % 2 == 1)
+                                {
+                                    minMax.Add((int)enemies[j]["EnRate"] + minMax[i - 1] - 1);
+                                    j++;
+                                }
+                                else
+                                    minMax.Add(minMax[i - 1] + 1);
+                            }
+                            for (int i = 0; i < minMax.Count - 1; i++)
+                            {
+                                if (num >= minMax[i] && num <= minMax[i + 1])
+                                {
+                                    Battle.enemy = new Enemy(i / 2);
+                                }
+                            }
+                            Battle.player = GamePlay.player;
+                            Battle.playerHP = GamePlay.player.Health;
+                            Battle.enemyHP = Battle.enemy.Health;
+                            State = GameState.BattlePage;
+                            break;
                         }
                         if(shopButton.Contains(mousePoint))
                         {
@@ -336,35 +387,6 @@ namespace RPGMonoGame
                         {
                             State = GameState.PlayerMenu;
                         }
-                        break;
-                    case "wild":
-                        int chanceTotal = 0;
-                        int num = 0;
-                        List<int> minMax = new List<int>();
-                        JArray enemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
-                        foreach (JObject enemy in enemies)
-                            chanceTotal += (int)enemy["EnRate"];
-                        num = HelperClasses.RandomNumber(0, chanceTotal);
-                        minMax = new List<int>();
-                        minMax.Add(0);
-                        for (int i = 1, j = 0; j < enemies.Count; i++)
-                        {
-                            if (i % 2 == 1)
-                            {
-                                minMax.Add((int)enemies[j]["EnRate"] + minMax[i - 1] - 1);
-                                j++;
-                            }
-                            else
-                                minMax.Add(minMax[i - 1] + 1);
-                        }
-                        for (int i = 0; i < minMax.Count - 1; i++)
-                        {
-                            if (num >= minMax[i] && num <= minMax[i + 1])
-                            {
-                                Battle.enemy = new Enemy(i / 2);
-                            }
-                        }
-                        Battle.player = GamePlay.player;
                         break;
                     case "shop":
 

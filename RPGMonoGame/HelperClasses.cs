@@ -232,6 +232,8 @@ namespace RPGv2
             JObject obj = JObject.Parse(File.ReadAllText(@"Dependencies\save.json"));
             player = JsonConvert.DeserializeObject<Player>(obj["player"].ToString());
             GamePlay.player = player;
+            GamePlay.player.InitEquip();
+            GamePlay.player.InitInv();
             hist.Factions = JsonConvert.DeserializeObject<List<Faction>>(obj["Factions"].ToString());
             hist.Races = JsonConvert.DeserializeObject<List<Race>>(obj["Races"].ToString());
             GlobalValues.jsonVals = JsonConvert.DeserializeObject<JsonValues>(obj["jsonVals"].ToString());
@@ -1182,6 +1184,8 @@ namespace RPGv2
     {
         int exp = 0;
         int level = 1;
+        List<Item> equip = new List<Item>();
+        List<Item> inv = new List<Item>();
 
         public string Class { get; set; }
         public int Health { get; set; }
@@ -1197,9 +1201,9 @@ namespace RPGv2
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
         public List<string> invString;
-        [JsonIgnore] public List<Item> Inv { get; set; }
+        [JsonIgnore] public List<Item> Inv { get => inv; set => inv = value; }
         public List<string> equipString;
-        [JsonIgnore] public List<Item> Equip { get; set; }
+        [JsonIgnore] public List<Item> Equip { get => equip; set => equip = value; }
         public List<int> Special { get; set; }
 
         /*
