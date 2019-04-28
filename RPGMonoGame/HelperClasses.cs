@@ -346,8 +346,10 @@ namespace RPGv2
         public static void Progress()
         {
             int length = 0;
-            List<string> strArray = SceneText.strArr;
+            List<string> strArray = GetScene(GlobalValues.storyState);
             length = strArray.Count - 1;
+            foreach (string str in strArray)
+                Debug.WriteLine(str);
             if (GlobalValues.storyIndex == length)
             {
                 GlobalValues.storyIndex = 0;
@@ -570,13 +572,13 @@ namespace RPGv2
             Level = (int)obj["Level"];
         }
 
-        public Enemy(string id)
+        public Enemy(string id, string name)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\enemy.json"));
             JObject obj = new JObject();
             foreach (JObject jObj in array)
             {
-                if ((string)jObj["Id"] == id)
+                if ((string)jObj["Id"] == id && (string)jObj["Name"] == name)
                     obj = jObj;
             }
             Name = (string)obj["Name"];
@@ -603,11 +605,13 @@ namespace RPGv2
         public bool startGen = false;
         public bool done = false;
         public bool free = false;
+        public bool saveEnabled = false;
         public string[] strArray;
         public int storyIndex = 0;
         public int storyState = 0;
         public Faction locationFaction = Story.enemyFaction;
         public string inFactionState = "start";
+
 
         public JsonValues()
         {
@@ -616,7 +620,7 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState, bool jSaveEnabled)
         {
             inp = jInp;
             inpText = jInpText;
@@ -633,6 +637,7 @@ namespace RPGv2
             storyState = jStoryState;
             locationFaction = faction;
             inFactionState = jInFactionState;
+            saveEnabled = jSaveEnabled;
         }
     }
 
@@ -650,6 +655,7 @@ namespace RPGv2
         public static bool startGen = false;
         public static bool done = false;
         public static bool free = false;
+        public static bool saveEnabled = false;
         public static string[] strArray;
         public static int storyIndex = 0;
         public static int storyState = 0;
@@ -677,6 +683,7 @@ namespace RPGv2
             locationFaction = jVals.locationFaction;
             free = jVals.free;
             inFactionState = jVals.inFactionState;
+            saveEnabled = jVals.saveEnabled;
         }
 
         public static void GetVals()
@@ -697,6 +704,7 @@ namespace RPGv2
             jsonVals.locationFaction = locationFaction;
             jsonVals.free = free;
             jsonVals.inFactionState = inFactionState;
+            jsonVals.saveEnabled = saveEnabled;
 
         }
 

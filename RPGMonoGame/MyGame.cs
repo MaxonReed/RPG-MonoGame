@@ -25,7 +25,6 @@ namespace RPGMonoGame
         private SpriteFont arialFont;
         MouseState mouseState = Mouse.GetState();
         MouseState prevState;
-        bool saveEnabled = false;
         Stopwatch timer = new Stopwatch();
         #region MainMenuAssets
         Sprite mainMenuButton;
@@ -225,15 +224,16 @@ namespace RPGMonoGame
             if (timer.ElapsedMilliseconds >= 5000)
             {
                 timer.Restart();
-                if (saveEnabled)
+                if (GlobalValues.saveEnabled)
                 {
-                    Battle.GetVals(GlobalValues.battleJson);
+                    Battle.SetVals(GlobalValues.battleJson);
                     GlobalValues.GetVals();
                     GlobalValues.save.SaveGame();
                 }
             }
             if (GlobalValues.free && State != GameState.BattlePage)
                 State = GameState.InFaction;
+            //Debug.WriteLine(GlobalValues.storyState);
             base.Update(gameTime);
             switch (State)
             {
@@ -322,17 +322,17 @@ namespace RPGMonoGame
                 switch (GlobalValues.inFactionState)
                 {
                     case "start":
-                        if(contButton.Contains(mousePoint))
+                        if (contButton.Contains(mousePoint))
                         {
                             Story.Progress();
                         }
-                        if(wildButton.Contains(mousePoint))
+                        if (wildButton.Contains(mousePoint))
                         {
                             int chanceTotal = 0;
                             int num = 0;
                             List<int> minMax = new List<int>();
                             JArray enemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
-                            foreach(JObject enemy in enemies.ToArray())
+                            foreach (JObject enemy in enemies.ToArray())
                             {
                                 if (!enemy["Id"].Value<string>().Contains("Rngen"))
                                     enemies.Remove(enemy);
@@ -347,14 +347,17 @@ namespace RPGMonoGame
                                         if (int.Parse(strArr[i]) == GlobalValues.storyState)
                                             break;
                                         else if (i == strArr.Length - 1)
+                                        {
+                                            Debug.WriteLine(GlobalValues.storyState);
+                                            Debug.WriteLine((string)enemy["Id"]);
                                             enemies.Remove(enemy);
+                                        }
                                     }
                                 }
                             }
                             foreach (JObject enemy in enemies.ToArray())
                                 chanceTotal += (int)enemy["EnRate"];
                             num = HelperClasses.RandomNumber(0, chanceTotal);
-                            minMax = new List<int>();
                             minMax.Add(0);
                             for (int i = 1, j = 0; j < enemies.Count; i++)
                             {
@@ -366,20 +369,34 @@ namespace RPGMonoGame
                                 else
                                     minMax.Add(minMax[i - 1] + 1);
                             }
+                            Debug.WriteLine(enemies.Count);
                             for (int i = 0; i < minMax.Count - 1; i++)
                             {
+                                Debug.WriteLine(num);
+                                Debug.WriteLine(minMax[i]);
+                                Debug.WriteLine(minMax[i + 1]);
                                 if (num >= minMax[i] && num <= minMax[i + 1])
                                 {
-                                    Battle.enemy = new Enemy(i / 2);
+                                    int index = 0;
+                                    JArray tempEnemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
+                                    for (int j = 0; j < tempEnemies.Count; j++)
+                                    {
+
+                                        if (tempEnemies[j] == enemies[i / 2])
+                                            index = j;
+                                    }
+                                    Battle.enemy = new Enemy(index);
+                                    Debug.WriteLine(Battle.enemy.Name);
                                 }
                             }
                             Battle.player = GamePlay.player;
                             Battle.playerHP = GamePlay.player.Health;
                             Battle.enemyHP = Battle.enemy.Health;
+                            Debug.WriteLine(Battle.enemyHP);
                             State = GameState.BattlePage;
                             break;
                         }
-                        if(shopButton.Contains(mousePoint))
+                        if (shopButton.Contains(mousePoint))
                         {
                             GlobalValues.inFactionState = "shop";
                         }
@@ -428,7 +445,7 @@ namespace RPGMonoGame
                     GamePlay.player = new Player(1, 1);
                     State = GameState.StoryText;
                     GlobalValues.locationFaction = Story.enemyFaction;
-                    saveEnabled = true;
+                    GlobalValues.saveEnabled = true;
                 }
 
                 if (classSelectWarrior.Contains(mousePoint))
@@ -436,7 +453,7 @@ namespace RPGMonoGame
                     GamePlay.player = new Player(1, 2);
                     State = GameState.StoryText;
                     GlobalValues.locationFaction = Story.enemyFaction;
-                    saveEnabled = true;
+                    GlobalValues.saveEnabled = true;
                 }
 
                 if (classSelectRogue.Contains(mousePoint))
@@ -444,7 +461,7 @@ namespace RPGMonoGame
                     GamePlay.player = new Player(1, 3);
                     State = GameState.StoryText;
                     GlobalValues.locationFaction = Story.enemyFaction;
-                    saveEnabled = true;
+                    GlobalValues.saveEnabled = true;
                 }
 
             }
@@ -693,7 +710,7 @@ namespace RPGMonoGame
                                         if (str == @"Night's Bane")
                                             if (GamePlay.player.Health > Battle.playerHP)
                                                 Battle.playerHP = 0;
-                                        if(str == "Bloodthirsty")
+                                        if (str == "Bloodthirsty")
                                         {
                                             Battle.player.Defense -= 1;
                                             Battle.enemy.Defense -= 5;
@@ -702,7 +719,7 @@ namespace RPGMonoGame
                                             if (Battle.enemy.Defense <= 0)
                                                 Battle.enemy.Defense = 1;
                                         }
-                                        if(str == "Frozen")
+                                        if (str == "Frozen")
                                         {
                                             if (Battle.round <= 3)
                                                 Battle.player.Health += damageEnemy;
@@ -778,11 +795,16 @@ namespace RPGMonoGame
                             {
                                 GlobalValues.battleState = "levelup";
                             }
-                            else
+                            else if (!GlobalValues.free)
                             {
                                 Battle.ResetVals();
                                 Story.Progress();
                                 State = GameState.StoryText;
+                            }
+                            else if (GlobalValues.free)
+                            {
+                                Battle.ResetVals();
+                                State = GameState.InFaction;
                             }
 
                         }
@@ -845,7 +867,7 @@ namespace RPGMonoGame
                     if (Battle.round == -1)
                     {
                         Battle.fightText = "You dare fight me fool?!";
-                        Battle.enemy = new Enemy("Unknown StartGame");
+                        Battle.enemy = new Enemy("Unknown StartGame", "?");
                         Battle.player = new Player(GamePlay.player);
                         Battle.enemyHP = Battle.enemy.Health;
                         Battle.playerHP = Battle.player.Health;
