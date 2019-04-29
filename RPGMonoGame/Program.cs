@@ -14,7 +14,7 @@ namespace RPGMonoGame
         [STAThread]
         static void Main()
         {
-            using (var game = new MyGame())
+            using (var game = new MainGame())
                 game.Run();
         }
     }
