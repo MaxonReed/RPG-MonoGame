@@ -356,7 +356,7 @@ namespace RPGv2
             round = -1;
             outcome = -1;
             fightText = "";
-            RPGMonoGame.MyGame.calledBattleFinish = false;
+            RPGMonoGame.MainGame.calledBattleFinish = false;
             GlobalValues.battleState = "prologue";
         }//end ResetVals
     }

@@ -18,7 +18,7 @@ namespace RPGMonoGame
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class MyGame : Game
+    public class MainGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -124,7 +124,7 @@ namespace RPGMonoGame
             set => _state = value;
         }
 
-        public MyGame()
+        public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
