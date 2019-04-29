@@ -370,29 +370,23 @@ namespace RPGMonoGame
                                     minMax.Add(minMax[i - 1] + 1);
                             }
                             Debug.WriteLine(enemies.Count);
+                            foreach (JObject jObj in enemies.ToArray())
+                                Debug.WriteLine(jObj["Name"]);
                             for (int i = 0; i < minMax.Count - 1; i++)
                             {
-                                Debug.WriteLine(num);
-                                Debug.WriteLine(minMax[i]);
-                                Debug.WriteLine(minMax[i + 1]);
                                 if (num >= minMax[i] && num <= minMax[i + 1])
                                 {
                                     int index = 0;
                                     JArray tempEnemies = JArray.Parse(File.ReadAllText("Dependencies\\enemy.json"));
                                     for (int j = 0; j < tempEnemies.Count; j++)
                                     {
-
-                                        if (tempEnemies[j] == enemies[i / 2])
+                                        if ((string)tempEnemies[j]["Name"] == (string)enemies[i / 2]["Name"])
                                             index = j;
                                     }
-                                    Battle.enemy = new Enemy(index);
-                                    Debug.WriteLine(Battle.enemy.Name);
+                                    Battle.SetCharacters(GamePlay.player, new Enemy(index));
+                                    break;
                                 }
                             }
-                            Battle.player = GamePlay.player;
-                            Battle.playerHP = GamePlay.player.Health;
-                            Battle.enemyHP = Battle.enemy.Health;
-                            Debug.WriteLine(Battle.enemyHP);
                             State = GameState.BattlePage;
                             break;
                         }
@@ -919,8 +913,6 @@ namespace RPGMonoGame
                 default:
                     if (Battle.round == -1)
                     {
-                        Battle.enemyHP = Battle.enemy.Health;
-                        Battle.playerHP = Battle.player.Health;
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         switch (Battle.player.Class)
                         {

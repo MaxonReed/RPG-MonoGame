@@ -254,7 +254,10 @@ namespace RPGv2
         {
             strArr = Story.GetScene(GlobalValues.storyState);
             foreach (string str in strArr.ToArray())
+            {
+                Debug.WriteLine(str + ": " + str.Length);
                 wrapText.Add(str.Length >= 50);
+            }
         }
     }
 
@@ -276,70 +279,24 @@ namespace RPGv2
             }
             foreach (string str in strArr.ToArray())
             {
-                if (str.StartsWith(string.Format("[{0}", index)))
+                if (str.StartsWith($"[{index}"))
                 {
                     if (!found)
                         found = true;
-                    else
-                        break;
+                } else if (str.StartsWith("[") && found)
+                {
+                    found = false;
+                    break;
                 }
                 if (found && str[0] != '[')
                     temp.Add(str);
             }
-            if (strArr.Count - 1 == GlobalValues.storyIndex)
+            foreach(string str in temp.ToArray())
             {
-                GlobalValues.storyIndex = 0;
-                GlobalValues.storyState++;
-                foreach (string str in strArr.ToArray())
-                {
-                    if (str.StartsWith(string.Format("[{0}", index)))
-                    {
-                        if (!found)
-                            found = true;
-                        else
-                            break;
-                    }
-                    if (found && str[0] != '[')
-                        temp.Add(str);
-                }
+                if(str.Contains("{WarFactionName}"))
+                    str.Replace("{WarFactionName}", $"{enemyFaction}");
             }
             strArr = temp;
-            string obj = "";
-            bool done = false;
-            string tempStr = "";
-            string replacement;
-            foreach (string str in strArr.ToArray())
-            {
-                while (!done)
-                {
-                    if (str.Contains("{"))
-                    {
-                        tempStr = str.Substring(str.IndexOf("{") + 1);
-                        foreach (char c in tempStr)
-                        {
-                            if (c != '}')
-                                obj += c;
-                            else
-                                break;
-                        }
-                        switch (obj)
-                        {
-                            case "WarFactionName":
-                                replacement = enemyFaction.Name;
-                                strArr[strArr.IndexOf(str)] = str.Replace("{WarFactionName}", replacement);
-                                done = true;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        done = true;
-                    }
-                }
-                done = false;
-            }
             return strArr;
         }
 
@@ -348,10 +305,9 @@ namespace RPGv2
             int length = 0;
             List<string> strArray = GetScene(GlobalValues.storyState);
             length = strArray.Count - 1;
-            foreach (string str in strArray)
-                Debug.WriteLine(str);
             if (GlobalValues.storyIndex == length)
             {
+                SceneText.wrapText = new List<bool>();
                 GlobalValues.storyIndex = 0;
                 GlobalValues.storyState++;
             }
@@ -530,6 +486,15 @@ namespace RPGv2
             GlobalValues.battleState = "winner";
             //SetVals(GlobalValues.battleJson);
         }
+
+        public static void SetCharacters(Player p, Enemy e)
+        {
+            enemy = e;
+            player = p;
+            playerHP = p.Health;
+            enemyHP = e.Health;
+        }
+
         public static void ResetVals()
         {
             enemy = new Enemy();
@@ -540,6 +505,8 @@ namespace RPGv2
             round = -1;
             outcome = -1;
             fightText = "";
+            RPGMonoGame.MyGame.calledBattleFinish = false;
+            GlobalValues.battleState = "prologue";
         }
     }
 
