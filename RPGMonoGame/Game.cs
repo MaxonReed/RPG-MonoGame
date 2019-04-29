@@ -12,6 +12,7 @@ namespace RPGv2
         internal HelperClasses HC { get => HC; set => HC = value; }
         public static Player player = new Player();
 
+        //chris
         public static void StartGame()
         {
             int years = int.Parse(GlobalValues.inpText);
@@ -33,6 +34,7 @@ namespace RPGv2
             GlobalValues.save.SaveGame();
         }
 
+        //chris and some jaxon
         public static History StartHistory(int years)
         {
             EventList el = new EventList();
@@ -130,6 +132,7 @@ namespace RPGv2
                     averagePopSeverity += f.PopSeverity;
                 }
                 averagePopSeverity /= factions.Count;
+
                 #region events
                 int chainAmount = 0;
                 for (int j = 0; j < factions.Count; j++)
@@ -141,6 +144,7 @@ namespace RPGv2
                         EventVar e = newEvent.Chosen;
                         GlobalValues.eventName = e.Name;
 
+                        //max jaxon
                         switch (e.Name)
                         {
                             #region none
@@ -259,6 +263,7 @@ namespace RPGv2
                 }
                 #endregion
                 #region warhandling
+                //max jaxon
                 for (int j = 0; j < factions.Count; j++)
                 {
                     Faction f = factions[j];

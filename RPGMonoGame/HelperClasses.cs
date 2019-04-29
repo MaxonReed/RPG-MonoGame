@@ -10,6 +10,7 @@ using System.Linq;
 using Newtonsoft.Json;
 namespace RPGv2
 {
+
     internal class HelperClasses
     {
         public static GlobalValues gv = new GlobalValues();
@@ -26,8 +27,8 @@ namespace RPGv2
                     Console.Clear();
                     Console.WriteLine("A state error has occured. State: {0}", sm.GetState());
                     break;
-            }
-        }
+            }//end switch State
+        }//end Main Prog
 
         private static readonly Random random = new Random();
         private static readonly object syncLock = new object();
@@ -40,167 +41,16 @@ namespace RPGv2
             lock (syncLock)
             { // synchronize
                 return random.Next(min, max);
-            }
-        }
+            }// lock
+        }//end RNG
 
         public static bool Start()
         {
-            //switch (GlobalValues.Inp)
-            //{
-            //    case 0:
-            //        Game.StartGame();
-            //        GlobalValues.Inp = -1;
-            //        return false;
-            //    case 1:
-            //        /*
-            //        string[] jsonFiles = Directory.GetFiles("Dependencies");
-            //        for (int i = 0; i < jsonFiles.Length; i++)
-            //            jsonFiles[i] = jsonFiles[i].Remove(0, 13);
-            //        inp = MultipleChoice(false, jsonFiles);
-            //        JArray arr = JArray.Parse(File.ReadAllText(string.Format(@"Dependencies\{0}", jsonFiles[inp])));
-            //        int inpIndex = inp;
-            //        string path = string.Format(@"Dependencies\{0}", jsonFiles[inp]);
-            //        inp = MultipleChoice(false, "Add", "Modify");
-            //        List<string> options = new List<string>();
-            //        JObject o;
-            //        string newVal;
-            //        switch (inp)
-            //        {
-            //            case 0:
-            //                options.Clear();
-            //                o = JObject.Parse(arr[0].ToString());
-            //                foreach (JProperty jp in o.Properties())
-            //                    options.Add(jp.Name);
-            //                for (int i = 0; i < options.Count; i++)
-            //                {
-            //                    Console.Write("Value of {0}: ", options[i]);
-            //                    newVal = Console.ReadLine();
-            //                    if (o[options[i]].Type == JTokenType.String)
-            //                        o[options[i]] = newVal;
-            //                    if (o[options[i]].Type == JTokenType.Integer)
-            //                        o[options[i]] = int.Parse(newVal);
-            //                    if (o[options[i]].Type == JTokenType.Float)
-            //                        o[options[i]] = float.Parse(newVal);
-            //                    if (o[options[i]].Type == JTokenType.Boolean)
-            //                        o[options[i]] = bool.Parse(newVal);
-            //                }
-            //                arr.Add(o);
-            //                File.WriteAllText(path, arr.ToString());
-            //                break;
-            //            case 1:
-            //                foreach (JObject obj in arr)
-            //                    options.Add((string)obj["Name"]);
-            //                inp = MultipleChoice(false, options.ToArray());
-            //                options.Clear();
-            //                o = JObject.Parse(arr[inp].ToString());
-            //                foreach (JProperty jp in o.Properties())
-            //                    options.Add(jp.Name);
-            //                List<string> optionsTemp = new List<string>(options);
-            //                for (int i = 0; i < optionsTemp.Count; i++)
-            //                    optionsTemp[i] = string.Format("{0} ({1})", optionsTemp[i], o[optionsTemp[i]]);
-            //                inp = MultipleChoice(false, optionsTemp.ToArray());
-            //                Console.Write("Enter new value: ");
-            //                newVal = Console.ReadLine();
-            //                if (o[options[inp]].Type == JTokenType.String)
-            //                    o[options[inp]] = newVal;
-            //                if (o[options[inp]].Type == JTokenType.Integer)
-            //                    o[options[inp]] = int.Parse(newVal);
-            //                if (o[options[inp]].Type == JTokenType.Float)
-            //                    o[options[inp]] = float.Parse(newVal);
-            //                arr[inpIndex] = o;
-            //                File.WriteAllText(path, arr.ToString());
-            //                break;
-            //            default:
-            //                break;
-            //        }
-            //        return false;
-            //        */
-            //        GlobalValues.Inp = -1;
-            //        break;
-            //    case 2:
-            //        GlobalValues.Inp = -1;
-            //        return true;
-            //    default:
-            //        break;
-            //}
-            //GlobalValues.Inp = -1;
             return false;
-        }
-
-        public static int MultipleChoice(bool canCancel, params string[] options)
-        {
-            const int startX = 0;
-            const int startY = 0;
-            const int optionsPerLine = 1;
-            const int spacingPerLine = 14;
-
-            int currentSelection = 0;
-
-            ConsoleKey key;
-
-            Console.CursorVisible = false;
-            do
-            {
-                Console.Clear();
-
-                for (int i = 0; i < options.Length; i++)
-                {
-                    Console.SetCursorPosition(startX + (i % optionsPerLine) * spacingPerLine, startY + i / optionsPerLine);
-
-                    if (i == currentSelection)
-                        Console.ForegroundColor = ConsoleColor.Red;
-
-                    Console.Write(options[i]);
-
-                    Console.ResetColor();
-                }
-
-                key = Console.ReadKey(true).Key;
-
-                switch (key)
-                {
-                    case ConsoleKey.LeftArrow:
-                        {
-                            if (currentSelection % optionsPerLine > 0)
-                                currentSelection--;
-                            break;
-                        }
-                    case ConsoleKey.RightArrow:
-                        {
-                            if (currentSelection % optionsPerLine < optionsPerLine - 1)
-                                currentSelection++;
-                            break;
-                        }
-                    case ConsoleKey.UpArrow:
-                        {
-                            if (currentSelection >= optionsPerLine)
-                                currentSelection -= optionsPerLine;
-                            break;
-                        }
-                    case ConsoleKey.DownArrow:
-                        {
-                            if (currentSelection + optionsPerLine < options.Length)
-                                currentSelection += optionsPerLine;
-                            break;
-                        }
-                    case ConsoleKey.Escape:
-                        {
-                            if (canCancel)
-                                return -1;
-                            break;
-                        }
-                }
-            } while (key != ConsoleKey.Enter);
-
-            Console.CursorVisible = true;
-
-            Console.Clear();
-            return currentSelection;
-        }
-    }
-
-
-
+        }//end start??????
+    }//end Helper class
+    
+    //chris
     public class Save
     {
         public History hist = new History();
@@ -209,7 +59,7 @@ namespace RPGv2
         public Save()
         {
 
-        }
+        }//end save
 
         public void SaveGame()
         {
@@ -223,9 +73,9 @@ namespace RPGv2
                 {
                     string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
                     sw.Write(json);
-                }
-            }
-        }
+                }// Json Writer
+            }//end StreamWriter
+        }//end SaveGame
 
         public void LoadGame()
         {
@@ -242,9 +92,10 @@ namespace RPGv2
             GlobalValues.SetVals(GlobalValues.jsonVals);
             Battle.GetVals(GlobalValues.battleJson);
             GlobalValues.battleState = "battle";
-        }
-    }
+        }//end LoadGame
+    }//end Save
 
+    //jaxon
     public class SceneText
     {
         public static List<bool> wrapText = new List<bool>();
@@ -254,13 +105,11 @@ namespace RPGv2
         {
             strArr = Story.GetScene(GlobalValues.storyState);
             foreach (string str in strArr.ToArray())
-            {
-                Debug.WriteLine(str + ": " + str.Length);
                 wrapText.Add(str.Length >= 50);
-            }
         }
     }
 
+    //chris
     public class Story
     {
         public static int MaxIndex { get; set; }
@@ -276,7 +125,7 @@ namespace RPGv2
             {
                 if (str.StartsWith("\"") || string.IsNullOrEmpty(str) || string.IsNullOrWhiteSpace(str))
                     strArr.Remove(str);
-            }
+            }//end Foreach
             foreach (string str in strArr.ToArray())
             {
                 if (str.StartsWith($"[{index}"))
@@ -287,7 +136,7 @@ namespace RPGv2
                 {
                     found = false;
                     break;
-                }
+                }//end else
                 if (found && str[0] != '[')
                     temp.Add(str);
             }
@@ -295,10 +144,10 @@ namespace RPGv2
             {
                 if(str.Contains("{WarFactionName}"))
                     str.Replace("{WarFactionName}", $"{enemyFaction}");
-            }
+            }//end foreach temp
             strArr = temp;
             return strArr;
-        }
+        }//end scene
 
         public static void Progress()
         {
@@ -310,14 +159,15 @@ namespace RPGv2
                 SceneText.wrapText = new List<bool>();
                 GlobalValues.storyIndex = 0;
                 GlobalValues.storyState++;
-            }
+            }//end if globalVal
             else
             {
                 GlobalValues.storyIndex++;
-            }
-        }
-    }
+            }//end else
+        }//end Progress
+    }//end story
 
+    //max
     public class BattleJson
     {
         public Enemy enemy = new Enemy();
@@ -332,7 +182,7 @@ namespace RPGv2
         public BattleJson()
         {
 
-        }
+        }//end battle default
 
         [JsonConstructor]
         public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText)
@@ -345,10 +195,11 @@ namespace RPGv2
             round = jRound;
             outcome = jOutcome;
             fightText = jFightText;
-        }
+        }//end Battle constructor
 
-    }
+    }//end Battle
 
+    //chris
     public class Battle
     {
         public static Enemy enemy = new Enemy();
@@ -388,7 +239,7 @@ namespace RPGv2
             round = battleJson.round;
             outcome = battleJson.outcome;
             fightText = battleJson.fightText;
-        }
+        }//end GetVals
 
         public static void SetVals(BattleJson battleJson)
         {
@@ -400,12 +251,12 @@ namespace RPGv2
             battleJson.round = round;
             battleJson.outcome = outcome;
             battleJson.fightText = fightText;
-        }
+        }//end SetVals
 
         public static void HandleAttr()
         {
 
-        }
+        }//end handleAttr Default
 
         public static int HandleSpecial(int sp)
         {
@@ -438,12 +289,12 @@ namespace RPGv2
                     break;
                 default:
                     break;
-            }
+            }//end Switch Sp
             
             SetVals(GlobalValues.battleJson);
             turn = false;
             return damage;
-        }
+        }//end Handle Special
 
         public static int RegularAttack()
         {
@@ -454,7 +305,7 @@ namespace RPGv2
                 if (damage <= 0)
                     damage = 1;
                 enemyHP -= damage;
-            }
+            }//end DMG turn
             else
             {
                 damage = Convert.ToInt32(HelperClasses.RandomNumber(1, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
@@ -463,11 +314,11 @@ namespace RPGv2
                 if (DodgeChance(player.Evasion, enemy.Speed) > (HelperClasses.RandomNumber(0, 100) / 100.0))
                     damage = 0;
                 playerHP -= damage;
-            }
+            }//end Dmg/Dodge
             turn = !turn;
             SetVals(GlobalValues.battleJson);
             return damage;
-        }
+        }//end RegAttk
 
         public static double DodgeChance(double defenderEvasion, double attackerSpeed)
         {
@@ -475,7 +326,7 @@ namespace RPGv2
             double a = 10.0 / Math.Sqrt(111111.0);
             double b = 111071.0 / 40000.0;
             return a * Math.Sqrt(x + b);
-        }
+        }//end DodgeChance
 
         public static void BattleFinish(bool winner)
         {
@@ -485,7 +336,7 @@ namespace RPGv2
                 outcome = 0;
             GlobalValues.battleState = "winner";
             //SetVals(GlobalValues.battleJson);
-        }
+        }//end BattleFinish
 
         public static void SetCharacters(Player p, Enemy e)
         {
@@ -493,7 +344,7 @@ namespace RPGv2
             player = p;
             playerHP = p.Health;
             enemyHP = e.Health;
-        }
+        }//end SetCharacters
 
         public static void ResetVals()
         {
@@ -507,9 +358,10 @@ namespace RPGv2
             fightText = "";
             RPGMonoGame.MyGame.calledBattleFinish = false;
             GlobalValues.battleState = "prologue";
-        }
+        }//end ResetVals
     }
 
+    //chris
     public class Enemy
     {
         public int Health { get; set; }
@@ -524,7 +376,7 @@ namespace RPGv2
         public Enemy()
         {
 
-        }
+        }//end 
 
         public Enemy(int index)
         {
@@ -558,7 +410,7 @@ namespace RPGv2
         }
     }
 
-
+    //max
     public class JsonValues
     {
         public int inp = -1;
@@ -608,7 +460,7 @@ namespace RPGv2
         }
     }
 
-
+    //chris jaxon max
     public class GlobalValues
     {
         public static int inp = -1;
@@ -689,6 +541,7 @@ namespace RPGv2
 
     }
 
+    //chris(obsolete)
     public class Map
     {
         Image img;
@@ -786,6 +639,7 @@ namespace RPGv2
         }
     }
 
+    //chris(obsolete)
     public class Tile
     {
         int x;
@@ -815,7 +669,8 @@ namespace RPGv2
         public string Type { get => type; set => type = value; }
         public Faction Occ { get => occ; set => occ = value; }
     }
-
+   
+    //chris(obsolete)
     internal class StateManager
     {
         private string state = "start";
@@ -830,7 +685,7 @@ namespace RPGv2
 
         public void SetState(string s) { state = s; }
     }
-
+    //max and jaxon
     public class Race
     {
         string name;
@@ -875,7 +730,8 @@ namespace RPGv2
         public int[] GetVals() => new int[] { intelligence, baseAtt, baseDef, pop };
         public static int RacesAmount() => JArray.Parse(File.ReadAllText(@"Dependencies\race.json")).Count;
     }
-
+    
+    //chris
     class War
     {
         private int length = 0;
@@ -902,6 +758,7 @@ namespace RPGv2
         internal Faction Side2 { get => side2; set => side2 = value; }
     }
 
+    //chris
     class EventVar
     {
         string name;
@@ -932,6 +789,7 @@ namespace RPGv2
         public int DefChance { get => defChance; set => defChance = value; }
     }
 
+    //chris
     class EventList
     {
         List<EventVar> events = new List<EventVar>();
@@ -960,7 +818,7 @@ namespace RPGv2
 
         }
     }
-
+    //chris
     class Event
     {
         EventVar chosen;
@@ -996,12 +854,12 @@ namespace RPGv2
 
         internal EventVar Chosen { get => chosen; set => chosen = value; }
     }
-
+    //max
     public interface Item
     {
 
     }
-
+    //jaxon
     class WarEvent
     {
         string name;
@@ -1044,6 +902,7 @@ namespace RPGv2
         public string Name { get => name; set => name = value; }
         public string Desc { get => desc; set => desc = value; }
     }
+    //chris
     class HistoricalEvent
     {
         string nameEvent;
@@ -1063,6 +922,7 @@ namespace RPGv2
         public string Name { get => nameEvent; set => nameEvent = value; }
         public int Year { get => yearEvent; set => yearEvent = value; }
     }
+    //chris(obsolete)
     class PointClass
     {
         int x;
@@ -1082,8 +942,7 @@ namespace RPGv2
         public string Type { get => type; set => type = value; }
     }
 
-
-
+    //chris
     public class Faction
     {
         string name;
@@ -1143,7 +1002,8 @@ namespace RPGv2
             return String.Format("Name: {0}\nRace: {1}\nPop: {2}\nSeverity: {3}", name, race.Name, pop, popSeverity);
         }
     }
-
+    
+    //chris
     public class History
     {
         List<Race> races = new List<Race>();
@@ -1155,6 +1015,7 @@ namespace RPGv2
         internal Map Map { get => map; set => map = value; }
     }
 
+    //max
     public class Player
     {
         int exp = 0;
@@ -1234,6 +1095,7 @@ namespace RPGv2
             }
         }
 
+        //chris
         public void InitEquip()
         {
             string[] split;
@@ -1257,8 +1119,10 @@ namespace RPGv2
             }
         }
 
+        //chris
         public int NextLevel() => Convert.ToInt32((4 * (Level * Level * Level)) / 5.0);
 
+        //chris
         public void InitInv()
         {
             string[] split;
@@ -1282,6 +1146,7 @@ namespace RPGv2
             }
         }
 
+        //chris max
         public void CreateCharacter(int slot, JArray arr, int inp)
         {
             JObject save = JObject.Parse(arr[slot - 1].ToString());
@@ -1359,6 +1224,7 @@ namespace RPGv2
             File.WriteAllText(@"Dependencies\player.json", arr.ToString());
         }
 
+        //chris max
         public string ItemDrop()
         {
             int chanceTotal = 0;
@@ -1458,6 +1324,7 @@ namespace RPGv2
         }
     }
 
+    //chris(obsolete)
     class DefaultRestore
     {
         private static string eventJson;
@@ -1474,6 +1341,7 @@ namespace RPGv2
         }
     }
 
+    //max jaxon
     public class Staff : Item
     {
         public string name;
@@ -1536,6 +1404,7 @@ namespace RPGv2
         }
     }
 
+    //max jaxon
     public class Knife : Item
     {
         public string name;
@@ -1598,6 +1467,7 @@ namespace RPGv2
         }
     }
 
+    //max jaxon
     public class Sword : Item
     {
         public string name;
