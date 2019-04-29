@@ -102,6 +102,9 @@ namespace RPGMonoGame
         int GainedEvasion = 0;
         int GainedSpeed = 0;
         #endregion
+        #region playerInvAssets
+
+        #endregion
         public enum GameState
         {
             MainMenu,
@@ -1321,6 +1324,8 @@ namespace RPGMonoGame
         public Sprite HoverImg { get => hoverImg; set => hoverImg = value; }
         public string Text { get; set; }
         public SpriteFont Font { get; set; }
+        public int TextX { get; set; }
+        public int TextY { get; set; }
 
         public Button(Sprite image, Sprite hoverImage, string text, SpriteFont spriteFont)
         {
@@ -1328,6 +1333,18 @@ namespace RPGMonoGame
             HoverImg = hoverImage;
             Text = text;
             Font = spriteFont;
+            TextX = 7;
+            TextY = 7;
+        }
+
+        public Button(Sprite image, Sprite hoverImage, string text, SpriteFont spriteFont, int textX, int textY)
+        {
+            Img = image;
+            HoverImg = hoverImage;
+            Text = text;
+            Font = spriteFont;
+            TextX = textX;
+            TextY = textY;
         }
 
         public Button(Texture2D image, Texture2D hoverImage, string text, SpriteFont spriteFont, Vector2 position)
@@ -1338,6 +1355,20 @@ namespace RPGMonoGame
             HoverImg.Position = position;
             Text = text;
             Font = spriteFont;
+            TextX = 7;
+            TextY = 7;
+        }
+
+        public Button(Texture2D image, Texture2D hoverImage, string text, SpriteFont spriteFont, Vector2 position, int textX, int textY)
+        {
+            Img.Texture = image;
+            HoverImg.Texture = hoverImage;
+            Img.Position = position;
+            HoverImg.Position = position;
+            Text = text;
+            Font = spriteFont;
+            TextX = textX;
+            TextY = textY;
         }
 
         public bool Contains(Point pos)
