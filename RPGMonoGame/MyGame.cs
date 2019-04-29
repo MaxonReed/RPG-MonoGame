@@ -147,6 +147,8 @@ namespace RPGMonoGame
             timer.Start();
             base.Initialize();
         }
+
+        //chris
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -215,6 +217,7 @@ namespace RPGMonoGame
             Content.Unload();
         }
 
+        //chris
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -241,28 +244,28 @@ namespace RPGMonoGame
             switch (State)
             {
                 case GameState.MainMenu:
-                    UpdateMainMenu(gameTime);
+                    UpdateMainMenu(gameTime); //chris
                     break;
                 case GameState.StartPage:
-                    UpdateStartPage(gameTime);
+                    UpdateStartPage(gameTime); //chris
                     break;
                 case GameState.InitWorldPage:
-                    UpdateInitWorldPage(gameTime);
+                    UpdateInitWorldPage(gameTime); //chris jaxon max
                     break;
                 case GameState.BattlePage:
-                    UpdateBattlePage(gameTime);
+                    UpdateBattlePage(gameTime); //chris jaxon max
                     break;
                 case GameState.StoryText:
-                    UpdateStoryText(gameTime);
+                    UpdateStoryText(gameTime); //Chris max
                     break;
                 case GameState.CharacterCreate:
-                    UpdateCharacterCreate(gameTime);
+                    UpdateCharacterCreate(gameTime); //jaxon max
                     break;
                 case GameState.InFaction:
-                    UpdateInFaction(gameTime);
+                    UpdateInFaction(gameTime); //max chris
                     break;
                 case GameState.PlayerMenu:
-                    UpdatePlayerMenu(gameTime);
+                    UpdatePlayerMenu(gameTime); //TBD
                     break;
                 default:
                     break;
@@ -276,28 +279,28 @@ namespace RPGMonoGame
             switch (State)
             {
                 case GameState.MainMenu:
-                    DrawMainMenu(gameTime);
+                    DrawMainMenu(gameTime); //chris max 
                     break;
                 case GameState.StartPage:
-                    DrawStartPage(gameTime);
+                    DrawStartPage(gameTime); //chris max
                     break;
                 case GameState.InitWorldPage:
-                    DrawInitWorldPage(gameTime);
+                    DrawInitWorldPage(gameTime); //chris max
                     break;
                 case GameState.BattlePage:
-                    DrawBattlePage(gameTime);
+                    DrawBattlePage(gameTime); //chris max
                     break;
                 case GameState.StoryText:
-                    DrawStoryText(gameTime);
+                    DrawStoryText(gameTime); //chris max
                     break;
                 case GameState.CharacterCreate:
-                    DrawCharacterCreate(gameTime);
+                    DrawCharacterCreate(gameTime); //chris max
                     break;
                 case GameState.InFaction:
-                    DrawInFaction(gameTime);
+                    DrawInFaction(gameTime); //chris max
                     break;
                 case GameState.PlayerMenu:
-                    DrawPlayerMenu(gameTime);
+                    DrawPlayerMenu(gameTime); //chris max
                     break;
                 default:
                     break;
