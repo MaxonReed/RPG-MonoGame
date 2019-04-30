@@ -483,6 +483,8 @@ namespace RPGv2
         public static BattleJson battleJson = new BattleJson();
         public static Faction locationFaction = Story.enemyFaction;
         public static string inFactionState = "start";
+        public static string playerMenuSelected = "none";
+        public static int playerMenuPage = 1;
 
         public static void SetVals(JsonValues jVals)
         {

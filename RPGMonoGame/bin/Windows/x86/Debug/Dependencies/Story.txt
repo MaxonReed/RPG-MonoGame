@@ -5,7 +5,6 @@
 *Am I dying?
 *I-Its cold...
 *I am... toto, I have been Toto
-"|if|(inWar){The War between {WarFactionName} and }|else|{}
 The War between {WarFactionName} and Affrieca has been raging on since I was born.
 I wake up on a cold floor in a foreign room
 Everyone I knew has either died or was taken prisoner, except for me.
@@ -52,14 +51,14 @@ Toto: "Big boy down"
 *But he will seem easy compared to what is ahead
 
 [4]
-:req big chedda| beat big chedda
+:req 1 big chedda| beat big chedda
 A paper flies by...
 *A newspaper?
 Toto: "Midnight Murderer...?"
 The paper reads...
 *MIDNIGHT MURDERER: After crime boss big chedda's suprising death we have seen countless new death's all happenening around midnight...
 Toto: "That's probably not good..."
-:free = true
+:free=true
 
 [5]
 :req 15 Dhark Minion|You need to defeat 15 Dhark minions to continue
@@ -79,7 +78,7 @@ Dharkson: "You will die for what You've done"
 Toto: "A Terrific Victory"
 
 [6]
-:req Dharkson Groth|You need to defeat Dharson groth
+:req 1 Dharkson Groth|You need to defeat Dharson groth
 *You see someone who looks like a kid with a keyboard running around
 Toto: "Hey kid are you lost
 KEY: "No, And I will SMITE you!"
@@ -91,7 +90,7 @@ Henchkey: "Ok boss"
 :free=true
 
 [7]
-:req HenchKey|You need to defeat the henchman
+:req 1 HenchKey|You need to defeat the henchman
 :free=false
 *That idiot is still just waving that keyboard around after I interrogated his Henchman
 Toto: "Hey Blockhead!"
@@ -106,4 +105,33 @@ Toto: "I'm*"
 *He bleeds uncontrolably
 *Then he dies
 Toto: "Nice try kid..."
+*A terrific Victory
+
+[8]
+:req 1 Key|You need to defeat key
+:req 10 Zombie|You need to defeat 10 Zombies
+Zombie: "GAHHAH BLEH BLERG BRIAN"
+Toto: "You meant brains? right?"
+Zombie: "Brian"
+Toto: "..."
+Zombie: "Mast... er... Briiiiiian..."
+*Master brian?
+Toto: "I should report this"
+:free=true
+
+[9]
+:req 15 Alpha Zombie|You need to defeat 15 Alpha Zombies
+:free=false
+??: "You must be the one killing my creations"
+*He must mean those zombies...
+*This must be brian
+Toto: "Yeah, They have been trying to kill me"
+Brian: "I'll kill you here for commiting such an act of murder"
+*He seems like he is ready to fight
+*I can't back down
+|Battle:id=brianbattle
+*I kick him down
+Brian: "What are You...!"
+*At that moment one of his own zombies drag him off as I hear the sound of his agony
+Toto: "He didn't train his pets properly..."
 *A terrific Victory

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/SkillsButton.png</SourceFile>
-  <SourceTime>2019-04-14T12:10:40.5823152-05:00</SourceTime>
-  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/SkillsButton.xnb</DestFile>
-  <DestTime>2019-04-14T16:16:11.463665-05:00</DestTime>
+  <SourceFile>C:/Users/reedchr001/Downloads/RPG-MonoGame-master/RPGMonoGame/Content/SkillsButton.png</SourceFile>
+  <SourceTime>2019-04-29T20:07:10-05:00</SourceTime>
+  <DestFile>C:/Users/reedchr001/Downloads/RPG-MonoGame-master/RPGMonoGame/Content/bin/Windows/Content/SkillsButton.xnb</DestFile>
+  <DestTime>2019-04-30T10:07:09.2486105-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
+  <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T10:35:54-06:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

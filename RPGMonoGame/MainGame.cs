@@ -134,6 +134,8 @@ namespace RPGMonoGame
         Button equip8;
         Button equip9;
         Button equip10;
+        Button leftArrow;
+        Button rightArrow;
         Sprite playerFigure;
         #endregion
         public enum GameState
@@ -250,6 +252,8 @@ namespace RPGMonoGame
             boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
             bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
             playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
+            leftArrow = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
+            rightArrow = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
             int inc = 45;
             int origY = 10;
             equip1 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
@@ -271,6 +275,9 @@ namespace RPGMonoGame
             equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
             origY += inc;
             equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            leftArrow = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            rightArrow = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(630, origY));
         }
 
         /// <summary>
@@ -374,7 +381,91 @@ namespace RPGMonoGame
 
         void UpdatePlayerMenu(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
 
+            if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
+            {
+                if (quitButton.Contains(mousePoint))
+                { 
+                    if(GlobalValues.free)
+                    {
+                        State = GameState.InFaction;
+                    }
+                    else
+                    {
+                        State = GameState.StoryText;
+                    }
+                }
+                
+                if (equip1.Contains(mousePoint))
+                {
+
+                }
+                if (equip2.Contains(mousePoint))
+                {
+
+                }
+                if (equip3.Contains(mousePoint))
+                {
+
+                }
+                if (equip4.Contains(mousePoint))
+                {
+
+                }
+                if (equip5.Contains(mousePoint))
+                {
+
+                }
+                if (equip6.Contains(mousePoint))
+                {
+
+                }
+                if (equip7.Contains(mousePoint))
+                {
+
+                }
+                if (equip8.Contains(mousePoint))
+                {
+
+                }
+                if (equip9.Contains(mousePoint))
+                {
+
+                }
+                if (equip10.Contains(mousePoint))
+                {
+
+                }
+                if (weapon.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "weapon";
+                }
+                if (armor.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "armor";
+                }
+                if (arms.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "arms";
+                }
+                if (gloves.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "gloves";
+                }
+                if (pants.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "pants";
+                }
+                if (boots.Contains(mousePoint))
+                {
+                    GlobalValues.playerMenuSelected = "boots";
+                }
+
+
+            }
         }
 
         void DrawPlayerMenu(GameTime gameTime)
@@ -400,6 +491,25 @@ namespace RPGMonoGame
             gloves.Draw(spriteBatch, gameTime);
             pants.Draw(spriteBatch, gameTime);
             boots.Draw(spriteBatch, gameTime);
+            switch (GlobalValues.playerMenuSelected)
+            {
+                case "weapon":
+
+                    break;
+                case "armor":
+                    break;
+                case "arms":
+                    break;
+                case "gloves":
+                    break;
+                case "pants":
+                    break;
+                case "boots":
+                    break;
+                default:
+                    break;
+            }
+
             equip1.Draw(spriteBatch, gameTime);
             equip2.Draw(spriteBatch, gameTime);
             equip3.Draw(spriteBatch, gameTime);
@@ -410,6 +520,7 @@ namespace RPGMonoGame
             equip8.Draw(spriteBatch, gameTime);
             equip9.Draw(spriteBatch, gameTime);
             equip10.Draw(spriteBatch, gameTime);
+            quitButton.Draw(spriteBatch, gameTime);
             spriteBatch.End();
         }
 
@@ -489,6 +600,10 @@ namespace RPGMonoGame
                                     break;
                                 }
                             }
+                            if (Battle.enemy.Name[0] == 'A' || Battle.enemy.Name[0] == 'E' || Battle.enemy.Name[0] == 'I' || Battle.enemy.Name[0] == 'O' || Battle.enemy.Name[0] == 'U')
+                                Battle.fightText = $"You have encountered an {Battle.enemy.Name}";
+                            else
+                                Battle.fightText = $"You have encountered a {Battle.enemy.Name}";
                             State = GameState.BattlePage;
                             break;
                         }
