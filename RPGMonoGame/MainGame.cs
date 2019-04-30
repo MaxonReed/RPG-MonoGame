@@ -275,9 +275,6 @@ namespace RPGMonoGame
             equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
             origY += inc;
             equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
-            origY += inc;
-            leftArrow = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
-            rightArrow = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(630, origY));
         }
 
         /// <summary>
@@ -491,6 +488,7 @@ namespace RPGMonoGame
             gloves.Draw(spriteBatch, gameTime);
             pants.Draw(spriteBatch, gameTime);
             boots.Draw(spriteBatch, gameTime);
+
             switch (GlobalValues.playerMenuSelected)
             {
                 case "weapon":
@@ -509,7 +507,6 @@ namespace RPGMonoGame
                 default:
                     break;
             }
-
             equip1.Draw(spriteBatch, gameTime);
             equip2.Draw(spriteBatch, gameTime);
             equip3.Draw(spriteBatch, gameTime);
@@ -1533,6 +1530,8 @@ namespace RPGMonoGame
     {
         Sprite img = new Sprite();
         Sprite hoverImg = new Sprite();
+        float scale = 1f;
+
 
         public Sprite Img { get => img; set => img = value; }
         public Sprite HoverImg { get => hoverImg; set => hoverImg = value; }
@@ -1540,6 +1539,7 @@ namespace RPGMonoGame
         public SpriteFont Font { get; set; }
         public int TextX { get; set; }
         public int TextY { get; set; }
+        public float Scale { get => scale; set => scale = value; }
 
         public Button(Sprite image, Sprite hoverImage, string text, SpriteFont spriteFont)
         {
@@ -1571,6 +1571,19 @@ namespace RPGMonoGame
             Font = spriteFont;
             TextX = 7;
             TextY = 7;
+        }
+
+        public Button(Texture2D image, Texture2D hoverImage, string text, SpriteFont spriteFont, Vector2 position, float scale)
+        {
+            Img.Texture = image;
+            HoverImg.Texture = hoverImage;
+            Img.Position = position;
+            HoverImg.Position = position;
+            Text = text;
+            Font = spriteFont;
+            TextX = 7;
+            TextY = 7;
+            Scale = scale;
         }
 
         public Button(Texture2D image, Texture2D hoverImage, string text, SpriteFont spriteFont, Vector2 position, int textX, int textY)
@@ -1605,9 +1618,9 @@ namespace RPGMonoGame
         {
             MouseState mouseState = Mouse.GetState();
             if (Img.Contains(mouseState.Position))
-                spriteBatch.Draw(HoverImg.Texture, Img.Position, Color.White);
+                spriteBatch.Draw(HoverImg.Texture, Img.Position, null, Color.White, 0, new Vector2(0,0), Scale, SpriteEffects.None, 0);
             else
-                spriteBatch.Draw(Img.Texture, Img.Position, Color.White);
+                spriteBatch.Draw(Img.Texture, Img.Position, null, Color.White, 0, new Vector2(0, 0), Scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Font, Text, new Vector2(Img.Position.X + 7, Img.Position.Y + 7), Color.Black);
         }
     }

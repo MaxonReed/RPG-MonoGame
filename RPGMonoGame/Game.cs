@@ -16,7 +16,6 @@ namespace RPGv2
         public static void StartGame()
         {
             int years = int.Parse(GlobalValues.inpText);
-            // TODO: When start button is clicked the game will start 
             GlobalValues.startGen = true;
             hist = StartHistory(years);
             Faction fac = new Faction(new Race(1, 2), " ");
