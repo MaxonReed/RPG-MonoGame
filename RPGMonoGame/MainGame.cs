@@ -103,7 +103,38 @@ namespace RPGMonoGame
         int GainedSpeed = 0;
         #endregion
         #region playerInvAssets
-
+        /*
+        equip:
+        0: weapon
+        1: armor
+        2: arms
+        3: gloves
+        4: pants
+        5: boots
+        */
+        Button weapon;
+        Button weaponContains;
+        Button armor;
+        Button armorContains;
+        Button arms;
+        Button armsContains;
+        Button gloves;
+        Button glovesContains;
+        Button pants;
+        Button pantsContains;
+        Button boots;
+        Button bootsContains;
+        Button equip1;
+        Button equip2;
+        Button equip3;
+        Button equip4;
+        Button equip5;
+        Button equip6;
+        Button equip7;
+        Button equip8;
+        Button equip9;
+        Button equip10;
+        Sprite playerFigure;
         #endregion
         public enum GameState
         {
@@ -206,6 +237,40 @@ namespace RPGMonoGame
             playerButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Player", storyFont, new Vector2(middle, 300));
             shopButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Shop", storyFont, new Vector2(middle, 375));
 
+            weapon = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(238, 308));
+            weaponContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, weapon.Img.Position);
+            armor = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(114, 195));
+            armorContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, armor.Img.Position);
+            arms = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(222, 205));
+            armsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, arms.Img.Position);
+            gloves = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(14, 305));
+            glovesContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, gloves.Img.Position);
+            pants = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(111, 334));
+            pantsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, pants.Img.Position);
+            boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
+            bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
+            playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
+            int inc = 45;
+            int origY = 10;
+            equip1 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip2 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip3 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip4 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip5 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip6 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip7 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip8 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
         }
 
         /// <summary>
@@ -237,7 +302,7 @@ namespace RPGMonoGame
                     GlobalValues.save.SaveGame();
                 }
             }
-            if (GlobalValues.free && State != GameState.BattlePage)
+            if (GlobalValues.free && State != GameState.BattlePage && State != GameState.PlayerMenu)
                 State = GameState.InFaction;
             //Debug.WriteLine(GlobalValues.storyState);
             base.Update(gameTime);
@@ -314,7 +379,38 @@ namespace RPGMonoGame
 
         void DrawPlayerMenu(GameTime gameTime)
         {
-
+            //weapon = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(199, 330));
+            //weaponContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, weapon.Img.Position);
+            //armor = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(114, 195));
+            //armorContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, armor.Img.Position);
+            //arms = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(37, 253));
+            //armsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, arms.Img.Position);
+            //gloves = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(14, 305));
+            //glovesContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, gloves.Img.Position);
+            //pants = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(111, 334));
+            //pantsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, pants.Img.Position);
+            //boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
+            //bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
+            //playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
+            spriteBatch.Begin();
+            playerFigure.Draw(spriteBatch, gameTime);
+            weapon.Draw(spriteBatch, gameTime);
+            armor.Draw(spriteBatch, gameTime);
+            arms.Draw(spriteBatch, gameTime);
+            gloves.Draw(spriteBatch, gameTime);
+            pants.Draw(spriteBatch, gameTime);
+            boots.Draw(spriteBatch, gameTime);
+            equip1.Draw(spriteBatch, gameTime);
+            equip2.Draw(spriteBatch, gameTime);
+            equip3.Draw(spriteBatch, gameTime);
+            equip4.Draw(spriteBatch, gameTime);
+            equip5.Draw(spriteBatch, gameTime);
+            equip6.Draw(spriteBatch, gameTime);
+            equip7.Draw(spriteBatch, gameTime);
+            equip8.Draw(spriteBatch, gameTime);
+            equip9.Draw(spriteBatch, gameTime);
+            equip10.Draw(spriteBatch, gameTime);
+            spriteBatch.End();
         }
 
         void UpdateInFaction(GameTime gameTime)
