@@ -137,6 +137,10 @@ namespace RPGMonoGame
         Button leftArrow;
         Button rightArrow;
         Sprite playerFigure;
+        List<Item> equippable = new List<Item>();
+        List<string> equippableStrings = new List<string>();
+        int page = 1;
+        int maxPages = 1;
         #endregion
         public enum GameState
         {
@@ -252,8 +256,8 @@ namespace RPGMonoGame
             boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
             bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
             playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
-            leftArrow = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
-            rightArrow = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
+            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), "", storyFont, new Vector2(670, 460));
+            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), "", storyFont, new Vector2(570, 460));
             int inc = 45;
             int origY = 10;
             equip1 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
@@ -275,6 +279,9 @@ namespace RPGMonoGame
             equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
             origY += inc;
             equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            origY += inc;
+            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), "", storyFont, new Vector2(720, origY));
+            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), "", storyFont, new Vector2(570, origY));
         }
 
         /// <summary>
@@ -334,7 +341,7 @@ namespace RPGMonoGame
                     UpdateInFaction(gameTime); //max chris
                     break;
                 case GameState.PlayerMenu:
-                    UpdatePlayerMenu(gameTime); //TBD
+                    UpdatePlayerMenu(gameTime); //chris jaxon
                     break;
                 default:
                     break;
@@ -381,6 +388,10 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+
+            maxPages = equippable.Count / 10;
+            if (maxPages <= 0)
+                maxPages = 1;
 
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
@@ -439,6 +450,29 @@ namespace RPGMonoGame
                 if (weapon.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "weapon";
+                    equippable = new List<Item>();
+                    foreach(Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if(typeof(Sword) == type)
+                        {
+                            Sword s = (Sword)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                        if (typeof(Staff) == type)
+                        {
+                            Staff s = (Staff)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                        if (typeof(Knife) == type)
+                        {
+                            Knife s = (Knife)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
                 }
                 if (armor.Contains(mousePoint))
                 {
@@ -467,19 +501,6 @@ namespace RPGMonoGame
 
         void DrawPlayerMenu(GameTime gameTime)
         {
-            //weapon = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(199, 330));
-            //weaponContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, weapon.Img.Position);
-            //armor = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(114, 195));
-            //armorContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, armor.Img.Position);
-            //arms = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(37, 253));
-            //armsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, arms.Img.Position);
-            //gloves = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(14, 305));
-            //glovesContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, gloves.Img.Position);
-            //pants = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(111, 334));
-            //pantsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, pants.Img.Position);
-            //boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
-            //bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContain"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
-            //playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
             spriteBatch.Begin();
             playerFigure.Draw(spriteBatch, gameTime);
             weapon.Draw(spriteBatch, gameTime);
@@ -488,24 +509,28 @@ namespace RPGMonoGame
             gloves.Draw(spriteBatch, gameTime);
             pants.Draw(spriteBatch, gameTime);
             boots.Draw(spriteBatch, gameTime);
-
-            switch (GlobalValues.playerMenuSelected)
+            if (!string.IsNullOrEmpty(GlobalValues.playerMenuSelected) && GlobalValues.playerMenuSelected != "none")
             {
-                case "weapon":
-
-                    break;
-                case "armor":
-                    break;
-                case "arms":
-                    break;
-                case "gloves":
-                    break;
-                case "pants":
-                    break;
-                case "boots":
-                    break;
-                default:
-                    break;
+                int start = (page - 1) * 10;
+                equip1.Text = equippableStrings[start];
+                start++;
+                equip2.Text = equippableStrings[start];
+                start++;
+                equip3.Text = equippableStrings[start];
+                start++;
+                equip4.Text = equippableStrings[start];
+                start++;
+                equip5.Text = equippableStrings[start];
+                start++;
+                equip6.Text = equippableStrings[start];
+                start++;
+                equip7.Text = equippableStrings[start];
+                start++;
+                equip8.Text = equippableStrings[start];
+                start++;
+                equip9.Text = equippableStrings[start];
+                start++;
+                equip10.Text = equippableStrings[start];
             }
             equip1.Draw(spriteBatch, gameTime);
             equip2.Draw(spriteBatch, gameTime);
@@ -517,7 +542,10 @@ namespace RPGMonoGame
             equip8.Draw(spriteBatch, gameTime);
             equip9.Draw(spriteBatch, gameTime);
             equip10.Draw(spriteBatch, gameTime);
+            leftArrow.Draw(spriteBatch, gameTime);
+            rightArrow.Draw(spriteBatch, gameTime);
             quitButton.Draw(spriteBatch, gameTime);
+            spriteBatch.DrawString(storyFont, $"{page}/{maxPages}", new Vector2(640, 460), Color.Black);
             spriteBatch.End();
         }
 
