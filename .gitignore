@@ -9,3 +9,6 @@ RPGMonoGame/obj/x86/Debug/RPGMonoGame.csprojAssemblyReference.cache
 RPGMonoGame/obj/x86/Debug/RPGMonoGame.csproj.CoreCompileInputs.cache
 RPGMonoGame/obj/x86/Debug/RPGMonoGame.csprojAssemblyReference.cache
 .vs/RPGMonoGame/v16/Server/sqlite3/storage.ide-wal
+*.ide-wal
+*.ide-shm
+*.ide
