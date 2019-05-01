@@ -413,7 +413,43 @@ namespace RPGMonoGame
                         switch(GlobalValues.playerMenuSelected)
                         {
                             case "weapon":
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack += s.Attack;
+                                    GamePlay.player.Defense += s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack += s.Attack;
+                                    GamePlay.player.Defense += s.Defense;
+                                }
                                 GamePlay.player.Equip[0] = equippable[0];
+                                if(GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack += s.Attack;
+                                    GamePlay.player.Defense += s.Defense;
+                                }
+                                else if(GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack += s.Attack;
+                                    GamePlay.player.Defense += s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack += s.Attack;
+                                    GamePlay.player.Defense += s.Defense;
+                                }
                                 break;
                             case "armor":
                                 GamePlay.player.Equip[1] = equippable[0];

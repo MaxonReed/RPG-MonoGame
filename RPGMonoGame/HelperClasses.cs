@@ -1354,6 +1354,11 @@ namespace RPGv2
         public int rarity;
         public List<string> attr;
 
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
+
         public Staff(int index)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\staff.json"));
@@ -1416,6 +1421,11 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Knife(int index)
         {
@@ -1480,6 +1490,11 @@ namespace RPGv2
         public int rarity;
         public List<string> attr;
        
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
+
         public Sword(int index)
         {
             JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\sword.json"));
