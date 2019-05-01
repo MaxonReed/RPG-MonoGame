@@ -406,46 +406,70 @@ namespace RPGMonoGame
                         State = GameState.StoryText;
                     }
                 }
-                
-                if (equip1.Contains(mousePoint))
+                if (GlobalValues.playerMenuSelected != "none")
                 {
+                    if (equip1.Contains(mousePoint))
+                    {
+                        switch(GlobalValues.playerMenuSelected)
+                        {
+                            case "weapon":
+                                GamePlay.player.Equip[0] = equippable[0];
+                                break;
+                            case "armor":
+                                GamePlay.player.Equip[1] = equippable[0];
+                                break;
+                            case "arms":
+                                GamePlay.player.Equip[2] = equippable[0];
+                                break;
+                            case "gloves":
+                                GamePlay.player.Equip[3] = equippable[0];
+                                break;
+                            case "pants":
+                                GamePlay.player.Equip[4] = equippable[0];
+                                break;
+                            case "boots":
+                                GamePlay.player.Equip[5] = equippable[0];
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    if (equip2.Contains(mousePoint))
+                    {
 
-                }
-                if (equip2.Contains(mousePoint))
-                {
+                    }
+                    if (equip3.Contains(mousePoint))
+                    {
 
-                }
-                if (equip3.Contains(mousePoint))
-                {
+                    }
+                    if (equip4.Contains(mousePoint))
+                    {
 
-                }
-                if (equip4.Contains(mousePoint))
-                {
+                    }
+                    if (equip5.Contains(mousePoint))
+                    {
 
-                }
-                if (equip5.Contains(mousePoint))
-                {
+                    }
+                    if (equip6.Contains(mousePoint))
+                    {
 
-                }
-                if (equip6.Contains(mousePoint))
-                {
+                    }
+                    if (equip7.Contains(mousePoint))
+                    {
 
-                }
-                if (equip7.Contains(mousePoint))
-                {
+                    }
+                    if (equip8.Contains(mousePoint))
+                    {
 
-                }
-                if (equip8.Contains(mousePoint))
-                {
+                    }
+                    if (equip9.Contains(mousePoint))
+                    {
 
-                }
-                if (equip9.Contains(mousePoint))
-                {
+                    }
+                    if (equip10.Contains(mousePoint))
+                    {
 
-                }
-                if (equip10.Contains(mousePoint))
-                {
-
+                    }
                 }
                 if (weapon.Contains(mousePoint))
                 {
@@ -473,29 +497,45 @@ namespace RPGMonoGame
                             equippable.Add(item);
                         }
                     }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            if (GamePlay.player.Class == "Warrior")
+                                equippable.Add(new Sword("None"));
+                            else if (GamePlay.player.Class == "Rogue")
+                                equippable.Add(new Knife("None"));
+                            else
+                                equippable.Add(new Staff("None"));
+                        }
+                    }
                 }
                 if (armor.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "armor";
+                    equippable = new List<Item>();
                 }
                 if (arms.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "arms";
+                    equippable = new List<Item>();
                 }
                 if (gloves.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "gloves";
+                    equippable = new List<Item>();
                 }
                 if (pants.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "pants";
+                    equippable = new List<Item>();
                 }
                 if (boots.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "boots";
+                    equippable = new List<Item>();
                 }
-
-
             }
         }
 

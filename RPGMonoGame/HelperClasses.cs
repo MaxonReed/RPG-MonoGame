@@ -1535,4 +1535,329 @@ namespace RPGv2
             return new int[] { att, def, buyPrice, sellPrice };
         }
     }
+    public class Armor : Item
+    {
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+
+        public Armor(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\armor.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
+        }
+        public Armor(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\armor.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find armor: " + n);
+        }
+
+        public Armor()
+        {
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+    public class Arms : Item
+    {
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+
+        public Arms(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\arms.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
+        }
+        public Arms(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\arms.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find arms: " + n);
+        }
+
+        public Arms()
+        {
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+    public class Gloves : Item
+    {
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+
+        public Gloves(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\gloves.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
+        }
+        public Gloves(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\gloves.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find glove: " + n);
+        }
+
+        public Gloves()
+        {
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+    public class Pants : Item
+    {
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+
+        public Pants(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\pants.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
+        }
+        public Pants(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\pants.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find pants: " + n);
+        }
+
+        public Pants()
+        {
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
+    public class Boots : Item
+    {
+        public string name;
+        public int att;
+        public int def;
+        public int buyPrice;
+        public int sellPrice;
+        public int rarity;
+        public List<string> attr;
+
+        public Boots(int index)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\boots.json"));
+            JObject obj = JObject.Parse(array[index].ToString());
+            name = (string)obj["Name"];
+            att = (int)obj["Attack"];
+            def = (int)obj["Defense"];
+            buyPrice = (int)obj["Buy Price"];
+            sellPrice = (int)obj["Sell Price"];
+            rarity = (int)obj["Rarity Level"];
+            string attributes = (string)obj["Attr"];
+            attr = attributes.Split('|').ToList();
+        }
+        public Boots(string n)
+        {
+            JArray array = JArray.Parse(File.ReadAllText(@"Dependencies\boots.json"));
+            foreach (JObject obj in array)
+            {
+                if (obj["Name"].ToString() == n)
+                {
+                    name = (string)obj["Name"];
+                    att = (int)obj["Attack"];
+                    def = (int)obj["Defense"];
+                    buyPrice = (int)obj["Buy Price"];
+                    sellPrice = (int)obj["Sell Price"];
+                    rarity = (int)obj["Rarity Level"];
+                    string attributes = (string)obj["Attr"];
+                    attr = attributes.Split('|').ToList();
+                }
+            }
+            if (string.IsNullOrEmpty(name))
+                throw new InvalidOperationException("Unable to find boots: " + n);
+        }
+
+        public Boots()
+        {
+        }
+
+        public override string ToString()
+        {
+            string output = "";
+            string.Format(output, "Name: {0}\nAttack: {1}\nDefense: {2}\nBuy Price:{3}\n Sell Price: {4}\nRarity Level: {5}", name, att, def, buyPrice, sellPrice, rarity);
+            return output;
+        }
+
+        public string GetName()
+        {
+            return name;
+        }
+
+        public int[] GetVals()
+        {
+            return new int[] { att, def, buyPrice, sellPrice };
+        }
+    }
 }

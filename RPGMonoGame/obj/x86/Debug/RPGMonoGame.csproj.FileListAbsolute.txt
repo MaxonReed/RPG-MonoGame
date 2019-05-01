@@ -244,3 +244,7 @@ C:\Users\reedchr001\Documents\GitHub\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGM
 C:\Users\reedchr001\Documents\GitHub\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.csproj.CopyComplete
 C:\Users\reedchr001\Documents\GitHub\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.exe
 C:\Users\reedchr001\Documents\GitHub\RPG-MonoGame\RPGMonoGame\obj\x86\Debug\RPGMonoGame.pdb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\NextPageInv.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\NextPageInvHover.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\PrevPageInv.xnb
+C:\Users\chris\source\repos\RPG-MonoGame\RPGMonoGame\bin\Windows\x86\Debug\Content\PrevPageInvHover.xnb
