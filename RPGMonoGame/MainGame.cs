@@ -389,8 +389,15 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
-            maxPages = equippable.Count / 10;
-            if (equippable.Count % 10 != 0 && equippable.Count > 10)
+            List<string> tempList = new List<string>(equippableStrings);
+            foreach(string str in tempList.ToArray())
+            {
+                if (str == "")
+                    tempList.Remove(str);
+            }
+
+            maxPages = tempList.Count / 10;
+            if (tempList.Count % 10 != 0 && tempList.Count > 10)
                 maxPages++;
             if (maxPages <= 0)
                 maxPages = 1;

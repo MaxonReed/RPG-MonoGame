@@ -1023,7 +1023,7 @@ namespace RPGv2
         int exp = 0;
         int level = 1;
         List<Item> equip = new List<Item>(6);
-        List<Item> inv = new List<Item>();
+        List<Item> inv = new List<Item>(50);
 
         public string Class { get; set; }
         public int Health { get; set; }
