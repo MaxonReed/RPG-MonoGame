@@ -1,0 +1,23 @@
+[
+  /*
+  Add attributes (Attr)
+  */
+  {
+    "Name": "None",
+    "Attack": 0,
+    "Defense": 0,
+    "Buy Price": 0,
+    "Sell Price": 0,
+    "Rarity Level": 5000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Bronze Plate",
+    "Attack": 0,
+    "Defense": 5,
+    "Buy Price": 40,
+    "Sell Price": 5,
+    "Rarity Level": 5000,
+    "Attr": "None"
+  }
+]

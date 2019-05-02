@@ -413,6 +413,7 @@ namespace RPGMonoGame
                         switch(GlobalValues.playerMenuSelected)
                         {
                             case "weapon":
+                                Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
@@ -422,33 +423,40 @@ namespace RPGMonoGame
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack += s.Attack;
-                                    GamePlay.player.Defense += s.Defense;
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack += s.Attack;
-                                    GamePlay.player.Defense += s.Defense;
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
                                 }
+                                Item tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[0];
-                                if(GamePlay.player.Class == "Warrior")
+                                equippable[0] = tempItem;
+                                Debug.WriteLine("bruh");
+                                if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
+                                    equippableStrings[0] = s.name;
+                                    Debug.WriteLine("bruh");
                                 }
                                 else if(GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
+                                    equippableStrings[0] = s.name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
+                                    equippableStrings[0] = s.name;
                                 }
                                 break;
                             case "armor":
@@ -511,6 +519,7 @@ namespace RPGMonoGame
                 {
                     GlobalValues.playerMenuSelected = "weapon";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
                     foreach(Item item in GamePlay.player.Inv)
                     {
                         Type type = item.GetType();
@@ -551,26 +560,121 @@ namespace RPGMonoGame
                 {
                     GlobalValues.playerMenuSelected = "armor";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
+                    foreach (Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if (typeof(Armor) == type)
+                        {
+                            Armor s = (Armor)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            equippable.Add(new Armor("None"));
+                        }
+                    }
                 }
                 if (arms.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "arms";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
+                    foreach (Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if (typeof(Arms) == type)
+                        {
+                            Arms s = (Arms)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            equippable.Add(new Arms("None"));
+                        }
+                    }
                 }
                 if (gloves.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "gloves";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
+                    foreach (Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if (typeof(Gloves) == type)
+                        {
+                            Gloves s = (Gloves)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            equippable.Add(new Gloves("None"));
+                        }
+                    }
                 }
                 if (pants.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "pants";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
+                    foreach (Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if (typeof(Pants) == type)
+                        {
+                            Pants s = (Pants)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            equippable.Add(new Pants("None"));
+                        }
+                    }
                 }
                 if (boots.Contains(mousePoint))
                 {
                     GlobalValues.playerMenuSelected = "boots";
                     equippable = new List<Item>();
+                    equippableStrings = new List<string>();
+                    foreach (Item item in GamePlay.player.Inv)
+                    {
+                        Type type = item.GetType();
+                        if (typeof(Boots) == type)
+                        {
+                            Boots s = (Boots)item;
+                            equippableStrings.Add(s.GetName());
+                            equippable.Add(item);
+                        }
+                    }
+                    if (equippable.Count < 10)
+                    {
+                        for (int i = equippableStrings.Count - 1; i < 11; i++)
+                        {
+                            equippableStrings.Add("");
+                            equippable.Add(new Boots("None"));
+                        }
+                    }
                 }
             }
         }

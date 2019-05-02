@@ -62,7 +62,7 @@
     "Defense": 17,
     "Buy Price": 125,
     "Sell Price": 1,
-    "Rarity Level": 200,
+    "Rarity Level": 20,
     "Attr": "Curse" //You (The player) Lose your first turn
   },
   {
@@ -89,7 +89,7 @@
     "Defense": 30,
     "Buy Price": 700,
     "Sell Price": 1,
-    "Rarity Level": 50,
+    "Rarity Level": 10,
     "Attr": "Curse" //You (The player) Lose your first turn
   },
   {
@@ -107,7 +107,7 @@
     "Defense": 45,
     "Buy Price": 1000,
     "Sell Price": 1,
-    "Rarity Level": 7,
+    "Rarity Level": 1,
     "Attr": "Night's Bane" //If you (The Player) Take Damage You (The Player) lose the game
   },
   {

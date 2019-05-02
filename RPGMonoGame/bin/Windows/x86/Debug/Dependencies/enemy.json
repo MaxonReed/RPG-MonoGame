@@ -11,7 +11,7 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen 2 3 4 5 6", //Random encounter
+    "Id": "Rngen 2 3 4 5 6 7 8 9 10 11", //Random encounter
     "Level": 1,
     "Health": 30,
     "Name": "Big Crow",
@@ -22,7 +22,7 @@
     "EnRate": 100000
   },
   {
-    "Id": "Rngen 2 3 4 6",
+    "Id": "Rngen 2 3 4 6 7 8",
     "Level": 1,
     "Health": 45,
     "Name": "Bear",
@@ -33,7 +33,7 @@
     "EnRate": 100000
   },
   {
-    "Id": "Rngen 2 3 4 5 6",
+    "Id": "Rngen 2 3 4 5 6 7 8 9 10 11",
     "Level": 1,
     "Health": 65,
     "Name": "Scavenger",
@@ -45,7 +45,7 @@
   },
   {
     "Id": "Rngen 2 3 4",
-    "Level": 1,
+    "Level": 2,
     "Health": 110,
     "Name": "Lunatic",
     "Attack": 10,
@@ -55,8 +55,8 @@
     "EnRate": 99900
   },
   {
-    "Id": "Rngen 2 3 4 5 6",
-    "Level": 1,
+    "Id": "Rngen 2 3 4 5 6 8 9 10 11",
+    "Level": 22,
     "Health": 1,
     "Name": "Shadow Creep",
     "Attack": 20,
@@ -66,7 +66,7 @@
     "EnRate": 10
   },
   {
-    "Id": "Rngen 3",
+    "Id": "Rngen 2 3",
     "Level": 1,
     "Health": 120,
     "Name": "Gangster",
@@ -74,11 +74,11 @@
     "Defense": 1,
     "MDef": 4,
     "Speed": 7,
-    "EnRate": 99788
+    "EnRate": 99999
   },
   {
-    "Id": "Rngen 3 4 5 6",
-    "Level": 1,
+    "Id": "Rngen 3 4 5 6 7 8 9 10 11",
+    "Level": 2,
     "Health": 100,
     "Name": "Magic Archer",
     "Attack": 10,
@@ -89,7 +89,7 @@
   },
   {
     "Id": "Seten MiniBoss", //set encounter and a mini boss
-    "Level": 1,
+    "Level": 5,
     "Health": 300,
     "Name": "High Orc",
     "Attack": 37,
@@ -99,8 +99,8 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen 3 4",
-    "Level": 1,
+    "Id": "Rngen 4 5",
+    "Level": 4,
     "Health": 150,
     "Name": "Orc",
     "Attack": 27,
@@ -111,7 +111,7 @@
   },
   {
     "Id": "Rngen MiniBoss 3 4", //Random encounter and a mini boss
-    "Level": 1,
+    "Level": 5,
     "Health": 50,
     "Name": "MadMan",
     "Attack": 50,
@@ -121,8 +121,8 @@
     "EnRate": 444
   },
   {
-    "Id": "Rngen 3 4 5 6",
-    "Level": 1,
+    "Id": "Rngen 4 5 6 7 8 9 10 11",
+    "Level": 3,
     "Health": 120,
     "Name": "SwordMaster",
     "Attack": 20,
@@ -133,7 +133,7 @@
   },
   {
     "Id": "Seten BigCheddaBoss", //Big Chedda encounter
-    "Level": 1,
+    "Level": 10,
     "Health": 800,
     "Name": "Big Chedda",
     "Attack": 75,
@@ -143,8 +143,8 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen 4 5 6",
-    "Level": 1,
+    "Id": "Rngen 4 5 6 7 8 9 10 11",
+    "Level": 2,
     "Health": 100,
     "Name": "Zombie",
     "Attack": 25,
@@ -154,8 +154,8 @@
     "EnRate": 99300
   },
   {
-    "Id": "Rngen MiniBoss 4 5 6",
-    "Level": 1,
+    "Id": "Rngen MiniBoss 4 5 6 7 8",
+    "Level": 4,
     "Health": 200,
     "Name": "Omega Zombie",
     "Attack": 40,
@@ -165,8 +165,8 @@
     "EnRate": 444
   },
   {
-    "Id": "Rngen 4 5 6",
-    "Level": 1,
+    "Id": "Rngen 4 5 6 7 8 9 10 11",
+    "Level": 3,
     "Health": 150,
     "Name": "Mage apprentice",
     "Attack": 23,
@@ -177,18 +177,18 @@
   },
   {
     "Id": "Rngen 4",
-    "Level": 1,
+    "Level": 6,
     "Health": 10,
     "Name": "Midnight Ghost",
     "Attack": 28,
     "Defense": 60,
     "MDef": 40,
     "Speed": 70,
-    "EnRate": 99200
+    "EnRate": 9900
   },
   {
     "Id": "Seten DharkBoss",
-    "Level": 1,
+    "Level": 15,
     "Health": 750,
     "Name": "Dharkson Groth",
     "Attack": 80,
@@ -209,8 +209,8 @@
     "EnRate": 99999
   },
   {
-    "Id": "Rngen 6",
-    "Level": 1,
+    "Id": "Rngen 6 7 8 9 10 11",
+    "Level": 4,
     "Health": 220,
     "Name": "Old Sage",
     "Attack": 30,
@@ -220,8 +220,8 @@
     "EnRate": 99300
   },
   {
-    "Id": "Rngen 6",
-    "Level": 1,
+    "Id": "Rngen 6 10",
+    "Level": 6,
     "Health": 200,
     "Name": "KeyMaster",
     "Attack": 24,
@@ -232,7 +232,7 @@
   },
   {
     "Id": "Rngen MiniBoss 6",
-    "Level": 1,
+    "Level": 10,
     "Health": 500,
     "Name": "HenchKey",
     "Attack": 40,
@@ -243,13 +243,123 @@
   },
   {
     "Id": "Seten KeyBoss",
-    "Level": 1,
+    "Level": 20,
     "Health": 1000,
     "Name": "Key! Keyboard Warrior",
     "Attack": 99,
     "Defense": 5,
     "MDef": 400,
     "Speed": 20,
+    "EnRate": 0
+  },
+  {
+    "Id": "Rngen 8",
+    "Level": 6,
+    "Health": 150,
+    "Name": "Alpha Zombie",
+    "Attack": 20,
+    "Defense": 15,
+    "MDef": 8,
+    "Speed": 18,
+    "EnRate": 99000
+  },
+  {
+    "Id": "Rngen 8 9 10 11",
+    "Level": 8,
+    "Health": 200,
+    "Name": "Crusader",
+    "Attack": 15,
+    "Defense": 15,
+    "MDef": 20,
+    "Speed": 15,
+    "EnRate": 98900
+  },
+  {
+    "Id": "Rngen 8 9 10 11",
+    "Level": 9,
+    "Health": 100,
+    "Name": "Big Brother's Hand",
+    "Attack": 24,
+    "Defense": 16,
+    "MDef": 9,
+    "Speed": 10,
+    "EnRate": 98800
+  },
+  {
+    "Id": "Rngen MiniBoss 8",
+    "Level": 11,
+    "Health": 25,
+    "Name": "DayBreak Ghost",
+    "Attack": 20,
+    "Defense": 150,
+    "MDef": 80,
+    "Speed": 180,
+    "EnRate": 900
+  },
+  {
+    "Id": "Seten BrianBoss",
+    "Level": 25,
+    "Health": 1500,
+    "Name": "Brain",
+    "Attack": 92,
+    "Defense": 22,
+    "MDef": 30,
+    "Speed": 10,
+    "EnRate": 0
+  },
+  {
+    "Id": "Rngen 10 11",
+    "Level": 9,
+    "Health": 250,
+    "Name": "Red Crusader",
+    "Attack": 15,
+    "Defense": 15,
+    "MDef": 20,
+    "Speed": 15,
+    "EnRate": 98700
+  },
+  {
+    "Id": "Rngen 10",
+    "Level": 8,
+    "Health": 150,
+    "Name": "KeySader",
+    "Attack": 17,
+    "Defense": 17,
+    "MDef": 17,
+    "Speed": 15,
+    "EnRate": 98700
+  },
+  {
+    "Id": "Rngen MiniBoss 10",
+    "Level": 14,
+    "Health": 600,
+    "Name": "Red HenchKey",
+    "Attack": 40,
+    "Defense": 4,
+    "MDef": 33,
+    "Speed": 18,
+    "EnRate": 8000
+  },
+  {
+    "Id": "Rngen MiniBoss 10 11",
+    "Level": 19,
+    "Health": 750,
+    "Name": "Black Knight",
+    "Attack": 30,
+    "Defense": 10,
+    "MDef": 20,
+    "Speed": 20,
+    "EnRate": 7000
+  },
+  {
+    "Id": "Seten KeyBoardBoss",
+    "Level": 30,
+    "Health": 1750,
+    "Name": "Key! Keyboard Crusader",
+    "Attack": 99,
+    "Defense": 40,
+    "MDef": 40,
+    "Speed": 2,
     "EnRate": 0
   }
 ]
