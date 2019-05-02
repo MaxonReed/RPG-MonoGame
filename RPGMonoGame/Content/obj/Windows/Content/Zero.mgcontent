@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/reedchr001/Documents/GitHub/RPG-MonoGame/RPGMonoGame/Content/Zero.png</SourceFile>
-  <SourceTime>2019-04-29T20:07:10-05:00</SourceTime>
-  <DestFile>C:/Users/reedchr001/Documents/GitHub/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/Zero.xnb</DestFile>
-  <DestTime>2019-05-02T10:16:12.3817431-05:00</DestTime>
+  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Zero.png</SourceFile>
+  <SourceTime>2019-04-10T16:45:03.8973509-05:00</SourceTime>
+  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/Zero.xnb</DestFile>
+  <DestTime>2019-05-02T17:54:52.5992437-05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2018-12-08T10:35:54-06:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

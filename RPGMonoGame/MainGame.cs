@@ -390,6 +390,8 @@ namespace RPGMonoGame
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
             maxPages = equippable.Count / 10;
+            if (equippable.Count % 10 != 0 && equippable.Count > 10)
+                maxPages++;
             if (maxPages <= 0)
                 maxPages = 1;
 
@@ -514,6 +516,16 @@ namespace RPGMonoGame
                     {
 
                     }
+                }
+                if (leftArrow.Contains(mousePoint))
+                {
+                    if(page > 1)
+                        page--;
+                }
+                if (rightArrow.Contains(mousePoint))
+                {
+                    if (page < maxPages)
+                        page++;
                 }
                 if (weapon.Contains(mousePoint))
                 {
@@ -692,6 +704,46 @@ namespace RPGMonoGame
             if (!string.IsNullOrEmpty(GlobalValues.playerMenuSelected) && GlobalValues.playerMenuSelected != "none")
             {
                 int start = (page - 1) * 10;
+                if(equippableStrings.Count - 1 < start+10)
+                {
+                    for (int i = equippableStrings.Count - 1; i < start + 10; i++)
+                    {
+                        equippableStrings.Add("");
+                        switch(GlobalValues.playerMenuSelected)
+                        {
+                            case "weapon":
+                                if (GamePlay.player.Class == "Warrior")
+                                    equippable.Add(new Sword("None"));
+                                if (GamePlay.player.Class == "Mage")
+                                    equippable.Add(new Staff("None"));
+                                if (GamePlay.player.Class == "Rogue")
+                                    equippable.Add(new Knife("None"));
+                                break;
+                            case "armor":
+                                equippableStrings.Add("");
+                                equippable.Add(new Armor("None"));
+                                break;
+                            case "arms":
+                                equippableStrings.Add("");
+                                equippable.Add(new Arms("None"));
+                                break;
+                            case "gloves":
+                                equippableStrings.Add("");
+                                equippable.Add(new Gloves("None"));
+                                break;
+                            case "pants":
+                                equippableStrings.Add("");
+                                equippable.Add(new Pants("None"));
+                                break;
+                            case "boots":
+                                equippableStrings.Add("");
+                                equippable.Add(new Boots("None"));
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
                 equip1.Text = equippableStrings[start];
                 start++;
                 equip2.Text = equippableStrings[start];
