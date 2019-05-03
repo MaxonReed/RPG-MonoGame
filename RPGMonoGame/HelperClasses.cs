@@ -71,7 +71,7 @@ namespace RPGv2
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(new { player, player.invString, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
                     sw.Write(json);
                 }// Json Writer
             }//end StreamWriter
@@ -1118,6 +1118,42 @@ namespace RPGv2
                     default:
                         break;
                 }
+            }
+        }
+
+        public void InitEquipString()
+        {
+            if (Class == "Warrior")
+            {
+                Sword s = (Sword)Equip[0];
+                equipString[0] = "sword:" + s.name;
+            } else if (Class == "Rogue")
+            {
+                Knife s = (Knife)Equip[0];
+                equipString[0] = "knife:" + s.name;
+            } else
+            {
+                Staff s = (Staff)Equip[0];
+                equipString[0] = "staff:" + s.name;
+            }
+        }
+
+        public void InitInvString()
+        {
+            if (Class == "Warrior")
+            {
+                Sword s = (Sword)Equip[0];
+                equipString[0] = "sword:" + s.name;
+            }
+            else if (Class == "Rogue")
+            {
+                Knife s = (Knife)Equip[0];
+                equipString[0] = "knife:" + s.name;
+            }
+            else
+            {
+                Staff s = (Staff)Equip[0];
+                equipString[0] = "staff:" + s.name;
             }
         }
 

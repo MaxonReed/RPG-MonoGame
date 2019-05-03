@@ -17,7 +17,25 @@
     "Defense": 5,
     "Buy Price": 40,
     "Sell Price": 5,
-    "Rarity Level": 5000,
+    "Rarity Level": 4000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Iron Plate",
+    "Attack": 0,
+    "Defense": 10,
+    "Buy Price": 80,
+    "Sell Price": 10,
+    "Rarity Level": 3500,
+    "Attr": "None"
+  },
+  {
+    "Name": "Silver Plate",
+    "Attack": 0,
+    "Defense": 13,
+    "Buy Price": 100,
+    "Sell Price": 15,
+    "Rarity Level": 3300,
     "Attr": "None"
   }
 ]
