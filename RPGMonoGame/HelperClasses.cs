@@ -1348,20 +1348,117 @@ namespace RPGv2
             int chanceTotal = 0;
             int num = 0;
             List<int> minMax = new List<int>();
-            switch (Class)
+            //equipString[1] = "armor:" + a.name;
+            //equipString[2] = "arms:" + ar.name;
+            //equipString[3] = "gloves:" + g.name;
+            //equipString[4] = "pants:" + p.name;
+            //equipString[5] = "boots:" + b.name;
+            switch (HelperClasses.RandomNumber(0, 5))
             {
-                case "Warrior":
-                    JArray swords = JArray.Parse(File.ReadAllText("Dependencies\\sword.json"));
-                    foreach (JObject sword in swords)
-                        chanceTotal += (int)sword["Rarity Level"];
+                case 0:
+                    switch (Class)
+                    {
+                        case "Warrior":
+                            JArray swords = JArray.Parse(File.ReadAllText("Dependencies\\sword.json"));
+                            foreach (JObject sword in swords)
+                                chanceTotal += (int)sword["Rarity Level"];
+                            num = HelperClasses.RandomNumber(0, chanceTotal);
+                            minMax = new List<int>();
+                            minMax.Add(0);
+                            for (int i = 1, j = 0; j < swords.Count; i++)
+                            {
+                                if (i % 2 == 1)
+                                {
+                                    minMax.Add((int)swords[j]["Rarity Level"] + minMax[i - 1] - 1);
+                                    j++;
+                                }
+                                else
+                                    minMax.Add(minMax[i - 1] + 1);
+                            }
+                            for (int i = 0; i < minMax.Count - 1; i++)
+                            {
+                                if (num >= minMax[i] && num <= minMax[i + 1])
+                                {
+                                    Sword sw = new Sword(i / 2);
+                                    if (sw.GetName() != "None")
+                                        Inv.Add(new Sword(i / 2));
+                                    return new Sword(i / 2).GetName();
+                                }
+                            }
+                            break;
+                        case "Mage":
+                            JArray staves = JArray.Parse(File.ReadAllText("Dependencies\\staff.json"));
+                            foreach (JObject staff in staves)
+                                chanceTotal += (int)staff["Rarity Level"];
+                            num = HelperClasses.RandomNumber(0, chanceTotal);
+                            minMax = new List<int>();
+                            minMax.Add(0);
+                            for (int i = 1, j = 0; j < staves.Count; i++)
+                            {
+                                if (i % 2 == 1)
+                                {
+                                    minMax.Add((int)staves[j]["Rarity Level"] + minMax[i - 1] - 1);
+                                    j++;
+                                }
+                                else
+                                    minMax.Add(minMax[i - 1] + 1);
+                            }
+                            for (int i = 0; i < minMax.Count - 1; i++)
+                            {
+                                if (num >= minMax[i] && num <= minMax[i + 1])
+                                {
+                                    Staff st = new Staff(i / 2);
+                                    if (st.GetName() != "None")
+                                        Inv.Add(new Staff(i / 2));
+                                    return new Staff(i / 2).GetName();
+                                }
+                            }
+                            break;
+                        case "Rogue":
+                            JArray knives = JArray.Parse(File.ReadAllText("Dependencies\\knife.json"));
+                            foreach (JObject knife in knives)
+                                chanceTotal += (int)knife["Rarity Level"];
+                            num = HelperClasses.RandomNumber(0, chanceTotal);
+                            minMax = new List<int>();
+                            minMax.Add(0);
+                            for (int i = 1, j = 0; j < knives.Count; i++)
+                            {
+                                if (i % 2 == 1)
+                                {
+                                    minMax.Add((int)knives[j]["Rarity Level"] + minMax[i - 1] - 1);
+                                    j++;
+                                }
+                                else
+                                    minMax.Add(minMax[i - 1] + 1);
+                            }
+                            for (int i = 0; i < minMax.Count - 1; i++)
+                            {
+                                if (num >= minMax[i] && num <= minMax[i + 1])
+                                {
+                                    Knife k = new Knife(i / 2);
+                                    if (k.GetName() != "None")
+                                        Inv.Add(new Knife(i / 2));
+                                    return new Knife(i / 2).GetName();
+                                }
+                            }
+                            break;
+                        default:
+
+                            break;
+                    }
+                    break;
+                case 1:
+                    JArray armor = JArray.Parse(File.ReadAllText("Dependencies\\armor.json"));
+                    foreach (JObject a in armor)
+                        chanceTotal += (int)a["Rarity Level"];
                     num = HelperClasses.RandomNumber(0, chanceTotal);
                     minMax = new List<int>();
                     minMax.Add(0);
-                    for (int i = 1, j = 0; j < swords.Count; i++)
+                    for (int i = 1, j = 0; j < armor.Count; i++)
                     {
                         if (i % 2 == 1)
                         {
-                            minMax.Add((int)swords[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            minMax.Add((int)armor[j]["Rarity Level"] + minMax[i - 1] - 1);
                             j++;
                         }
                         else
@@ -1371,25 +1468,25 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Sword sw = new Sword(i / 2);
+                            Armor sw = new Armor(i / 2);
                             if (sw.GetName() != "None")
-                                Inv.Add(new Sword(i / 2));
-                            return new Sword(i / 2).GetName();
+                                Inv.Add(new Armor(i / 2));
+                            return new Armor(i / 2).GetName();
                         }
                     }
                     break;
-                case "Mage":
-                    JArray staves = JArray.Parse(File.ReadAllText("Dependencies\\staff.json"));
-                    foreach (JObject staff in staves)
-                        chanceTotal += (int)staff["Rarity Level"];
+                case 2:
+                    JArray arms = JArray.Parse(File.ReadAllText("Dependencies\\arms.json"));
+                    foreach (JObject a in arms)
+                        chanceTotal += (int)a["Rarity Level"];
                     num = HelperClasses.RandomNumber(0, chanceTotal);
                     minMax = new List<int>();
                     minMax.Add(0);
-                    for (int i = 1, j = 0; j < staves.Count; i++)
+                    for (int i = 1, j = 0; j < arms.Count; i++)
                     {
                         if (i % 2 == 1)
                         {
-                            minMax.Add((int)staves[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            minMax.Add((int)arms[j]["Rarity Level"] + minMax[i - 1] - 1);
                             j++;
                         }
                         else
@@ -1399,25 +1496,25 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Staff st = new Staff(i / 2);
-                            if (st.GetName() != "None")
-                                Inv.Add(new Staff(i / 2));
-                            return new Staff(i / 2).GetName();
+                            Arms sw = new Arms(i / 2);
+                            if (sw.GetName() != "None")
+                                Inv.Add(new Arms(i / 2));
+                            return new Arms(i / 2).GetName();
                         }
                     }
                     break;
-                case "Rogue":
-                    JArray knives = JArray.Parse(File.ReadAllText("Dependencies\\knife.json"));
-                    foreach (JObject knife in knives)
-                        chanceTotal += (int)knife["Rarity Level"];
+                case 3:
+                    JArray gloves = JArray.Parse(File.ReadAllText("Dependencies\\gloves.json"));
+                    foreach (JObject a in gloves)
+                        chanceTotal += (int)a["Rarity Level"];
                     num = HelperClasses.RandomNumber(0, chanceTotal);
                     minMax = new List<int>();
                     minMax.Add(0);
-                    for (int i = 1, j = 0; j < knives.Count; i++)
+                    for (int i = 1, j = 0; j < gloves.Count; i++)
                     {
                         if (i % 2 == 1)
                         {
-                            minMax.Add((int)knives[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            minMax.Add((int)gloves[j]["Rarity Level"] + minMax[i - 1] - 1);
                             j++;
                         }
                         else
@@ -1427,10 +1524,66 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Knife k = new Knife(i / 2);
-                            if (k.GetName() != "None")
-                                Inv.Add(new Knife(i / 2));
-                            return new Knife(i / 2).GetName();
+                            Gloves sw = new Gloves(i / 2);
+                            if (sw.GetName() != "None")
+                                Inv.Add(new Gloves(i / 2));
+                            return new Gloves(i / 2).GetName();
+                        }
+                    }
+                    break;
+                case 4:
+                    JArray pants = JArray.Parse(File.ReadAllText("Dependencies\\pants.json"));
+                    foreach (JObject a in pants)
+                        chanceTotal += (int)a["Rarity Level"];
+                    num = HelperClasses.RandomNumber(0, chanceTotal);
+                    minMax = new List<int>();
+                    minMax.Add(0);
+                    for (int i = 1, j = 0; j < pants.Count; i++)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            minMax.Add((int)pants[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            j++;
+                        }
+                        else
+                            minMax.Add(minMax[i - 1] + 1);
+                    }
+                    for (int i = 0; i < minMax.Count - 1; i++)
+                    {
+                        if (num >= minMax[i] && num <= minMax[i + 1])
+                        {
+                            Pants sw = new Pants(i / 2);
+                            if (sw.GetName() != "None")
+                                Inv.Add(new Pants(i / 2));
+                            return new Pants(i / 2).GetName();
+                        }
+                    }
+                    break;
+                case 5:
+                    JArray boots = JArray.Parse(File.ReadAllText("Dependencies\\boots.json"));
+                    foreach (JObject a in boots)
+                        chanceTotal += (int)a["Rarity Level"];
+                    num = HelperClasses.RandomNumber(0, chanceTotal);
+                    minMax = new List<int>();
+                    minMax.Add(0);
+                    for (int i = 1, j = 0; j < boots.Count; i++)
+                    {
+                        if (i % 2 == 1)
+                        {
+                            minMax.Add((int)boots[j]["Rarity Level"] + minMax[i - 1] - 1);
+                            j++;
+                        }
+                        else
+                            minMax.Add(minMax[i - 1] + 1);
+                    }
+                    for (int i = 0; i < minMax.Count - 1; i++)
+                    {
+                        if (num >= minMax[i] && num <= minMax[i + 1])
+                        {
+                            Boots sw = new Boots(i / 2);
+                            if (sw.GetName() != "None")
+                                Inv.Add(new Boots(i / 2));
+                            return new Boots(i / 2).GetName();
                         }
                     }
                     break;
@@ -1470,6 +1623,8 @@ namespace RPGv2
         public int rarity;
         public List<string> attr;
 
+
+        public string Name { get => name; }
         public int Attack { get => att; set => att = value; }
         public int Defense { get => def; set => def = value; }
         public int BuyPrice { get => buyPrice; set => buyPrice = value; }
@@ -1538,6 +1693,7 @@ namespace RPGv2
         public int rarity;
         public List<string> attr;
 
+        public string Name { get => name; }
         public int Attack { get => att; set => att = value; }
         public int Defense { get => def; set => def = value; }
         public int BuyPrice { get => buyPrice; set => buyPrice = value; }
@@ -1606,6 +1762,7 @@ namespace RPGv2
         public int rarity;
         public List<string> attr;
 
+        public string Name { get => name; }
         public int Attack { get => att; set => att = value; }
         public int Defense { get => def; set => def = value; }
         public int BuyPrice { get => buyPrice; set => buyPrice = value; }
@@ -1659,11 +1816,6 @@ namespace RPGv2
         public string GetName()
         {
             return name;
-        }
-
-        public int[] GetVals()
-        {
-            return new int[] { att, def, buyPrice, sellPrice };
         }
     }
     public class Armor : Item
@@ -1725,11 +1877,6 @@ namespace RPGv2
         {
             return name;
         }
-
-        public int[] GetVals()
-        {
-            return new int[] { att, def, buyPrice, sellPrice };
-        }
     }
     public class Arms : Item
     {
@@ -1789,11 +1936,6 @@ namespace RPGv2
         public string GetName()
         {
             return name;
-        }
-
-        public int[] GetVals()
-        {
-            return new int[] { att, def, buyPrice, sellPrice };
         }
     }
     public class Gloves : Item

@@ -1,6 +1,8 @@
 {
   "player": {
     "invString": [
+      "boots:",
+      "armor:",
       "staff:None"
     ],
     "equipString": [
@@ -1621,7 +1623,7 @@
     "facDestroyed": "We Have A Tabard has been destroyed!",
     "eventName": "None",
     "battleID": "",
-    "battleState": "prologue",
+    "battleState": "battle",
     "startGen": true,
     "done": true,
     "free": true,

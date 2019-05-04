@@ -597,7 +597,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -605,14 +605,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -669,7 +669,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -677,14 +677,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -741,7 +741,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -749,14 +749,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -813,7 +813,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -821,14 +821,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -885,7 +885,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -893,14 +893,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -957,7 +957,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -965,14 +965,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -1029,7 +1029,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -1037,14 +1037,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
@@ -1101,7 +1101,7 @@ namespace RPGMonoGame
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                     Debug.WriteLine("bruh");
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
@@ -1109,14 +1109,14 @@ namespace RPGMonoGame
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = s.Name;
                                 }
                                 break;
                             case "armor":
