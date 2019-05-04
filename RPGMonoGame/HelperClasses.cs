@@ -1591,7 +1591,7 @@ namespace RPGv2
 
                     break;
             }
-            return "";
+            return string.Empty;
         }
     }
 

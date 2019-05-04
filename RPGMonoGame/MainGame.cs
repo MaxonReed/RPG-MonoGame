@@ -82,7 +82,7 @@ namespace RPGMonoGame
         int damageEnemy = 0;
         bool dispPlayerDamage = true;
         public static bool calledBattleFinish = false;
-        string droppedItem = "";
+        string droppedItem = string.Empty;
         double receivedMoney = 0;
         #endregion
         #region factionAssets
@@ -243,45 +243,45 @@ namespace RPGMonoGame
             playerButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Player", storyFont, new Vector2(middle, 300));
             shopButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Shop", storyFont, new Vector2(middle, 375));
 
-            weapon = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(238, 308));
-            weaponContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, weapon.Img.Position);
-            armor = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(114, 195));
-            armorContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, armor.Img.Position);
-            arms = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(222, 205));
-            armsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, arms.Img.Position);
-            gloves = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(14, 305));
-            glovesContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, gloves.Img.Position);
-            pants = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(111, 334));
-            pantsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, pants.Img.Position);
-            boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), "", storyFont, new Vector2(19, 410));
-            bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), "", storyFont, boots.Img.Position);
+            weapon = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(238, 308));
+            weaponContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, weapon.Img.Position);
+            armor = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(114, 195));
+            armorContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, armor.Img.Position);
+            arms = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(222, 205));
+            armsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, arms.Img.Position);
+            gloves = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(14, 305));
+            glovesContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, gloves.Img.Position);
+            pants = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(111, 334));
+            pantsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, pants.Img.Position);
+            boots = new Button(Content.Load<Texture2D>("EquipBox"), Content.Load<Texture2D>("EquipBoxHover"), string.Empty, storyFont, new Vector2(19, 410));
+            bootsContains = new Button(Content.Load<Texture2D>("EquipBoxContains"), Content.Load<Texture2D>("EquipBoxHoverContains"), string.Empty, storyFont, boots.Img.Position);
             playerFigure = new Sprite(Content.Load<Texture2D>("PlayerFigure"), new Vector2(0, 0));
-            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), "", storyFont, new Vector2(670, 460));
-            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), "", storyFont, new Vector2(570, 460));
+            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), string.Empty, storyFont, new Vector2(670, 460));
+            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), string.Empty, storyFont, new Vector2(570, 460));
             int inc = 45;
             int origY = 10;
-            equip1 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip1 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip2 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip2 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip3 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip3 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip4 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip4 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip5 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip5 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip6 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip6 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip7 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip7 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip8 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip8 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip9 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), "", storyFont, new Vector2(570, origY));
+            equip10 = new Button(Content.Load<Texture2D>("ItemButton"), Content.Load<Texture2D>("ItemButtonHover"), string.Empty, storyFont, new Vector2(570, origY));
             origY += inc;
-            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), "", storyFont, new Vector2(720, origY));
-            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), "", storyFont, new Vector2(570, origY));
+            rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), string.Empty, storyFont, new Vector2(720, origY));
+            leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), string.Empty, storyFont, new Vector2(570, origY));
         }
 
         /// <summary>
@@ -392,7 +392,7 @@ namespace RPGMonoGame
             List<string> tempList = new List<string>(equippableStrings);
             foreach(string str in tempList.ToArray())
             {
-                if (str == "")
+                if (str == string.Empty)
                     tempList.Remove(str);
             }
 
@@ -416,11 +416,13 @@ namespace RPGMonoGame
                     }
                 }
                 int index = 0;
+                Item tempItem;
                 if (GlobalValues.playerMenuSelected != "none")
                 {
                     if (equip1.Contains(mousePoint))
                     {
                         index = 10 * page;
+
                         switch(GlobalValues.playerMenuSelected)
                         {
                             
@@ -444,7 +446,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -472,19 +474,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -516,7 +538,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -544,19 +566,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -588,7 +630,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -616,19 +658,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -660,7 +722,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -688,19 +750,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -732,7 +814,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -760,19 +842,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -804,7 +906,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -832,19 +934,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -876,7 +998,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -904,19 +1026,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -948,7 +1090,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -976,19 +1118,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -1020,7 +1182,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -1048,19 +1210,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -1092,7 +1274,7 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Item tempItem = GamePlay.player.Equip[0];
+                                tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
@@ -1120,19 +1302,39 @@ namespace RPGMonoGame
                                 }
                                 break;
                             case "armor":
+                                tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                equippable[index] = tempItem;
+                                Armor armor = (Armor)tempItem;
+                                equippableStrings[index] = armor.name;
                                 break;
                             case "arms":
+                                tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
+                                equippable[index] = tempItem;
+                                Arms arms = (Arms)tempItem;
+                                equippableStrings[index] = arms.name;
                                 break;
                             case "gloves":
+                                tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
+                                equippable[index] = tempItem;
+                                Gloves gloves = (Gloves)tempItem;
+                                equippableStrings[index] = gloves.name;
                                 break;
                             case "pants":
+                                tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
+                                equippable[index] = tempItem;
+                                Pants pants = (Pants)tempItem;
+                                equippableStrings[index] = pants.name;
                                 break;
                             case "boots":
+                                tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
+                                equippable[index] = tempItem;
+                                Boots boots = (Boots)tempItem;
+                                equippableStrings[index] = boots.name;
                                 break;
                             default:
                                 break;
@@ -1180,7 +1382,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             if (GamePlay.player.Class == "Warrior")
                                 equippable.Add(new Sword("None"));
                             else if (GamePlay.player.Class == "Rogue")
@@ -1209,7 +1411,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             equippable.Add(new Armor("None"));
                         }
                     }
@@ -1233,7 +1435,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             equippable.Add(new Arms("None"));
                         }
                     }
@@ -1257,7 +1459,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             equippable.Add(new Gloves("None"));
                         }
                     }
@@ -1281,7 +1483,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             equippable.Add(new Pants("None"));
                         }
                     }
@@ -1305,7 +1507,7 @@ namespace RPGMonoGame
                     {
                         for (int i = equippableStrings.Count - 1; i < 11; i++)
                         {
-                            equippableStrings.Add("");
+                            equippableStrings.Add(string.Empty);
                             equippable.Add(new Boots("None"));
                         }
                     }
@@ -1330,7 +1532,7 @@ namespace RPGMonoGame
                 {
                     for (int i = equippableStrings.Count - 1; i < start + 10; i++)
                     {
-                        equippableStrings.Add("");
+                        equippableStrings.Add(string.Empty);
                         switch(GlobalValues.playerMenuSelected)
                         {
                             case "weapon":
@@ -1342,23 +1544,23 @@ namespace RPGMonoGame
                                     equippable.Add(new Knife("None"));
                                 break;
                             case "armor":
-                                equippableStrings.Add("");
+                                equippableStrings.Add(string.Empty);
                                 equippable.Add(new Armor("None"));
                                 break;
                             case "arms":
-                                equippableStrings.Add("");
+                                equippableStrings.Add(string.Empty);
                                 equippable.Add(new Arms("None"));
                                 break;
                             case "gloves":
-                                equippableStrings.Add("");
+                                equippableStrings.Add(string.Empty);
                                 equippable.Add(new Gloves("None"));
                                 break;
                             case "pants":
-                                equippableStrings.Add("");
+                                equippableStrings.Add(string.Empty);
                                 equippable.Add(new Pants("None"));
                                 break;
                             case "boots":
-                                equippableStrings.Add("");
+                                equippableStrings.Add(string.Empty);
                                 equippable.Add(new Boots("None"));
                                 break;
                             default:
@@ -1649,7 +1851,7 @@ namespace RPGMonoGame
                 {
                     if (enter.Contains(mousePoint))
                     {
-                        if (GlobalValues.inpText != "")
+                        if (GlobalValues.inpText != string.Empty)
                             Task.Run(() => GamePlay.StartGame());
                     }
                     if (one.Contains(mousePoint))
@@ -2004,7 +2206,7 @@ namespace RPGMonoGame
                         Battle.SetVals(GlobalValues.battleJson);
                     }
                     else
-                        GlobalValues.battleID = "";
+                        GlobalValues.battleID = string.Empty;
                     break;
                 default:
                     if (Battle.round == -1)
@@ -2107,7 +2309,7 @@ namespace RPGMonoGame
                         else
                             fourthSpecial.Draw(spriteBatch, gameTime);
                         int sp;
-                        string name = "";
+                        string name = string.Empty;
                         for (int i = 0; i < 4; i++)
                         {
                             sp = GamePlay.player.Special[i];
