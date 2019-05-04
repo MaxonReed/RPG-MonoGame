@@ -30,7 +30,6 @@ namespace RPGv2
             hist.Factions.Add(affrieca);
             GlobalValues.save.player = player;
             GlobalValues.save.hist = hist;
-            GlobalValues.save.SaveGame();
         }
 
         //chris and some jaxon

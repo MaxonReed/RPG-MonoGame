@@ -49,7 +49,7 @@ namespace RPGv2
             return false;
         }//end start??????
     }//end Helper class
-    
+
     //chris
     public class Save
     {
@@ -65,13 +65,15 @@ namespace RPGv2
         {
             Debug.WriteLine("Saving game...");
             player = GamePlay.player;
+            player.InitEquipString();
+            player.InitInvString();
             JsonSerializer serializer = new JsonSerializer();
 
             using (StreamWriter sw = new StreamWriter(@"Dependencies\save.json"))
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(new { player, player.invString, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
                     sw.Write(json);
                 }// Json Writer
             }//end StreamWriter
@@ -132,7 +134,8 @@ namespace RPGv2
                 {
                     if (!found)
                         found = true;
-                } else if (str.StartsWith("[") && found)
+                }
+                else if (str.StartsWith("[") && found)
                 {
                     found = false;
                     break;
@@ -140,9 +143,9 @@ namespace RPGv2
                 if (found && str[0] != '[')
                     temp.Add(str);
             }
-            foreach(string str in temp.ToArray())
+            foreach (string str in temp.ToArray())
             {
-                if(str.Contains("{WarFactionName}"))
+                if (str.Contains("{WarFactionName}"))
                     str.Replace("{WarFactionName}", $"{enemyFaction}");
             }//end foreach temp
             strArr = temp;
@@ -290,7 +293,7 @@ namespace RPGv2
                 default:
                     break;
             }//end Switch Sp
-            
+
             SetVals(GlobalValues.battleJson);
             turn = false;
             return damage;
@@ -671,7 +674,7 @@ namespace RPGv2
         public string Type { get => type; set => type = value; }
         public Faction Occ { get => occ; set => occ = value; }
     }
-   
+
     //chris(obsolete)
     internal class StateManager
     {
@@ -732,7 +735,7 @@ namespace RPGv2
         public int[] GetVals() => new int[] { intelligence, baseAtt, baseDef, pop };
         public static int RacesAmount() => JArray.Parse(File.ReadAllText(@"Dependencies\race.json")).Count;
     }
-    
+
     //chris
     class War
     {
@@ -1004,7 +1007,7 @@ namespace RPGv2
             return String.Format("Name: {0}\nRace: {1}\nPop: {2}\nSeverity: {3}", name, race.Name, pop, popSeverity);
         }
     }
-    
+
     //chris
     public class History
     {
@@ -1023,7 +1026,7 @@ namespace RPGv2
         int exp = 0;
         int level = 1;
         List<Item> equip = new List<Item>(6);
-        List<Item> inv = new List<Item>(50);
+        List<Item> inv = new List<Item>();
 
         public string Class { get; set; }
         public int Health { get; set; }
@@ -1115,6 +1118,21 @@ namespace RPGv2
                     case "knife":
                         Equip.Add(new Knife(split[1]));
                         break;
+                    case "armor":
+                        Equip.Add(new Armor(split[1]));
+                        break;
+                    case "arms":
+                        Equip.Add(new Arms(split[1]));
+                        break;
+                    case "gloves":
+                        Equip.Add(new Gloves(split[1]));
+                        break;
+                    case "pants":
+                        Equip.Add(new Pants(split[1]));
+                        break;
+                    case "boots":
+                        Equip.Add(new Boots(split[1]));
+                        break;
                     default:
                         break;
                 }
@@ -1123,23 +1141,7 @@ namespace RPGv2
 
         public void InitEquipString()
         {
-            if (Class == "Warrior")
-            {
-                Sword s = (Sword)Equip[0];
-                equipString[0] = "sword:" + s.name;
-            } else if (Class == "Rogue")
-            {
-                Knife s = (Knife)Equip[0];
-                equipString[0] = "knife:" + s.name;
-            } else
-            {
-                Staff s = (Staff)Equip[0];
-                equipString[0] = "staff:" + s.name;
-            }
-        }
-
-        public void InitInvString()
-        {
+            equipString = new List<string>(6) { "", "", "", "", "", ""};
             if (Class == "Warrior")
             {
                 Sword s = (Sword)Equip[0];
@@ -1154,6 +1156,68 @@ namespace RPGv2
             {
                 Staff s = (Staff)Equip[0];
                 equipString[0] = "staff:" + s.name;
+            }
+            Armor a = (Armor)Equip[1];
+            Arms ar = (Arms)Equip[2];
+            Gloves g = (Gloves)Equip[3];
+            Pants p = (Pants)Equip[4];
+            Boots b = (Boots)Equip[5];
+            equipString[1] = "armor:" + a.name;
+            equipString[2] = "arms:" + ar.name;
+            equipString[3] = "gloves:" + g.name;
+            equipString[4] = "pants:" + p.name;
+            equipString[5] = "boots:" + b.name;
+        }
+
+        public void InitInvString()
+        {
+            invString = new List<string>();
+            foreach (Item item in Inv.ToArray())
+            {
+                Type type = item.GetType();
+                if (type == typeof(Sword) || type == typeof(Staff) || type == typeof(Knife))
+                {
+                    if (Class == "Warrior")
+                    {
+                        Sword s = (Sword)Equip[0];
+                        invString.Add("sword:" + s.name);
+                    }
+                    else if (Class == "Rogue")
+                    {
+                        Knife s = (Knife)Equip[0];
+                        invString.Add("knife:" + s.name);
+                    }
+                    else
+                    {
+                        Staff s = (Staff)Equip[0];
+                        invString.Add("staff:" + s.name);
+                    }
+                }
+                if (type == typeof(Armor))
+                {
+                    Armor a = (Armor)item;
+                    invString.Add($"armor:{a}");
+                }
+                if (type == typeof(Arms))
+                {
+                    Arms a = (Arms)item;
+                    invString.Add($"arms:{a}");
+                }
+                if (type == typeof(Gloves))
+                {
+                    Gloves a = (Gloves)item;
+                    invString.Add($"gloves:{a}");
+                }
+                if (type == typeof(Pants))
+                {
+                    Pants a = (Pants)item;
+                    invString.Add($"pants:{a}");
+                }
+                if (type == typeof(Boots))
+                {
+                    Boots a = (Boots)item;
+                    invString.Add($"boots:{a}");
+                }
             }
         }
 
@@ -1178,6 +1242,21 @@ namespace RPGv2
                     case "knife":
                         Inv.Add(new Knife(split[1]));
                         break;
+                    case "armor":
+                        Inv.Add(new Armor(split[1]));
+                        break;
+                    case "arms":
+                        Inv.Add(new Arms(split[1]));
+                        break;
+                    case "gloves":
+                        Inv.Add(new Gloves(split[1]));
+                        break;
+                    case "pants":
+                        Inv.Add(new Pants(split[1]));
+                        break;
+                    case "boots":
+                        Inv.Add(new Boots(split[1]));
+                        break;
                     default:
                         break;
                 }
@@ -1190,6 +1269,7 @@ namespace RPGv2
             JObject save = JObject.Parse(arr[slot - 1].ToString());
             switch (inp)
             {
+
                 case 1:
                     Class = "Mage";
                     Attack = 10;
@@ -1202,8 +1282,8 @@ namespace RPGv2
                     Evasion = 3;
                     Health = 40;
                     Speed = 6;
-                    invString = new List<string> { };
-                    equipString = new List<string> { "staff:Wooden Staff" };
+                    invString = new List<string> { "" };
+                    equipString = new List<string> { "staff:Wooden Staff", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 1, 0, 0, 0 };
                     break;
                 case 2:
@@ -1218,8 +1298,8 @@ namespace RPGv2
                     Evasion = 2;
                     Health = 60;
                     Speed = 2;
-                    invString = new List<string> { };
-                    equipString = new List<string> { "sword:Bronze Sword" };
+                    invString = new List<string> { "" };
+                    equipString = new List<string> { "sword:Bronze Sword", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 3, 0, 0, 0 };
                     break;
                 case 3:
@@ -1234,8 +1314,8 @@ namespace RPGv2
                     Evasion = 8;
                     Speed = 9;
                     Health = 40;
-                    invString = new List<string> { };
-                    equipString = new List<string> { "knife:Bronze Dagger" };
+                    invString = new List<string> { "" };
+                    equipString = new List<string> { "knife:Bronze Dagger", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 4, 0, 0, 0 };
                     break;
                 default:
@@ -1348,7 +1428,7 @@ namespace RPGv2
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
                             Knife k = new Knife(i / 2);
-                            if(k.GetName() != "None")
+                            if (k.GetName() != "None")
                                 Inv.Add(new Knife(i / 2));
                             return new Knife(i / 2).GetName();
                         }
@@ -1525,7 +1605,7 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
-       
+
         public int Attack { get => att; set => att = value; }
         public int Defense { get => def; set => def = value; }
         public int BuyPrice { get => buyPrice; set => buyPrice = value; }
