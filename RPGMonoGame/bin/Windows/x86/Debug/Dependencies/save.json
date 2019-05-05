@@ -1,8 +1,12 @@
 {
   "player": {
-    "invString": [],
+    "invString": [
+      "sword:Silver Sword",
+      "sword:Silver Sword",
+      "sword:Silver Sword"
+    ],
     "equipString": [
-      "sword:Bronze Sword",
+      "sword:Silver Sword",
       "armor:Iron Plate",
       "arms:None",
       "gloves:None",
@@ -11,9 +15,9 @@
     ],
     "Class": "Warrior",
     "Health": 60,
-    "Attack": 20,
+    "Attack": 44,
     "MAtk": 2,
-    "Defense": 17,
+    "Defense": 27,
     "MDef": 3,
     "Intelligence": 5,
     "Money": 0.0,

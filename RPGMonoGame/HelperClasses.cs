@@ -860,10 +860,7 @@ namespace RPGv2
         internal EventVar Chosen { get => chosen; set => chosen = value; }
     }
     //max
-    public interface Item
-    {
-        string GetItemName();
-    }
+
     //jaxon
     class WarEvent
     {
@@ -1141,7 +1138,7 @@ namespace RPGv2
 
         public void InitEquipString()
         {
-            equipString = new List<string>(6) { "", "", "", "", "", ""};
+            equipString = new List<string>(6) { "", "", "", "", "", "" };
             if (Class == "Warrior")
             {
                 Sword s = (Sword)Equip[0];
@@ -1612,6 +1609,17 @@ namespace RPGv2
         }
     }
 
+    public interface Item
+    {
+        string GetItemName();
+        int GetAttack();
+        int GetDefense();
+        int GetBuyPrice();
+        int GetSellPrice();
+        int GetRarity();
+        List<string> GetAttributes();
+    }
+
     //max jaxon
     public class Staff : Item
     {
@@ -1665,6 +1673,14 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
+
+
         public override string ToString()
         {
             string output = "";
@@ -1735,6 +1751,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -1809,6 +1831,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -1830,6 +1858,12 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public string Name { get => name; }
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Armor(int index)
         {
@@ -1870,7 +1904,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
-
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -1892,6 +1931,12 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public string Name { get => name; }
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Arms(int index)
         {
@@ -1932,6 +1977,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -1953,6 +2004,12 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public string Name { get => name; }
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Gloves(int index)
         {
@@ -1993,6 +2050,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -2019,6 +2082,12 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public string Name { get => name; }
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Pants(int index)
         {
@@ -2059,6 +2128,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";
@@ -2085,6 +2160,12 @@ namespace RPGv2
         public int sellPrice;
         public int rarity;
         public List<string> attr;
+
+        public string Name { get => name; }
+        public int Attack { get => att; set => att = value; }
+        public int Defense { get => def; set => def = value; }
+        public int BuyPrice { get => buyPrice; set => buyPrice = value; }
+        public int SellPrice { get => sellPrice; set => sellPrice = value; }
 
         public Boots(int index)
         {
@@ -2125,6 +2206,12 @@ namespace RPGv2
         }
 
         string Item.GetItemName() => name;
+        int Item.GetAttack() => Attack;
+        int Item.GetDefense() => Defense;
+        int Item.GetBuyPrice() => BuyPrice;
+        int Item.GetSellPrice() => SellPrice;
+        int Item.GetRarity() => rarity;
+        List<string> Item.GetAttributes() => attr;
         public override string ToString()
         {
             string output = "";

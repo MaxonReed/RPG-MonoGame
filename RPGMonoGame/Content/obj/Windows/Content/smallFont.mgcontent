@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/Story.spritefont</SourceFile>
-  <SourceTime>2019-04-10T19:49:16.3940738-05:00</SourceTime>
-  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Story.xnb</DestFile>
-  <DestTime>2019-05-05T11:03:20.8257502-05:00</DestTime>
+  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/smallFont.spritefont</SourceFile>
+  <SourceTime>2019-05-05T11:03:49.2803726-05:00</SourceTime>
+  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/smallFont.xnb</DestFile>
+  <DestTime>2019-05-05T11:05:27.7730807-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

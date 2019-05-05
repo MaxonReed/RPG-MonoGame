@@ -26,6 +26,7 @@ namespace RPGMonoGame
         MouseState mouseState = Mouse.GetState();
         MouseState prevState;
         Stopwatch timer = new Stopwatch();
+        SpriteFont smallFont;
         #region MainMenuAssets
         Sprite mainMenuButton;
         Sprite quitButton;
@@ -196,6 +197,7 @@ namespace RPGMonoGame
             arialFont = Content.Load<SpriteFont>("StartButtonFont");
             storyFont = Content.Load<SpriteFont>("Story");
             storyFontI = Content.Load<SpriteFont>("StoryItalics");
+            smallFont = Content.Load<SpriteFont>("smallFont");
             Vector2 coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("StartButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("StartButton").Height / 2 - 70);
             mainMenuButton = new Sprite(Content.Load<Texture2D>("StartButton"), coor);
             coor = new Vector2(graphics.PreferredBackBufferWidth / 2 - Content.Load<Texture2D>("QuitButton").Width / 2, graphics.PreferredBackBufferHeight / 2 - Content.Load<Texture2D>("QuitButton").Height / 2);
@@ -420,7 +422,7 @@ namespace RPGMonoGame
                 if (GlobalValues.playerMenuSelected != "none")
                 {
                     page--;
-                    if (equip1.Contains(mousePoint))
+                    if (equip1.Contains(mousePoint) && equip1.Text != string.Empty)
                     {
                         index = 10 * page;
 
@@ -429,53 +431,56 @@ namespace RPGMonoGame
 
                             case "weapon":
                                 Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                Debug.WriteLine(tempItem.GetItemName());
+                                int ind = GamePlay.player.Inv.IndexOf(equippable[index]);
                                 GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                Debug.WriteLine(GamePlay.player.Inv[ind].GetItemName());
+                                GamePlay.player.Inv[ind] = tempItem;
+                                //GamePlay.player.Inv.Remove(GamePlay.player.Equip[0]);
+                                //Debug.WriteLine(tempItem.GetItemName());
+                                //if (tempItem.GetItemName() != "None")
+                                //    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                Debug.WriteLine(equippable[index].GetItemName());
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -536,7 +541,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip2.Contains(mousePoint))
+                    if (equip2.Contains(mousePoint) && equip2.Text != string.Empty)
                     {
                         index = 10 * page + 1;
                         switch (GlobalValues.playerMenuSelected)
@@ -646,7 +651,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip3.Contains(mousePoint))
+                    if (equip3.Contains(mousePoint) && equip3.Text != string.Empty)
                     {
                         index = 10 * page + 2;
                         switch (GlobalValues.playerMenuSelected)
@@ -756,7 +761,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip4.Contains(mousePoint))
+                    if (equip4.Contains(mousePoint) && equip4.Text != string.Empty)
                     {
                         index = 10 * page + 3;
                         switch (GlobalValues.playerMenuSelected)
@@ -866,7 +871,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip5.Contains(mousePoint))
+                    if (equip5.Contains(mousePoint) && equip5.Text != string.Empty)
                     {
                         index = 10 * page + 4;
                         switch (GlobalValues.playerMenuSelected)
@@ -976,7 +981,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip6.Contains(mousePoint))
+                    if (equip6.Contains(mousePoint) && equip6.Text != string.Empty)
                     {
                         index = 10 * page + 5;
                         switch (GlobalValues.playerMenuSelected)
@@ -1086,7 +1091,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip7.Contains(mousePoint))
+                    if (equip7.Contains(mousePoint) && equip7.Text != string.Empty)
                     {
                         index = 10 * page + 6;
                         switch (GlobalValues.playerMenuSelected)
@@ -1196,7 +1201,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip8.Contains(mousePoint))
+                    if (equip8.Contains(mousePoint) && equip8.Text != string.Empty)
                     {
                         index = 10 * page + 7;
                         switch (GlobalValues.playerMenuSelected)
@@ -1300,7 +1305,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip9.Contains(mousePoint))
+                    if (equip9.Contains(mousePoint) && equip9.Text != string.Empty)
                     {
                         index = 10 * page + 8;
                         switch (GlobalValues.playerMenuSelected)
@@ -1410,7 +1415,7 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
-                    if (equip10.Contains(mousePoint))
+                    if (equip10.Contains(mousePoint) && equip10.Text != string.Empty)
                     {
                         index = 10 * page + 9;
                         switch (GlobalValues.playerMenuSelected)
@@ -1790,6 +1795,17 @@ namespace RPGMonoGame
                 equip9.Text = equippableStrings[start];
                 start++;
                 equip10.Text = equippableStrings[start];
+            }
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+            int index = 0;
+            if(equip1.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
             }
             equip1.Draw(spriteBatch, gameTime);
             equip2.Draw(spriteBatch, gameTime);

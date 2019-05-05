@@ -477,6 +477,13 @@
 /processorParam:TextureFormat=Color
 /build:SkillsButtonHover.png
 
+#begin smallFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:smallFont.spritefont
+
 #begin Story.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
