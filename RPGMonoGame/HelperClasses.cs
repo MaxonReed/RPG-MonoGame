@@ -862,7 +862,7 @@ namespace RPGv2
     //max
     public interface Item
     {
-
+        string GetItemName();
     }
     //jaxon
     class WarEvent
@@ -1664,6 +1664,7 @@ namespace RPGv2
                 throw new InvalidOperationException("Unable to find sword: " + n);
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -1733,6 +1734,7 @@ namespace RPGv2
                 throw new InvalidOperationException("Unable to find sword: " + n);
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -1806,6 +1808,7 @@ namespace RPGv2
         {
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -1865,6 +1868,8 @@ namespace RPGv2
         public Armor()
         {
         }
+
+        string Item.GetItemName() => name;
 
         public override string ToString()
         {
@@ -1926,6 +1931,7 @@ namespace RPGv2
         {
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -1986,6 +1992,7 @@ namespace RPGv2
         {
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -2051,6 +2058,7 @@ namespace RPGv2
         {
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";
@@ -2116,6 +2124,7 @@ namespace RPGv2
         {
         }
 
+        string Item.GetItemName() => name;
         public override string ToString()
         {
             string output = "";

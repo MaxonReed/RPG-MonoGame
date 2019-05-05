@@ -419,13 +419,14 @@ namespace RPGMonoGame
                 Item tempItem;
                 if (GlobalValues.playerMenuSelected != "none")
                 {
+                    page--;
                     if (equip1.Contains(mousePoint))
                     {
                         index = 10 * page;
 
-                        switch(GlobalValues.playerMenuSelected)
+                        switch (GlobalValues.playerMenuSelected)
                         {
-                            
+
                             case "weapon":
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -447,9 +448,11 @@ namespace RPGMonoGame
                                     GamePlay.player.Defense -= s.Defense;
                                 }
                                 tempItem = GamePlay.player.Equip[0];
+                                
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -460,7 +463,7 @@ namespace RPGMonoGame
                                     equippableStrings[index] = s.name;
                                     Debug.WriteLine("bruh");
                                 }
-                                else if(GamePlay.player.Class == "Rogue")
+                                else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
@@ -478,8 +481,13 @@ namespace RPGMonoGame
                             case "armor":
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
+                                foreach (Item bruh in equippable)
+                                    Debug.WriteLine(bruh.GetItemName());
+                                Debug.WriteLine(index);
+                                Debug.WriteLine(equippable[index].GetItemName());
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -488,7 +496,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -497,7 +506,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -506,7 +516,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -515,7 +526,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -553,7 +565,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -583,7 +596,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -592,7 +606,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -601,7 +616,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -610,7 +626,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -619,7 +636,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -657,7 +675,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -687,7 +706,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -696,7 +716,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -705,7 +726,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -714,7 +736,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -723,7 +746,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -761,7 +785,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -791,7 +816,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -800,7 +826,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -809,7 +836,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -818,7 +846,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -827,7 +856,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -865,7 +895,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -895,7 +926,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -904,7 +936,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -913,7 +946,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -922,7 +956,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -931,7 +966,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -969,7 +1005,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -999,7 +1036,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -1008,7 +1046,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -1017,7 +1056,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -1026,7 +1066,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -1035,7 +1076,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -1073,7 +1115,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -1103,7 +1146,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -1112,7 +1156,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -1121,7 +1166,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -1130,7 +1176,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -1139,7 +1186,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -1281,7 +1329,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -1311,7 +1360,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -1320,7 +1370,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -1329,7 +1380,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -1338,7 +1390,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -1347,7 +1400,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -1385,7 +1439,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[0];
                                 GamePlay.player.Equip[0] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Debug.WriteLine("bruh");
                                 if (GamePlay.player.Class == "Warrior")
@@ -1415,7 +1470,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
                                 equippableStrings[index] = armor.name;
@@ -1424,7 +1480,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
                                 equippableStrings[index] = arms.name;
@@ -1433,7 +1490,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
                                 equippableStrings[index] = gloves.name;
@@ -1442,7 +1500,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
                                 equippableStrings[index] = pants.name;
@@ -1451,7 +1510,8 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if(tempItem.GetItemName() != "None")
+                                    GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
                                 equippableStrings[index] = boots.name;
@@ -1460,6 +1520,11 @@ namespace RPGMonoGame
                                 break;
                         }
                     }
+                    for (int i = 0; i < equippableStrings.Count; i++)
+                        if (equippableStrings[i] == "None")
+                            equippableStrings[i] = string.Empty;
+
+                    page++;
                 }
                 if (leftArrow.Contains(mousePoint))
                 {
