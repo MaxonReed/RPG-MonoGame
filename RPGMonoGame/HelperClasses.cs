@@ -1196,27 +1196,27 @@ namespace RPGv2
                 if (type == typeof(Armor))
                 {
                     Armor a = (Armor)item;
-                    invString.Add($"armor:{a}");
+                    invString.Add($"armor:{a.name}");
                 }
                 if (type == typeof(Arms))
                 {
                     Arms a = (Arms)item;
-                    invString.Add($"arms:{a}");
+                    invString.Add($"arms:{a.name}");
                 }
                 if (type == typeof(Gloves))
                 {
                     Gloves a = (Gloves)item;
-                    invString.Add($"gloves:{a}");
+                    invString.Add($"gloves:{a.name}");
                 }
                 if (type == typeof(Pants))
                 {
                     Pants a = (Pants)item;
-                    invString.Add($"pants:{a}");
+                    invString.Add($"pants:{a.name}");
                 }
                 if (type == typeof(Boots))
                 {
                     Boots a = (Boots)item;
-                    invString.Add($"boots:{a}");
+                    invString.Add($"boots:{a.name}");
                 }
             }
         }
