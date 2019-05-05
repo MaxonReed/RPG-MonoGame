@@ -1704,12 +1704,30 @@ namespace RPGMonoGame
         {
             spriteBatch.Begin();
             playerFigure.Draw(spriteBatch, gameTime);
-            weapon.Draw(spriteBatch, gameTime);
-            armor.Draw(spriteBatch, gameTime);
-            arms.Draw(spriteBatch, gameTime);
-            gloves.Draw(spriteBatch, gameTime);
-            pants.Draw(spriteBatch, gameTime);
-            boots.Draw(spriteBatch, gameTime);
+            if(GamePlay.player.Equip[0].GetItemName() == "None")
+                weapon.Draw(spriteBatch, gameTime);
+            else
+                weaponContains.Draw(spriteBatch, gameTime);
+            if (GamePlay.player.Equip[1].GetItemName() == "None")
+                armor.Draw(spriteBatch, gameTime);
+            else
+                armorContains.Draw(spriteBatch, gameTime);
+            if (GamePlay.player.Equip[2].GetItemName() == "None")
+                arms.Draw(spriteBatch, gameTime);
+            else
+                armsContains.Draw(spriteBatch, gameTime);
+            if (GamePlay.player.Equip[3].GetItemName() == "None")
+                gloves.Draw(spriteBatch, gameTime);
+            else
+                glovesContains.Draw(spriteBatch, gameTime);
+            if (GamePlay.player.Equip[4].GetItemName() == "None")
+                pants.Draw(spriteBatch, gameTime);
+            else
+                pantsContains.Draw(spriteBatch, gameTime);
+            if (GamePlay.player.Equip[5].GetItemName() == "None")
+                boots.Draw(spriteBatch, gameTime);
+            else
+                bootsContains.Draw(spriteBatch, gameTime);
             if (!string.IsNullOrEmpty(GlobalValues.playerMenuSelected) && GlobalValues.playerMenuSelected != "none")
             {
                 int start = (page - 1) * 10;
