@@ -392,7 +392,7 @@ namespace RPGMonoGame
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
             List<string> tempList = new List<string>(equippableStrings);
-            foreach(string str in tempList.ToArray())
+            foreach (string str in tempList.ToArray())
             {
                 if (str == string.Empty)
                     tempList.Remove(str);
@@ -407,8 +407,8 @@ namespace RPGMonoGame
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 if (quitButton.Contains(mousePoint))
-                { 
-                    if(GlobalValues.free)
+                {
+                    if (GlobalValues.free)
                     {
                         State = GameState.InFaction;
                     }
@@ -419,6 +419,7 @@ namespace RPGMonoGame
                 }
                 int index = 0;
                 Item tempItem;
+                Item tempInv;
                 if (GlobalValues.playerMenuSelected != "none")
                 {
                     page--;
@@ -428,9 +429,7 @@ namespace RPGMonoGame
 
                         switch (GlobalValues.playerMenuSelected)
                         {
-
                             case "weapon":
-                                Debug.WriteLine("bruh");
                                 tempItem = GamePlay.player.Equip[0];
                                 if (GamePlay.player.Class == "Warrior")
                                 {
@@ -450,17 +449,21 @@ namespace RPGMonoGame
                                     GamePlay.player.Attack -= s.Attack;
                                     GamePlay.player.Defense -= s.Defense;
                                 }
-                                Debug.WriteLine(tempItem.GetItemName());
-                                int ind = GamePlay.player.Inv.IndexOf(equippable[index]);
-                                GamePlay.player.Equip[0] = equippable[index];
-                                Debug.WriteLine(GamePlay.player.Inv[ind].GetItemName());
-                                GamePlay.player.Inv[ind] = tempItem;
-                                //GamePlay.player.Inv.Remove(GamePlay.player.Equip[0]);
-                                //Debug.WriteLine(tempItem.GetItemName());
-                                //if (tempItem.GetItemName() != "None")
-                                //    GamePlay.player.Inv.Add(tempItem);
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine(equippable[index].GetItemName());
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
@@ -548,53 +551,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -658,53 +668,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -768,53 +785,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -878,53 +902,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -988,53 +1019,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -1098,53 +1136,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if (tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -1208,52 +1253,60 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
@@ -1312,60 +1365,67 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
@@ -1375,7 +1435,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
@@ -1385,7 +1445,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
@@ -1395,7 +1455,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
@@ -1405,7 +1465,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
@@ -1422,60 +1482,67 @@ namespace RPGMonoGame
                         {
 
                             case "weapon":
-                                Debug.WriteLine("bruh");
-                                if (GamePlay.player.Class == "Warrior")
-                                {
-                                    Sword s = (Sword)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else if (GamePlay.player.Class == "Rogue")
-                                {
-                                    Knife s = (Knife)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
-                                else
-                                {
-                                    Staff s = (Staff)GamePlay.player.Equip[0];
-                                    GamePlay.player.Attack -= s.Attack;
-                                    GamePlay.player.Defense -= s.Defense;
-                                }
                                 tempItem = GamePlay.player.Equip[0];
-                                GamePlay.player.Equip[0] = equippable[index];
-                                GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
-                                    GamePlay.player.Inv.Add(tempItem);
+                                if (GamePlay.player.Class == "Warrior")
+                                {
+                                    Sword s = (Sword)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else if (GamePlay.player.Class == "Rogue")
+                                {
+                                    Knife s = (Knife)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                else
+                                {
+                                    Staff s = (Staff)GamePlay.player.Equip[0];
+                                    GamePlay.player.Attack -= s.Attack;
+                                    GamePlay.player.Defense -= s.Defense;
+                                }
+                                tempInv = equippable[index];
+                                GamePlay.player.Equip[0] = tempInv;
                                 equippable[index] = tempItem;
-                                Debug.WriteLine("bruh");
+                                for (int i = 0; i < GamePlay.player.Inv.Count; i++)
+                                {
+                                    if (GamePlay.player.Inv[i] == tempInv)
+                                    {
+                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
+                                        GamePlay.player.Inv[i] = tempItem;
+                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
+                                        GamePlay.player.InitInvString();
+                                        Debug.WriteLine(GamePlay.player.invString[i]);
+                                        i = GamePlay.player.Inv.Count;
+                                    }
+                                }
                                 if (GamePlay.player.Class == "Warrior")
                                 {
                                     Sword s = (Sword)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
-                                    Debug.WriteLine("bruh");
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else if (GamePlay.player.Class == "Rogue")
                                 {
                                     Knife s = (Knife)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 else
                                 {
                                     Staff s = (Staff)GamePlay.player.Equip[0];
                                     GamePlay.player.Attack += s.Attack;
                                     GamePlay.player.Defense += s.Defense;
-                                    equippableStrings[index] = s.name;
+                                    equippableStrings[index] = tempItem.GetItemName();
                                 }
                                 break;
                             case "armor":
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Armor armor = (Armor)tempItem;
@@ -1485,7 +1552,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[2];
                                 GamePlay.player.Equip[2] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Arms arms = (Arms)tempItem;
@@ -1495,7 +1562,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[3];
                                 GamePlay.player.Equip[3] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Gloves gloves = (Gloves)tempItem;
@@ -1505,7 +1572,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[4];
                                 GamePlay.player.Equip[4] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Pants pants = (Pants)tempItem;
@@ -1515,7 +1582,7 @@ namespace RPGMonoGame
                                 tempItem = GamePlay.player.Equip[5];
                                 GamePlay.player.Equip[5] = equippable[index];
                                 GamePlay.player.Inv.Remove(equippable[index]);
-                                if(tempItem.GetItemName() != "None")
+                                if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
                                 equippable[index] = tempItem;
                                 Boots boots = (Boots)tempItem;
@@ -1533,7 +1600,7 @@ namespace RPGMonoGame
                 }
                 if (leftArrow.Contains(mousePoint))
                 {
-                    if(page > 1)
+                    if (page > 1)
                         page--;
                 }
                 if (rightArrow.Contains(mousePoint))
@@ -1546,10 +1613,10 @@ namespace RPGMonoGame
                     GlobalValues.playerMenuSelected = "weapon";
                     equippable = new List<Item>();
                     equippableStrings = new List<string>();
-                    foreach(Item item in GamePlay.player.Inv)
+                    foreach (Item item in GamePlay.player.Inv)
                     {
                         Type type = item.GetType();
-                        if(typeof(Sword) == type)
+                        if (typeof(Sword) == type)
                         {
                             Sword s = (Sword)item;
                             equippableStrings.Add(s.GetName());
@@ -1709,7 +1776,7 @@ namespace RPGMonoGame
         {
             spriteBatch.Begin();
             playerFigure.Draw(spriteBatch, gameTime);
-            if(GamePlay.player.Equip[0].GetItemName() == "None")
+            if (GamePlay.player.Equip[0].GetItemName() == "None")
                 weapon.Draw(spriteBatch, gameTime);
             else
                 weaponContains.Draw(spriteBatch, gameTime);
@@ -1733,15 +1800,60 @@ namespace RPGMonoGame
                 boots.Draw(spriteBatch, gameTime);
             else
                 bootsContains.Draw(spriteBatch, gameTime);
+            int maxSize = 18;
+            if(equip1.Text.Length >= maxSize)
+                equip1.Font = smallFont;
+            else
+                equip1.Font = storyFont;
+            if (equip2.Text.Length >= maxSize)
+                equip2.Font = smallFont;
+            else
+                equip2.Font = storyFont;
+            if (equip2.Text.Length >= maxSize)
+                equip2.Font = smallFont;
+            else
+                equip2.Font = storyFont;
+            if (equip3.Text.Length >= maxSize)
+                equip3.Font = smallFont;
+            else
+                equip3.Font = storyFont;
+            if (equip4.Text.Length >= maxSize)
+                equip4.Font = smallFont;
+            else
+                equip4.Font = storyFont;
+            if (equip5.Text.Length >= maxSize)
+                equip5.Font = smallFont;
+            else
+                equip5.Font = storyFont;
+            if (equip6.Text.Length >= maxSize)
+                equip6.Font = smallFont;
+            else
+                equip6.Font = storyFont;
+            if (equip7.Text.Length >= maxSize)
+                equip7.Font = smallFont;
+            else
+                equip7.Font = storyFont;
+            if (equip8.Text.Length >= maxSize)
+                equip8.Font = smallFont;
+            else
+                equip8.Font = storyFont;
+            if (equip9.Text.Length >= maxSize)
+                equip9.Font = smallFont;
+            else
+                equip9.Font = storyFont;
+            if (equip10.Text.Length >= maxSize)
+                equip10.Font = smallFont;
+            else
+                equip10.Font = storyFont;
             if (!string.IsNullOrEmpty(GlobalValues.playerMenuSelected) && GlobalValues.playerMenuSelected != "none")
             {
                 int start = (page - 1) * 10;
-                if(equippableStrings.Count - 1 < start+10)
+                if (equippableStrings.Count - 1 < start + 10)
                 {
                     for (int i = equippableStrings.Count - 1; i < start + 10; i++)
                     {
                         equippableStrings.Add(string.Empty);
-                        switch(GlobalValues.playerMenuSelected)
+                        switch (GlobalValues.playerMenuSelected)
                         {
                             case "weapon":
                                 if (GamePlay.player.Class == "Warrior")
@@ -1799,7 +1911,67 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             int index = 0;
-            if(equip1.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+            if(weapon.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index++;
+            if (armor.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index++;
+            if (arms.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index++;
+            if (gloves.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index++;
+            if (pants.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index++;
+            if (boots.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            {
+                spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
+                spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Equip[index].GetDefense(), new Vector2(300, 75), Color.Black);
+                spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Equip[index].GetBuyPrice(), new Vector2(300, 100), Color.Black);
+                spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Equip[index].GetSellPrice(), new Vector2(300, 125), Color.Black);
+                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
+            }
+            index = 0;
+            if (equip1.Contains(mousePoint) && equippable[index].GetItemName() != "None")
             {
                 spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
                 spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
@@ -1807,6 +1979,96 @@ namespace RPGMonoGame
                 spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
                 spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
             }
+            index++;
+            if (index < equippable.Count)
+                if (equip2.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip3.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip4.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip5.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip6.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip7.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip8.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip9.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
+            index++;
+            if (index < equippable.Count)
+                if (equip10.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
             equip1.Draw(spriteBatch, gameTime);
             equip2.Draw(spriteBatch, gameTime);
             equip3.Draw(spriteBatch, gameTime);
@@ -2220,7 +2482,7 @@ namespace RPGMonoGame
                                     {
                                         if (str == @"Night's Bane")
                                             if (GamePlay.player.Health > Battle.playerHP)
-                                                Battle.playerHP = 0;
+                                                Battle.playerHP /= 2;
                                         if (str == "Bloodthirsty")
                                         {
                                             Battle.player.Defense -= 1;
@@ -2921,7 +3183,7 @@ namespace RPGMonoGame
         {
             MouseState mouseState = Mouse.GetState();
             if (Img.Contains(mouseState.Position))
-                spriteBatch.Draw(HoverImg.Texture, Img.Position, null, Color.White, 0, new Vector2(0,0), Scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(HoverImg.Texture, Img.Position, null, Color.White, 0, new Vector2(0, 0), Scale, SpriteEffects.None, 0);
             else
                 spriteBatch.Draw(Img.Texture, Img.Position, null, Color.White, 0, new Vector2(0, 0), Scale, SpriteEffects.None, 0);
             spriteBatch.DrawString(Font, Text, new Vector2(Img.Position.X + 7, Img.Position.Y + 7), Color.Black);

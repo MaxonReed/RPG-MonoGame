@@ -1176,17 +1176,17 @@ namespace RPGv2
                 {
                     if (Class == "Warrior")
                     {
-                        Sword s = (Sword)Equip[0];
+                        Sword s = (Sword)item;
                         invString.Add("sword:" + s.name);
                     }
                     else if (Class == "Rogue")
                     {
-                        Knife s = (Knife)Equip[0];
+                        Knife s = (Knife)item;
                         invString.Add("knife:" + s.name);
                     }
                     else
                     {
-                        Staff s = (Staff)Equip[0];
+                        Staff s = (Staff)item;
                         invString.Add("staff:" + s.name);
                     }
                 }
