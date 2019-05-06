@@ -162,6 +162,8 @@ namespace RPGMonoGame
             set => _state = value;
         }
 
+        GameState prevGameState = GameState.StartPage;
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -317,6 +319,9 @@ namespace RPGMonoGame
             }
             if (GlobalValues.free && State != GameState.BattlePage && State != GameState.PlayerMenu)
                 State = GameState.InFaction;
+            if (State != prevGameState && State == GameState.InFaction)
+                UpdateShopVals();
+            prevGameState = State;
             //Debug.WriteLine(GlobalValues.storyState);
             base.Update(gameTime);
             switch (State)
@@ -2200,6 +2205,10 @@ namespace RPGMonoGame
                     shopButton.Draw(spriteBatch, gameTime);
                     playerButton.Draw(spriteBatch, gameTime);
                     break;
+                case "shop":
+                    quitButton.Draw(spriteBatch, gameTime);
+
+                    break;
                 default:
                     break;
             }
@@ -3062,14 +3071,12 @@ namespace RPGMonoGame
             spriteBatch.End();
         }
 
-
-
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-
-
+        void UpdateShopVals()
+        {
+            GlobalValues.shopItems = new List<Item>();
+            for (int i = 0; i<10; i++)
+                GlobalValues.shopItems.Add(GamePlay.player.StoreItem());
+        }
     }
     public class NumberBox
     {
