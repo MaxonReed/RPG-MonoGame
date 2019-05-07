@@ -493,6 +493,7 @@ namespace RPGv2
         public static int playerMenuPage = 1;
         public static List<Item> shopItems = new List<Item>();
         public static List<string> shopItemsString = new List<string>();
+        public static bool shopBuying = false;
 
         public static void SetVals(JsonValues jVals)
         {

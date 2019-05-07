@@ -2184,7 +2184,22 @@ namespace RPGMonoGame
                         }
                         break;
                     case "shop":
-
+                        if (quitButton.Contains(mousePoint))
+                            GlobalValues.inFactionState = "start";
+                        if (!GlobalValues.shopBuying)
+                        {
+                            int shopIndex = 0;
+                            if (equip1.Contains(mousePoint))
+                            {
+                                if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                                {
+                                    GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                                    GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                                    GamePlay.player.InitInvString();
+                                }
+                            }
+                            shopIndex++;
+                        }
                         break;
                     default:
                         break;
@@ -2194,9 +2209,14 @@ namespace RPGMonoGame
 
         void DrawInFaction(GameTime gameTime)
         {
+            prevState = mouseState;
+            mouseState = Mouse.GetState();
+            var mousePoint = new Point(mouseState.X, mouseState.Y);
+
             spriteBatch.Begin();
             Faction fac = GlobalValues.locationFaction;
-            spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 25), Color.Black);
+            if(GlobalValues.inFactionState != "shop")
+                spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 25), Color.Black);
             switch (GlobalValues.inFactionState)
             {
                 case "start":
@@ -2207,7 +2227,126 @@ namespace RPGMonoGame
                     break;
                 case "shop":
                     quitButton.Draw(spriteBatch, gameTime);
-
+                    equip1.Text = GlobalValues.shopItems[0].GetItemName();
+                    equip2.Text = GlobalValues.shopItems[1].GetItemName();
+                    equip3.Text = GlobalValues.shopItems[2].GetItemName();
+                    equip4.Text = GlobalValues.shopItems[3].GetItemName();
+                    equip5.Text = GlobalValues.shopItems[4].GetItemName();
+                    equip6.Text = GlobalValues.shopItems[5].GetItemName();
+                    equip7.Text = GlobalValues.shopItems[6].GetItemName();
+                    equip8.Text = GlobalValues.shopItems[7].GetItemName();
+                    equip9.Text = GlobalValues.shopItems[8].GetItemName();
+                    equip10.Text = GlobalValues.shopItems[9].GetItemName();
+                    equip1.Font = smallFont;
+                    equip2.Font = smallFont;
+                    equip3.Font = smallFont;
+                    equip4.Font = smallFont;
+                    equip5.Font = smallFont;
+                    equip6.Font = smallFont;
+                    equip7.Font = smallFont;
+                    equip8.Font = smallFont;
+                    equip9.Font = smallFont;
+                    equip10.Font = smallFont;
+                    equip1.Draw(spriteBatch, gameTime);
+                    equip2.Draw(spriteBatch, gameTime);
+                    equip3.Draw(spriteBatch, gameTime);
+                    equip4.Draw(spriteBatch, gameTime);
+                    equip5.Draw(spriteBatch, gameTime);
+                    equip6.Draw(spriteBatch, gameTime);
+                    equip7.Draw(spriteBatch, gameTime);
+                    equip8.Draw(spriteBatch, gameTime);
+                    equip9.Draw(spriteBatch, gameTime);
+                    equip10.Draw(spriteBatch, gameTime);
+                    int index = 0;
+                    if (equip1.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip2.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip3.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip4.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip5.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip6.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip7.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip8.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip9.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
+                    index++;
+                    if (equip10.Contains(mousePoint) && GlobalValues.shopItems[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(storyFont, "Attack: " + GlobalValues.shopItems[index].GetAttack(), new Vector2(100, 25), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Defense: " + GlobalValues.shopItems[index].GetDefense(), new Vector2(100, 50), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Buy Price: " + GlobalValues.shopItems[index].GetBuyPrice(), new Vector2(100, 75), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Sell Price: " + GlobalValues.shopItems[index].GetSellPrice(), new Vector2(100, 100), Color.Black);
+                        spriteBatch.DrawString(storyFont, "Attributes: " + string.Join(",", GlobalValues.shopItems[index].GetAttributes()), new Vector2(100, 125), Color.Black);
+                    }
                     break;
                 default:
                     break;
@@ -3074,8 +3213,16 @@ namespace RPGMonoGame
         void UpdateShopVals()
         {
             GlobalValues.shopItems = new List<Item>();
-            for (int i = 0; i<10; i++)
-                GlobalValues.shopItems.Add(GamePlay.player.StoreItem());
+            Item item;
+            for (int i = 0; i < 10;)
+            {
+                item = GamePlay.player.StoreItem();
+                if (item.GetItemName() != "None")
+                {
+                    GlobalValues.shopItems.Add(item);
+                    i++;
+                }
+            }
         }
     }
     public class NumberBox
