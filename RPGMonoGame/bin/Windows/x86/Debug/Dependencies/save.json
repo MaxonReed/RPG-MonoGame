@@ -1493,18 +1493,18 @@
       "Advances": [],
       "PopSeverity": 0.50879135943204279
     },
-    "inFactionState": "start",
+    "inFactionState": "shop",
     "shopItemsString": [
-      "sword:Iron Sword",
-      "sword:Ice Blade",
-      "sword:Bronze Sword",
-      "sword:Iron Sword",
-      "sword:Rapier",
+      "sword:Gold Sword",
+      "arms:Silver Band",
       "armor:Iron Plate",
-      "sword:Rapier",
+      "arms:Thorn Sleeves",
+      "arms:Bronze Band",
+      "armor:Bronze Plate",
+      "arms:Iron Band",
       "armor:Iron Plate",
       "armor:Silver Plate",
-      "armor:Bronze Plate"
+      "arms:Serpent's Band"
     ]
   },
   "enemyFaction": {
