@@ -37,5 +37,59 @@
     "Sell Price": 15,
     "Rarity Level": 3300,
     "Attr": "None"
+  },
+  {
+    "Name": "War-Torn Cloth",
+    "Attack": 1,
+    "Defense": 10,
+    "Buy Price": 105,
+    "Sell Price": 17,
+    "Rarity Level": 3000,
+    "Attr": "Commander"
+  },
+  {
+    "Name": "Cloak of Shroud",
+    "Attack": 0,
+    "Defense": 15,
+    "Buy Price": 140,
+    "Sell Price": 22,
+    "Rarity Level": 2750,
+    "Attr": "None"
+  },
+  {
+    "Name": "Armour of the Black Knight",
+    "Attack": 5,
+    "Defense": 22,
+    "Buy Price": 200,
+    "Sell Price": 1,
+    "Rarity Level": 2500,
+    "Attr": "Curse"
+  },
+  {
+    "Name": "Holy Chainmail",
+    "Attack": 0,
+    "Defense": 25,
+    "Buy Price": 200,
+    "Sell Price": 50,
+    "Rarity Level": 2500,
+    "Attr": "None"
+  },
+  {
+    "Name": "Gamer Shirt",
+    "Attack": 0,
+    "Defense": 30,
+    "Buy Price": 10000,
+    "Sell Price": 200,
+    "Rarity Level": 5,
+    "Attr": "Epic|Gamer"//Epic: this Item will make you epic || Gamer: Gain 3 hp if you are epic every turn
+  },
+  {
+    "Name": "Death's Cloak",
+    "Attack": 20,
+    "Defense": 10,
+    "Buy Price": 10000,
+    "Sell Price": 200,
+    "Rarity Level": 5,
+    "Attr": "Death"//If you succeed in attacking an enemy gain all hp you lost back and gain an extra turn
   }
 ]
