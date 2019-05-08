@@ -146,8 +146,8 @@ namespace RPGMonoGame
         #region shopAssets
         Button sellButton;
         Button buyButton;
-        int shopPage;
-        int shopMaxPages;
+        int shopPage = 1;
+        int shopMaxPages = 1;
         #endregion
         public enum GameState
         {
@@ -432,6 +432,7 @@ namespace RPGMonoGame
                 else
                 {
                     int start = (page - 1) * 10;
+                    
                 }
             }
         }
@@ -441,6 +442,7 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+
             if (GlobalValues.shopBuying)
             {
                 sellButton.Draw(spriteBatch, gameTime);
@@ -614,7 +616,6 @@ namespace RPGMonoGame
                     equip10.Font = smallFont;
                 else
                     equip10.Font = storyFont;
-
             }
         }
 
