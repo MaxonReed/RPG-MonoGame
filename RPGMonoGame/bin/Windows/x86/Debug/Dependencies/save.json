@@ -1,39 +1,31 @@
 {
   "player": {
     "invString": [
-      "armor:Iron Plate",
-      "sword:Rapier",
-      "armor:Silver Plate",
-      "armor:Silver Plate",
-      "armor:Iron Plate",
-      "armor:Silver Plate",
       "armor:Bronze Plate",
-      "armor:Iron Plate",
       "armor:Silver Plate",
-      "armor:Iron Plate",
-      "armor:Iron Plate"
+      "sword:Bronze Sword"
     ],
     "equipString": [
-      "sword:Bronze Sword",
-      "armor:None",
+      "sword:Ice Blade",
+      "armor:Silver Plate",
       "arms:None",
       "gloves:None",
       "pants:None",
       "boots:None"
     ],
     "Class": "Warrior",
-    "Health": 61,
-    "Attack": 22,
+    "Health": 91,
+    "Attack": 30,
     "MAtk": 2,
-    "Defense": 16,
+    "Defense": 26,
     "MDef": 3,
-    "Intelligence": 4,
+    "Intelligence": 6,
     "Money": 0.0,
-    "Luck": 3.0,
-    "Evasion": 3.0,
-    "Speed": 3,
-    "Level": 2,
-    "Exp": 0,
+    "Luck": 8.0,
+    "Evasion": 4.0,
+    "Speed": 5,
+    "Level": 4,
+    "Exp": 46,
     "Special": [
       3,
       0,
@@ -1501,18 +1493,18 @@
       "Advances": [],
       "PopSeverity": 0.50879135943204279
     },
-    "inFactionState": "shop",
+    "inFactionState": "start",
     "shopItemsString": [
+      "sword:Iron Sword",
+      "sword:Ice Blade",
+      "sword:Bronze Sword",
+      "sword:Iron Sword",
       "sword:Rapier",
-      "armor:Silver Plate",
-      "armor:Silver Plate",
+      "armor:Iron Plate",
+      "sword:Rapier",
       "armor:Iron Plate",
       "armor:Silver Plate",
-      "armor:Bronze Plate",
-      "armor:Iron Plate",
-      "armor:Silver Plate",
-      "armor:Iron Plate",
-      "armor:Iron Plate"
+      "armor:Bronze Plate"
     ]
   },
   "enemyFaction": {
@@ -1523,39 +1515,41 @@
   },
   "battleJson": {
     "enemy": {
-      "Health": 0,
-      "Name": null,
-      "Attack": 0,
-      "Defense": 0,
-      "Speed": 0,
-      "MDef": 0,
-      "Level": 0
+      "Health": 100,
+      "Name": "Magic Archer",
+      "Attack": 10,
+      "Defense": 1,
+      "Speed": 30,
+      "MDef": 25,
+      "Level": 2
     },
     "player": {
       "invString": [
-        "armor:Iron Plate"
+        "armor:Bronze Plate",
+        "armor:Silver Plate",
+        "sword:Bronze Sword"
       ],
       "equipString": [
-        "sword:Bronze Sword",
-        "armor:None",
+        "sword:Ice Blade",
+        "armor:Silver Plate",
         "arms:None",
         "gloves:None",
         "pants:None",
         "boots:None"
       ],
       "Class": "Warrior",
-      "Health": 61,
-      "Attack": 22,
+      "Health": 91,
+      "Attack": 30,
       "MAtk": 2,
-      "Defense": 16,
+      "Defense": 26,
       "MDef": 3,
-      "Intelligence": 4,
+      "Intelligence": 6,
       "Money": 0.0,
-      "Luck": 3.0,
-      "Evasion": 3.0,
-      "Speed": 3,
-      "Level": 2,
-      "Exp": 0,
+      "Luck": 8.0,
+      "Evasion": 4.0,
+      "Speed": 5,
+      "Level": 4,
+      "Exp": 46,
       "Special": [
         3,
         0,
@@ -1563,11 +1557,11 @@
         0
       ]
     },
-    "playerHP": 0,
-    "enemyHP": 0,
+    "playerHP": 89,
+    "enemyHP": 97,
     "turn": false,
-    "round": -1,
+    "round": 1,
     "outcome": -1,
-    "fightText": ""
+    "fightText": "You have encountered a Magic Archer"
   }
 }

@@ -1458,9 +1458,6 @@ namespace RPGv2
                             {
                                 if (num >= minMax[i] && num <= minMax[i + 1])
                                 {
-                                    Sword sw = new Sword(i / 2);
-                                    if (sw.GetName() != "None")
-                                        Inv.Add(new Sword(i / 2));
                                     return new Sword(i / 2);
                                 }
                             }
@@ -1486,9 +1483,6 @@ namespace RPGv2
                             {
                                 if (num >= minMax[i] && num <= minMax[i + 1])
                                 {
-                                    Staff st = new Staff(i / 2);
-                                    if (st.GetName() != "None")
-                                        Inv.Add(new Staff(i / 2));
                                     return new Staff(i / 2);
                                 }
                             }
@@ -1514,9 +1508,6 @@ namespace RPGv2
                             {
                                 if (num >= minMax[i] && num <= minMax[i + 1])
                                 {
-                                    Knife k = new Knife(i / 2);
-                                    if (k.GetName() != "None")
-                                        Inv.Add(new Knife(i / 2));
                                     return new Knife(i / 2);
                                 }
                             }
@@ -1547,9 +1538,6 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Armor sw = new Armor(i / 2);
-                            if (sw.GetName() != "None")
-                                Inv.Add(new Armor(i / 2));
                             return new Armor(i / 2);
                         }
                     }
@@ -1575,9 +1563,6 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Arms sw = new Arms(i / 2);
-                            if (sw.GetName() != "None")
-                                Inv.Add(new Arms(i / 2));
                             return new Arms(i / 2);
                         }
                     }
@@ -1603,9 +1588,6 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Gloves sw = new Gloves(i / 2);
-                            if (sw.GetName() != "None")
-                                Inv.Add(new Gloves(i / 2));
                             return new Gloves(i / 2);
                         }
                     }
@@ -1631,9 +1613,6 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Pants sw = new Pants(i / 2);
-                            if (sw.GetName() != "None")
-                                Inv.Add(new Pants(i / 2));
                             return new Pants(i / 2);
                         }
                     }
@@ -1659,9 +1638,6 @@ namespace RPGv2
                     {
                         if (num >= minMax[i] && num <= minMax[i + 1])
                         {
-                            Boots sw = new Boots(i / 2);
-                            if (sw.GetName() != "None")
-                                Inv.Add(new Boots(i / 2));
                             return new Boots(i / 2);
                         }
                     }
