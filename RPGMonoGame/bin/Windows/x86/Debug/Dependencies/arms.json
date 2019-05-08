@@ -10,5 +10,68 @@
     "Sell Price": 0,
     "Rarity Level": 5000,
     "Attr": "None"
+  },
+  {
+    "Name": "Bronze Band",
+    "Attack": 0,
+    "Defense": 1,
+    "Buy Price": 5,
+    "Sell Price": 1,
+    "Rarity Level": 4500,
+    "Attr": "None"
+  },
+  {
+    "Name": "Iron Band",
+    "Attack": 0,
+    "Defense": 2,
+    "Buy Price": 10,
+    "Sell Price": 2,
+    "Rarity Level": 4000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Silver Band",
+    "Attack": 0,
+    "Defense": 3,
+    "Buy Price": 15,
+    "Sell Price": 3,
+    "Rarity Level": 3750,
+    "Attr": "None"
+  },
+  {
+    "Name": "Serpent's Band",
+    "Attack": 0,
+    "Defense": 5,
+    "Buy Price": 30,
+    "Sell Price": 5,
+    "Rarity Level": 3250,
+    "Attr": "None"
+  },
+  {
+    "Name": "Glo Band",
+    "Attack": 0,
+    "Defense": 1,
+    "Buy Price": 50,
+    "Sell Price": 10,
+    "Rarity Level": 3000,
+    "Attr": "CounterMagic"//Deal all damage as normal damage
+  },
+  {
+    "Name": "Gold Band",
+    "Attack": 0,
+    "Defense": 7,
+    "Buy Price": 60,
+    "Sell Price": 12,
+    "Rarity Level": 2800,
+    "Attr": "None"
+  },
+  {
+    "Name": "Thorn Sleeves",
+    "Attack": 3,
+    "Defense": 3,
+    "Buy Price": 75,
+    "Sell Price": 15,
+    "Rarity Level": 2500,
+    "Attr": "None"
   }
 ]
