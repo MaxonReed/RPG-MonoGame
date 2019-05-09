@@ -431,6 +431,15 @@ namespace RPGMonoGame
                 }
                 else
                 {
+                    maxPages = GamePlay.player.Inv.Count / 10;
+                    if (GamePlay.player.Inv.Count % 10 != 0 && GamePlay.player.Inv.Count > 10)
+                        maxPages++;
+                    if (maxPages <= 0)
+                        maxPages = 1;
+                    if (leftArrow.Contains(mousePoint) && page > 1)
+                        page--;
+                    if (leftArrow.Contains(mousePoint) && page < maxPages)
+                        page++;
                     int start = (page - 1) * 10;
                     
                 }
@@ -443,6 +452,7 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
+            spriteBatch.Begin();
             if (GlobalValues.shopBuying)
             {
                 sellButton.Draw(spriteBatch, gameTime);
@@ -571,6 +581,7 @@ namespace RPGMonoGame
             else
             {
                 buyButton.Draw(spriteBatch, gameTime);
+                leftArrow.Draw(spriteBatch, gameTime);
                 int maxSize = 18;
                 if (equip1.Text.Length >= maxSize)
                     equip1.Font = smallFont;
@@ -616,7 +627,22 @@ namespace RPGMonoGame
                     equip10.Font = smallFont;
                 else
                     equip10.Font = storyFont;
+                equip1.Draw(spriteBatch, gameTime);
+                equip2.Draw(spriteBatch, gameTime);
+                equip3.Draw(spriteBatch, gameTime);
+                equip4.Draw(spriteBatch, gameTime);
+                equip5.Draw(spriteBatch, gameTime);
+                equip6.Draw(spriteBatch, gameTime);
+                equip7.Draw(spriteBatch, gameTime);
+                equip8.Draw(spriteBatch, gameTime);
+                equip9.Draw(spriteBatch, gameTime);
+                equip10.Draw(spriteBatch, gameTime);
+                leftArrow.Draw(spriteBatch, gameTime);
+                rightArrow.Draw(spriteBatch, gameTime);
+                quitButton.Draw(spriteBatch, gameTime);
+                spriteBatch.DrawString(storyFont, $"{page}/{maxPages}", new Vector2(640, 460), Color.Black);
             }
+            spriteBatch.End();
         }
 
         void UpdatePlayerMenu(GameTime gameTime)
@@ -2408,7 +2434,7 @@ namespace RPGMonoGame
                         }
                         if (shopButton.Contains(mousePoint))
                         {
-                            GlobalValues.inFactionState = "shop";
+                            State = GameState.ShopMenu;
                         }
                         if (playerButton.Contains(mousePoint))
                         {
@@ -2438,9 +2464,6 @@ namespace RPGMonoGame
                     wildButton.Draw(spriteBatch, gameTime);
                     shopButton.Draw(spriteBatch, gameTime);
                     playerButton.Draw(spriteBatch, gameTime);
-                    break;
-                case "shop":
-                   
                     break;
                 default:
                     break;

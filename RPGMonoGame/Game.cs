@@ -9,7 +9,7 @@ namespace RPGv2
     {
         HelperClasses hc = new HelperClasses();
         public static History hist = new History();
-        internal HelperClasses HC { get => HC; set => HC = value; }
+        internal HelperClasses HC { get => hc; set => hc = value; }
         public static Player player = new Player();
 
         //chris
@@ -30,7 +30,6 @@ namespace RPGv2
             hist.Factions.Add(affrieca);
             GlobalValues.save.player = player;
             GlobalValues.save.hist = hist;
-            
         }
 
         //chris and some jaxon
