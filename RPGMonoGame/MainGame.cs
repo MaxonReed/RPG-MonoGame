@@ -293,8 +293,8 @@ namespace RPGMonoGame
             origY += inc;
             rightArrow = new Button(Content.Load<Texture2D>("NextPageInv"), Content.Load<Texture2D>("NextPageInvHover"), string.Empty, storyFont, new Vector2(720, origY));
             leftArrow = new Button(Content.Load<Texture2D>("PrevPageInv"), Content.Load<Texture2D>("PrevPageInvHover"), string.Empty, storyFont, new Vector2(570, origY));
-            sellButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Sell", storyFont, new Vector2(50, 70));
-            buyButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Buy", storyFont, new Vector2(50, 70));
+            sellButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Sell", storyFont, new Vector2(50, 200));
+            buyButton = new Button(Content.Load<Texture2D>("DefaultButton"), Content.Load<Texture2D>("DefaultButtonHover"), "Buy", storyFont, new Vector2(50, 200));
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace RPGMonoGame
                     GlobalValues.save.SaveGame();
                 }
             }
-            if (GlobalValues.free && State != GameState.BattlePage && State != GameState.PlayerMenu)
+            if (GlobalValues.free && State != GameState.BattlePage && State != GameState.PlayerMenu && State != GameState.ShopMenu)
                 State = GameState.InFaction;
             if (State != prevGameState && State == GameState.InFaction)
                 UpdateShopVals();
@@ -410,14 +410,77 @@ namespace RPGMonoGame
             prevState = mouseState;
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
+            shopMaxPages = GamePlay.player.Inv.Count / 10;
+            if (GamePlay.player.Inv.Count % 10 != 0 && GamePlay.player.Inv.Count > 10)
+                shopMaxPages++;
+            if (maxPages <= 0)
+                shopMaxPages = 1;
+            int start = (shopPage - 1) * 10;
+            if (!GlobalValues.shopBuying)
+            {
+                if (start < GamePlay.player.Inv.Count)
+                    equip1.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip1.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip2.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip2.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip3.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip3.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip4.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip4.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip5.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip5.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip6.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip6.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip7.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip7.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip8.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip8.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip9.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip9.Text = "";
+                start++;
+                if (start < GamePlay.player.Inv.Count)
+                    equip10.Text = GamePlay.player.Inv[start].GetItemName();
+                else
+                    equip10.Text = "";
+            }
 
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 if (quitButton.Contains(mousePoint))
+                {
                     GlobalValues.inFactionState = "start";
-                if (!GlobalValues.shopBuying)
+                    State = GameState.InFaction;
+                }
+                if (GlobalValues.shopBuying)
                 {
                     int shopIndex = 0;
+                    if (sellButton.Contains(mousePoint))
+                        GlobalValues.shopBuying = false;
                     if (equip1.Contains(mousePoint))
                     {
                         if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
@@ -428,20 +491,164 @@ namespace RPGMonoGame
                         }
                     }
                     shopIndex++;
+                    if (equip2.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip3.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip4.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip5.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip6.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip7.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip8.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip9.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
+                    shopIndex++;
+                    if (equip10.Contains(mousePoint))
+                    {
+                        if (GamePlay.player.Money >= GlobalValues.shopItems[shopIndex].GetBuyPrice())
+                        {
+                            GamePlay.player.Money -= GlobalValues.shopItems[shopIndex].GetBuyPrice();
+                            GamePlay.player.Inv.Add(GlobalValues.shopItems[shopIndex]);
+                            GamePlay.player.InitInvString();
+                        }
+                    }
                 }
                 else
                 {
-                    maxPages = GamePlay.player.Inv.Count / 10;
-                    if (GamePlay.player.Inv.Count % 10 != 0 && GamePlay.player.Inv.Count > 10)
-                        maxPages++;
-                    if (maxPages <= 0)
-                        maxPages = 1;
-                    if (leftArrow.Contains(mousePoint) && page > 1)
-                        page--;
-                    if (leftArrow.Contains(mousePoint) && page < maxPages)
-                        page++;
-                    int start = (page - 1) * 10;
-                    
+                    if (leftArrow.Contains(mousePoint) && shopPage > 1)
+                        shopPage--;
+                    if (leftArrow.Contains(mousePoint) && shopPage < shopMaxPages)
+                        shopPage++;
+                    if (buyButton.Contains(mousePoint))
+                        GlobalValues.shopBuying = true;
+                    int startIndex = (shopPage - 1) * 10;
+                    if (equip1.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip2.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip3.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip4.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip5.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip6.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip7.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip8.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip9.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
+                    startIndex++;
+                    if (equip10.Contains(mousePoint))
+                    {
+                        GamePlay.player.Money += GamePlay.player.Inv[startIndex].GetSellPrice();
+                        GamePlay.player.Inv.RemoveAt(startIndex);
+                    }
                 }
             }
         }
@@ -453,6 +660,7 @@ namespace RPGMonoGame
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
             spriteBatch.Begin();
+            spriteBatch.DrawString(storyFont, "Money: " + GamePlay.player.Money, new Vector2(250, 200), Color.Black);
             if (GlobalValues.shopBuying)
             {
                 sellButton.Draw(spriteBatch, gameTime);
@@ -640,7 +848,7 @@ namespace RPGMonoGame
                 leftArrow.Draw(spriteBatch, gameTime);
                 rightArrow.Draw(spriteBatch, gameTime);
                 quitButton.Draw(spriteBatch, gameTime);
-                spriteBatch.DrawString(storyFont, $"{page}/{maxPages}", new Vector2(640, 460), Color.Black);
+                spriteBatch.DrawString(storyFont, $"{shopPage}/{shopMaxPages}", new Vector2(640, 460), Color.Black);
             }
             spriteBatch.End();
         }
@@ -2125,7 +2333,7 @@ namespace RPGMonoGame
             else
                 bootsContains.Draw(spriteBatch, gameTime);
             int maxSize = 18;
-            if(equip1.Text.Length >= maxSize)
+            if (equip1.Text.Length >= maxSize)
                 equip1.Font = smallFont;
             else
                 equip1.Font = storyFont;
@@ -2169,11 +2377,11 @@ namespace RPGMonoGame
                 equip10.Font = smallFont;
             else
                 equip10.Font = storyFont;
-            
+
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
             int index = 0;
-            if(weapon.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
+            if (weapon.Contains(mousePoint) && GamePlay.player.Equip[index].GetItemName() != "None")
             {
                 spriteBatch.DrawString(smallFont, "Name: " + GamePlay.player.Equip[index].GetItemName(), new Vector2(300, 25), Color.Black);
                 spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Equip[index].GetAttack(), new Vector2(300, 50), Color.Black);
@@ -2233,17 +2441,17 @@ namespace RPGMonoGame
                 spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Equip[index].GetAttributes()), new Vector2(300, 150), Color.Black);
             }
             index = 0;
-            if(index < equippable.Count)
-            if (equip1.Contains(mousePoint) && equippable[index].GetItemName() != "None")
-            {
-                spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
-                spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
-                spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
-                spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
-                spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
-            }
+            if (index < equippable.Count)
+                if (equip1.Contains(mousePoint) && equippable[index].GetItemName() != "None")
+                {
+                    spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Defense: " + equippable[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Buy Price: " + equippable[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Sell Price: " + equippable[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                    spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", equippable[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                }
             index++;
-            if(index < equippable.Count)
+            if (index < equippable.Count)
                 if (equip2.Contains(mousePoint) && equippable[index].GetItemName() != "None")
                 {
                     spriteBatch.DrawString(smallFont, "Attack: " + equippable[index].GetAttack(), new Vector2(300, 25), Color.Black);
@@ -2455,7 +2663,7 @@ namespace RPGMonoGame
 
             spriteBatch.Begin();
             Faction fac = GlobalValues.locationFaction;
-            if(GlobalValues.inFactionState != "shop")
+            if (GlobalValues.inFactionState != "shop")
                 spriteBatch.DrawString(storyFont, "Faction: " + fac.Name, new Vector2(340, 25), Color.Black);
             switch (GlobalValues.inFactionState)
             {
@@ -2827,8 +3035,8 @@ namespace RPGMonoGame
                     {
                         if (Battle.outcome == 1 || Battle.outcome == -1)
                         {
-                            GamePlay.player.Money += Math.Round(Math.Pow(Battle.enemy.Level, 1.2), 2);
-                            receivedMoney = GamePlay.player.Money + Math.Round(Math.Pow(Battle.enemy.Level, 1.2), 2);
+                            GamePlay.player.Money += Battle.enemy.Level * Battle.enemy.Level;
+                            receivedMoney = GamePlay.player.Money + Battle.enemy.Level * Battle.enemy.Level;
                             if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
                             {
                                 GlobalValues.battleState = "levelup";
