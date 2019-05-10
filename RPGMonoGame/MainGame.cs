@@ -331,7 +331,6 @@ namespace RPGMonoGame
             if (State != prevGameState && State == GameState.InFaction)
                 UpdateShopVals();
             prevGameState = State;
-            //Debug.WriteLine(GlobalValues.storyState);
             base.Update(gameTime);
             switch (State)
             {
@@ -467,7 +466,7 @@ namespace RPGMonoGame
                     equip10.Text = GamePlay.player.Inv[start].GetItemName();
                 else
                     equip10.Text = "";
-                
+
             }
 
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
@@ -1089,11 +1088,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1122,10 +1118,6 @@ namespace RPGMonoGame
                             case "armor":
                                 tempItem = GamePlay.player.Equip[1];
                                 GamePlay.player.Equip[1] = equippable[index];
-                                foreach (Item bruh in equippable)
-                                    Debug.WriteLine(bruh.GetItemName());
-                                Debug.WriteLine(index);
-                                Debug.WriteLine(equippable[index].GetItemName());
                                 GamePlay.player.Inv.Remove(equippable[index]);
                                 if (tempItem.GetItemName() != "None")
                                     GamePlay.player.Inv.Add(tempItem);
@@ -1210,11 +1202,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1327,11 +1316,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1444,11 +1430,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1561,11 +1544,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1678,11 +1658,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1795,11 +1772,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -1912,11 +1886,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -2024,11 +1995,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -2141,11 +2109,8 @@ namespace RPGMonoGame
                                 {
                                     if (GamePlay.player.Inv[i] == tempInv)
                                     {
-                                        Debug.WriteLine($"Replacing {GamePlay.player.Inv[i].GetItemName()} with {tempItem.GetItemName()} after finding {tempInv.GetItemName()}");
                                         GamePlay.player.Inv[i] = tempItem;
-                                        Debug.WriteLine(GamePlay.player.Inv[i].GetItemName());
                                         GamePlay.player.InitInvString();
-                                        Debug.WriteLine(GamePlay.player.invString[i]);
                                         i = GamePlay.player.Inv.Count;
                                     }
                                 }
@@ -2672,6 +2637,8 @@ namespace RPGMonoGame
                         if (contButton.Contains(mousePoint))
                         {
                             Story.Progress();
+                            State = GameState.StoryText;
+                            GlobalValues.free = false;
                         }
                         if (wildButton.Contains(mousePoint))
                         {
@@ -2695,8 +2662,6 @@ namespace RPGMonoGame
                                             break;
                                         else if (i == strArr.Length - 1)
                                         {
-                                            Debug.WriteLine(GlobalValues.storyState);
-                                            Debug.WriteLine((string)enemy["Id"]);
                                             enemies.Remove(enemy);
                                         }
                                     }
@@ -2716,9 +2681,6 @@ namespace RPGMonoGame
                                 else
                                     minMax.Add(minMax[i - 1] + 1);
                             }
-                            Debug.WriteLine(enemies.Count);
-                            foreach (JObject jObj in enemies.ToArray())
-                                Debug.WriteLine(jObj["Name"]);
                             for (int i = 0; i < minMax.Count - 1; i++)
                             {
                                 if (num >= minMax[i] && num <= minMax[i + 1])
@@ -3541,7 +3503,15 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
-                Story.Progress();
+                if(GlobalValues.dontContinue == true)
+                {
+                    Story.Digress();
+                    GlobalValues.free = true;
+                }
+                else
+                {
+                    Story.Progress();
+                }
             }
         }
 
@@ -3579,6 +3549,25 @@ namespace RPGMonoGame
                 Story.Progress();
                 spriteBatch.End();
                 return;
+            }
+            if(text.StartsWith(":req"))
+            {
+                Debug.WriteLine("hello");
+                string[] strArr = text.Split(' ');
+                int count = Convert.ToInt32(strArr[1]);
+                string required = strArr[2].Split('|')[0];
+                if(required == "gangster")
+                {
+                    if(count >= GlobalValues.save.questVals.gangstersKilled)
+                    {
+                        Story.Progress();
+                        text = strArray[GlobalValues.storyIndex];
+                    } else
+                    {
+                        text = text.Substring(text.IndexOf('|'));
+                        GlobalValues.dontContinue = true;
+                    }
+                }
             }
             //text wrapping
             if (!SceneText.wrapText[GlobalValues.storyIndex])
@@ -3627,10 +3616,13 @@ namespace RPGMonoGame
                 {
                     if (textWrappers[i].StartsWith(" "))
                         textWrappers[i] = textWrappers[i].Substring(1);
-                    if (textWrappers[i][0] == '*')
-                        spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
-                    else
-                        spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
+                    if (textWrappers[i].Length > 0)
+                    {
+                        if (textWrappers[i][0] == '*')
+                            spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
+                        else
+                            spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
+                    }
                 }
             }
             spriteBatch.End();

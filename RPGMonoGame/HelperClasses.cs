@@ -55,6 +55,7 @@ namespace RPGv2
     {
         public History hist = new History();
         public Player player = new Player();
+        public QuestVals questVals = new QuestVals();
 
         public Save()
         {
@@ -74,7 +75,7 @@ namespace RPGv2
             {
                 using (JsonWriter writer = new JsonTextWriter(sw))
                 {
-                    string json = JsonConvert.SerializeObject(new { player, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(new { player, questVals, hist.Factions, hist.Races, GlobalValues.jsonVals, Story.enemyFaction, GlobalValues.battleJson }, Formatting.Indented);
                     sw.Write(json);
                 }// Json Writer
             }//end StreamWriter
@@ -89,6 +90,7 @@ namespace RPGv2
             GamePlay.player.InitInv();
             hist.Factions = JsonConvert.DeserializeObject<List<Faction>>(obj["Factions"].ToString());
             hist.Races = JsonConvert.DeserializeObject<List<Race>>(obj["Races"].ToString());
+            questVals = JsonConvert.DeserializeObject<QuestVals>(obj["questVals"].ToString());
             GlobalValues.jsonVals = JsonConvert.DeserializeObject<JsonValues>(obj["jsonVals"].ToString());
             Story.enemyFaction = JsonConvert.DeserializeObject<Faction>(obj["enemyFaction"].ToString());
             GlobalValues.battleJson = JsonConvert.DeserializeObject<BattleJson>(obj["battleJson"].ToString());
@@ -153,6 +155,18 @@ namespace RPGv2
             strArr = temp;
             return strArr;
         }//end scene
+
+        public static void Digress()
+        {
+            if(GlobalValues.storyIndex == 0)
+            {
+                GlobalValues.storyState--;
+                GlobalValues.storyIndex = GetScene(GlobalValues.storyState).Count - 1;
+            } else
+            {
+                GlobalValues.storyIndex--;
+            }
+        }
 
         public static void Progress()
         {
@@ -339,6 +353,8 @@ namespace RPGv2
                 outcome = 1;
             else
                 outcome = 0;
+            if (enemy.Name == "Gangster")
+                GlobalValues.save.questVals.gangstersKilled++;
             GlobalValues.battleState = "winner";
             //SetVals(GlobalValues.battleJson);
         }//end BattleFinish
@@ -436,6 +452,7 @@ namespace RPGv2
         public Faction locationFaction = Story.enemyFaction;
         public string inFactionState = "start";
         public List<string> shopItemsString = new List<string>();
+        public bool dontContinue = false;
 
         public JsonValues()
         {
@@ -444,7 +461,8 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState, bool jSaveEnabled, List<string> jShopItemsString)
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState, 
+            bool jSaveEnabled, List<string> jShopItemsString, bool jDontContinue)
         {
             inp = jInp;
             inpText = jInpText;
@@ -463,6 +481,7 @@ namespace RPGv2
             inFactionState = jInFactionState;
             saveEnabled = jSaveEnabled;
             shopItemsString = jShopItemsString;
+            dontContinue = jDontContinue;
         }
     }
 
@@ -494,6 +513,7 @@ namespace RPGv2
         public static List<Item> shopItems = new List<Item>();
         public static List<string> shopItemsString = new List<string>();
         public static bool shopBuying = true;
+        public static bool dontContinue = false;
 
         public static void SetVals(JsonValues jVals)
         {
@@ -515,6 +535,7 @@ namespace RPGv2
             inFactionState = jVals.inFactionState;
             saveEnabled = jVals.saveEnabled;
             shopItemsString = jVals.shopItemsString;
+            dontContinue = jVals.dontContinue;
         }
 
         public static void GetVals()
@@ -537,6 +558,7 @@ namespace RPGv2
             jsonVals.inFactionState = inFactionState;
             jsonVals.saveEnabled = saveEnabled;
             jsonVals.shopItemsString = shopItemsString;
+            jsonVals.dontContinue = dontContinue;
         }
 
         public static void InitShopString()
@@ -631,7 +653,7 @@ namespace RPGv2
 
     public class QuestVals
     {
-
+        public int gangstersKilled = 0;
     }
 
     //chris(obsolete)
