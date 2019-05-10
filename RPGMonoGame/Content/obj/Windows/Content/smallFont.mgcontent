@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/smallFont.spritefont</SourceFile>
-  <SourceTime>2019-05-05T11:03:49.2803726-05:00</SourceTime>
-  <DestFile>C:/Users/chris/source/repos/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/smallFont.xnb</DestFile>
-  <DestTime>2019-05-09T18:58:17.5602694-05:00</DestTime>
+  <SourceFile>C:/Users/reedchr001/Documents/GitHub/RPG-MonoGame/RPGMonoGame/Content/smallFont.spritefont</SourceFile>
+  <SourceTime>2019-05-06T10:18:39.0499135-05:00</SourceTime>
+  <DestFile>C:/Users/reedchr001/Documents/GitHub/RPG-MonoGame/RPGMonoGame/Content/bin/Windows/Content/smallFont.xnb</DestFile>
+  <DestTime>2019-05-10T10:21:23.9429899-05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
-  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
+  <ImporterTime>2018-12-08T10:35:54-06:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
-  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
+  <ProcessorTime>2018-12-08T10:35:54-06:00</ProcessorTime>
   <Parameters>
     <Key>PremultiplyAlpha</Key>
     <Value>True</Value>

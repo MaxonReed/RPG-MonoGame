@@ -1,8 +1,6 @@
 {
   "player": {
     "invString": [
-      "arms:Thorn Sleeves",
-      "armor:Bronze Plate",
       "arms:Silver Band"
     ],
     "equipString": [
@@ -20,7 +18,7 @@
     "Defense": 23,
     "MDef": 3,
     "Intelligence": 7,
-    "Money": 0.0,
+    "Money": 8.0,
     "Luck": 7.0,
     "Evasion": 5.0,
     "Speed": 5,
@@ -687,7 +685,7 @@
     "facDestroyed": "",
     "eventName": "None",
     "battleID": "",
-    "battleState": "prologue",
+    "battleState": "battle",
     "startGen": true,
     "done": true,
     "free": true,
@@ -703,16 +701,16 @@
     },
     "inFactionState": "start",
     "shopItemsString": [
-      "armor:Cloak of Shroud",
-      "arms:Bronze Band",
-      "arms:Iron Band",
-      "arms:Serpent's Band",
-      "armor:Cloak of Shroud",
-      "armor:Armour of the Black Knight",
+      "arms:Silver Band",
+      "armor:Iron Plate",
+      "armor:Iron Plate",
       "arms:Glo Band",
+      "sword:Broadsword",
       "arms:Thorn Sleeves",
-      "arms:Thorn Sleeves",
-      "arms:Silver Band"
+      "arms:Iron Band",
+      "arms:Silver Band",
+      "sword:Silver Sword",
+      "armor:Iron Plate"
     ]
   },
   "enemyFaction": {

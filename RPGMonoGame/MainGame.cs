@@ -467,6 +467,7 @@ namespace RPGMonoGame
                     equip10.Text = GamePlay.player.Inv[start].GetItemName();
                 else
                     equip10.Text = "";
+                
             }
 
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
@@ -835,6 +836,106 @@ namespace RPGMonoGame
                     equip10.Font = smallFont;
                 else
                     equip10.Font = storyFont;
+                int index = (shopPage - 1) * 10;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip1.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip2.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip3.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip4.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip5.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip6.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip7.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip8.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip9.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
+                index++;
+                if (index < GamePlay.player.Inv.Count)
+                    if (equip10.Contains(mousePoint) && GamePlay.player.Inv[index].GetItemName() != "None")
+                    {
+                        spriteBatch.DrawString(smallFont, "Attack: " + GamePlay.player.Inv[index].GetAttack(), new Vector2(300, 25), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Defense: " + GamePlay.player.Inv[index].GetDefense(), new Vector2(300, 50), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Buy Price: " + GamePlay.player.Inv[index].GetBuyPrice(), new Vector2(300, 75), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Sell Price: " + GamePlay.player.Inv[index].GetSellPrice(), new Vector2(300, 100), Color.Black);
+                        spriteBatch.DrawString(smallFont, "Attributes: " + string.Join(",", GamePlay.player.Inv[index].GetAttributes()), new Vector2(300, 125), Color.Black);
+                    }
                 equip1.Draw(spriteBatch, gameTime);
                 equip2.Draw(spriteBatch, gameTime);
                 equip3.Draw(spriteBatch, gameTime);
