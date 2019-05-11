@@ -370,6 +370,7 @@ namespace RPGMonoGame
         {
             GraphicsDevice.Clear(Color.White);
             base.Draw(gameTime);
+            
             switch (State)
             {
                 case GameState.MainMenu:
@@ -2629,6 +2630,20 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             var mousePoint = new Point(mouseState.X, mouseState.Y);
 
+            if (equip1.Text != string.Empty)
+            {
+                equip1.Text = string.Empty;
+                equip2.Text = string.Empty;
+                equip3.Text = string.Empty;
+                equip4.Text = string.Empty;
+                equip5.Text = string.Empty;
+                equip6.Text = string.Empty;
+                equip7.Text = string.Empty;
+                equip8.Text = string.Empty;
+                equip9.Text = string.Empty;
+                equip10.Text = string.Empty;
+            }
+
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
                 switch (GlobalValues.inFactionState)
@@ -3097,8 +3112,7 @@ namespace RPGMonoGame
                     {
                         if (Battle.outcome == 1 || Battle.outcome == -1)
                         {
-                            GamePlay.player.Money += Battle.enemy.Level * Battle.enemy.Level;
-                            receivedMoney = GamePlay.player.Money + Battle.enemy.Level * Battle.enemy.Level;
+                            GamePlay.player.Money += receivedMoney;
                             if (GamePlay.player.Exp >= GamePlay.player.NextLevel())
                             {
                                 GlobalValues.battleState = "levelup";
@@ -3120,7 +3134,8 @@ namespace RPGMonoGame
                         {
                             Battle.ResetVals();
                             GlobalValues.storyIndex = 0;
-                            State = GameState.StoryText;
+                            GlobalValues.free = true;
+                            State = GameState.InFaction;
                             receivedMoney = 0;
                         }
                     }
@@ -3169,6 +3184,8 @@ namespace RPGMonoGame
 
 
             spriteBatch.Begin();
+            if(Battle.round == -1)
+                receivedMoney = HelperClasses.RandomNumber(0, Battle.enemy.Level * Battle.enemy.Level);
             switch (GlobalValues.battleID)
             {
                 case "firstBattle":
@@ -3176,6 +3193,59 @@ namespace RPGMonoGame
                     {
                         Battle.fightText = "You dare fight me fool?!";
                         Battle.enemy = new Enemy("Unknown StartGame", "?");
+                        Battle.player = new Player(GamePlay.player);
+                        Battle.enemyHP = Battle.enemy.Health;
+                        Battle.playerHP = Battle.player.Health;
+                        Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
+                        //attribute handling
+                        switch (Battle.player.Class)
+                        {
+                            case "Warrior":
+                                Sword sword = (Sword)GamePlay.player.Equip[0];
+                                foreach (string str in sword.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Mage":
+                                Staff staff = (Staff)GamePlay.player.Equip[0];
+                                foreach (string str in staff.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            case "Rogue":
+                                Knife knife = (Knife)GamePlay.player.Equip[0];
+                                foreach (string str in knife.attr.ToArray())
+                                {
+                                    if (str == "Curse")
+                                        Battle.turn = false;
+                                }
+                                break;
+                            default:
+
+                                break;
+                        }
+
+                        if (!Battle.turn)
+                        {
+                            damageEnemy = Battle.RegularAttack();
+                            damagePlayer = Battle.RegularAttack();
+                            GlobalValues.battleState = "damageDealt";
+                        }
+                        Battle.round++;
+                        Battle.SetVals(GlobalValues.battleJson);
+                    }
+                    else
+                        GlobalValues.battleID = string.Empty;
+                    break;
+                case "bigboyBattle":
+                    if (Battle.round == -1)
+                    {
+                        Battle.fightText = "They call me Mr. Bombastic";
+                        Battle.enemy = new Enemy("Seten BigCheddaBoss", "Big Chedda");
                         Battle.player = new Player(GamePlay.player);
                         Battle.enemyHP = Battle.enemy.Health;
                         Battle.playerHP = Battle.player.Health;
@@ -3270,6 +3340,7 @@ namespace RPGMonoGame
                     }
                     break;
             }
+            
             switch (GlobalValues.battleState)
             {
                 case "prologue":
@@ -3557,20 +3628,28 @@ namespace RPGMonoGame
                 string[] strArr = text.Split(' ');
                 int count = Convert.ToInt32(strArr[1]);
                 string required = strArr[2].Split('|')[0];
-                Debug.WriteLine(required);
-                Debug.WriteLine(count);
-                Debug.WriteLine(GlobalValues.save.questVals.gangstersKilled);
                 if (required == "gangster")
                 {
                     if (count <= GlobalValues.save.questVals.gangstersKilled)
                     {
-                        Debug.WriteLine("nope");
                         Story.Progress();
                         text = strArray[GlobalValues.storyIndex];
                     }
                     else
                     {
-                        Debug.WriteLine("ok");
+                        GlobalValues.dispString = text.Split('|')[1];
+                        GlobalValues.dontContinue = true;
+                    }
+                }
+                if(required == "Dhark Minion")
+                {
+                    if (count <= GlobalValues.save.questVals.gangstersKilled)
+                    {
+                        Story.Progress();
+                        text = strArray[GlobalValues.storyIndex];
+                    }
+                    else
+                    {
                         GlobalValues.dispString = text.Split('|')[1];
                         GlobalValues.dontContinue = true;
                     }

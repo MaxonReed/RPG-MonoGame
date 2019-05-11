@@ -111,7 +111,7 @@ namespace RPGv2
         {
             strArr = Story.GetScene(GlobalValues.storyState);
             foreach (string str in strArr.ToArray())
-                wrapText.Add(str.Length >= 50);
+                wrapText.Add(str.Length >= 43);
         }
     }
 
@@ -655,6 +655,7 @@ namespace RPGv2
     public class QuestVals
     {
         public int gangstersKilled = 0;
+        public int dharkMinionsKilled = 0;
     }
 
     //chris(obsolete)

@@ -50,7 +50,6 @@ Toto: "Big boy down"
 *But he will seem easy compared to what is ahead
 
 [4]
-:req 1 big chedda| beat big chedda
 A paper flies by...
 *A newspaper?
 Toto: "Midnight Murderer...?"

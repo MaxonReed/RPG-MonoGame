@@ -74,7 +74,7 @@
     "Defense": 1,
     "MDef": 4,
     "Speed": 7,
-    "EnRate": 99999
+    "EnRate": 150000
   },
   {
     "Id": "Rngen 3 4 5 6 7 8 9 10 11",
@@ -134,11 +134,11 @@
   {
     "Id": "Seten BigCheddaBoss", //Big Chedda encounter
     "Level": 10,
-    "Health": 800,
+    "Health": 300,
     "Name": "Big Chedda",
-    "Attack": 75,
-    "Defense": 15,
-    "MDef": 50,
+    "Attack": 20,
+    "Defense": 20,
+    "MDef": 5,
     "Speed": 20,
     "EnRate": 0
   },
