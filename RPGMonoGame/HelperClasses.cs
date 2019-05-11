@@ -342,7 +342,7 @@ namespace RPGv2
         public static double DodgeChance(double defenderEvasion, double attackerSpeed)
         {
             double x = defenderEvasion / attackerSpeed;
-            double a = 10.0 / Math.Sqrt(111111.0);
+            double a = 10.0 / Math.Sqrt(111111);
             double b = 111071.0 / 40000.0;
             return a * Math.Sqrt(x + b);
         }//end DodgeChance
@@ -355,6 +355,8 @@ namespace RPGv2
                 outcome = 0;
             if (enemy.Name == "Gangster")
                 GlobalValues.save.questVals.gangstersKilled++;
+            if (enemy.Name == "Dhark Minion")
+                GlobalValues.save.questVals.dharkMinionsKilled++;
             GlobalValues.battleState = "winner";
             //SetVals(GlobalValues.battleJson);
         }//end BattleFinish

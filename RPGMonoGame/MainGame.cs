@@ -2672,7 +2672,7 @@ namespace RPGMonoGame
                                         start++;
                                     for (int i = start; i < strArr.Length; i++)
                                     {
-                                        if (int.Parse(strArr[i]) == GlobalValues.storyState)
+                                        if (int.Parse(strArr[i]) == GlobalValues.storyState - 1)
                                             break;
                                         else if (i == strArr.Length - 1)
                                         {
@@ -3575,8 +3575,6 @@ namespace RPGMonoGame
             {
                 if (GlobalValues.dontContinue == true)
                 {
-                    Debug.WriteLine("????????");
-                    Story.Digress();
                     GlobalValues.free = true;
                     GlobalValues.dontContinue = false;
                     GlobalValues.dispString = string.Empty;
@@ -3637,20 +3635,20 @@ namespace RPGMonoGame
                     }
                     else
                     {
-                        GlobalValues.dispString = text.Split('|')[1];
+                        GlobalValues.dispString = text.Split('|')[1] + $"(total: {GlobalValues.save.questVals.gangstersKilled})";
                         GlobalValues.dontContinue = true;
                     }
                 }
-                if(required == "Dhark Minion")
+                if(required == "DharkMinion")
                 {
-                    if (count <= GlobalValues.save.questVals.gangstersKilled)
+                    if (count <= GlobalValues.save.questVals.dharkMinionsKilled)
                     {
                         Story.Progress();
                         text = strArray[GlobalValues.storyIndex];
                     }
                     else
                     {
-                        GlobalValues.dispString = text.Split('|')[1];
+                        GlobalValues.dispString = text.Split('|')[1] + $"(total: {GlobalValues.save.questVals.dharkMinionsKilled})";
                         GlobalValues.dontContinue = true;
                     }
                 }

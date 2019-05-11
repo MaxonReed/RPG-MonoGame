@@ -1,30 +1,34 @@
 {
   "player": {
     "invString": [
-      "sword:Broadsword",
-      "arms:Gold Band"
+      "armor:Cloak of Shroud",
+      "armor:Silver Plate",
+      "armor:Cloak of Shroud",
+      "arms:Thorn Sleeves",
+      "armor:Iron Plate",
+      "armor:Iron Plate"
     ],
     "equipString": [
       "sword:Broadsword",
-      "armor:Cloak of Shroud",
-      "arms:Serpent's Band",
+      "armor:Holy Chainmail",
+      "arms:Gold Band",
       "gloves:None",
       "pants:None",
       "boots:None"
     ],
     "Class": "Warrior",
-    "Health": 73,
-    "Attack": 50,
+    "Health": 79,
+    "Attack": 64,
     "MAtk": 2,
-    "Defense": 44,
+    "Defense": 59,
     "MDef": 3,
-    "Intelligence": 11,
-    "Money": 174.0,
-    "Luck": 15.0,
-    "Evasion": 15.0,
-    "Speed": 7,
-    "Level": 7,
-    "Exp": 87,
+    "Intelligence": 13,
+    "Money": 503.0,
+    "Luck": 21.0,
+    "Evasion": 20.0,
+    "Speed": 9,
+    "Level": 8,
+    "Exp": 166,
     "Special": [
       3,
       0,
@@ -33,7 +37,8 @@
     ]
   },
   "questVals": {
-    "gangstersKilled": 3
+    "gangstersKilled": 3,
+    "dharkMinionsKilled": 5
   },
   "Factions": [
     {
@@ -2212,14 +2217,14 @@
     "facCreate": "General Goods Merchant has been created!",
     "facDestroyed": "C A R E P O L I C E has been destroyed!",
     "eventName": "None",
-    "battleID": "",
-    "battleState": "battle",
+    "battleID": "Dharkbattle",
+    "battleState": "winner",
     "startGen": true,
     "done": true,
-    "free": false,
+    "free": true,
     "saveEnabled": true,
     "strArray": null,
-    "storyIndex": 4,
+    "storyIndex": 0,
     "storyState": 5,
     "locationFaction": {
       "Pop": 75852,
@@ -2229,16 +2234,16 @@
     },
     "inFactionState": "start",
     "shopItemsString": [
-      "arms:Iron Band",
-      "sword:Broadsword",
-      "arms:Iron Band",
-      "arms:Iron Band",
+      "arms:Glo Band",
       "armor:Armour of the Black Knight",
+      "armor:Armour of the Black Knight",
+      "arms:Gold Band",
+      "armor:Iron Plate",
       "sword:Silver Sword",
-      "sword:Ice Blade",
-      "arms:Iron Band",
-      "arms:Silver Band",
-      "arms:Thorn Sleeves"
+      "arms:Glo Band",
+      "armor:Bronze Plate",
+      "arms:Bronze Band",
+      "arms:Glo Band"
     ],
     "dontContinue": false
   },
@@ -2260,30 +2265,34 @@
     },
     "player": {
       "invString": [
-        "sword:Broadsword",
-        "arms:Gold Band"
+        "armor:Cloak of Shroud",
+        "armor:Silver Plate",
+        "armor:Cloak of Shroud",
+        "arms:Thorn Sleeves",
+        "armor:Iron Plate",
+        "armor:Iron Plate"
       ],
       "equipString": [
         "sword:Broadsword",
-        "armor:Cloak of Shroud",
-        "arms:Serpent's Band",
+        "armor:Holy Chainmail",
+        "arms:Gold Band",
         "gloves:None",
         "pants:None",
         "boots:None"
       ],
       "Class": "Warrior",
-      "Health": 73,
-      "Attack": 50,
+      "Health": 79,
+      "Attack": 64,
       "MAtk": 2,
-      "Defense": 44,
+      "Defense": 59,
       "MDef": 3,
-      "Intelligence": 11,
-      "Money": 174.0,
-      "Luck": 15.0,
-      "Evasion": 15.0,
-      "Speed": 7,
-      "Level": 7,
-      "Exp": 87,
+      "Intelligence": 13,
+      "Money": 503.0,
+      "Luck": 21.0,
+      "Evasion": 20.0,
+      "Speed": 9,
+      "Level": 8,
+      "Exp": 166,
       "Special": [
         3,
         0,
@@ -2291,11 +2300,11 @@
         0
       ]
     },
-    "playerHP": 0,
-    "enemyHP": 0,
-    "turn": false,
-    "round": -1,
+    "playerHP": 75,
+    "enemyHP": -47,
+    "turn": true,
+    "round": 3,
     "outcome": -1,
-    "fightText": ""
+    "fightText": "You have encountered a Magic Archer"
   }
 }

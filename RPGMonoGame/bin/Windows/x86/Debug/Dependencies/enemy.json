@@ -12,7 +12,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6 7 8 9 10 11", //Random encounter
-    "Level": 5,
+    "Level": 6,
     "Health": 30,
     "Name": "Big Crow",
     "Attack": 1,
@@ -23,7 +23,7 @@
   },
   {
     "Id": "Rngen 2 3 4 6 7 8",
-    "Level": 4,
+    "Level": 8,
     "Health": 45,
     "Name": "Bear",
     "Attack": 8,
@@ -34,7 +34,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6 7 8 9 10 11",
-    "Level": 3,
+    "Level": 7,
     "Health": 65,
     "Name": "Scavenger",
     "Attack": 5,
@@ -45,7 +45,7 @@
   },
   {
     "Id": "Rngen 2 3 4",
-    "Level": 4,
+    "Level": 5,
     "Health": 110,
     "Name": "Lunatic",
     "Attack": 10,
@@ -56,7 +56,7 @@
   },
   {
     "Id": "Rngen 2 3 4 5 6 8 9 10 11",
-    "Level": 22,
+    "Level": 40,
     "Health": 1,
     "Name": "Shadow Creep",
     "Attack": 20,
@@ -78,7 +78,7 @@
   },
   {
     "Id": "Rngen 3 4 5 6 7 8 9 10 11",
-    "Level": 2,
+    "Level": 9,
     "Health": 100,
     "Name": "Magic Archer",
     "Attack": 10,
@@ -89,7 +89,7 @@
   },
   {
     "Id": "Seten MiniBoss", //set encounter and a mini boss
-    "Level": 5,
+    "Level": 15,
     "Health": 300,
     "Name": "High Orc",
     "Attack": 37,
@@ -144,7 +144,7 @@
   },
   {
     "Id": "Rngen 4 5 6 7 8 9 10 11",
-    "Level": 2,
+    "Level": 7,
     "Health": 100,
     "Name": "Zombie",
     "Attack": 25,
@@ -176,7 +176,7 @@
     "EnRate": 99350
   },
   {
-    "Id": "Rngen 4",
+    "Id": "Rngen 4 5",
     "Level": 6,
     "Health": 10,
     "Name": "Midnight Ghost",
@@ -198,7 +198,7 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen 4",
+    "Id": "Rngen 4 5",
     "Level": 1,
     "Health": 100,
     "Name": "Dhark Minion",
@@ -206,7 +206,7 @@
     "Defense": 2,
     "MDef": 7,
     "Speed": 15,
-    "EnRate": 99999
+    "EnRate": 250000
   },
   {
     "Id": "Rngen 6 7 8 9 10 11",
@@ -254,7 +254,7 @@
   },
   {
     "Id": "Rngen 8",
-    "Level": 6,
+    "Level": 20,
     "Health": 150,
     "Name": "Alpha Zombie",
     "Attack": 20,
@@ -265,7 +265,7 @@
   },
   {
     "Id": "Rngen 8 9 10 11",
-    "Level": 8,
+    "Level": 35,
     "Health": 200,
     "Name": "Crusader",
     "Attack": 15,
@@ -276,7 +276,7 @@
   },
   {
     "Id": "Rngen 8 9 10 11",
-    "Level": 9,
+    "Level": 50,
     "Health": 100,
     "Name": "Big Brother's Hand",
     "Attack": 24,
@@ -287,7 +287,7 @@
   },
   {
     "Id": "Rngen MiniBoss 8",
-    "Level": 11,
+    "Level": 64,
     "Health": 25,
     "Name": "DayBreak Ghost",
     "Attack": 20,
@@ -298,7 +298,7 @@
   },
   {
     "Id": "Seten BrianBoss",
-    "Level": 25,
+    "Level": 90,
     "Health": 1500,
     "Name": "Brain",
     "Attack": 92,
@@ -309,7 +309,7 @@
   },
   {
     "Id": "Rngen 10 11",
-    "Level": 9,
+    "Level": 20,
     "Health": 250,
     "Name": "Red Crusader",
     "Attack": 15,
@@ -320,7 +320,7 @@
   },
   {
     "Id": "Rngen 10",
-    "Level": 8,
+    "Level": 40,
     "Health": 150,
     "Name": "KeySader",
     "Attack": 17,
@@ -331,7 +331,7 @@
   },
   {
     "Id": "Rngen MiniBoss 10",
-    "Level": 14,
+    "Level": 50,
     "Health": 600,
     "Name": "Red HenchKey",
     "Attack": 40,
@@ -342,7 +342,7 @@
   },
   {
     "Id": "Rngen MiniBoss 10 11",
-    "Level": 19,
+    "Level": 100,
     "Health": 750,
     "Name": "Black Knight",
     "Attack": 30,
@@ -353,7 +353,7 @@
   },
   {
     "Id": "Seten KeyBoardBoss",
-    "Level": 30,
+    "Level": 110,
     "Health": 1750,
     "Name": "Key! Keyboard Crusader",
     "Attack": 99,
