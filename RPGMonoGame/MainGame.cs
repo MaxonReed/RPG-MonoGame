@@ -2636,7 +2636,6 @@ namespace RPGMonoGame
                     case "start":
                         if (contButton.Contains(mousePoint))
                         {
-                            Story.Progress();
                             State = GameState.StoryText;
                             GlobalValues.free = false;
                         }
@@ -3503,10 +3502,13 @@ namespace RPGMonoGame
             mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed && prevState.LeftButton == ButtonState.Released)
             {
-                if(GlobalValues.dontContinue == true)
+                if (GlobalValues.dontContinue == true)
                 {
+                    Debug.WriteLine("????????");
                     Story.Digress();
                     GlobalValues.free = true;
+                    GlobalValues.dontContinue = false;
+                    GlobalValues.dispString = string.Empty;
                 }
                 else
                 {
@@ -3550,78 +3552,94 @@ namespace RPGMonoGame
                 spriteBatch.End();
                 return;
             }
-            if(text.StartsWith(":req"))
+            if (text.StartsWith(":req"))
             {
-                Debug.WriteLine("hello");
                 string[] strArr = text.Split(' ');
                 int count = Convert.ToInt32(strArr[1]);
                 string required = strArr[2].Split('|')[0];
-                if(required == "gangster")
+                Debug.WriteLine(required);
+                Debug.WriteLine(count);
+                Debug.WriteLine(GlobalValues.save.questVals.gangstersKilled);
+                if (required == "gangster")
                 {
-                    if(count >= GlobalValues.save.questVals.gangstersKilled)
+                    if (count <= GlobalValues.save.questVals.gangstersKilled)
                     {
+                        Debug.WriteLine("nope");
                         Story.Progress();
                         text = strArray[GlobalValues.storyIndex];
-                    } else
+                    }
+                    else
                     {
-                        text = text.Substring(text.IndexOf('|'));
+                        Debug.WriteLine("ok");
+                        GlobalValues.dispString = text.Split('|')[1];
                         GlobalValues.dontContinue = true;
                     }
                 }
             }
-            //text wrapping
-            if (!SceneText.wrapText[GlobalValues.storyIndex])
+            if (GlobalValues.dispString != string.Empty)
             {
+                text = GlobalValues.dispString;
                 if (text[0] == '*')
-                    spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
+                    spriteBatch.DrawString(storyFontI, text, new Vector2(110, 319), Color.Black);
                 else
                     spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
             }
             else
             {
-                List<string> textWrappers = new List<string>();
-                int iterations = text.Length / 50;
-                int begin = 0;
-                int next = 0;
-                for (int i = 0; i <= iterations; i++)
+                //text wrapping
+                if (!SceneText.wrapText[GlobalValues.storyIndex])
                 {
-                    begin += next;
-                    next = 50;
-                    if (50 + begin > text.Length)
-                        next = text.Length - begin;
-                    //dont split sentences/words
-                    bool done = false;
-                    while (!done)
+                    if (text[0] == '*')
+                        spriteBatch.DrawString(storyFontI, text.Substring(1), new Vector2(110, 319), Color.Black);
+                    else
+                        spriteBatch.DrawString(storyFont, text, new Vector2(110, 319), Color.Black);
+                }
+                else
+                {
+                    List<string> textWrappers = new List<string>();
+                    int iterations = text.Length / 50;
+                    int begin = 0;
+                    int next = 0;
+                    for (int i = 0; i <= iterations; i++)
                     {
-                        if (begin + next < text.Length)
+                        begin += next;
+                        next = 50;
+                        if (50 + begin > text.Length)
+                            next = text.Length - begin;
+                        //dont split sentences/words
+                        bool done = false;
+                        while (!done)
                         {
-                            if (text[begin + next] != ' ' && text[begin + next] != '.')
+                            if (begin + next < text.Length)
                             {
-                                next++;
+                                if (text[begin + next] != ' ' && text[begin + next] != '.')
+                                {
+                                    next++;
+                                }
+                                else
+                                    done = true;
                             }
                             else
                                 done = true;
                         }
-                        else
-                            done = true;
+                        textWrappers.Add(text.Substring(begin, next));
                     }
-                    textWrappers.Add(text.Substring(begin, next));
-                }
-                if (textWrappers[textWrappers.Count - 1] == ".")
-                {
-                    textWrappers.RemoveAt(textWrappers.Count - 1);
-                    textWrappers[textWrappers.Count - 1] += ".";
-                }
-                for (int i = 0; i < textWrappers.Count; i++)
-                {
-                    if (textWrappers[i].StartsWith(" "))
-                        textWrappers[i] = textWrappers[i].Substring(1);
-                    if (textWrappers[i].Length > 0)
+                    if (textWrappers[textWrappers.Count - 1] == ".")
                     {
-                        if (textWrappers[i][0] == '*')
-                            spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
-                        else
-                            spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
+                        textWrappers.RemoveAt(textWrappers.Count - 1);
+                        textWrappers[textWrappers.Count - 1] += ".";
+                    }
+                    for (int i = 0; i < textWrappers.Count; i++)
+                    {
+                        if (textWrappers[i].StartsWith(" "))
+                            textWrappers[i] = textWrappers[i].Substring(1);
+                        if (textWrappers[i].Length > 0)
+                        {
+                            if (textWrappers[i][0] == '*')
+                                spriteBatch.DrawString(storyFontI, textWrappers[i].Substring(1), new Vector2(110, 319 + (i * 22)), Color.Black);
+                            else
+                                spriteBatch.DrawString(storyFont, textWrappers[i], new Vector2(110, 319 + (i * 22)), Color.Black);
+                        }
                     }
                 }
             }

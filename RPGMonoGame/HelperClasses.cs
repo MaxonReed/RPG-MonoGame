@@ -150,7 +150,7 @@ namespace RPGv2
             foreach (string str in temp.ToArray())
             {
                 if (str.Contains("{WarFactionName}"))
-                    str.Replace("{WarFactionName}", $"{enemyFaction}");
+                    strArr[strArr.IndexOf(str)] = str.Replace("{WarFactionName}", $"{enemyFaction}");
             }//end foreach temp
             strArr = temp;
             return strArr;
@@ -514,6 +514,7 @@ namespace RPGv2
         public static List<string> shopItemsString = new List<string>();
         public static bool shopBuying = true;
         public static bool dontContinue = false;
+        public static string dispString = string.Empty;
 
         public static void SetVals(JsonValues jVals)
         {
