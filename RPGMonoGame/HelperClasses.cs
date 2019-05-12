@@ -197,6 +197,7 @@ namespace RPGv2
         public int round = -1;
         public int outcome = -1;
         public string fightText = "";
+        public int playerMana = 0;
 
         public BattleJson()
         {
@@ -204,7 +205,7 @@ namespace RPGv2
         }//end battle default
 
         [JsonConstructor]
-        public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText)
+        public BattleJson(Enemy jEnemy, Player jPlayer, int jPlayerHP, int jEnemyHP, bool jTurn, int jRound, int jOutcome, string jFightText, int jPlayerMana)
         {
             enemy = jEnemy;
             player = jPlayer;
@@ -214,6 +215,7 @@ namespace RPGv2
             round = jRound;
             outcome = jOutcome;
             fightText = jFightText;
+            playerMana = jPlayerMana;
         }//end Battle constructor
 
     }//end Battle
@@ -229,6 +231,7 @@ namespace RPGv2
         public static int round = -1;
         public static int outcome = -1;
         public static string fightText = "";
+        public static int playerMana = 0;
 
         /*
         case 0:
@@ -258,6 +261,8 @@ namespace RPGv2
             round = battleJson.round;
             outcome = battleJson.outcome;
             fightText = battleJson.fightText;
+            playerMana = battleJson.playerMana;
+
         }//end GetVals
 
         public static void SetVals(BattleJson battleJson)
@@ -270,6 +275,7 @@ namespace RPGv2
             battleJson.round = round;
             battleJson.outcome = outcome;
             battleJson.fightText = fightText;
+            battleJson.playerMana = playerMana;
         }//end SetVals
 
         public static void HandleAttr()
@@ -367,6 +373,7 @@ namespace RPGv2
             player = p;
             playerHP = p.Health;
             enemyHP = e.Health;
+            playerMana = p.Mana;
         }//end SetCharacters
 
         public static void ResetVals()
@@ -379,6 +386,7 @@ namespace RPGv2
             round = -1;
             outcome = -1;
             fightText = "";
+            playerMana = 0;
             RPGMonoGame.MainGame.calledBattleFinish = false;
             GlobalValues.battleState = "prologue";
         }//end ResetVals
@@ -1152,6 +1160,7 @@ namespace RPGv2
         public int Speed { get; set; }
         public int Level { get => level; set => level = value; }
         public int Exp { get => exp; set => exp = value; }
+        public int Mana { get; set; }
         public List<string> invString;
         [JsonIgnore] public List<Item> Inv { get => inv; set => inv = value; }
         public List<string> equipString;
@@ -1193,6 +1202,7 @@ namespace RPGv2
             Special = p.Special;
             Exp = p.Exp;
             Level = p.Level;
+            Mana = p.Mana;
         }
 
         public Player(int slot, int c)
@@ -1393,6 +1403,7 @@ namespace RPGv2
                     Evasion = 3;
                     Health = 40;
                     Speed = 6;
+                    Mana = 60;
                     invString = new List<string> { "" };
                     equipString = new List<string> { "staff:Wooden Staff", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 1, 0, 0, 0 };
@@ -1409,6 +1420,7 @@ namespace RPGv2
                     Evasion = 2;
                     Health = 60;
                     Speed = 2;
+                    Mana = 30;
                     invString = new List<string> { "" };
                     equipString = new List<string> { "sword:Bronze Sword", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 3, 0, 0, 0 };
@@ -1425,6 +1437,7 @@ namespace RPGv2
                     Evasion = 8;
                     Speed = 9;
                     Health = 40;
+                    Mana = 30;
                     invString = new List<string> { "" };
                     equipString = new List<string> { "knife:Bronze Dagger", "armor:None", "arms:None", "gloves:None", "pants:None", "boots:None" };
                     Special = new List<int> { 4, 0, 0, 0 };

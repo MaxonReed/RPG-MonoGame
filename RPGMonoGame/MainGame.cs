@@ -102,6 +102,7 @@ namespace RPGMonoGame
         int GainedLuck = 0;
         int GainedEvasion = 0;
         int GainedSpeed = 0;
+        int GainedMana = 0;
         #endregion
         #region playerInvAssets
         /*
@@ -2714,6 +2715,7 @@ namespace RPGMonoGame
                                 Battle.fightText = $"You have encountered an {Battle.enemy.Name}";
                             else
                                 Battle.fightText = $"You have encountered a {Battle.enemy.Name}";
+                            Battle.playerMana = GamePlay.player.Mana;
                             State = GameState.BattlePage;
                             break;
                         }
@@ -3350,7 +3352,8 @@ namespace RPGMonoGame
                 case "battle":
                     #region battleCase
                     spriteBatch.DrawString(storyFont, "Enemy HP: " + Battle.enemyHP + " / " + Battle.enemy.Health, new Vector2(92, 59), Color.Black);
-                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(673, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(623, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player Mana: " + Battle.playerMana + " / " + Battle.player.Mana, new Vector2(623, 80), Color.Black);
                     if (!clickedSpecial)
                     {
                         if (battleButton.Contains(mousePoint))
@@ -3379,20 +3382,65 @@ namespace RPGMonoGame
                     else
                     {
                         quitButton.Draw(spriteBatch, gameTime);
+                        int index = 0;
                         if (firstSpecial.Contains(mousePoint))
+                        {
                             defHover1.Draw(spriteBatch, gameTime);
+                            if(GamePlay.player.Special[index] == 1)
+                                spriteBatch.DrawString(storyFont, "Mana: 20", new Vector2(100, 320), Color.Black);
+                            if(GamePlay.player.Special[index] == 2)
+                                spriteBatch.DrawString(storyFont, "Mana: 10", new Vector2(100, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 3)
+                                spriteBatch.DrawString(storyFont, "Mana: 15", new Vector2(100, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 4)
+                                spriteBatch.DrawString(storyFont, "Mana: 5", new Vector2(100, 320), Color.Black);
+
+                        }
                         else
                             firstSpecial.Draw(spriteBatch, gameTime);
+                        index++;
                         if (secondSpecial.Contains(mousePoint))
+                        {
                             defHover2.Draw(spriteBatch, gameTime);
+                            if (GamePlay.player.Special[index] == 1)
+                                spriteBatch.DrawString(storyFont, "Mana: 20", new Vector2(300, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 2)
+                                spriteBatch.DrawString(storyFont, "Mana: 10", new Vector2(300, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 3)
+                                spriteBatch.DrawString(storyFont, "Mana: 15", new Vector2(300, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 4)
+                                spriteBatch.DrawString(storyFont, "Mana: 5", new Vector2(300, 320), Color.Black);
+                        }
                         else
                             secondSpecial.Draw(spriteBatch, gameTime);
+                        index++;
                         if (thirdSpecial.Contains(mousePoint))
+                        {
                             defHover3.Draw(spriteBatch, gameTime);
+                            if (GamePlay.player.Special[index] == 1)
+                                spriteBatch.DrawString(storyFont, "Mana: 20", new Vector2(500, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 2)
+                                spriteBatch.DrawString(storyFont, "Mana: 10", new Vector2(500, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 3)
+                                spriteBatch.DrawString(storyFont, "Mana: 15", new Vector2(500, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 4)
+                                spriteBatch.DrawString(storyFont, "Mana: 5", new Vector2(500, 320), Color.Black);
+                        }
                         else
                             thirdSpecial.Draw(spriteBatch, gameTime);
+                        index++;
                         if (fourthSpecial.Contains(mousePoint))
+                        {
                             defHover4.Draw(spriteBatch, gameTime);
+                            if (GamePlay.player.Special[index] == 1)
+                                spriteBatch.DrawString(storyFont, "Mana: 20", new Vector2(700, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 2)
+                                spriteBatch.DrawString(storyFont, "Mana: 10", new Vector2(700, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 3)
+                                spriteBatch.DrawString(storyFont, "Mana: 15", new Vector2(700, 320), Color.Black);
+                            if (GamePlay.player.Special[index] == 4)
+                                spriteBatch.DrawString(storyFont, "Mana: 5", new Vector2(700, 320), Color.Black);
+                        }
                         else
                             fourthSpecial.Draw(spriteBatch, gameTime);
                         int sp;
@@ -3506,6 +3554,7 @@ namespace RPGMonoGame
                                 GainedLuck = HelperClasses.RandomNumber(0, level);
                                 GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
                                 GainedSpeed = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
+                                GainedMana = HelperClasses.RandomNumber(0, Convert.ToInt32(level));
                                 break;
                             case "Rogue":
                                 GainedHealth = HelperClasses.RandomNumber(0, level);
@@ -3515,6 +3564,7 @@ namespace RPGMonoGame
                                 GainedLuck = HelperClasses.RandomNumber(0, level);
                                 GainedEvasion = HelperClasses.RandomNumber(0, level * 2);
                                 GainedSpeed = HelperClasses.RandomNumber(0, level * 3);
+                                GainedMana = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
                                 break;
                             case "Mage":
                                 GainedHealth = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
@@ -3526,6 +3576,7 @@ namespace RPGMonoGame
                                 GainedLuck = HelperClasses.RandomNumber(0, level);
                                 GainedEvasion = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 0.75));
                                 GainedSpeed = HelperClasses.RandomNumber(0, level);
+                                GainedMana = HelperClasses.RandomNumber(0, Convert.ToInt32(level * 1.25));
                                 break;
                             default:
                                 break;
@@ -3537,6 +3588,7 @@ namespace RPGMonoGame
                         GamePlay.player.Luck += GainedLuck;
                         GamePlay.player.Evasion += GainedEvasion;
                         GamePlay.player.Speed += GainedSpeed;
+                        GamePlay.player.Mana += GainedMana;
                     }
                     GraphicsDevice.Clear(Color.LightGreen);
                     spriteBatch.DrawString(storyFont, "Level Up! Level: " + GamePlay.player.Level, new Vector2(80, 40), Color.Black);
@@ -3559,6 +3611,8 @@ namespace RPGMonoGame
                     spriteBatch.DrawString(storyFont, "Evasion: " + (GamePlay.player.Evasion - GainedEvasion) + " + " + GainedEvasion + " = " + GamePlay.player.Evasion, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     increment++;
                     spriteBatch.DrawString(storyFont, "Speed: " + (GamePlay.player.Speed - GainedSpeed) + " + " + GainedSpeed + " = " + GamePlay.player.Speed, new Vector2(80, baseY + (increment * 30)), Color.Black);
+                    increment++;
+                    spriteBatch.DrawString(storyFont, "Mana: " + (GamePlay.player.Mana - GainedMana) + " + " + GainedMana + " = " + GamePlay.player.Mana, new Vector2(80, baseY + (increment * 30)), Color.Black);
                     break;
                 default:
                     break;
