@@ -158,11 +158,12 @@ namespace RPGv2
 
         public static void Digress()
         {
-            if(GlobalValues.storyIndex == 0)
+            if (GlobalValues.storyIndex == 0)
             {
                 GlobalValues.storyState--;
                 GlobalValues.storyIndex = GetScene(GlobalValues.storyState).Count - 1;
-            } else
+            }
+            else
             {
                 GlobalValues.storyIndex--;
             }
@@ -321,29 +322,30 @@ namespace RPGv2
             return damage;
         }//end Handle Special
 
-        public static int RegularAttack()
+        public static int RegularPlayerAttack()
         {
             int damage = 0;
-            if (turn)
-            {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(1, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
-                if (damage <= 0)
-                    damage = 1;
-                enemyHP -= damage;
-            }//end DMG turn
-            else
-            {
-                damage = Convert.ToInt32(HelperClasses.RandomNumber(1, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
-                if (damage <= 0)
-                    damage = 1;
-                if (DodgeChance(player.Evasion, enemy.Speed) > (HelperClasses.RandomNumber(0, 100) / 100.0))
-                    damage = 0;
-                playerHP -= damage;
-            }//end Dmg/Dodge
-            turn = !turn;
+            damage = Convert.ToInt32(HelperClasses.RandomNumber(1, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
+            if (damage <= 0)
+                damage = 1;
+            enemyHP -= damage;
             SetVals(GlobalValues.battleJson);
             return damage;
         }//end RegAttk
+
+        public static int RegularEnemyAttack()
+        {
+            int damage = 0;
+            damage = Convert.ToInt32(HelperClasses.RandomNumber(1, enemy.Attack) - HelperClasses.RandomNumber(0, player.Defense));
+            if (damage <= 0)
+                damage = 1;
+            if (DodgeChance(player.Evasion, enemy.Speed) > (HelperClasses.RandomNumber(0, 100) / 100.0))
+                damage = 0;
+            playerHP -= damage;
+            SetVals(GlobalValues.battleJson);
+            return damage;
+        }//end RegAttk
+
 
         public static double DodgeChance(double defenderEvasion, double attackerSpeed)
         {
@@ -471,7 +473,7 @@ namespace RPGv2
 
         [JsonConstructor]
         public JsonValues(int jInp, string jInpText, string jYearNum, string jFacCreate, string jFacDestroyed, string jEventName, string jBattleID,
-            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState, 
+            string jBattleState, bool jStartGen, bool jDone, string[] jStrArray, int jStoryIndex, int jStoryState, Faction faction, string jInFactionState,
             bool jSaveEnabled, List<string> jShopItemsString, bool jDontContinue)
         {
             inp = jInp;
@@ -1471,7 +1473,7 @@ namespace RPGv2
             int chanceTotal = 0;
             int num = 0;
             List<int> minMax = new List<int>();
-            switch (HelperClasses.RandomNumber(0, 5))
+            switch (HelperClasses.RandomNumber(0, 6))
             {
                 case 0:
                     switch (Class)
@@ -1694,7 +1696,7 @@ namespace RPGv2
             int chanceTotal = 0;
             int num = 0;
             List<int> minMax = new List<int>();
-            switch (HelperClasses.RandomNumber(0, 5))
+            switch (HelperClasses.RandomNumber(0, 6))
             {
                 case 0:
                     switch (Class)

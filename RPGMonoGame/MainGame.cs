@@ -371,7 +371,7 @@ namespace RPGMonoGame
         {
             GraphicsDevice.Clear(Color.White);
             base.Draw(gameTime);
-            
+
             switch (State)
             {
                 case GameState.MainMenu:
@@ -415,6 +415,8 @@ namespace RPGMonoGame
             if (GamePlay.player.Inv.Count % 10 != 0 && GamePlay.player.Inv.Count > 10)
                 shopMaxPages++;
             if (maxPages <= 0)
+                shopMaxPages = 1;
+            if (shopMaxPages <= 0)
                 shopMaxPages = 1;
             int start = (shopPage - 1) * 10;
             if (!GlobalValues.shopBuying)
@@ -2981,37 +2983,156 @@ namespace RPGMonoGame
                                 clickedRun = true;
                             if (battleButton.Contains(mousePoint))
                             {
-                                damagePlayer = Battle.RegularAttack();
-                                damageEnemy = Battle.RegularAttack();
+                                if (Battle.turn)
+                                {
+                                    damagePlayer = Battle.RegularPlayerAttack();
+                                    if (Battle.enemyHP <= 0)
+                                    {
+                                        Battle.outcome = 1;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                    else
+                                    {
+                                        Battle.turn = false;
+                                        damageEnemy = Battle.RegularEnemyAttack();
+                                        if (Battle.playerHP <= 0)
+                                        {
+                                            Battle.outcome = 0;
+                                            GlobalValues.battleState = "winner";
+                                        }
+                                    }
+                                } else
+                                {
+                                    damageEnemy = Battle.RegularEnemyAttack();
+                                    if (Battle.playerHP <= 0)
+                                    {
+                                        Battle.outcome = 0;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                    else
+                                    {
+                                        Battle.turn = true;
+                                        damagePlayer = Battle.RegularPlayerAttack();
+                                        if (Battle.enemyHP <= 0)
+                                        {
+                                            Battle.outcome = 1;
+                                            GlobalValues.battleState = "winner";
+                                        }
+                                    }
+                                }
                                 GlobalValues.battleState = "damageDealt";
                             }
                         }
                         else
                         {
+                            int index = 0;
+                            int requiredMana = 0;
                             if (firstSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[0]);
-                                GlobalValues.battleState = "damageDealt";
-                                damageEnemy = Battle.RegularAttack();
+                                if (GamePlay.player.Special[index] == 1)
+                                    requiredMana = 20;
+                                if (GamePlay.player.Special[index] == 2)
+                                    requiredMana = 10;
+                                if (GamePlay.player.Special[index] == 3)
+                                    requiredMana = 15;
+                                if (GamePlay.player.Special[index] == 4)
+                                    requiredMana = 5;
+                                if (Battle.playerMana >= requiredMana)
+                                {
+                                    Battle.playerMana -= requiredMana;
+                                    damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[0]);
+                                    if (Battle.enemyHP <= 0)
+                                    {
+                                        Battle.outcome = 1;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                    else
+                                    {
+                                        Battle.turn = false;
+                                        damageEnemy = Battle.RegularEnemyAttack();
+                                        if (Battle.playerHP <= 0)
+                                        {
+                                            Battle.outcome = 0;
+                                            GlobalValues.battleState = "winner";
+                                        }
+                                        else
+                                        {
+                                            GlobalValues.battleState = "damageDealt";
+                                        }
+                                    }
+                                }
                             }
+                            index++;
                             if (secondSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[1]);
-                                GlobalValues.battleState = "damageDealt";
-                                damageEnemy = Battle.RegularAttack();
-
+                                if (GamePlay.player.Special[index] == 1)
+                                    requiredMana = 20;
+                                if (GamePlay.player.Special[index] == 2)
+                                    requiredMana = 10;
+                                if (GamePlay.player.Special[index] == 3)
+                                    requiredMana = 15;
+                                if (GamePlay.player.Special[index] == 4)
+                                    requiredMana = 5;
+                                if (Battle.playerMana >= requiredMana)
+                                {
+                                    damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[1]);
+                                    GlobalValues.battleState = "damageDealt";
+                                    Battle.turn = false;
+                                    damageEnemy = Battle.RegularEnemyAttack();
+                                    if (Battle.playerHP <= 0)
+                                    {
+                                        Battle.outcome = 0;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                }
                             }
+                            index++;
                             if (thirdSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[2]);
-                                GlobalValues.battleState = "damageDealt";
-                                damageEnemy = Battle.RegularAttack();
+                                if (GamePlay.player.Special[index] == 1)
+                                    requiredMana = 20;
+                                if (GamePlay.player.Special[index] == 2)
+                                    requiredMana = 10;
+                                if (GamePlay.player.Special[index] == 3)
+                                    requiredMana = 15;
+                                if (GamePlay.player.Special[index] == 4)
+                                    requiredMana = 5;
+                                if (Battle.playerMana >= requiredMana)
+                                {
+                                    damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[2]);
+                                    GlobalValues.battleState = "damageDealt";
+                                    Battle.turn = false;
+                                    damageEnemy = Battle.RegularEnemyAttack();
+                                    if (Battle.playerHP <= 0)
+                                    {
+                                        Battle.outcome = 0;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                }
                             }
+                            index++;
                             if (fourthSpecial.Contains(mousePoint))
                             {
-                                damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[3]);
-                                GlobalValues.battleState = "damageDealt";
-                                damageEnemy = Battle.RegularAttack();
+                                if (GamePlay.player.Special[index] == 1)
+                                    requiredMana = 20;
+                                if (GamePlay.player.Special[index] == 2)
+                                    requiredMana = 10;
+                                if (GamePlay.player.Special[index] == 3)
+                                    requiredMana = 15;
+                                if (GamePlay.player.Special[index] == 4)
+                                    requiredMana = 5;
+                                if (Battle.playerMana >= requiredMana)
+                                {
+                                    damagePlayer = Battle.HandleSpecial(GamePlay.player.Special[3]);
+                                    GlobalValues.battleState = "damageDealt";
+                                    Battle.turn = false;
+                                    damageEnemy = Battle.RegularEnemyAttack();
+                                    if (Battle.playerHP <= 0)
+                                    {
+                                        Battle.outcome = 0;
+                                        GlobalValues.battleState = "winner";
+                                    }
+                                }
                             }
                             if (quitButton.Contains(mousePoint))
                                 clickedSpecial = false;
@@ -3103,10 +3224,18 @@ namespace RPGMonoGame
 
                                     break;
                             }
+                            if (Battle.enemyHP <= 0)
+                            {
+                                Battle.outcome = 1;
+                                GlobalValues.battleState = "winner";
+                            }
                             Battle.round++;
                         }
                         else
+                        {
                             dispPlayerDamage = false;
+                            
+                        }
                     }
                     break;
                 case "winner":
@@ -3186,8 +3315,11 @@ namespace RPGMonoGame
 
 
             spriteBatch.Begin();
-            if(Battle.round == -1)
-                receivedMoney = HelperClasses.RandomNumber(0, Battle.enemy.Level * Battle.enemy.Level);
+            if (Battle.round == -1)
+            {
+                receivedMoney = HelperClasses.RandomNumber(0, Convert.ToInt32((Battle.enemy.Level * Battle.enemy.Level) * new Random().NextDouble()));
+                Battle.playerMana = GamePlay.player.Mana;
+            }
             switch (GlobalValues.battleID)
             {
                 case "firstBattle":
@@ -3231,12 +3363,45 @@ namespace RPGMonoGame
                                 break;
                         }
 
-                        if (!Battle.turn)
+                        if (Battle.turn)
                         {
-                            damageEnemy = Battle.RegularAttack();
-                            damagePlayer = Battle.RegularAttack();
-                            GlobalValues.battleState = "damageDealt";
+                            damagePlayer = Battle.RegularPlayerAttack();
+                            if (Battle.enemyHP <= 0)
+                            {
+                                Battle.outcome = 1;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = false;
+                                damageEnemy = Battle.RegularEnemyAttack();
+                                if (Battle.playerHP <= 0)
+                                {
+                                    Battle.outcome = 0;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
                         }
+                        else
+                        {
+                            damageEnemy = Battle.RegularEnemyAttack();
+                            if (Battle.playerHP <= 0)
+                            {
+                                Battle.outcome = 0;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = true;
+                                damagePlayer = Battle.RegularPlayerAttack();
+                                if (Battle.enemyHP <= 0)
+                                {
+                                    Battle.outcome = 1;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
+                        }
+                        GlobalValues.battleState = "damageDealt";
                         Battle.round++;
                         Battle.SetVals(GlobalValues.battleJson);
                     }
@@ -3284,12 +3449,45 @@ namespace RPGMonoGame
                                 break;
                         }
 
-                        if (!Battle.turn)
+                        if (Battle.turn)
                         {
-                            damageEnemy = Battle.RegularAttack();
-                            damagePlayer = Battle.RegularAttack();
-                            GlobalValues.battleState = "damageDealt";
+                            damagePlayer = Battle.RegularPlayerAttack();
+                            if (Battle.enemyHP <= 0)
+                            {
+                                Battle.outcome = 1;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = false;
+                                damageEnemy = Battle.RegularEnemyAttack();
+                                if (Battle.playerHP <= 0)
+                                {
+                                    Battle.outcome = 0;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
                         }
+                        else
+                        {
+                            damageEnemy = Battle.RegularEnemyAttack();
+                            if (Battle.playerHP <= 0)
+                            {
+                                Battle.outcome = 0;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = true;
+                                damagePlayer = Battle.RegularPlayerAttack();
+                                if (Battle.enemyHP <= 0)
+                                {
+                                    Battle.outcome = 1;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
+                        }
+                        GlobalValues.battleState = "damageDealt";
                         Battle.round++;
                         Battle.SetVals(GlobalValues.battleJson);
                     }
@@ -3331,18 +3529,51 @@ namespace RPGMonoGame
                                 Battle.SetVals(GlobalValues.battleJson);
                                 break;
                         }
-                        if (!Battle.turn)
+                        if (Battle.turn)
                         {
-                            damageEnemy = Battle.RegularAttack();
-                            damagePlayer = Battle.RegularAttack();
-                            GlobalValues.battleState = "damageDealt";
+                            damagePlayer = Battle.RegularPlayerAttack();
+                            if (Battle.enemyHP <= 0)
+                            {
+                                Battle.outcome = 1;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = false;
+                                damageEnemy = Battle.RegularEnemyAttack();
+                                if (Battle.playerHP <= 0)
+                                {
+                                    Battle.outcome = 0;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
                         }
+                        else
+                        {
+                            damageEnemy = Battle.RegularEnemyAttack();
+                            if (Battle.playerHP <= 0)
+                            {
+                                Battle.outcome = 0;
+                                GlobalValues.battleState = "winner";
+                            }
+                            else
+                            {
+                                Battle.turn = true;
+                                damagePlayer = Battle.RegularPlayerAttack();
+                                if (Battle.enemyHP <= 0)
+                                {
+                                    Battle.outcome = 1;
+                                    GlobalValues.battleState = "winner";
+                                }
+                            }
+                        }
+                        GlobalValues.battleState = "damageDealt";
                         Battle.round++;
                         Battle.SetVals(GlobalValues.battleJson);
                     }
                     break;
             }
-            
+
             switch (GlobalValues.battleState)
             {
                 case "prologue":
@@ -3386,9 +3617,9 @@ namespace RPGMonoGame
                         if (firstSpecial.Contains(mousePoint))
                         {
                             defHover1.Draw(spriteBatch, gameTime);
-                            if(GamePlay.player.Special[index] == 1)
+                            if (GamePlay.player.Special[index] == 1)
                                 spriteBatch.DrawString(storyFont, "Mana: 20", new Vector2(100, 320), Color.Black);
-                            if(GamePlay.player.Special[index] == 2)
+                            if (GamePlay.player.Special[index] == 2)
                                 spriteBatch.DrawString(storyFont, "Mana: 10", new Vector2(100, 320), Color.Black);
                             if (GamePlay.player.Special[index] == 3)
                                 spriteBatch.DrawString(storyFont, "Mana: 15", new Vector2(100, 320), Color.Black);
@@ -3514,7 +3745,8 @@ namespace RPGMonoGame
                             spriteBatch.DrawString(storyFont, "You dodged the attack.", new Vector2(110, 319), Color.Black);
                     }
                     spriteBatch.DrawString(storyFont, "Enemy HP: " + Battle.enemyHP + " / " + Battle.enemy.Health, new Vector2(92, 59), Color.Black);
-                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(673, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player HP: " + Battle.playerHP + " / " + Battle.player.Health, new Vector2(623, 59), Color.Black);
+                    spriteBatch.DrawString(storyFont, "Player Mana: " + Battle.playerMana + " / " + Battle.player.Mana, new Vector2(623, 80), Color.Black);
                     break;
                 case "winner":
                     if (Battle.outcome == 1)
@@ -3693,7 +3925,7 @@ namespace RPGMonoGame
                         GlobalValues.dontContinue = true;
                     }
                 }
-                if(required == "DharkMinion")
+                if (required == "DharkMinion")
                 {
                     if (count <= GlobalValues.save.questVals.dharkMinionsKilled)
                     {
