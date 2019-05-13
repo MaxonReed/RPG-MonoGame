@@ -11,4 +11,76 @@
     "Rarity Level": 5000,
     "Attr": "None"
   }
+  {
+    "Name": "Leather Jeans",
+    "Attack": 0,
+    "Defense": 2,
+    "Buy Price": 20,
+    "Sell Price": 5,
+    "Rarity Level": 4500,
+    "Attr": "None"
+  },
+  {
+    "Name": "Bronze Greaves",
+    "Attack": 0,
+    "Defense": 3,
+    "Buy Price": 40,
+    "Sell Price": 10,
+    "Rarity Level": 4250,
+    "Attr": "None"
+  },
+  {
+    "Name": "Iron Greaves",
+    "Attack": 0,
+    "Defense": 4,
+    "Buy Price": 60,
+    "Sell Price": 15,
+    "Rarity Level": 4000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Silver Greaves",
+    "Attack": 0,
+    "Defense": 5,
+    "Buy Price": 90,
+    "Sell Price": 22,
+    "Rarity Level": 3750,
+    "Attr": "None"
+  },
+  {
+    "Name": "Ice Pants",
+    "Attack": 0,
+    "Defense": 4,
+    "Buy Price": 100,
+    "Sell Price": 25,
+    "Rarity Level": 3600,
+    "Attr": "Freeze"
+  },
+  {
+    "Name": "Athletic shorts",
+    "Attack": 6,
+    "Defense": 1,
+    "Buy Price": 125,
+    "Sell Price": 33,
+    "Rarity Level": 3500,
+    "Attr": "None"
+  },
+  {
+    "Name": "LONG PANT",
+    "Attack": 0,
+    "Defense": 10,
+    "Buy Price": 150,
+    "Sell Price": 50,
+    "Rarity Level": 3000,
+    "Attr": "Long||Epic"//get +1 attack sometimes(Random)epic makes you epic
+  },
+  {
+    "Name": "Jet pack",
+    "Attack": 1,
+    "Defense": 12,
+    "Buy Price": 200,
+    "Sell Price": 75,
+    "Rarity Level": 2000,
+    "Attr": "Commander||AfterBurn"//See Gloves
+  }
 ]
