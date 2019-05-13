@@ -8,7 +8,43 @@
     "Defense": 0,
     "Buy Price": 0,
     "Sell Price": 0,
-    "Rarity Level": 5000,
+    "Rarity Level": 500000,
     "Attr": "None"
-  }
+  },
+  {
+    "Name": "Leather Gloves",
+    "Attack": 1,
+    "Defense": 3,
+    "Buy Price": 30,
+    "Sell Price": 10,
+    "Rarity Level": 50000,
+    "Attr": "None"
+  },
+  {
+    "Name": "Proximity mine launching gloves",
+    "Attack": 10,
+    "Defense": 10,
+    "Buy Price": 1000,
+    "Sell Price": 200,
+    "Rarity Level": 5,
+    "Attr": "AfterBurn||Missfire"//AfterBurn gain 1 attack per life you lose||Missfire deal double damage at low chance
+  },
+  {
+    "Name": "Hands of God",
+    "Attack": 10,
+    "Defense": 10,
+    "Buy Price": 1200,
+    "Sell Price": 400,
+    "Rarity Level": 3,
+    "Attr": "AfterBurn||Holy"//Holy gain 1 life per turn unless you are below 10 life
+  },
+  {
+    "Name": "Gaming gloves",
+    "Attack": 12,
+    "Defense": 12,
+    "Buy Price": 1500,
+    "Sell Price": 500,
+    "Rarity Level": 1,
+    "Attr": "AfterBurn||Pro"//Pro if you are epic gain 10 more attack
+  },
 ]
