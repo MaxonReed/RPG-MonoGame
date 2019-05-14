@@ -668,6 +668,7 @@ namespace RPGv2
     {
         public int gangstersKilled = 0;
         public int dharkMinionsKilled = 0;
+        public bool dharksonGrothKilled = false;
     }
 
     //chris(obsolete)

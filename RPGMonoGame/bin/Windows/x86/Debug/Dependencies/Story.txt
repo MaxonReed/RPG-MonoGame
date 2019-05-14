@@ -76,7 +76,6 @@ Dharkson: "You will die for what You've done"
 Toto: "A Terrific Victory"
 
 [6]
-:req 1 Dharkson Groth|You need to defeat Dharson groth
 *You see someone who looks like a kid with a keyboard running around
 Toto: "Hey kid are you lost
 KEY: "No, And I will SMITE you!"
@@ -106,7 +105,6 @@ Toto: "Nice try kid..."
 *A terrific Victory
 
 [8]
-:req 1 Key|You need to defeat key
 :req 10 Zombie|You need to defeat 10 Zombies
 Zombie: "GAHHAH BLEH BLERG BRIAN"
 Toto: "You meant brains? right?"
@@ -127,9 +125,51 @@ Toto: "Yeah, They have been trying to kill me"
 Brian: "I'll kill you here for commiting such an act of murder"
 *He seems like he is ready to fight
 *I can't back down
-|Battle:id=brianbattle
+|battle:id=brianbattle
 *I kick him down
 Brian: "What are You...!"
 *At that moment one of his own zombies drag him off as I hear the sound of his agony
 Toto: "He didn't train his pets properly..."
 *A terrific Victory
+
+[10]
+:req 7 Crusader|You need to defeat 7 crusaders
+Crusaders: "FOR THE HOLY LANDS AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+The crusaders run in the direction of the cemetery
+*I should probably stop them
+Midget Red Crusader: Deus Vult
+Crusaders: DEUS VULT
+Midget Red Crusader: Go!!!
+*hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
+You see his face and remeber him
+Toto: key?
+KEY: Y-You are still alive?
+*Thats what I should be saying to him...
+KEY: "No matter, I will retreat for now until I'm powerful enough!"
+Toto: "ok kid"
+KEY: "D:<"
+*How did he verbally say that?
+:free=true
+
+[11]
+:req 1 Red Henchkey|You need to defeat 1 red hench key
+:free=false
+KEY: "So, you finally made it"
+Toto: "Yeah"
+*Something feels off
+KEY: "Last time you beat me so"
+Key puts on armour
+KEY: "This time I'll kill you"
+*He looks angry
+*And I didn't even correct his spelling mistakes
+*I-
+*I can't back down
+|Battle:id=KeyBoardbattle
+KEY: "AAAAAAAAAAAAH OW OW OW OW OW"
+Toto: "See you in he-"
+*An explosion interupts me
+*Key runs out via the hole...
+*Have I... lost?
+Key: "WAIT WAIT I-I THOUGHT YOU WERE HELPING M-"
+*A gunshot echos
+*A terrific victory
