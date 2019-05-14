@@ -173,3 +173,32 @@ Toto: "See you in he-"
 Key: "WAIT WAIT I-I THOUGHT YOU WERE HELPING M-"
 *A gunshot echos
 *A terrific victory
+
+[12]
+*I walk away from all that mess relitivly unscathed when I see...The Joker?
+???: "You better give me that N word pass Right now or I'll... I'll go gamer style"
+*He proceeded to go gamer style
+???: "YES THE N WORD PASS IS FINIALLY MINE"
+*o No
+*He retreats and his gaurds flood the streets, I have to take him down!
+:free=true
+
+[13]
+:req 12 Pro Gamer||Defeat 12 pro gamers
+:free = false
+*with all the pro gamers in sight defeated I can finally enter...
+???: "YOU"
+*Why do people always have to yell
+???: "I'm going to kill you now"
+toto: "Why are you doing this..."
+???: "Because I'm..."
+BroGamer: "BRO GAMER!!!!!!!!!!!"
+toto: "I can't Back Down"
+|Battle:id=GamerBossbattle
+toto: "No Racism"
+BroGamer: "Ok"
+*He died lol
+*Oh no I'm thinking like a gamer...
+toto: "TOTO...... WINS!!!!"
+*uhh I meant
+toto: "A terrific Victory"
