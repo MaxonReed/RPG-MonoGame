@@ -11,8 +11,8 @@
     "EnRate": 0
   },
   {
-    "Id": "Rngen 2 3 4 5 6 7 8 9 10 11", //Random encounter
-    "Level": 20,
+    "Id": "Rngen 2 3 4 5 6 7 8 9 10 11 12", //Random encounter
+    "Level": 6,
     "Health": 30,
     "Name": "Big Crow",
     "Attack": 1,
@@ -55,7 +55,7 @@
     "EnRate": 99900
   },
   {
-    "Id": "Rngen 2 3 4 5 6 8 9 10 11",
+    "Id": "Rngen 2 3 4 5 6 8 9 10 11 12",
     "Level": 40,
     "Health": 1,
     "Name": "Shadow Creep",
@@ -121,7 +121,7 @@
     "EnRate": 444
   },
   {
-    "Id": "Rngen 4 5 6 7 8 9 10 11",
+    "Id": "Rngen 4 5 6 7 8 9 10 11 12",
     "Level": 3,
     "Health": 120,
     "Name": "SwordMaster",
@@ -136,14 +136,14 @@
     "Level": 10,
     "Health": 300,
     "Name": "Big Chedda",
-    "Attack": 20,
-    "Defense": 20,
+    "Attack": 75,
+    "Defense": 100,
     "MDef": 5,
     "Speed": 20,
     "EnRate": 0
   },
   {
-    "Id": "Rngen 4 5 6 7 8 9 10 11",
+    "Id": "Rngen 4 5 6 7 8 9 10 11 12",
     "Level": 7,
     "Health": 100,
     "Name": "Zombie",
@@ -192,7 +192,7 @@
     "Health": 750,
     "Name": "Dharkson Groth",
     "Attack": 80,
-    "Defense": 1,
+    "Defense": 11,
     "MDef": 35,
     "Speed": 27,
     "EnRate": 0
@@ -209,7 +209,7 @@
     "EnRate": 250000
   },
   {
-    "Id": "Rngen 6 7 8 9 10 11",
+    "Id": "Rngen 6 7 8 9 10 11 12",
     "Level": 4,
     "Health": 220,
     "Name": "Old Sage",
@@ -247,7 +247,7 @@
     "Health": 1000,
     "Name": "Key! Keyboard Warrior",
     "Attack": 99,
-    "Defense": 5,
+    "Defense": 15,
     "MDef": 400,
     "Speed": 20,
     "EnRate": 0
@@ -264,7 +264,7 @@
     "EnRate": 99000
   },
   {
-    "Id": "Rngen 8 9 10 11",
+    "Id": "Rngen 8 9 10 11 12",
     "Level": 35,
     "Health": 200,
     "Name": "Crusader",
@@ -275,7 +275,7 @@
     "EnRate": 98900
   },
   {
-    "Id": "Rngen 8 9 10 11",
+    "Id": "Rngen 8 9 10 11 12",
     "Level": 50,
     "Health": 100,
     "Name": "Big Brother's Hand",
@@ -302,8 +302,8 @@
     "Health": 1500,
     "Name": "Brain",
     "Attack": 92,
-    "Defense": 22,
-    "MDef": 30,
+    "Defense": 122,
+    "MDef": 130,
     "Speed": 10,
     "EnRate": 0
   },
@@ -341,7 +341,7 @@
     "EnRate": 8000
   },
   {
-    "Id": "Rngen MiniBoss 10 11",
+    "Id": "Rngen MiniBoss 10 11 12",
     "Level": 100,
     "Health": 750,
     "Name": "Black Knight",
@@ -357,9 +357,53 @@
     "Health": 1750,
     "Name": "Key! Keyboard Crusader",
     "Attack": 99,
+    "Defense": 140,
+    "MDef": 140,
+    "Speed": 12,
+    "EnRate": 0
+  },
+  {
+    "Id": "Rngen 12 13",
+    "Level": 115,
+    "Health": 300,
+    "Name": "Gamer",
+    "Attack": 55,
     "Defense": 40,
     "MDef": 40,
-    "Speed": 2,
+    "Speed": 30,
+    "EnRate": 6000
+  },
+  {
+    "Id": "Rngen 12 13",
+    "Level": 120,
+    "Health": 400,
+    "Name": "Pro Gamer",
+    "Attack": 65,
+    "Defense": 50,
+    "MDef": 50,
+    "Speed": 40,
+    "EnRate": 5500
+  },
+  {
+    "Id": "Rngen 12 13",
+    "Level": 130,
+    "Health": 250,
+    "Name": "Living Flesh",
+    "Attack": 100,
+    "Defense": 20,
+    "MDef": 20,
+    "Speed": 20,
+    "EnRate": 6000
+  },
+  {
+    "Id": "Seten GamerBoss",
+    "Level": 200,
+    "Health": 2500,
+    "Name": "BroGamer: King of games and lord of the N word",
+    "Attack": 155,
+    "Defense": 250,
+    "MDef": 140,
+    "Speed": 130,
     "EnRate": 0
   }
 ]
