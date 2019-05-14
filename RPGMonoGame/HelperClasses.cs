@@ -284,30 +284,37 @@ namespace RPGv2
 
         }//end handleAttr Default
 
+        public static bool CheckAttr(string attr)
+        {
+            foreach (Item item in GamePlay.player.Equip)
+            {
+                if (item.GetItemName() != "None")
+                {
+                    foreach (string str in item.GetAttributes())
+                    {
+                        if (str == attr)
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
+
         public static int HandleSpecial(int sp)
         {
             int damage = 0;
             int enemyDefense = enemy.MDef;
-            foreach (Item i in GamePlay.player.Equip)
-            {
-                if (i.GetItemName() != "None")
-                {
-                    foreach (string str in i.GetAttributes())
-                    {
-                        if(str == "CounterMagic")
-                        {
-                            enemyDefense = enemy.Defense;
-                        }
-                    }
-                }
-            }
+
+
+            if (Battle.CheckAttr("CounterMagic"))
+                enemyDefense = enemy.Defense;
             switch (sp)
             {
                 case 0:
                     break;
                 case 1:
                     //Fire ball
-                    damage = Convert.ToInt32(HelperClasses.RandomNumber(1, Convert.ToInt32(player.MAtk * 1.5)) - HelperClasses.RandomNumber(0, enemy.Defense));
+                    damage = Convert.ToInt32(HelperClasses.RandomNumber(1, Convert.ToInt32(player.MAtk * 1.5)) - HelperClasses.RandomNumber(0, enemyDefense));
                     if (damage <= 0)
                         damage = 1;
                     enemyHP -= damage;
@@ -342,6 +349,11 @@ namespace RPGv2
             damage = Convert.ToInt32(HelperClasses.RandomNumber(1, player.Attack) - HelperClasses.RandomNumber(0, enemy.Defense));
             if (damage <= 0)
                 damage = 1;
+            if (CheckAttr("Dexterity"))
+                damage += Convert.ToInt32(player.Evasion);
+            if (CheckAttr("Missfire"))
+                if (HelperClasses.RandomNumber(0, 100) < 10)
+                    damage *= 2;
             enemyHP -= damage;
             SetVals(GlobalValues.battleJson);
             return damage;
