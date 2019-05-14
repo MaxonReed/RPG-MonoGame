@@ -27,7 +27,7 @@
     "Buy Price": 1000,
     "Sell Price": 200,
     "Rarity Level": 5,
-    "Attr": "AfterBurn||Missfire"//AfterBurn gain 1 attack per life you lose||Missfire deal double damage at low chance
+    "Attr": "AfterBurn|Missfire"//AfterBurn gain 1 attack per life you lose||Missfire deal double damage at low chance
   },
   {
     "Name": "Hands of God",
@@ -36,7 +36,7 @@
     "Buy Price": 1200,
     "Sell Price": 400,
     "Rarity Level": 3,
-    "Attr": "AfterBurn||Holy"//Holy gain 1 life per turn unless you are below 10 life
+    "Attr": "AfterBurn|Holy"//Holy gain 1 life per turn unless you are below 10 life
   },
   {
     "Name": "Gaming gloves",
@@ -45,6 +45,6 @@
     "Buy Price": 1500,
     "Sell Price": 500,
     "Rarity Level": 1,
-    "Attr": "AfterBurn||Pro"//Pro if you are epic gain 10 more attack
-  },
+    "Attr": "AfterBurn|Pro"//Pro if you are epic gain 10 more attack
+  }
 ]

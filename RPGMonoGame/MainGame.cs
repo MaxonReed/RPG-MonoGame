@@ -3153,9 +3153,26 @@ namespace RPGMonoGame
                                 {
                                     foreach(string str in i.GetAttributes())
                                     {
+                                        if (str == "AfterBurn")
+                                        {
+                                            Battle.player.Attack = GamePlay.player.Attack + (GamePlay.player.Health - Battle.playerHP);
+                                        }
                                         if (str == "Night\'s Bane")
                                             if (GamePlay.player.Health > Battle.playerHP)
                                                 Battle.playerHP /= 2;
+                                        if(str == "Long")
+                                            if (new Random().Next(2) == 0)
+                                                GamePlay.player.Attack++;
+                                        if(str == "Holy")
+                                        {
+                                            if (Battle.playerHP >= 10)
+                                                Battle.playerHP += Convert.ToInt32(Battle.playerHP * 1.05);
+                                        }
+                                        if (str == "Commander")
+                                        {
+                                            Battle.player.Attack *= 2;
+                                            Battle.player.Defense /= 2;
+                                        }
                                         if (str == "Bloodthirsty")
                                         {
                                             Battle.player.Defense -= 1;
@@ -3165,17 +3182,10 @@ namespace RPGMonoGame
                                             if (Battle.enemy.Defense <= 0)
                                                 Battle.enemy.Defense = 1;
                                         }
-                                        if (str == "Frozen")
-                                        {
-                                            if (Battle.round <= 3)
-                                                Battle.playerHP += damageEnemy;
-                                        }
-                                        if (str == "Commander")
-                                            Battle.player.Attack++;
                                         if (str == "Infect")
                                             if (Battle.player.Defense > Battle.enemy.Defense)
                                                 Battle.enemyHP -= damageEnemy;
-                                        if (str == "Frozen")
+                                        if (str == "Frozen" || str == "Freeze")
                                         {
                                             if (Battle.round <= 2)
                                                 Battle.playerHP += damageEnemy;
@@ -3300,36 +3310,13 @@ namespace RPGMonoGame
                         Battle.playerHP = Battle.player.Health;
                         Battle.turn = Battle.player.Speed > Battle.enemy.Speed;
                         //attribute handling
-                        switch (Battle.player.Class)
+                        if (Battle.CheckAttr("Pro"))
                         {
-                            case "Warrior":
-                                Sword sword = (Sword)GamePlay.player.Equip[0];
-                                foreach (string str in sword.attr.ToArray())
-                                {
-                                    if (str == "Curse")
-                                        Battle.turn = false;
-                                }
-                                break;
-                            case "Mage":
-                                Staff staff = (Staff)GamePlay.player.Equip[0];
-                                foreach (string str in staff.attr.ToArray())
-                                {
-                                    if (str == "Curse")
-                                        Battle.turn = false;
-                                }
-                                break;
-                            case "Rogue":
-                                Knife knife = (Knife)GamePlay.player.Equip[0];
-                                foreach (string str in knife.attr.ToArray())
-                                {
-                                    if (str == "Curse")
-                                        Battle.turn = false;
-                                }
-                                break;
-                            default:
-
-                                break;
+                            if (Battle.CheckAttr("Epic"))
+                                GamePlay.player.Attack += 10;
                         }
+                        if (Battle.CheckAttr("Curse"))
+                            Battle.turn = false;
 
                         if (Battle.turn)
                         {

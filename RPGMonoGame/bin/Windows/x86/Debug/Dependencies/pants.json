@@ -72,7 +72,7 @@
     "Buy Price": 150,
     "Sell Price": 50,
     "Rarity Level": 3000,
-    "Attr": "Long||Epic"//get +1 attack sometimes(Random)epic makes you epic
+    "Attr": "Long|Epic"//get +1 attack sometimes(Random)epic makes you epic
   },
   {
     "Name": "Jet pack",
@@ -81,6 +81,6 @@
     "Buy Price": 200,
     "Sell Price": 75,
     "Rarity Level": 2000,
-    "Attr": "Commander||AfterBurn"//See Gloves
+    "Attr": "Commander|AfterBurn"//See Gloves
   }
 ]

@@ -90,7 +90,7 @@
     "Buy Price": 800,
     "Sell Price": 88,
     "Rarity Level": 88,
-    "Attr": "Infinite"//Infinite: You take 2 turns before your opponent takes 1
+    "Attr": "None"//Infinite: You take 2 turns before your opponent takes 1
   },
   {
     "Name": "Flame Caster Blade",
