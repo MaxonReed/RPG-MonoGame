@@ -3147,13 +3147,13 @@ namespace RPGMonoGame
                         {
                             dispPlayerDamage = true;
                             GlobalValues.battleState = "battle";
-                            switch (Battle.player.Class)
+                            foreach(Item i in GamePlay.player.Equip)
                             {
-                                case "Warrior":
-                                    Sword sword = (Sword)GamePlay.player.Equip[0];
-                                    foreach (string str in sword.attr.ToArray())
+                                if(i.GetItemName() != "None")
+                                {
+                                    foreach(string str in i.GetAttributes())
                                     {
-                                        if (str == @"Night's Bane")
+                                        if (str == "Night\'s Bane")
                                             if (GamePlay.player.Health > Battle.playerHP)
                                                 Battle.playerHP /= 2;
                                         if (str == "Bloodthirsty")
@@ -3170,12 +3170,6 @@ namespace RPGMonoGame
                                             if (Battle.round <= 3)
                                                 Battle.playerHP += damageEnemy;
                                         }
-                                    }
-                                    break;
-                                case "Mage":
-                                    Staff staff = (Staff)GamePlay.player.Equip[0];
-                                    foreach (string str in staff.attr.ToArray())
-                                    {
                                         if (str == "Commander")
                                             Battle.player.Attack++;
                                         if (str == "Infect")
@@ -3196,33 +3190,7 @@ namespace RPGMonoGame
                                                 Battle.enemy.Defense = 1;
                                         }
                                     }
-                                    break;
-                                case "Rogue":
-                                    Knife knife = (Knife)GamePlay.player.Equip[0];
-                                    foreach (string str in knife.attr.ToArray())
-                                    {
-                                        if (str == "Bloodthirsty")
-                                        {
-                                            Battle.player.Defense -= 1;
-                                            Battle.enemy.Defense -= 5;
-                                            if (Battle.player.Defense <= 0)
-                                                Battle.player.Defense = 1;
-                                            if (Battle.enemy.Defense <= 0)
-                                                Battle.enemy.Defense = 1;
-                                        }
-                                        if (str == "Infect")
-                                            if (Battle.player.Defense > Battle.enemy.Defense)
-                                                Battle.enemyHP -= damageEnemy;
-                                        if (str == "Frozen")
-                                        {
-                                            if (Battle.round <= 2)
-                                                Battle.player.Health += damageEnemy;
-                                        }
-                                    }
-                                    break;
-                                default:
-
-                                    break;
+                                }
                             }
                             if (Battle.enemyHP <= 0)
                             {

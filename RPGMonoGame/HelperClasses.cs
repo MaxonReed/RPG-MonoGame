@@ -287,6 +287,20 @@ namespace RPGv2
         public static int HandleSpecial(int sp)
         {
             int damage = 0;
+            int enemyDefense = enemy.MDef;
+            foreach (Item i in GamePlay.player.Equip)
+            {
+                if (i.GetItemName() != "None")
+                {
+                    foreach (string str in i.GetAttributes())
+                    {
+                        if(str == "CounterMagic")
+                        {
+                            enemyDefense = enemy.Defense;
+                        }
+                    }
+                }
+            }
             switch (sp)
             {
                 case 0:
