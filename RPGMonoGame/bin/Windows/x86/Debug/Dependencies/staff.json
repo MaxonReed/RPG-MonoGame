@@ -63,7 +63,7 @@
     "Buy Price": 300,
     "Sell Price": 70,
     "Rarity Level": 150,
-    "Attr": "Commander"
+    "Attr": "None"
   },
   {
     "Name": "Staff of Justice",
@@ -72,7 +72,7 @@
     "Buy Price": 500,
     "Sell Price": 150,
     "Rarity Level": 100,
-    "Attr": "Commander|Freeze"
+    "Attr": "Freeze"
   },
   {
     "Name": "Staff of Lies",
@@ -93,7 +93,7 @@
     "Attr": "Infinite"//Infinite: You take 2 turns before your opponent takes 1
   },
   {
-    "Name": "Flame Caster Blade",
+    "Name": "GunBlade",
     "Attack": 35,
     "Defense": 12,
     "Buy Price": 750,
