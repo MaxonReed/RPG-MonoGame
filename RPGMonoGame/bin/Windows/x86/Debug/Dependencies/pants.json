@@ -80,7 +80,7 @@
     "Defense": 12,
     "Buy Price": 200,
     "Sell Price": 75,
-    "Rarity Level": 2000,
+    "Rarity Level": 1000,
     "Attr": "Commander||AfterBurn"//See Gloves
   }
 ]
