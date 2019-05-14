@@ -92,4 +92,13 @@
     "Rarity Level": 22,
     "Attr": "Freeze"
   }
+  {
+    "Name": "Rite Of the raging storm",
+    "Attack": 55,
+    "Defense": 0,
+    "Buy Price": 510,
+    "Sell Price": 100,
+    "Rarity Level": 11,
+    "Attr": "StormCall|Infect"//StormCall Add 1 evade per turn
+  }
 ]
