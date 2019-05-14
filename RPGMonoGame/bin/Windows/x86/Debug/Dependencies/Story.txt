@@ -59,7 +59,7 @@ Toto: "That's probably not good..."
 :free=true
 
 [5]
-:req 10 DharkMinion|You need to defeat 15 Dhark minions to continue
+:req 10 DharkMinion|You need to defeat 10 Dhark minions to continue
 :free=false
 Toto: "Talk!"
 Minion: "..."

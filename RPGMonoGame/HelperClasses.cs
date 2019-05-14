@@ -1346,7 +1346,7 @@ namespace RPGv2
         }
 
         //chris
-        public int NextLevel() => Convert.ToInt32((4 * (Level * Level * Level)) / 5.0);
+        public int NextLevel() => Convert.ToInt32((4 * (Level * Level)) / 5.0);
 
         //chris
         public void InitInv()
